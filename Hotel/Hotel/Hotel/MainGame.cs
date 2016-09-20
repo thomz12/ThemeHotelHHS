@@ -25,6 +25,7 @@ namespace Hotel
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             Window.Title = "Blue Hotel";
+            IsMouseVisible = true;
         }
 
         /// <summary>

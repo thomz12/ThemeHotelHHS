@@ -16,7 +16,7 @@
     <XnaProfile>Reach</XnaProfile>
     <XnaCrossPlatformGroupID>1e8b1d9e-feac-4cda-81f5-8757f46fa9b9</XnaCrossPlatformGroupID>
     <XnaOutputType>Game</XnaOutputType>
-    <ApplicationIcon>Game.ico</ApplicationIcon>
+    <ApplicationIcon>GameIcon.ico</ApplicationIcon>
     <Thumbnail>GameThumbnail.png</Thumbnail>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
@@ -80,7 +80,7 @@
     <Compile Include="MainGame.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Game.ico" />
+    <Content Include="GameIcon.ico" />
     <Content Include="GameThumbnail.png">
       <XnaPlatformSpecific>true</XnaPlatformSpecific>
     </Content>
