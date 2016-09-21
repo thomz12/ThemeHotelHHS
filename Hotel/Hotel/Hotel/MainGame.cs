@@ -20,12 +20,16 @@ namespace Hotel
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
 
+        Hotel _hotel;
+
         public MainGame()
         {
             graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             Window.Title = "Blue Hotel";
             IsMouseVisible = true;
+
+            _hotel = new Hotel();
         }
 
         /// <summary>
@@ -73,7 +77,7 @@ namespace Hotel
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 this.Exit();
 
-            // TODO: Add your update logic here
+            _hotel.Update(gameTime);
 
             base.Update(gameTime);
         }
@@ -86,7 +90,7 @@ namespace Hotel
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
+            _hotel.Draw(GraphicsDevice, gameTime);
 
             base.Draw(gameTime);
         }

@@ -1,19 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="c336cf98-c95c-4a4b-93e5-88c57cd10a56" name="Hotel" linkedPackageId="dcd36c7c-ee69-4234-8b0d-a3b8dc3f548d" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
-  <profileInstances>
-    <packageHasProfileInstances Id="eb5fb9c5-34fc-4a93-96f3-f6b7ecb83897">
-      <profileInstance Id="840c2c59-8193-45d3-a454-91fe0fd4db0e" name="StandardProfileL2">
-        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
-      </profileInstance>
-      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="f7a8b884-d3d2-4174-9ca2-f14f2ebc4bf3">
-      <profileInstance Id="f2a6137e-6ec4-4d0f-a36f-e46590376039" name="StandardProfileL3">
-        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
-      </profileInstance>
-      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
-    </packageHasProfileInstances>
-  </profileInstances>
   <packagedElements>
     <logicalClassDesignerModelHasTypes>
       <class Id="e9a6e7c1-18f4-4c29-9e26-553b21385ff9" name="MainGame" isAbstract="false" isLeaf="false" isActiveClass="false">
@@ -137,6 +123,12 @@
               <referencedTypeMoniker Id="1a286c1d-3492-4b27-86a2-a7fd217983b6" LastKnownName="bool" />
             </type_NamedElement>
           </property>
+          <property Id="e1910b77-cd3f-4595-a179-9dc0ff50553e" name="TimeLeft" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="67573d41-8095-456a-b57e-fe9dee2ba5c4" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="4193d3bc-7a44-4406-9991-1754e82c15f6" LastKnownName="float" />
+            </type_NamedElement>
+          </property>
         </ownedAttributesInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
@@ -149,6 +141,14 @@
             <elementDefinition Id="a27ce76d-d615-4be7-a534-c1f5674a6ec0" />
           </generalization>
         </generalsInternal>
+        <ownedAttributesInternal>
+          <property Id="5c47a062-fd75-4447-881c-c0f6f883e7e6" name="Seats" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="d79c269c-bf9c-428a-b8d0-629831f24afc" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="fdf7999c-b852-4111-ac85-a8351ec2b670" LastKnownName="int" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
@@ -203,6 +203,16 @@
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
                 <memberEnd Id="4421a541-5461-47b2-9714-b745eaf40cea" name="HotelRoom" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
+                  <lowerValueInternal>
+                    <literalString Id="e7900cb9-6abc-4876-ba8d-d84497c54282" name="Lower" value="*">
+                      <elementDefinition Id="a2423e53-c417-4478-ba49-910b4ddc43a5" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="720b6da5-4486-4e9c-ba14-9aa0d3424f16" name="Upper" value="*">
+                      <elementDefinition Id="9afa1b4b-6520-4087-b2c1-3c4a61c26218" />
+                    </literalString>
+                  </upperValueInternal>
                   <elementDefinition Id="1374f15b-25ab-4e2d-b1c1-4fb4626c4fb9" />
                 </memberEnd>
               </associationHasOwnedEnds>
@@ -244,6 +254,9 @@
         <ownedAttributesInternal>
           <property Id="441bfec5-83f9-43c4-bb89-dc18806d34d9" name="Weight" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="c56c58d4-110e-4ef1-b8b5-74a425a6943f" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="fdf7999c-b852-4111-ac85-a8351ec2b670" LastKnownName="int" />
+            </type_NamedElement>
           </property>
           <property Id="b3a16f77-8acc-46f8-b1b2-431553b51088" name="Neighbors" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="8f42e92a-9b57-47af-bc9e-e5f085cae0fc" />
@@ -261,6 +274,12 @@
             <elementDefinition Id="ad053026-5436-4467-a714-f1c57aeb83de" />
             <type_NamedElement>
               <referencedTypeMoniker Id="594bd803-bc76-4a80-a2a9-486baef2775b" LastKnownName="Vector2" />
+            </type_NamedElement>
+          </property>
+          <property Id="2e0c961d-2d4e-4ce6-be9f-0a671056a569" name="Width" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="a0a357b8-c37d-482a-acb3-776b818f91fb" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="fdf7999c-b852-4111-ac85-a8351ec2b670" LastKnownName="int" />
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
@@ -396,7 +415,7 @@
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
-      <class Id="7945fcb1-d94a-4362-ae0f-c94a98f25042" name="Elevator" isAbstract="false" isLeaf="false" isActiveClass="false">
+      <class Id="7945fcb1-d94a-4362-ae0f-c94a98f25042" name="ElevatorShaft" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="62023336-a266-4aac-a9c5-4421d840fe00" />
         <generalsInternal>
           <generalization Id="d8fc6676-5f74-4ed5-a2cf-0eaaaf1634c3" isSubstitutable="false">
@@ -404,6 +423,24 @@
             <elementDefinition Id="cad5880d-3533-4b32-8010-57de1b2e7043" />
           </generalization>
         </generalsInternal>
+        <targetEnds>
+          <association Id="ed49b352-fa53-4d0f-ab26-3c6b781bc1b5" isDerived="false" sourceEndRoleName="ElevatorShaft" targetEndRoleName="Elevator" isLeaf="false" isAbstract="false">
+            <classMoniker Id="ca80b85d-84d7-4e15-989d-3ceb63eac003" LastKnownName="Elevator" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="8bc58959-d362-4c4d-aa7c-009f5c652433" name="ElevatorShaft" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="6b1511d6-68bc-476e-a4fd-5ecf93713040" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="4b363ef3-b515-43f6-9161-ab9eab8965fe" name="Elevator" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="f6e831fb-3e9f-4368-9aa1-f68e77b9c3b1" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="8e304038-3b2a-4e0f-8e68-b8ae78c066aa" />
+          </association>
+        </targetEnds>
         <ownedAttributesInternal>
           <property Id="f90d1644-fa96-483e-84ae-3f07939a1c05" name="Floor" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="2a13968e-a45f-4938-b3dc-d7e89a6bdd96" />
@@ -425,8 +462,89 @@
         </generalsInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="ca80b85d-84d7-4e15-989d-3ceb63eac003" name="Elevator" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="db226151-a993-43ea-9206-19bace924e02" />
+        <targetEnds>
+          <association Id="68dbc5dc-1d8a-4bc1-affe-8868c7db03cb" isDerived="false" sourceEndRoleName="Elevator" targetEndRoleName="ElevatorShaft" isLeaf="false" isAbstract="false">
+            <classMoniker Id="7945fcb1-d94a-4362-ae0f-c94a98f25042" LastKnownName="ElevatorShaft" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="9a35f307-35e9-45c5-8b81-69c488689cb0" name="Elevator" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="29018fb7-3a5d-410b-955c-e93eafce0fdd" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="daf7a7de-5d60-4f59-bb85-795a60222a3e" name="ElevatorShaft" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <lowerValueInternal>
+                    <literalString Id="9402d7ef-e47c-4f95-b5f4-e4a608f6ab88" name="Lower" value="*">
+                      <elementDefinition Id="bebe9a1b-08e1-4ff0-ab06-3573e16203cb" />
+                    </literalString>
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString Id="de967ca4-8ae9-4cf0-a751-91a7a72ee07f" name="Upper" value="*">
+                      <elementDefinition Id="b6b266d1-b1af-4c84-b621-bcfdd4d0f767" />
+                    </literalString>
+                  </upperValueInternal>
+                  <elementDefinition Id="1c19bef0-e08c-4561-94bd-793a28b904e0" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="1d9dd5ec-13b3-4c7a-8e0a-b1ca190ba622" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="6567213e-79cd-4391-8295-f81c9e6c58a5" name="Position" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="dddd84e3-df6c-4e1c-b730-b600f876af2a" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="594bd803-bc76-4a80-a2a9-486baef2775b" LastKnownName="Vector2" />
+            </type_NamedElement>
+          </property>
+          <property Id="19e77627-e00a-41b4-be84-e36780db5b71" name="Target" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="65cd99c5-9d2b-476e-9311-b2877d297e5e" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="fdf7999c-b852-4111-ac85-a8351ec2b670" LastKnownName="int" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation Id="53a93e35-ddc8-409c-b80a-246406db9fe4" name="CallElevator" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="058a91a5-ec11-41b1-a315-0690369272f1" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="fee22098-0bd4-4ae3-bf63-b7944906dcb5" name="floor" direction="In" isUnique="false">
+                  <elementDefinition Id="b2429c3c-e958-41f4-9dd8-6fcc57a210e0" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="fdf7999c-b852-4111-ac85-a8351ec2b670" LastKnownName="int" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="4193d3bc-7a44-4406-9991-1754e82c15f6" name="float" isAbstract="false" isLeaf="false" cachedFullName="float">
+        <elementDefinition Id="2034fe79-9fba-4fb6-8a43-a03299752142" />
+      </referencedType>
+    </packageHasNamedElement>
   </packagedElements>
   <package Id="dcd36c7c-ee69-4234-8b0d-a3b8dc3f548d" name="UML">
     <elementDefinition Id="90d7b128-f1fc-462a-8421-ac1bd25777ae" />
+    <profileInstances>
+      <packageHasProfileInstances Id="eb5fb9c5-34fc-4a93-96f3-f6b7ecb83897">
+        <profileInstance Id="840c2c59-8193-45d3-a454-91fe0fd4db0e" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="f7a8b884-d3d2-4174-9ca2-f14f2ebc4bf3">
+        <profileInstance Id="f2a6137e-6ec4-4d0f-a36f-e46590376039" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
   </package>
 </logicalClassDesignerModel>
