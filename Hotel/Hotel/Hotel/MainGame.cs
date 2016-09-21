@@ -17,19 +17,23 @@ namespace Hotel
     /// </summary>
     public class MainGame : Game
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
+        GraphicsDeviceManager _graphics;
+        SpriteBatch _spriteBatch;
 
         Hotel _hotel;
 
+        MouseState _mouse;
+        Vector2 _camPos;
+        Matrix _matrix;
+
         public MainGame()
         {
-            graphics = new GraphicsDeviceManager(this);
+            _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             Window.Title = "Blue Hotel";
             IsMouseVisible = true;
 
-            _hotel = new Hotel();
+            _matrix = new Matrix();
         }
 
         /// <summary>
@@ -43,6 +47,8 @@ namespace Hotel
             // TODO: Add your initialization logic here
 
             base.Initialize();
+            _camPos = new Vector2();
+            _mouse = Mouse.GetState();
         }
 
         /// <summary>
@@ -52,9 +58,9 @@ namespace Hotel
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
+            _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
+            _hotel = new Hotel(Content);
         }
 
         /// <summary>
@@ -79,6 +85,15 @@ namespace Hotel
 
             _hotel.Update(gameTime);
 
+            MouseState curState = Mouse.GetState();
+
+            if(curState.LeftButton == ButtonState.Pressed)
+                _camPos = new Vector2(_camPos.X - (_mouse.X - curState.X), _camPos.Y - (_mouse.Y - curState.Y));
+
+            _matrix = Matrix.CreateTranslation(new Vector3(_camPos.X, _camPos.Y, 0)) * Matrix.CreateRotationZ(0) * Matrix.CreateScale(new Vector3(1, 1, 1)) * Matrix.CreateTranslation(new Vector3(GraphicsDevice.Viewport.Width * 0.5f, GraphicsDevice.Viewport.Height * 0.5f, 0));
+
+            _mouse = Mouse.GetState();
+
             base.Update(gameTime);
         }
 
@@ -90,8 +105,11 @@ namespace Hotel
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            _hotel.Draw(GraphicsDevice, gameTime);
+            _spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, _matrix);
 
+            _hotel.Draw(_spriteBatch, gameTime);
+
+            _spriteBatch.End();
             base.Draw(gameTime);
         }
     }
