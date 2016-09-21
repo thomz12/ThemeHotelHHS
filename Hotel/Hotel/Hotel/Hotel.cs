@@ -9,6 +9,8 @@ namespace Hotel
 {
     public class Hotel
     {
+        public List<Room> Rooms { get; set; }
+
         public void Update(GameTime gameTime)
         {
 
