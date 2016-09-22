@@ -21,15 +21,15 @@ namespace Hotel
         {
             Rooms = new List<Room>();
             
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 80; i++)
             {
-                for (int j = 0; j < 25; j++)
+                for (int j = 0; j < 100; j++)
                 {
                     if (i == 0 && j == 0)
                     {
                         Rooms.Add(new Lobby(content));
                     }
-                    else if (i == 1 ||  i == 5 || i == 9)
+                    else if (i > 1)
                     {
                         Rooms.Add(new ElevatorShaft(content, j));
                     }

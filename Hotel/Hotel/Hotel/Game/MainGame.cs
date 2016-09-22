@@ -30,6 +30,10 @@ namespace Hotel
             Window.Title = "Blue Hotel";
             IsMouseVisible = true;
 
+            _graphics.PreferredBackBufferHeight = 1080;
+            _graphics.PreferredBackBufferWidth = 1920;
+            _graphics.IsFullScreen = true;
+
             // Enable v-sync
             _graphics.SynchronizeWithVerticalRetrace = true;
 

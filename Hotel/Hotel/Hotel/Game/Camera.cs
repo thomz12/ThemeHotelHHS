@@ -12,7 +12,7 @@ namespace Hotel
     {
         // Constants
         public const float MAXZOOM = 1.0f;
-        public const float MINZOOM = 0.2f;
+        public const float MINZOOM = 0.1f;
 
         public Matrix TransformMatrix { get; set; }
         public float Rotation { get; set; }
