@@ -19,7 +19,7 @@ namespace Hotel
         public Hotel(ContentManager content)
         {
             Rooms = new List<Room>();
-
+            /*
             for (int i = 0; i < 20; i++)
             {
                 for (int j = 0; j < 10; j++)
@@ -27,7 +27,7 @@ namespace Hotel
                     Rooms.Add(new Room(content));
                     Rooms.Last().Position = new Vector2(i * 60, j * 30);
                 }
-            }
+            }*/
         }
 
 
