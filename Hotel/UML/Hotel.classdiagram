@@ -325,6 +325,16 @@
           </operation>
           <operation Id="fcb02795-7ee0-4505-b979-34e3808bc743" name="Update" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="6b304a89-b3ce-4099-bc94-3c3f1867b3fb" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="8cd5c266-6cb5-40e0-903c-94c914418d3b" name="gameTime" direction="In" isUnique="false">
+                  <elementDefinition Id="00cfc385-8d02-42e6-963c-ed335fe11d1d" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="bcadd61f-dcd9-4a8a-82d5-1fbc20f762bd" LastKnownName="GameTime" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
           </operation>
         </ownedOperationsInternal>
       </class>
