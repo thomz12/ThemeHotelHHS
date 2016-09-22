@@ -15,6 +15,8 @@ namespace Hotel.Persons
 
         public Sprite Sprite { get; set; }
 
+        public float WalkingSpeed { get; set; }
+
         /// <summary>
         /// Constructor.
         /// </summary>

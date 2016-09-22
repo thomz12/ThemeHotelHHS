@@ -15,6 +15,8 @@ namespace Hotel
         public Vector2 Position { get; set; }
         public int Weight { get; set; }
 
+
+
         /// <summary>
         /// Default constructor.
         /// </summary>
