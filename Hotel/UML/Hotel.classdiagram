@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="c336cf98-c95c-4a4b-93e5-88c57cd10a56" name="Hotel" linkedPackageId="dcd36c7c-ee69-4234-8b0d-a3b8dc3f548d" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="c336cf98-c95c-4a4b-93e5-88c57cd10a56" name="Hotel" linkedPackageId="dcd36c7c-ee69-4234-8b0d-a3b8dc3f548d" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
   <ownedCommentsInternal>
     <comment Id="e9330e3b-3675-4b6e-862b-4eec85fe053e">
       <elementDefinition Id="6aaa30ed-457b-4a34-b31a-8123c2fcaf80" />
@@ -138,16 +138,74 @@
               <referencedTypeMoniker Id="b6826484-70b8-4f0c-a905-c036a1a72f25" LastKnownName="Texture2D" />
             </type_NamedElement>
           </property>
+          <property Id="89c41194-094b-45ab-9fb4-aaac240e81b3" name="Position" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="dea470ee-03ba-4850-ae21-3ea869922cf3" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="594bd803-bc76-4a80-a2a9-486baef2775b" LastKnownName="Vector2" />
+            </type_NamedElement>
+          </property>
+          <property Id="f60b85ad-ad32-48b3-b0c5-80ca07ec9385" name="Color" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="19cd24c9-6e83-4c77-b230-9a98d7396c93" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="73add4e2-d287-4295-b43d-01ecc5fb99ff" LastKnownName="Color" />
+            </type_NamedElement>
+          </property>
         </ownedAttributesInternal>
         <ownedOperationsInternal>
           <operation Id="542d30d2-768b-4d38-ae28-3318bc24c9be" name="Draw" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="02281268-4609-43f8-8e9f-a7fd0964a42e" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="0be42942-9692-4fad-905c-511ea96e1043" name="batch" direction="In" isUnique="false">
+                  <elementDefinition Id="c9d0b1a5-a977-4ba7-9bac-6665a7c788df" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="34566bb2-e5ed-44af-85e9-4ab69bb5e332" LastKnownName="SpriteBatch" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
           </operation>
           <operation Id="44538330-2d4d-46b2-9cf9-3a44639fc36b" name="Update" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="2223a1f6-30a5-4371-b8db-399386be9c27" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="7922cf00-b8de-4d58-9c48-5ed7cf68b688" name="position" direction="In" isUnique="false">
+                  <elementDefinition Id="a977bb74-9f57-4e05-a465-67fe9b619c36" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="594bd803-bc76-4a80-a2a9-486baef2775b" LastKnownName="Vector2" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="12b4cc97-d249-4fc4-ac43-f075cd7e48d8" name="gameTime" direction="In" isUnique="false">
+                  <elementDefinition Id="4a907fdf-2d63-4576-b83a-8ad79f078464" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="bcadd61f-dcd9-4a8a-82d5-1fbc20f762bd" LastKnownName="GameTime" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
           </operation>
           <operation Id="a9cfaa70-05c4-413e-b5a2-c6953d12d8d1" name="Sprite" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="30855fc9-96c2-4b4c-ba43-85a10872fabd" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="53ad6dc6-a017-4ee2-97ef-16d9eb0ceeba" name="filePath" direction="In" isUnique="false">
+                  <elementDefinition Id="813e801c-f17b-43c6-ab45-85fb878cd6d3" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="3ca7eb8f-6bbf-43db-aef1-a803c3a0f0cf" LastKnownName="String" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="280b63e5-ea2b-4723-923f-669332b690d2" name="content" direction="In" isUnique="false">
+                  <elementDefinition Id="188cb2fa-9b57-401f-911f-a3d5e5f4fef2" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="0b48e831-6982-4d21-a4a0-dcafba623625" LastKnownName="ContentManager" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
           </operation>
         </ownedOperationsInternal>
       </class>
@@ -303,7 +361,7 @@
           <property Id="b3a16f77-8acc-46f8-b1b2-431553b51088" name="Neighbors" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="8f42e92a-9b57-47af-bc9e-e5f085cae0fc" />
             <type_NamedElement>
-              <referencedTypeMoniker Id="34dece1c-810e-42da-b6e1-05e0c1ad61ea" LastKnownName="List&lt;HotelRoom&gt;" />
+              <referencedTypeMoniker Id="af9807d8-0a49-4917-b6ff-4cdf24408906" LastKnownName="List&lt;Room&gt;" />
             </type_NamedElement>
           </property>
           <property Id="ffff9a91-23bd-45ac-b3c9-cee842dd829f" name="GuestCount" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
@@ -357,11 +415,6 @@
         </ownedOperationsInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
-    <packageHasNamedElement>
-      <referencedType Id="34dece1c-810e-42da-b6e1-05e0c1ad61ea" name="List&lt;HotelRoom&gt;" isAbstract="false" isLeaf="false" cachedFullName="List&lt;HotelRoom&gt;">
-        <elementDefinition Id="3f962b2c-5951-44e4-b139-8ca892bde507" />
-      </referencedType>
-    </packageHasNamedElement>
     <packageHasNamedElement>
       <referencedType Id="1a286c1d-3492-4b27-86a2-a7fd217983b6" name="bool" isAbstract="false" isLeaf="false" cachedFullName="bool">
         <elementDefinition Id="de0811ae-0944-4454-a016-6484aefd19dc" />
@@ -523,6 +576,18 @@
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation Id="efa81138-ca05-4acc-9527-e4adbd271ccd" name="Elevate" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="ecb317ed-f18a-4230-a63e-08745531b431" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="6270701f-2feb-4668-bd17-fb11ce9ca71c" name="int destination" direction="In" isUnique="false">
+                  <elementDefinition Id="9c55ad44-d1fc-49c7-b38b-5fd85d2e74d9" />
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
@@ -742,6 +807,26 @@
         <elementDefinition Id="db697b41-2ac0-47db-b87d-a8c9660ee106" />
       </class>
     </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="af9807d8-0a49-4917-b6ff-4cdf24408906" name="List&lt;Room&gt;" isAbstract="false" isLeaf="false" cachedFullName="List&lt;Room&gt;">
+        <elementDefinition Id="86c3a089-4612-42f4-be13-ca409635e447" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="3ca7eb8f-6bbf-43db-aef1-a803c3a0f0cf" name="String" isAbstract="false" isLeaf="false" cachedFullName="String">
+        <elementDefinition Id="59259974-6d55-42c6-b7bd-763d77ac8ef9" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="0b48e831-6982-4d21-a4a0-dcafba623625" name="ContentManager" isAbstract="false" isLeaf="false" cachedFullName="ContentManager">
+        <elementDefinition Id="01ba2594-8b9a-4c2f-b7aa-2a19ad25c763" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="73add4e2-d287-4295-b43d-01ecc5fb99ff" name="Color" isAbstract="false" isLeaf="false" cachedFullName="Color">
+        <elementDefinition Id="1276623c-ba8e-45a0-8a82-0935ccc2a69a" />
+      </referencedType>
+    </packageHasNamedElement>
   </packagedElements>
   <package Id="dcd36c7c-ee69-4234-8b0d-a3b8dc3f548d" name="UML">
     <elementDefinition Id="90d7b128-f1fc-462a-8421-ac1bd25777ae" />
