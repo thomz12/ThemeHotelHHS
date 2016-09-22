@@ -20,7 +20,8 @@ namespace Hotel
         /// <param name="content">The content manager used to load in images</param>
         public ElevatorShaft(ContentManager content) : base(content)
         {
-            
+            Sprite.LoadSprite("img");
+            Sprite.Color = Color.Gray;
         }
     }
 }

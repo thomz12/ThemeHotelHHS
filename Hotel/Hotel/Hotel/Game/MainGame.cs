@@ -29,6 +29,12 @@ namespace Hotel
             Content.RootDirectory = "Content";
             Window.Title = "Blue Hotel";
             IsMouseVisible = true;
+
+            // Enable v-sync
+            _graphics.SynchronizeWithVerticalRetrace = true;
+
+            // Disable the fixed time step, causes low frame rates on some computers.
+            IsFixedTimeStep = false;
         }
 
         /// <summary>
