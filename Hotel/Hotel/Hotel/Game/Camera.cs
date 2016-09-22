@@ -11,8 +11,8 @@ namespace Hotel
     public class Camera
     {
         // Constants
-        public const float MAXZOOM = 3.0f;
-        public const float MINZOOM = 0.5f;
+        public const float MAXZOOM = 1.0f;
+        public const float MINZOOM = 0.2f;
 
         public Matrix TransformMatrix { get; set; }
         public float Rotation { get; set; }
@@ -26,7 +26,7 @@ namespace Hotel
         /// </summary>
         public Camera()
         {
-            Zoom = 1.0f;
+            Zoom = 0.6f;
         }
 
         /// <summary>

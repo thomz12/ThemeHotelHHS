@@ -31,7 +31,7 @@ namespace Hotel
                     }
                     else if (i == 1 ||  i == 5 || i == 9)
                     {
-                        Rooms.Add(new ElevatorShaft(content));
+                        Rooms.Add(new ElevatorShaft(content, j));
                     }
                     else
                     {

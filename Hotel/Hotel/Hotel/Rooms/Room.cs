@@ -15,8 +15,6 @@ namespace Hotel
         public Vector2 Position { get; set; }
         public int Weight { get; set; }
 
-
-
         /// <summary>
         /// Default constructor.
         /// </summary>
@@ -26,12 +24,16 @@ namespace Hotel
             Sprite = new Sprite(content);
         }
 
-        public void Update(GameTime gameTime)
+        /// <summary>
+        /// Update
+        /// </summary>
+        /// <param name="gameTime">The game time.</param>
+        public virtual void Update(GameTime gameTime)
         {
             Sprite.Update(Position, gameTime);
         }
 
-        public void Draw(SpriteBatch batch, GameTime gameTime)
+        public virtual void Draw(SpriteBatch batch, GameTime gameTime)
         {
             Sprite.Draw(batch, gameTime);
         }
