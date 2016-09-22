@@ -1331,16 +1331,15 @@
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
-        <generalsInternal>
-          <generalization
-            Id="cad5880d-3533-4b32-8010-57de1b2e7043"
-            isSubstitutable="false">
-            <classMoniker
-              Id="55ac072c-29df-4bb4-98c1-40272054cc7d"
-              LastKnownName="Room"
+        <suppliersInternal>
+          <dependency
+            Id="021ea4df-c635-4575-8f49-7ad3bc65b667">
+            <enumerationMoniker
+              Id="51e8fe7b-b3ea-45ce-8b52-de98c91bd60c"
+              LastKnownName="ElevatorDirection"
               LastKnownLocation="UML.uml" />
-          </generalization>
-        </generalsInternal>
+          </dependency>
+        </suppliersInternal>
         <targetEnds>
           <association
             Id="f3bad523-1047-4ad0-9bb0-1b6e30921b1e"
@@ -1394,11 +1393,88 @@
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
+          <association
+            Id="7a36b3ed-3991-4f66-8a51-31876442d452"
+            isDerived="false"
+            sourceEndRoleName="Elevator"
+            targetEndRoleName="Sprite"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="e6649528-2e64-4f8b-b2ea-098a1c2ba9ff"
+              LastKnownName="Sprite"
+              LastKnownLocation="UML.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="0684acee-a910-41bc-9e92-4cab9dd24815"
+                  name="Elevator"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="c646b12d-f8f6-43d7-a551-d80edbccfa60"
+                  name="Sprite"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="c36b0e19-cb4b-40b6-b851-3ed7be53f10b"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName=""
+            isLeaf="false"
+            isAbstract="false">
+            <enumerationMoniker
+              Id="1b7554f5-d8ba-4368-99ef-a09166264774"
+              LastKnownName="ElevatorState"
+              LastKnownLocation="UML.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="51827948-9bd2-4091-b1c8-6f835a608b48"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="1f73dfcf-3793-41fb-a15a-add833427442"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
         </targetEnds>
         <ownedAttributesInternal>
           <property
             Id="2a13968e-a45f-4938-b3dc-d7e89a6bdd96"
-            name="Floor"
+            name="_currentFloor"
+            visibility="Private"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
@@ -1414,11 +1490,29 @@
                 LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
+          <property
+            Id="5aed28fc-0e34-4e83-82ca-8d1eb6a40305"
+            name="Position"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="78321d53-5c8d-442f-959f-0c1eeab40d20"
+                LastKnownName="Vector2"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
         </ownedAttributesInternal>
         <ownedOperationsInternal>
           <operation
-            Id="ecb317ed-f18a-4230-a63e-08745531b431"
-            name="Elevate"
+            Id="ea65ee30-f801-4d00-8323-a6aef5d595f5"
+            name="Elevator"
             isLeaf="false"
             isStatic="false"
             isAbstract="false"
@@ -1427,10 +1521,106 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="9c55ad44-d1fc-49c7-b38b-5fd85d2e74d9"
-                  name="int destination"
+                  Id="d5d76b8a-f0b3-4183-90db-bed1f00d8353"
+                  name="content"
                   direction="In"
-                  isUnique="false" />
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="5bb5abdb-b9d7-46dd-97bc-6d9685b17e1b"
+                      LastKnownName="ContentManager("
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="248e842d-dddd-45de-9ed2-e516005eee44"
+            name="CallElevator"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="bf7c99bf-34ef-40c2-883a-d32b68963de8"
+                  name="direction"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <enumerationMoniker
+                      Id="51e8fe7b-b3ea-45ce-8b52-de98c91bd60c"
+                      LastKnownName="ElevatorDirection"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="2db8ab71-bac1-491e-9233-45ad79bd9306"
+            name="Update"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="0212b2f8-b1d2-4fbd-a5f5-d222a4536828"
+                  name="gameTime"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="f78b17d4-2e89-4708-817b-77afb22ff038"
+                      LastKnownName="GameTime"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="72e7faf9-1431-4d56-94af-950cf6a319b3"
+            name="Draw"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="371426c5-50a6-4e22-b5c3-7a674e56ee7e"
+                  name="batch"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="a0498109-b517-4f16-a510-b5a98639b589"
+                      LastKnownName="SpriteBatch"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="6a4d8d3b-2844-4d98-9fe6-3bebbda8c47e"
+                  name="gameTime"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="f78b17d4-2e89-4708-817b-77afb22ff038"
+                      LastKnownName="GameTime"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
@@ -1529,23 +1719,129 @@
         </targetEnds>
         <ownedAttributesInternal>
           <property
-            Id="36830e6b-7b68-4eb6-ba1e-471396d2b69b"
-            name="Elevator"
+            Id="9e1e2d2e-4c0d-43a2-badf-c5317319cd8b"
+            name="Floor"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
+            isUnique="false"
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
             isComposite="false">
             <type_NamedElement>
-              <classMoniker
-                Id="62023336-a266-4aac-a9c5-4421d840fe00"
-                LastKnownName="Elevator"
+              <undefinedTypeMoniker
+                Id="d3244994-074a-42a2-9f22-28d1164fe700"
+                LastKnownName="int"
                 LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="b2328d86-3cf1-4cf9-9b63-e0df2466e819"
+            name="ElevatorShaft"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="844b47ef-593c-4161-a2bb-7804f5e3b463"
+                  name="content"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="01ba2594-8b9a-4c2f-b7aa-2a19ad25c763"
+                      LastKnownName="ContentManager"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="9c1b4ba6-9711-4c56-9b3c-26f3f72ec3d7"
+                  name="floor"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="d3244994-074a-42a2-9f22-28d1164fe700"
+                      LastKnownName="int"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="b89fb17b-c026-404c-a5ae-9eb6f66fd0ed"
+            name="Update"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="cfc2c2df-3a33-4dce-9002-7b3a59d338b3"
+                  name="gameTime"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="f78b17d4-2e89-4708-817b-77afb22ff038"
+                      LastKnownName="GameTime"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="2944f960-88e4-4983-8ef2-3455625d2a48"
+            name="Draw"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="d9df5e51-b8fa-4385-af64-461b11c8e7cd"
+                  name="batch"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="a0498109-b517-4f16-a510-b5a98639b589"
+                      LastKnownName="SpriteBatch"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="4c562180-acca-41a1-a303-66ca0a07d4bd"
+                  name="gameTime"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="f78b17d4-2e89-4708-817b-77afb22ff038"
+                      LastKnownName="GameTime"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -2681,6 +2977,49 @@
       <undefinedType
         Id="1276623c-ba8e-45a0-8a82-0935ccc2a69a"
         name="Color" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <enumeration
+        Id="1b7554f5-d8ba-4368-99ef-a09166264774"
+        name="ElevatorState"
+        isAbstract="false"
+        isLeaf="false">
+        <ownedLiterals>
+          <enumerationLiteral
+            Id="fe48e25e-1baa-4e96-953d-13571d5024ac"
+            name="Idle" />
+          <enumerationLiteral
+            Id="7ceb2839-b5d4-48ed-a051-01c1453c9c7c"
+            name="GoingUp" />
+          <enumerationLiteral
+            Id="c2820da6-41de-493d-bba8-232d09c7ee79"
+            name="GoingDown" />
+          <enumerationLiteral
+            Id="b04ff186-b3ae-4f91-ba0e-abfab165cdb1"
+            name="Stopped" />
+        </ownedLiterals>
+      </enumeration>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <enumeration
+        Id="51e8fe7b-b3ea-45ce-8b52-de98c91bd60c"
+        name="ElevatorDirection"
+        isAbstract="false"
+        isLeaf="false">
+        <ownedLiterals>
+          <enumerationLiteral
+            Id="f0cbc851-2d03-428b-8121-baf6a256335f"
+            name="Up" />
+          <enumerationLiteral
+            Id="0653f512-9f4c-43ff-9daf-d9c8571a4115"
+            name="Down" />
+        </ownedLiterals>
+      </enumeration>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="5bb5abdb-b9d7-46dd-97bc-6d9685b17e1b"
+        name="ContentManager(" />
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType
