@@ -13,16 +13,22 @@ namespace Hotel
         public Texture2D Texture { get; private set; }
         public Vector2 Position { get; private set; }
         public Color Color { get; set; }
+        public ContentManager Content { get; private set; }
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="filePath">The path to the file to load</param>
         /// <param name="content">The content manager used to load in images</param>
-        public Sprite(string filePath, ContentManager content)
+        public Sprite(ContentManager content)
         {
+            Content = content;
             Color = Color.White;
-            Texture = content.Load<Texture2D>(filePath);
+        }
+
+        public void LoadSprite(string path)
+        {
+            Texture = Content.Load<Texture2D>(path);
         }
 
         /// <summary>

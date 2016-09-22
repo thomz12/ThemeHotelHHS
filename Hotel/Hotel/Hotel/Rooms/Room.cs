@@ -17,7 +17,7 @@ namespace Hotel
 
         public Room(ContentManager content)
         {
-            Sprite = new Sprite("img", content);
+            Sprite = new Sprite(content);
         }
 
         public void Update(GameTime gameTime)

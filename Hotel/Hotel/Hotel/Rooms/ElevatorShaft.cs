@@ -12,7 +12,8 @@ namespace Hotel
     {
         public ElevatorShaft(ContentManager content) : base(content)
         {
-            
+            Sprite.LoadSprite("img");
+            Sprite.Color = Color.Gray;
         }
     }
 }

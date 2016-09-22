@@ -81,6 +81,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Game\MainGame.cs" />
     <Compile Include="Rooms\ElevatorShaft.cs" />
+    <Compile Include="Rooms\GuestRoom.cs" />
     <Compile Include="Rooms\Room.cs" />
     <Compile Include="Game\Sprite.cs" />
   </ItemGroup>
