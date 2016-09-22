@@ -11,9 +11,10 @@ namespace Hotel
     public class Sprite
     {
         public Texture2D Texture { get; private set; }
-        public Vector2 Position { get; private set; }
+        public Vector2 Position { get; set; }
         public Color Color { get; set; }
-        public ContentManager Content { get; private set; }
+
+        private ContentManager _content;
 
         /// <summary>
         /// Constructor
@@ -22,13 +23,13 @@ namespace Hotel
         /// <param name="content">The content manager used to load in images</param>
         public Sprite(ContentManager content)
         {
-            Content = content;
+            _content = content;
             Color = Color.White;
         }
 
         public void LoadSprite(string path)
         {
-            Texture = Content.Load<Texture2D>(path);
+            Texture = _content.Load<Texture2D>(path);
         }
 
         /// <summary>
@@ -47,7 +48,7 @@ namespace Hotel
         /// <param name="gameTime">The game time.</param>
         public void Draw(SpriteBatch batch, GameTime gameTime)
         {
-            batch.Draw(Texture, new Rectangle((int)Position.X, (int)Position.Y, 60, 30), Color);
+            batch.Draw(Texture, new Rectangle((int)Position.X, -(int)Position.Y, 60, 30), Color);
         }
     }
 }
