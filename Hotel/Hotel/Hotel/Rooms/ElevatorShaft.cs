@@ -15,7 +15,7 @@ namespace Hotel
         private Elevator _elevator;
 
         /// <summary>
-        /// Default Constructor
+        /// Constructor
         /// </summary>
         /// <param name="content">The content manager used to load in images</param>
         public ElevatorShaft(ContentManager content, int floor) : base(content)
