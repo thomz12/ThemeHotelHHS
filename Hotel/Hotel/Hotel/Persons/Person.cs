@@ -5,25 +5,25 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Hotel;
 
-namespace Hotel
+namespace Hotel.Persons
 {
-    public abstract class Room
+    public abstract class Person
     {
-        public Sprite Sprite { get; private set; }
-
         public Vector2 Position { get; set; }
-        public int Weight { get; set; }
 
+        public Sprite Sprite { get; set; }
 
+        public float WalkingSpeed { get; set; }
 
         /// <summary>
-        /// Default constructor.
+        /// Constructor.
         /// </summary>
         /// <param name="content">The content manager used to load in images.</param>
-        public Room(ContentManager content)
+        public Person(ContentManager content)
         {
-            Sprite = new Sprite(content);
+
         }
 
         public void Update(GameTime gameTime)
@@ -34,6 +34,11 @@ namespace Hotel
         public void Draw(SpriteBatch batch, GameTime gameTime)
         {
             Sprite.Draw(batch, gameTime);
+        }
+
+        public void FindPath()
+        {
+
         }
     }
 }

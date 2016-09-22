@@ -10,6 +10,10 @@ namespace Hotel
 {
     public class ElevatorShaft : Room
     {
+        private Elevator _elevator;
+
+        public int floor;
+
         /// <summary>
         /// Default Constructor
         /// </summary>

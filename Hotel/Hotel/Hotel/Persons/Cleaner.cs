@@ -3,16 +3,17 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Hotel;
 
-namespace Hotel
+namespace Hotel.Persons
 {
-    class Elevator : Room
+    public class Cleaner : Person
     {
         /// <summary>
-        /// Default constructor.
+        /// Constructor.
         /// </summary>
         /// <param name="content">The content manager used to load in images.</param>
-        public Elevator(ContentManager content) : base (content)
+        public Cleaner(ContentManager content) : base(content)
         {
 
         }
