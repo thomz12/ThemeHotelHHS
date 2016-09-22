@@ -5,13 +5,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Hotel
+namespace Hotel.Rooms
 {
-    public class GuestRoom : Room
+    public class Lobby : Room
     {
-        public GuestRoom(ContentManager content) : base(content)
+        public Lobby(ContentManager content) : base(content)
         {
-            Sprite.LoadSprite("GuestRoom");
+            Sprite.LoadSprite("img");
+            Sprite.Color = Color.Red;
         }
     }
 }
