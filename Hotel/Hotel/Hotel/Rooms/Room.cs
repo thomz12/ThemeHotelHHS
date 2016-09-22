@@ -8,28 +8,26 @@ using System.Text;
 
 namespace Hotel
 {
-    public class Room
+    public abstract class Room
     {
-        // SPRITE
-        public int Width { get; set; }
+        public Sprite Sprite { get; private set; }
+
         public Vector2 Position { get; set; }
         public int Weight { get; set; }
 
-        Texture2D temp;
-
         public Room(ContentManager content)
         {
-            temp = content.Load<Texture2D>("img");
+            Sprite = new Sprite("img", content);
         }
 
         public void Update(GameTime gameTime)
         {
-
+            Sprite.Update(Position, gameTime);
         }
 
         public void Draw(SpriteBatch batch, GameTime gameTime)
         {
-            batch.Draw(temp, new Rectangle((int)Position.X, (int)Position.Y, 60, 30), Color.White);
+            Sprite.Draw(batch, gameTime);
         }
     }
 }
