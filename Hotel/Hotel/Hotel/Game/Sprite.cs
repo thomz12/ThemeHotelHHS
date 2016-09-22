@@ -13,8 +13,12 @@ namespace Hotel
         public Texture2D Texture { get; private set; }
         public Vector2 Position { get; set; }
         public Color Color { get; set; }
+        public int DrawOrder{ get; set; }
 
         private ContentManager _content;
+
+        public event EventHandler<EventArgs> VisibleChanged;
+        public event EventHandler<EventArgs> DrawOrderChanged;
 
         /// <summary>
         /// Constructor
@@ -24,6 +28,7 @@ namespace Hotel
         public Sprite(ContentManager content)
         {
             _content = content;
+            DrawOrder = 0;
             Color = Color.White;
         }
 
@@ -52,7 +57,7 @@ namespace Hotel
         /// <param name="gameTime">The game time.</param>
         public void Draw(SpriteBatch batch, GameTime gameTime)
         {
-            batch.Draw(Texture, new Rectangle((int)Position.X, -(int)Position.Y, Texture.Width, Texture.Height), Color);
+            batch.Draw(Texture, new Rectangle((int)Position.X, -(int)Position.Y, Texture.Width, Texture.Height), new Rectangle(0, 0, Texture.Width, Texture.Height), Color, 0, Vector2.Zero, SpriteEffects.None, DrawOrder);
         }
     }
 }
