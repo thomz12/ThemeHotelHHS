@@ -1331,16 +1331,15 @@
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
-        <generalsInternal>
-          <generalization
-            Id="cad5880d-3533-4b32-8010-57de1b2e7043"
-            isSubstitutable="false">
+        <suppliersInternal>
+          <dependency
+            Id="1eafc861-a038-4f5c-bcd0-83a7059a084e">
             <classMoniker
-              Id="55ac072c-29df-4bb4-98c1-40272054cc7d"
-              LastKnownName="Room"
+              Id="e6649528-2e64-4f8b-b2ea-098a1c2ba9ff"
+              LastKnownName="Sprite"
               LastKnownLocation="UML.uml" />
-          </generalization>
-        </generalsInternal>
+          </dependency>
+        </suppliersInternal>
         <targetEnds>
           <association
             Id="f3bad523-1047-4ad0-9bb0-1b6e30921b1e"

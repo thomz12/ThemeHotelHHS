@@ -540,12 +540,12 @@
     <logicalClassDesignerModelHasTypes>
       <class Id="7945fcb1-d94a-4362-ae0f-c94a98f25042" name="Elevator" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="62023336-a266-4aac-a9c5-4421d840fe00" />
-        <generalsInternal>
-          <generalization Id="d8fc6676-5f74-4ed5-a2cf-0eaaaf1634c3" isSubstitutable="false">
-            <classMoniker Id="3d8329bc-5f4f-4b16-93d3-9e3707528c76" LastKnownName="Room" />
-            <elementDefinition Id="cad5880d-3533-4b32-8010-57de1b2e7043" />
-          </generalization>
-        </generalsInternal>
+        <suppliersInternal>
+          <dependency Id="efb900d6-65aa-4c31-91e5-ab04c9e682b3">
+            <classMoniker Id="b9859f48-922a-45b0-b0e0-c6cce0b3bcb3" LastKnownName="Sprite" />
+            <elementDefinition Id="1eafc861-a038-4f5c-bcd0-83a7059a084e" />
+          </dependency>
+        </suppliersInternal>
         <targetEnds>
           <association Id="99fa9243-b01d-429c-aa15-bc90faae2119" isDerived="false" sourceEndRoleName="has an" targetEndRoleName="is part of" isLeaf="false" isAbstract="false">
             <classMoniker Id="1729d142-de00-4b6a-9aa5-074571293787" LastKnownName="ElevatorShaft" />
