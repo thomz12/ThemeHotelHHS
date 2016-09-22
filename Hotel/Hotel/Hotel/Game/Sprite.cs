@@ -27,6 +27,10 @@ namespace Hotel
             Color = Color.White;
         }
 
+        /// <summary>
+        /// Loads the texture used for the sprite.
+        /// </summary>
+        /// <param name="path">Path to the image</param>
         public void LoadSprite(string path)
         {
             Texture = _content.Load<Texture2D>(path);
@@ -48,7 +52,7 @@ namespace Hotel
         /// <param name="gameTime">The game time.</param>
         public void Draw(SpriteBatch batch, GameTime gameTime)
         {
-            batch.Draw(Texture, new Rectangle((int)Position.X, -(int)Position.Y, 60, 30), Color);
+            batch.Draw(Texture, new Rectangle((int)Position.X, -(int)Position.Y, Texture.Width, Texture.Height), Color);
         }
     }
 }
