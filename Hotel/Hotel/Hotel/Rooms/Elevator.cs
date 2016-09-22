@@ -40,6 +40,7 @@ namespace Hotel
         {
             Sprite = new Sprite(content);
             Sprite.LoadSprite("Elevator");
+            Sprite.DrawOrder = 1;
             _currentFloor = 0;
             State = ElevatorState.Idle;
         }
@@ -60,7 +61,7 @@ namespace Hotel
         public void Update(GameTime gameTime)
         {
             Sprite.Update(Position, gameTime);
-            Position = new Vector2(Position.X, Position.Y + 1);
+            Position = new Vector2(Position.X, Position.Y + 0.1f);
         }
 
         /// <summary>
