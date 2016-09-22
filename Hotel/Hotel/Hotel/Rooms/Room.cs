@@ -18,7 +18,7 @@ namespace Hotel
         /// <summary>
         /// Default constructor.
         /// </summary>
-        /// <param name="content">The content manager used to load in images</param>
+        /// <param name="content">The content manager used to load in images.</param>
         public Room(ContentManager content)
         {
             Sprite = new Sprite("img", content);
