@@ -22,6 +22,11 @@ namespace Hotel
             temp = content.Load<Texture2D>("img");
         }
 
+        public void Update(GameTime gameTime)
+        {
+
+        }
+
         public void Draw(SpriteBatch batch, GameTime gameTime)
         {
             batch.Draw(temp, new Rectangle((int)Position.X, (int)Position.Y, 60, 30), Color.White);

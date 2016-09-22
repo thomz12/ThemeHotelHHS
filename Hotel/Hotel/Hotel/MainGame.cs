@@ -17,14 +17,11 @@ namespace Hotel
     /// </summary>
     public class MainGame : Game
     {
-        GraphicsDeviceManager _graphics;
-        SpriteBatch _spriteBatch;
+        private GraphicsDeviceManager _graphics;
+        private SpriteBatch _spriteBatch;
 
-        Hotel _hotel;
-
-        MouseState _mouse;
-        Vector2 _camPos;
-        Matrix _matrix;
+        private Hotel _hotel;
+        private Camera _camera;
 
         public MainGame()
         {
@@ -32,8 +29,6 @@ namespace Hotel
             Content.RootDirectory = "Content";
             Window.Title = "Blue Hotel";
             IsMouseVisible = true;
-
-            _matrix = new Matrix();
         }
 
         /// <summary>
@@ -47,8 +42,6 @@ namespace Hotel
             // TODO: Add your initialization logic here
 
             base.Initialize();
-            _camPos = new Vector2();
-            _mouse = Mouse.GetState();
         }
 
         /// <summary>
@@ -61,6 +54,7 @@ namespace Hotel
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             _hotel = new Hotel(Content);
+            _camera = new Camera();
         }
 
         /// <summary>
@@ -84,15 +78,7 @@ namespace Hotel
                 this.Exit();
 
             _hotel.Update(gameTime);
-
-            MouseState curState = Mouse.GetState();
-
-            if(curState.LeftButton == ButtonState.Pressed)
-                _camPos = new Vector2(_camPos.X - (_mouse.X - curState.X), _camPos.Y - (_mouse.Y - curState.Y));
-
-            _matrix = Matrix.CreateTranslation(new Vector3(_camPos.X, _camPos.Y, 0)) * Matrix.CreateRotationZ(0) * Matrix.CreateScale(new Vector3(1, 1, 1)) * Matrix.CreateTranslation(new Vector3(GraphicsDevice.Viewport.Width * 0.5f, GraphicsDevice.Viewport.Height * 0.5f, 0));
-
-            _mouse = Mouse.GetState();
+            _camera.Update(GraphicsDevice, gameTime);
 
             base.Update(gameTime);
         }
@@ -105,7 +91,7 @@ namespace Hotel
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            _spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, _matrix);
+            _spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, _camera.TransformMatrix);
 
             _hotel.Draw(_spriteBatch, gameTime);
 

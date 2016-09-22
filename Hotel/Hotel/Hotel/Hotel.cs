@@ -12,6 +12,10 @@ namespace Hotel
     {
         public List<Room> Rooms { get; set; }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="content">The content manager used to load in room images.</param>
         public Hotel(ContentManager content)
         {
             Rooms = new List<Room>();
@@ -26,9 +30,13 @@ namespace Hotel
             }
         }
 
+
         public void Update(GameTime gameTime)
         {
-
+            foreach(Room room in Rooms)
+            {
+                room.Update(gameTime);
+            }
         }
 
         public void Draw(SpriteBatch batch, GameTime gameTime)
