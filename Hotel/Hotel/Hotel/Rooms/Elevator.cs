@@ -94,7 +94,7 @@ namespace Hotel
                 {
                     try
                     {
-                        floor = _queue.Keys.Where(x => x > _currentFloor).Where(x => _queue[x] == ElevatorDirection.Down).OrderByDescending(x => x).First();
+                        floor = _queue.Keys.Where(x => x > _currentFloor).Where(x => _queue[x].HasFlag(ElevatorDirection.Down)).OrderByDescending(x => x).First();
                     }
                     catch
                     {
@@ -115,7 +115,7 @@ namespace Hotel
                 {
                     try
                     {
-                        floor = _queue.Keys.Where(x => x < _currentFloor).Where(x => _queue[x] == ElevatorDirection.Up).OrderBy(x => x).First();
+                        floor = _queue.Keys.Where(x => x < _currentFloor).Where(x => _queue[x].HasFlag(ElevatorDirection.Up)).OrderBy(x => x).First();
                     }
                     catch
                     {
@@ -143,7 +143,11 @@ namespace Hotel
         /// <param name="direction">The direction the elevator needs to go</param>
         public void CallElevator(int floor, ElevatorDirection direction)
         {
-            _queue.Add(floor, direction);
+            if (_queue.ContainsKey(floor))
+                _queue[floor] |= direction;
+            else
+                _queue.Add(floor, direction);
+
             _targetFloor = GetTargetFloor();
         }
 
@@ -153,7 +157,6 @@ namespace Hotel
         /// <param name="gameTime">The game time.</param>
         public void Update(GameTime gameTime)
         {
-
             Sprite.Update(Position, gameTime);
 
             if (_waitTime <= 0)
@@ -172,12 +175,28 @@ namespace Hotel
             if (Math.Abs(Position.Y - height) < Speed)
             {
                 Position = new Vector2(Position.X, height);
+
+                ElevatorDirection direction = _queue[_targetFloor];
+                if(direction == ElevatorDirection.Up)
+                {
+                    CallElevator(r.Next(_targetFloor, 100), ElevatorDirection.Both);
+                }
+                else if(direction == ElevatorDirection.Down)
+                {
+                    CallElevator(r.Next(0, _targetFloor), ElevatorDirection.Both);
+                }
+                else
+                {
+                    ;
+                }
+
                 _queue.Remove(_targetFloor);
 
                 _currentFloor = _targetFloor;
                 _targetFloor = GetTargetFloor();
 
                 _waitTime = WaitTime;
+
 
                 return;
             }
