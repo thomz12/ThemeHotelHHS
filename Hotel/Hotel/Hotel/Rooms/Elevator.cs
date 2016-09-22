@@ -16,10 +16,12 @@ namespace Hotel
         Stopped
     }
 
+    [Flags]
     public enum ElevatorDirection
     {
-        Up,
-        Down
+        Up = 1,
+        Down = 2,
+        Both = 3
     }
 
     public class Elevator
@@ -27,9 +29,7 @@ namespace Hotel
         public Sprite Sprite { get; private set; }
         public Vector2 Position { get; set; }
         public float Speed { get; set; }
-
         public ElevatorState State { get; private set; }
-
         public float WaitTime { get; set; }
 
         private int _currentFloor;
@@ -48,17 +48,17 @@ namespace Hotel
             Sprite = new Sprite(content);
             Sprite.LoadSprite("Elevator");
             Sprite.DrawOrder = 1;
-            WaitTime = 2.0f;
-            Speed = 8.0f;
+            WaitTime = 1.0f;
+            Speed = 32.0f;
             State = ElevatorState.GoingUp;
 
             _currentFloor = 0;
             _queue = new Dictionary<int, ElevatorDirection>();
 
             // Create a random queue
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 100; i++)
             {
-                int floor = r.Next(0, 10);
+                int floor = r.Next(0, 100);
 
                 if(_queue.ContainsKey(floor))
                 {
@@ -73,29 +73,65 @@ namespace Hotel
         {
             int floor = 0;
 
+            // If the queue is empty
+            if(_queue.Count == 0)
+            {
+                // Set the elevator idle.
+                State = ElevatorState.Idle;
+                // Our target floor is the current floor.
+                return _currentFloor;
+            }
+
+            // If the elevator is going up
             if (State == ElevatorState.GoingUp)
             {
                 try
                 {
+                    // Try to find a floor above the elevator, that wants to go up.
                     floor = _queue.Keys.Where(x => x > _currentFloor).Where(x => _queue[x].HasFlag(ElevatorDirection.Up)).OrderBy(x => x).First();
                 }
                 catch
                 {
-                    State = ElevatorState.GoingDown;
-                    floor = GetTargetFloor();
+                    try
+                    {
+                        floor = _queue.Keys.Where(x => x > _currentFloor).Where(x => _queue[x] == ElevatorDirection.Down).OrderByDescending(x => x).First();
+                    }
+                    catch
+                    {
+                        State = ElevatorState.GoingDown;
+                        floor = GetTargetFloor();
+                    }
                 }
             }
+            // If the elevator is going down
             else if(State == ElevatorState.GoingDown)
             {
                 try
                 {
-                    floor = _queue.Keys.Where(x => x < _currentFloor).Where(x => _queue[x].HasFlag(ElevatorDirection.Down)).OrderByDescending(x => x).FirstOrDefault();
+                    // Try to find a floor below the elevator, that wants to go down.
+                    floor = _queue.Keys.Where(x => x < _currentFloor).Where(x => _queue[x].HasFlag(ElevatorDirection.Down)).OrderByDescending(x => x).First();
                 }
                 catch
                 {
-                    State = ElevatorState.GoingUp;
-                    floor = GetTargetFloor();
+                    try
+                    {
+                        floor = _queue.Keys.Where(x => x < _currentFloor).Where(x => _queue[x] == ElevatorDirection.Up).OrderBy(x => x).First();
+                    }
+                    catch
+                    {
+                        State = ElevatorState.GoingUp;
+                        floor = GetTargetFloor();
+                    }
                 }
+            }
+            else if(State == ElevatorState.Idle)
+            {
+                floor = _queue.Keys.Where(x => x <= _currentFloor).Min(x => _currentFloor - x);
+
+                if (floor > _currentFloor)
+                    State = ElevatorState.GoingUp;
+                else if(floor < _currentFloor)
+                    State = ElevatorState.GoingDown;
             }
 
             return floor;
@@ -108,6 +144,7 @@ namespace Hotel
         public void CallElevator(int floor, ElevatorDirection direction)
         {
             _queue.Add(floor, direction);
+            _targetFloor = GetTargetFloor();
         }
 
         /// <summary>
@@ -121,8 +158,7 @@ namespace Hotel
 
             if (_waitTime <= 0)
             {
-                if (_queue.Keys.Count > 0)
-                    MoveToFloor(90 * _targetFloor);
+                MoveToFloor(90 * _targetFloor);
             }
             else
             {
@@ -132,11 +168,7 @@ namespace Hotel
 
         public void MoveToFloor(int height)
         {
-            if (Position.Y > height)
-                Position = new Vector2(Position.X, Position.Y - Speed);
-            else
-                Position = new Vector2(Position.X, Position.Y + Speed);
-
+            // When the elevator reached its destination
             if (Math.Abs(Position.Y - height) < Speed)
             {
                 Position = new Vector2(Position.X, height);
@@ -146,7 +178,14 @@ namespace Hotel
                 _targetFloor = GetTargetFloor();
 
                 _waitTime = WaitTime;
+
+                return;
             }
+
+            if (Position.Y > height)
+                Position = new Vector2(Position.X, Position.Y - Speed);
+            else
+                Position = new Vector2(Position.X, Position.Y + Speed);
         }
 
         /// <summary>

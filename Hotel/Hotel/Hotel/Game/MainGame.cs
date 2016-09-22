@@ -33,6 +33,10 @@ namespace Hotel
             // Enable v-sync
             _graphics.SynchronizeWithVerticalRetrace = true;
 
+            _graphics.PreferredBackBufferHeight = 1080;
+            _graphics.PreferredBackBufferWidth = 1920;
+            _graphics.IsFullScreen = true;
+
             // Disable the fixed time step, causes low frame rates on some computers.
             IsFixedTimeStep = false;
         }
