@@ -1331,15 +1331,6 @@
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">
-        <suppliersInternal>
-          <dependency
-            Id="1eafc861-a038-4f5c-bcd0-83a7059a084e">
-            <classMoniker
-              Id="e6649528-2e64-4f8b-b2ea-098a1c2ba9ff"
-              LastKnownName="Sprite"
-              LastKnownLocation="UML.uml" />
-          </dependency>
-        </suppliersInternal>
         <targetEnds>
           <association
             Id="f3bad523-1047-4ad0-9bb0-1b6e30921b1e"
@@ -1390,6 +1381,45 @@
                       value="*" />
                   </upperValueInternal>
                 </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="7a36b3ed-3991-4f66-8a51-31876442d452"
+            isDerived="false"
+            sourceEndRoleName="Elevator"
+            targetEndRoleName="Sprite"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="e6649528-2e64-4f8b-b2ea-098a1c2ba9ff"
+              LastKnownName="Sprite"
+              LastKnownLocation="UML.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="0684acee-a910-41bc-9e92-4cab9dd24815"
+                  name="Elevator"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="c646b12d-f8f6-43d7-a551-d80edbccfa60"
+                  name="Sprite"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>

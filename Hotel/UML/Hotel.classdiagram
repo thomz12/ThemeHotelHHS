@@ -540,12 +540,6 @@
     <logicalClassDesignerModelHasTypes>
       <class Id="7945fcb1-d94a-4362-ae0f-c94a98f25042" name="Elevator" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="62023336-a266-4aac-a9c5-4421d840fe00" />
-        <suppliersInternal>
-          <dependency Id="efb900d6-65aa-4c31-91e5-ab04c9e682b3">
-            <classMoniker Id="b9859f48-922a-45b0-b0e0-c6cce0b3bcb3" LastKnownName="Sprite" />
-            <elementDefinition Id="1eafc861-a038-4f5c-bcd0-83a7059a084e" />
-          </dependency>
-        </suppliersInternal>
         <targetEnds>
           <association Id="99fa9243-b01d-429c-aa15-bc90faae2119" isDerived="false" sourceEndRoleName="has an" targetEndRoleName="is part of" isLeaf="false" isAbstract="false">
             <classMoniker Id="1729d142-de00-4b6a-9aa5-074571293787" LastKnownName="ElevatorShaft" />
@@ -572,6 +566,22 @@
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="f3bad523-1047-4ad0-9bb0-1b6e30921b1e" />
+          </association>
+          <association Id="9d7c60f8-a1fd-4fdf-afc5-ee43d2545c7d" isDerived="false" sourceEndRoleName="Elevator" targetEndRoleName="Sprite" isLeaf="false" isAbstract="false">
+            <classMoniker Id="b9859f48-922a-45b0-b0e0-c6cce0b3bcb3" LastKnownName="Sprite" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="aff104bc-921e-4d34-a6a6-51ceac370f5c" name="Elevator" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="0684acee-a910-41bc-9e92-4cab9dd24815" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="853aaf88-c1a8-41ac-8f88-669238b3c5a6" name="Sprite" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="c646b12d-f8f6-43d7-a551-d80edbccfa60" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="7a36b3ed-3991-4f66-8a51-31876442d452" />
           </association>
         </targetEnds>
         <ownedAttributesInternal>
