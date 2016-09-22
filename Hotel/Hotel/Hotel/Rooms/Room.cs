@@ -15,6 +15,10 @@ namespace Hotel
         public Vector2 Position { get; set; }
         public int Weight { get; set; }
 
+        /// <summary>
+        /// Default constructor.
+        /// </summary>
+        /// <param name="content">The content manager used to load in images.</param>
         public Room(ContentManager content)
         {
             Sprite = new Sprite(content);

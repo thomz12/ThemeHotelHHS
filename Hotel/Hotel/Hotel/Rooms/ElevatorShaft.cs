@@ -10,6 +10,10 @@ namespace Hotel
 {
     public class ElevatorShaft : Room
     {
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
+        /// <param name="content">The content manager used to load in images</param>
         public ElevatorShaft(ContentManager content) : base(content)
         {
             Sprite.LoadSprite("img");

@@ -322,6 +322,24 @@
         <ownedOperationsInternal>
           <operation Id="3c3c29b8-dac4-4329-9eb3-6cf8fee8f818" name="Draw" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="0b7200d1-1c61-4111-ad36-690883291898" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="2224fce1-0425-4c57-bad7-4fc63de3a087" name="batch" direction="In" isUnique="false">
+                  <elementDefinition Id="567c435c-3f10-42e3-a04c-86d54fbea5fe" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="34566bb2-e5ed-44af-85e9-4ab69bb5e332" LastKnownName="SpriteBatch" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="fa552a08-6024-44a3-9428-6a13ab1e81a4" name="gameTime" direction="In" isUnique="false">
+                  <elementDefinition Id="4d89ff68-2f67-43bc-b493-db599b3e09dd" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="bcadd61f-dcd9-4a8a-82d5-1fbc20f762bd" LastKnownName="GameTime" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
           </operation>
           <operation Id="fcb02795-7ee0-4505-b979-34e3808bc743" name="Update" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="6b304a89-b3ce-4099-bc94-3c3f1867b3fb" />
