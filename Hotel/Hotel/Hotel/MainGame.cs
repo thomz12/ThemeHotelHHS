@@ -17,12 +17,15 @@ namespace Hotel
     /// </summary>
     public class MainGame : Game
     {
-        public GraphicsDeviceManager graphics;
-        public SpriteBatch spriteBatch;
+        private GraphicsDeviceManager _graphics;
+        private SpriteBatch _spriteBatch;
+
+        private Hotel _hotel;
+        private Camera _camera;
 
         public MainGame()
         {
-            graphics = new GraphicsDeviceManager(this);
+            _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
             Window.Title = "Blue Hotel";
             IsMouseVisible = true;
@@ -48,9 +51,10 @@ namespace Hotel
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
+            _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
+            _hotel = new Hotel(Content);
+            _camera = new Camera();
         }
 
         /// <summary>
@@ -73,7 +77,8 @@ namespace Hotel
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 this.Exit();
 
-            // TODO: Add your update logic here
+            _hotel.Update(gameTime);
+            _camera.Update(GraphicsDevice, gameTime);
 
             base.Update(gameTime);
         }
@@ -86,8 +91,11 @@ namespace Hotel
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // TODO: Add your drawing code here
+            _spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, _camera.TransformMatrix);
 
+            _hotel.Draw(_spriteBatch, gameTime);
+
+            _spriteBatch.End();
             base.Draw(gameTime);
         }
     }
