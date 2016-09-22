@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Hotel.Rooms;
 
 namespace Hotel
 {
@@ -24,15 +25,19 @@ namespace Hotel
             {
                 for (int j = 0; j < 25; j++)
                 {
-                    if (i == 1 ||  i == 5 || i == 9)
+                    if (i == 0 && j == 0)
                     {
-                        Rooms.Add(new ElevatorShaft(content));
+                        Rooms.Add(new Lobby(content));
+                    }
+                    else if (i == 1 ||  i == 5 || i == 9)
+                    {
+                        Rooms.Add(new ElevatorShaft(content, j));
                     }
                     else
                     {
                         Rooms.Add(new GuestRoom(content));
                     }
-                    Rooms.Last().Position = new Vector2(i * 60, j * 30);
+                    Rooms.Last().Position = new Vector2(i * Rooms.Last().Sprite.Texture.Width, j * Rooms.Last().Sprite.Texture.Height);
                 }
             }
         }

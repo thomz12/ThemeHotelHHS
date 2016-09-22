@@ -87,6 +87,7 @@
     <Compile Include="Rooms\Elevator.cs" />
     <Compile Include="Rooms\ElevatorShaft.cs" />
     <Compile Include="Rooms\GuestRoom.cs" />
+    <Compile Include="Rooms\Lobby.cs" />
     <Compile Include="Rooms\Room.cs" />
     <Compile Include="Game\Sprite.cs" />
   </ItemGroup>
