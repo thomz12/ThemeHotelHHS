@@ -50,23 +50,55 @@ namespace Hotel
             Sprite.DrawOrder = 1;
             WaitTime = 2.0f;
             Speed = 8.0f;
-            State = ElevatorState.Idle;
+            State = ElevatorState.GoingUp;
 
             _currentFloor = 0;
             _queue = new Dictionary<int, ElevatorDirection>();
 
             // Create a random queue
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 10; i++)
             {
-                int floor = r.Next(0, 100);
+                int floor = r.Next(0, 10);
 
                 if(_queue.ContainsKey(floor))
                 {
                     i--;
                     continue;
                 }
-                _queue.Add(floor, ElevatorDirection.Up);
+                _queue.Add(floor, (ElevatorDirection)r.Next(0, 2));
             }
+        }
+
+        public int GetTargetFloor()
+        {
+            int floor = 0;
+
+            if (State == ElevatorState.GoingUp)
+            {
+                try
+                {
+                    floor = _queue.Keys.Where(x => x > _currentFloor).Where(x => _queue[x].HasFlag(ElevatorDirection.Up)).OrderBy(x => x).First();
+                }
+                catch
+                {
+                    State = ElevatorState.GoingDown;
+                    floor = GetTargetFloor();
+                }
+            }
+            else if(State == ElevatorState.GoingDown)
+            {
+                try
+                {
+                    floor = _queue.Keys.Where(x => x < _currentFloor).Where(x => _queue[x].HasFlag(ElevatorDirection.Down)).OrderByDescending(x => x).FirstOrDefault();
+                }
+                catch
+                {
+                    State = ElevatorState.GoingUp;
+                    floor = GetTargetFloor();
+                }
+            }
+
+            return floor;
         }
 
         /// <summary>
@@ -90,7 +122,7 @@ namespace Hotel
             if (_waitTime <= 0)
             {
                 if (_queue.Keys.Count > 0)
-                    MoveToFloor(90 * _queue.Keys.ElementAt(0));
+                    MoveToFloor(90 * _targetFloor);
             }
             else
             {
@@ -108,7 +140,10 @@ namespace Hotel
             if (Math.Abs(Position.Y - height) < Speed)
             {
                 Position = new Vector2(Position.X, height);
-                _queue.Remove(height / 90);
+                _queue.Remove(_targetFloor);
+
+                _currentFloor = _targetFloor;
+                _targetFloor = GetTargetFloor();
 
                 _waitTime = WaitTime;
             }
