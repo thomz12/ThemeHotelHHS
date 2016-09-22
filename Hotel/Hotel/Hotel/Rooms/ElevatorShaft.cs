@@ -10,7 +10,7 @@ namespace Hotel
 {
     public class ElevatorShaft : Room
     {
-        public ElevatorShaft(ContentManager content)
+        public ElevatorShaft(ContentManager content) : base(content)
         {
             
         }
