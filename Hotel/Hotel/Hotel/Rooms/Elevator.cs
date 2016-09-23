@@ -24,6 +24,9 @@ namespace Hotel
         Both = 3
     }
 
+    /// <summary>
+    /// An elevator that can go up or down and can get called by an elevator shaft to come pick up people and drop them off at their destination.
+    /// </summary>
     public class Elevator
     {
         public Sprite Sprite { get; private set; }
@@ -69,7 +72,11 @@ namespace Hotel
             }
         }
 
-        public int GetTargetFloor()
+        /// <summary>
+        /// The algorithm to check which floor to go to next is in this function.
+        /// </summary>
+        /// <returns>The floor that the elevator needs to travel to according to the algorithm.</returns>
+        private int GetTargetFloor()
         {
             int? floor = 0;
 
@@ -92,12 +99,15 @@ namespace Hotel
                 }
                 catch
                 {
+                    // Nobody needs to go up anymore, but we still need to pick up the people who are some stories higher and want to go down.
                     try
                     {
+                        // We pick the request on the highest floor for going down.
                         floor = _queue.Keys.Where(x => x > _currentFloor).Where(x => _queue[x].HasFlag(ElevatorDirection.Down)).OrderByDescending(x => x).First();
                     }
                     catch
                     {
+                        // There is no request available so the elevator's direction must turn around.
                         State = ElevatorState.GoingDown;
                         floor = GetTargetFloor();
                     }
@@ -106,15 +116,18 @@ namespace Hotel
             // If the elevator is going down
             else if(State == ElevatorState.GoingDown)
             {
-                // Try to find a floor below the elevator, that wants to go down.
-                floor = _queue.Keys.Where(x => x < _currentFloor).Where(x => _queue[x].HasFlag(ElevatorDirection.Down)).OrderByDescending(x => x).First();
+                    // Try to find a floor below the elevator, that wants to go down.
+                    floor = _queue.Keys.Where(x => x < _currentFloor).Where(x => _queue[x].HasFlag(ElevatorDirection.Down)).OrderByDescending(x => x).First();
 
                 if(floor == null)
-                { 
-                    floor = _queue.Keys.Where(x => x < _currentFloor).Where(x => _queue[x].HasFlag(ElevatorDirection.Up)).OrderBy(x => x).First();
+                {
+                    // Nobody needs to go down anymore, but we sitll need to pick up people who are lower in the building and want to go up.
+                        // We go to the person who is on the lowest floor and wants to go up.
+                        floor = _queue.Keys.Where(x => x < _currentFloor).Where(x => _queue[x].HasFlag(ElevatorDirection.Up)).OrderBy(x => x).First();
 
                     if(floor == null)
                     {
+                        // There is no request available anymore so the elevator's direction must turn around.
                         State = ElevatorState.GoingUp;
                         floor = GetTargetFloor();
                     }
@@ -124,6 +137,7 @@ namespace Hotel
             {
                 floor = _queue.Keys.Aggregate((x,y) => Math.Abs(x.Value -_currentFloor) < Math.Abs(y.Value - _currentFloor) ? x : y);
 
+                // Change the state of the elevator according to which way it is going.
                 if (floor > _currentFloor)
                     State = ElevatorState.GoingUp;
                 else if(floor < _currentFloor)
@@ -134,11 +148,14 @@ namespace Hotel
         }
 
         /// <summary>
-        /// Called by the elevator shaft
+        /// Call the elevator to do something.
         /// </summary>
-        /// <param name="direction">The direction the elevator needs to go</param>
+        /// <param name="floor">The floor from which the call comes.</param>
+        /// <param name="direction">The direction the elevator needs to travel.</param>
         public void CallElevator(int floor, ElevatorDirection direction)
         {
+            // TODO: USE DESTINATIONS
+
             if (_queue.ContainsKey(floor))
                 _queue[floor] |= direction;
             else
@@ -158,7 +175,7 @@ namespace Hotel
             if (_waitTime <= 0)
             {
                 if(_queue.Count > 0)
-                    MoveToFloor(90 * _targetFloor);
+                MoveToFloor(90 * _targetFloor);
             }
             else
             {
@@ -166,6 +183,10 @@ namespace Hotel
             }
         }
 
+        /// <summary>
+        /// Moves the elevator to the given floor.
+        /// </summary>
+        /// <param name="height">The floor to move the elevator to.</param>
         public void MoveToFloor(int height)
         {
             // When the elevator reached its destination
@@ -174,6 +195,7 @@ namespace Hotel
                 Position = new Vector2(Position.X, height);
 
                 ElevatorDirection direction = _queue[_targetFloor];
+                // ?
                 if(direction == ElevatorDirection.Up)
                 {
                     CallElevator(r.Next(_targetFloor, 10), ElevatorDirection.Both);
@@ -194,12 +216,13 @@ namespace Hotel
 
                 _waitTime = WaitTime;
 
-
                 return;
             }
 
+            // Going up
             if (Position.Y > height)
                 Position = new Vector2(Position.X, Position.Y - Speed);
+            // Going down
             else
                 Position = new Vector2(Position.X, Position.Y + Speed);
         }
