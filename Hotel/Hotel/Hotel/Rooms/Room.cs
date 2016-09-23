@@ -8,20 +8,43 @@ using System.Text;
 
 namespace Hotel
 {
+    public enum Direction
+    {
+        None,
+        North,
+        East,
+        South,
+        West
+    }
+
     public abstract class Room
     {
+        public const int ROOMHEIGHT = 90;
+        public const int ROOMWIDTH = 192;
+
         public Sprite Sprite { get; private set; }
 
-        public Vector2 Position { get; set; }
+        public Point RoomPosition { get; set; }
+        public Point RoomSize { get; set; }
+
         public int Weight { get; set; }
+
+        public Dictionary<Direction, Room> Neighbors { get; set; }
 
         /// <summary>
         /// Default constructor.
         /// </summary>
         /// <param name="content">The content manager used to load in images.</param>
-        public Room(ContentManager content)
+        public Room(ContentManager content, Point position, Point size)
         {
             Sprite = new Sprite(content);
+            RoomPosition = position;
+            RoomSize = size;
+
+            Neighbors = new Dictionary<Direction, Room>();
+
+            Sprite.SetPosition(new Point(position.X * ROOMWIDTH, position.Y * ROOMHEIGHT));
+            Sprite.SetSize(new Point(size.X * ROOMWIDTH, size.Y * ROOMHEIGHT));
         }
 
         /// <summary>
@@ -30,7 +53,7 @@ namespace Hotel
         /// <param name="gameTime">The game time.</param>
         public virtual void Update(GameTime gameTime)
         {
-            Sprite.Update(Position, gameTime);
+            Sprite.Update(gameTime);
         }
 
         public virtual void Draw(SpriteBatch batch, GameTime gameTime)

@@ -11,14 +11,11 @@ namespace Hotel
     public class Sprite
     {
         public Texture2D Texture { get; private set; }
-        public Vector2 Position { get; set; }
+        public Rectangle DrawDestination { get; set; }
         public Color Color { get; set; }
         public int DrawOrder{ get; set; }
 
         private ContentManager _content;
-
-        public event EventHandler<EventArgs> VisibleChanged;
-        public event EventHandler<EventArgs> DrawOrderChanged;
 
         /// <summary>
         /// Constructor
@@ -30,6 +27,8 @@ namespace Hotel
             _content = content;
             DrawOrder = 0;
             Color = Color.White;
+
+            DrawDestination = new Rectangle(0, 0, 0, 0);
         }
 
         /// <summary>
@@ -41,13 +40,23 @@ namespace Hotel
             Texture = _content.Load<Texture2D>(path);
         }
 
+        public void SetPosition(Point position)
+        {
+            DrawDestination = new Rectangle(position.X, -position.Y, DrawDestination.Width, DrawDestination.Height);
+        }
+        
+        public void SetSize(Point size)
+        {
+            DrawDestination = new Rectangle(DrawDestination.X, DrawDestination.Y, size.X, size.Y);
+        }
+
         /// <summary>
         /// Called every frame
         /// </summary>
         /// <param name="gameTime">The game time.</param>
-        public void Update(Vector2 position, GameTime gameTime)
+        public void Update(GameTime gameTime)
         {
-            Position = position;
+            
         }
 
         /// <summary>
@@ -57,7 +66,7 @@ namespace Hotel
         /// <param name="gameTime">The game time.</param>
         public void Draw(SpriteBatch batch, GameTime gameTime)
         {
-            batch.Draw(Texture, new Rectangle((int)Position.X, -(int)Position.Y, Texture.Width, Texture.Height), new Rectangle(0, 0, Texture.Width, Texture.Height), Color, 0, Vector2.Zero, SpriteEffects.None, DrawOrder);
+            batch.Draw(Texture, DrawDestination, new Rectangle(0, 0, Texture.Width, Texture.Height), Color, 0, Vector2.Zero, SpriteEffects.None, DrawOrder);
         }
     }
 }

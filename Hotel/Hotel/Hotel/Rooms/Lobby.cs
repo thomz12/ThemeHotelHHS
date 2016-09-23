@@ -9,7 +9,7 @@ namespace Hotel.Rooms
 {
     public class Lobby : Room
     {
-        public Lobby(ContentManager content) : base(content)
+        public Lobby(ContentManager content, Point position, Point size) : base(content, position, size)
         {
             Sprite.LoadSprite("img");
             Sprite.Color = Color.Red;
