@@ -173,7 +173,7 @@ namespace Hotel
             if (_waitTime <= 0)
             {
                 if(_queue.Count > 0)
-                MoveToFloor(90 * _targetFloor, gameTime);
+                MoveToFloor(_targetFloor, gameTime);
             }
             else
             {
@@ -184,13 +184,13 @@ namespace Hotel
         /// <summary>
         /// Moves the elevator to the given floor.
         /// </summary>
-        /// <param name="height">The floor to move the elevator to.</param>
-        public void MoveToFloor(int height, GameTime gameTime)
+        /// <param name="floor">The floor to move the elevator to.</param>
+        private void MoveToFloor(int floor, GameTime gameTime)
         {
             // When the elevator reached its destination
-            if (Math.Abs(Position.Y - height) < Speed * (float)gameTime.ElapsedGameTime.TotalSeconds)
+            if (Math.Abs(Position.Y - floor * Sprite.Texture.Height) < Speed * (float)gameTime.ElapsedGameTime.TotalSeconds)
             {
-                Position = new Vector2(Position.X, height);
+                Position = new Vector2(Position.X, floor * Sprite.Texture.Height);
                 _queue.Remove(_targetFloor);
 
                 _currentFloor = _targetFloor;
@@ -209,7 +209,7 @@ namespace Hotel
             }
 
             // Going up
-            if (Position.Y > height)
+            if (Position.Y > floor * Sprite.Texture.Height)
                 Position = new Vector2(Position.X, Position.Y - Speed * (float)gameTime.ElapsedGameTime.TotalSeconds);
             // Going down
             else

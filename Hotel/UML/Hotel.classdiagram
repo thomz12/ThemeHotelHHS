@@ -619,6 +619,36 @@
               <referencedTypeMoniker Id="594bd803-bc76-4a80-a2a9-486baef2775b" LastKnownName="Vector2" />
             </type_NamedElement>
           </property>
+          <property Id="b26aa930-b50b-43f7-bf2f-e8a42a603db5" name="WaitTime" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="fad7a004-9678-4c88-bcaf-ef4b9271cd52" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="bcb3df8d-5b28-44ce-8651-4d7810e67549" LastKnownName="float" />
+            </type_NamedElement>
+          </property>
+          <property Id="76644397-cf13-464b-ba17-d59da45ff19b" name="_waitTime" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="419e32ab-1b19-454b-8107-d318e602db89" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="bcb3df8d-5b28-44ce-8651-4d7810e67549" LastKnownName="float" />
+            </type_NamedElement>
+          </property>
+          <property Id="787711bc-79c0-43e8-b9a4-177773dce4ff" name="_targetFloor" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="98cfe9db-c52d-4485-a6b6-e5b3dad6ba76" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="fdf7999c-b852-4111-ac85-a8351ec2b670" LastKnownName="int" />
+            </type_NamedElement>
+          </property>
+          <property Id="9ef1971b-5275-4747-ad83-9d4270153c79" name="_queue" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="a7061ab7-e7fb-490e-aef7-ca77e92650b2" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="c3ce3679-456f-4b0d-8820-5b95e145ff45" LastKnownName="Dictionary&lt;int?, ElevatorDirection&gt;" />
+            </type_NamedElement>
+          </property>
+          <property Id="38ed1348-55c6-4beb-b178-9e53c1776b64" name="_queueTarget" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="65d07d63-8fe4-450a-bf1a-f9e2ea243309" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="662fe097-ccc8-439f-bc66-d5f50458820e" LastKnownName="Dictionary&lt;int, int&gt;" />
+            </type_NamedElement>
+          </property>
         </ownedAttributesInternal>
         <ownedOperationsInternal>
           <operation Id="8bd3fcfb-f75d-4b04-825e-02afed9ccf9c" name="Elevator" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
@@ -638,10 +668,18 @@
             <elementDefinition Id="248e842d-dddd-45de-9ed2-e516005eee44" />
             <ownedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="22547861-58c1-46d9-b54f-df1bd45eca78" name="direction" direction="In" isUnique="false">
-                  <elementDefinition Id="bf7c99bf-34ef-40c2-883a-d32b68963de8" />
+                <parameter Id="8943bbbc-fbff-41a0-bf33-cc228a4a445d" name="floor" direction="In" isUnique="false">
+                  <elementDefinition Id="47863546-1d14-4452-acb4-859c12eba291" />
                   <type_NamedElement>
-                    <referencedTypeMoniker Id="4191f413-b0f6-4b54-8bd7-05556bbef46b" LastKnownName="ElevatorDirection" />
+                    <referencedTypeMoniker Id="fdf7999c-b852-4111-ac85-a8351ec2b670" LastKnownName="int" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="2dcbffe0-b3ee-4097-803d-253aa783e0c1" name="targetFloor" direction="In" isUnique="false">
+                  <elementDefinition Id="3746e406-0bd9-4eb2-aa3d-4db9ce079613" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="fdf7999c-b852-4111-ac85-a8351ec2b670" LastKnownName="int" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -674,6 +712,40 @@
               <operationHasOwnedParameters>
                 <parameter Id="8b19681d-49b6-435e-a95f-23aae3087193" name="gameTime" direction="In" isUnique="false">
                   <elementDefinition Id="6a4d8d3b-2844-4d98-9fe6-3bebbda8c47e" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="bcadd61f-dcd9-4a8a-82d5-1fbc20f762bd" LastKnownName="GameTime" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="9b41fc3f-6fc2-460a-875a-4e15f8129755" name="GetTargetFloor" visibility="Private" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="402a04b5-6411-40c6-9914-c1bade36de5e" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="6869f1be-905d-4fc7-a9ac-bbde88197c80" direction="Return" isUnique="false">
+                  <elementDefinition Id="7cbbd907-18be-481a-8f79-51b83cfd81de" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="fdf7999c-b852-4111-ac85-a8351ec2b670" LastKnownName="int" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="25d0f9e1-e129-4f55-9c41-db8061bc2b7d" name="MoveToFloor" visibility="Private" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="44153e4d-5f8f-4a90-aff4-a137f4fc127c" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="71e5174f-42c8-4b4e-877d-d219d2da2e14" name="floor" direction="In" isUnique="false">
+                  <elementDefinition Id="e97533bf-0da6-43c8-8eb9-d6f45df7cf02" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="fdf7999c-b852-4111-ac85-a8351ec2b670" LastKnownName="int" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="3915ebaa-2046-4c0f-9c4d-594d0825e434" name="gameTime" direction="In" isUnique="false">
+                  <elementDefinition Id="8561f5ac-ed3c-4cc6-8654-5c3e5105bcd5" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="bcadd61f-dcd9-4a8a-82d5-1fbc20f762bd" LastKnownName="GameTime" />
                   </type_NamedElement>
@@ -1016,8 +1088,13 @@
       </referencedType>
     </packageHasNamedElement>
     <packageHasNamedElement>
-      <referencedType Id="4191f413-b0f6-4b54-8bd7-05556bbef46b" name="ElevatorDirection" isAbstract="false" isLeaf="false" cachedFullName="UML::ElevatorDirection">
-        <elementDefinition Id="51e8fe7b-b3ea-45ce-8b52-de98c91bd60c" />
+      <referencedType Id="c3ce3679-456f-4b0d-8820-5b95e145ff45" name="Dictionary&lt;int?, ElevatorDirection&gt;" isAbstract="false" isLeaf="false" cachedFullName="Dictionary&lt;int?, ElevatorDirection&gt;">
+        <elementDefinition Id="f1d48ea1-fb57-40dd-8f74-5d1ed8d718e1" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="662fe097-ccc8-439f-bc66-d5f50458820e" name="Dictionary&lt;int, int&gt;" isAbstract="false" isLeaf="false" cachedFullName="Dictionary&lt;int, int&gt;">
+        <elementDefinition Id="c6a81ffe-7443-459e-96db-b11718f7bf35" />
       </referencedType>
     </packageHasNamedElement>
   </packagedElements>
