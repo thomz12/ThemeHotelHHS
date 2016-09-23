@@ -158,8 +158,6 @@ namespace Hotel
         /// <param name="direction">The direction the elevator needs to travel.</param>
         public void CallElevator(int floor, int targetFloor)
         {
-            // TODO: USE DESTINATIONS
-
             ElevatorDirection dir;
 
             if (floor > targetFloor)
