@@ -78,6 +78,7 @@ namespace Hotel
 
         private Direction IsNeighbor(Room room1, Room room2)
         {
+            
             if (room1.RoomPosition.X == room2.RoomPosition.X - room2.RoomSize.X && room1.RoomPosition.Y == room2.RoomPosition.Y)
             {
                 return Direction.East;
@@ -96,6 +97,8 @@ namespace Hotel
             }
 
             return Direction.None;
+
+
         }
 
         public void Update(float deltaTime)

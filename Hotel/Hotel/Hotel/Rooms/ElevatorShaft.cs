@@ -20,6 +20,8 @@ namespace Hotel
         {
             Sprite.LoadSprite("ElevatorRoom");
 
+            Vertical = true;
+
             if (RoomPosition.Y == 0)
             {
                 _elevator = new Elevator(content);

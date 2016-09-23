@@ -27,6 +27,8 @@ namespace Hotel
         public Point RoomPosition { get; set; }
         public Point RoomSize { get; set; }
 
+        public bool Vertical { get; set; }
+
         public int Weight { get; set; }
 
         public Dictionary<Direction, Room> Neighbors { get; set; }
@@ -40,6 +42,7 @@ namespace Hotel
             Sprite = new Sprite(content);
             RoomPosition = position;
             RoomSize = size;
+            Vertical = false;
 
             Neighbors = new Dictionary<Direction, Room>();
 
