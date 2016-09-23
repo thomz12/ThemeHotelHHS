@@ -13,6 +13,8 @@ namespace Hotel
     {
         public List<Room> Rooms { get; set; }
 
+        private ContentManager _contentManager;
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -20,28 +22,75 @@ namespace Hotel
         public Hotel(ContentManager content)
         {
             Rooms = new List<Room>();
-            
-            for (int i = 0; i < 3; i++)
+
+            PlaceRoom(new GuestRoom(content, new Point(0, 0), new Point(1, 1)));
+            PlaceRoom(new GuestRoom(content, new Point(1, 0), new Point(1, 1)));
+            PlaceRoom(new ElevatorShaft(content, new Point(2, 0)));
+
+            PlaceRoom(new GuestRoom(content, new Point(0, 1), new Point(1, 1)));
+            PlaceRoom(new GuestRoom(content, new Point(1, 1), new Point(1, 1)));
+            PlaceRoom(new ElevatorShaft(content, new Point(2, 1)));
+
+            PlaceRoom(new GuestRoom(content, new Point(0, 2), new Point(1, 1)));
+            PlaceRoom(new GuestRoom(content, new Point(1, 2), new Point(1, 1)));
+            PlaceRoom(new ElevatorShaft(content, new Point(2, 2)));
+        }
+
+        public void PlaceRoom(Room room)
+        {
+            foreach(Room r in Rooms)
             {
-                for (int j = 0; j < 10; j++)
+                Direction dir = IsNeighbor(room, r);
+                if(dir != Direction.None)
                 {
-                    if (i == 0 && j == 0)
-                    {
-                        Rooms.Add(new Lobby(content));
-                    }
-                    else if (i > 1)
-                    {
-                        Rooms.Add(new ElevatorShaft(content, j));
-                    }
-                    else
-                    {
-                        Rooms.Add(new GuestRoom(content));
-                    }
-                    Rooms.Last().Position = new Vector2(i * Rooms.Last().Sprite.Texture.Width, j * Rooms.Last().Sprite.Texture.Height);
+                    room.Neighbors[dir] = r;
+                    r.Neighbors[ReverseDirection(dir)] = room;
                 }
+            }
+
+            Rooms.Add(room);
+        }
+        
+        private Direction ReverseDirection(Direction dir)
+        {
+            switch (dir)
+            {
+                case Direction.None:
+                    return Direction.None;
+                case Direction.North:
+                    return Direction.South;
+                case Direction.East:
+                    return Direction.West;
+                case Direction.South:
+                    return Direction.North;
+                case Direction.West:
+                    return Direction.East;
+                default:
+                    return Direction.None;
             }
         }
 
+        private Direction IsNeighbor(Room room1, Room room2)
+        {
+            if (room1.RoomPosition.X == room2.RoomPosition.X - room2.RoomSize.X && room1.RoomPosition.Y == room2.RoomPosition.Y)
+            {
+                return Direction.East;
+            }
+            else if(room1.RoomPosition.X == room2.RoomPosition.X + room2.RoomSize.X && room1.RoomPosition.Y == room2.RoomPosition.Y)
+            {
+                return Direction.West;
+            }
+            else if(room1.RoomPosition.Y == room2.RoomPosition.Y + room2.RoomSize.Y && room1.RoomPosition.X == room2.RoomPosition.X)
+            {
+                return Direction.North;
+            }
+            else if (room1.RoomPosition.Y == room2.RoomPosition.Y - room2.RoomSize.Y && room1.RoomPosition.X == room2.RoomPosition.X)
+            {
+                return Direction.South;
+            }
+
+            return Direction.None;
+        }
 
         public void Update(GameTime gameTime)
         {

@@ -54,13 +54,11 @@ namespace Hotel
             Speed = 90.0f;
             State = ElevatorState.Idle;
 
+            Sprite.SetSize(new Point(Sprite.Texture.Width, Sprite.Texture.Height));
+
             _currentFloor = 0;
             _queue = new Dictionary<int?, ElevatorDirection>();
             _queueTarget = new Dictionary<int, int>();
-
-            CallElevator(9, 0);
-            CallElevator(8, 1);
-            CallElevator(7, 2);
         }
 
         /// <summary>
@@ -139,6 +137,7 @@ namespace Hotel
         /// <param name="direction">The direction the elevator needs to travel.</param>
         public void CallElevator(int floor, int targetFloor)
         {
+            // Calculate if the up or down button was pressed.
             ElevatorDirection dir;
 
             if (floor > targetFloor)
@@ -148,11 +147,14 @@ namespace Hotel
             else
                 dir = ElevatorDirection.Both;
 
+            // if the floor is already added to the queue, add the new direction to it.
             if (_queue.ContainsKey(floor))
                 _queue[floor] |= dir;
+            // else add the floor.
             else
                 _queue.Add(floor, dir);
 
+            // Save the destination for adding later to the queue (when guest enters the room).
             _queueTarget.Add(floor, targetFloor);
 
             _targetFloor = GetTargetFloor();
@@ -164,7 +166,9 @@ namespace Hotel
         /// <param name="gameTime">The game time.</param>
         public void Update(GameTime gameTime)
         {
-            Sprite.Update(Position, gameTime);
+            Sprite.Update(gameTime);
+
+            Sprite.SetPosition(new Point((int)Position.X, (int)Position.Y));
 
             if (_waitTime <= 0)
             {

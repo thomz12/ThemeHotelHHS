@@ -28,7 +28,7 @@ namespace Hotel.Persons
 
         public void Update(GameTime gameTime)
         {
-            Sprite.Update(Position, gameTime);
+           
         }
 
         public void Draw(SpriteBatch batch, GameTime gameTime)

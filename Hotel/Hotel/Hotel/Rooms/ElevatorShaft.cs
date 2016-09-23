@@ -10,20 +10,17 @@ namespace Hotel
 {
     public class ElevatorShaft : Room
     {
-        public int Floor { get; private set; }
-
         private Elevator _elevator;
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="content">The content manager used to load in images</param>
-        public ElevatorShaft(ContentManager content, int floor) : base(content)
+        public ElevatorShaft(ContentManager content, Point position) : base(content, position, new Point(1, 1))
         {
             Sprite.LoadSprite("ElevatorRoom");
-            Floor = floor;
 
-            if (Floor == 0)
+            if (RoomPosition.Y == 0)
             {
                 _elevator = new Elevator(content);
             }
@@ -31,11 +28,11 @@ namespace Hotel
 
         public override void Update(GameTime gameTime)
         {
-            Sprite.Update(Position, gameTime);
+            Sprite.Update(gameTime);
 
-            if (Floor == 0)
+            if (RoomPosition.Y == 0)
             {
-                _elevator.Position = new Vector2(Position.X + Sprite.Texture.Width - _elevator.Sprite.Texture.Width, _elevator.Position.Y);
+                _elevator.Position = new Vector2(((RoomPosition.X + RoomSize.X) * ROOMWIDTH)- _elevator.Sprite.Texture.Width, _elevator.Position.Y);
                 _elevator.Update(gameTime);
             }
         }
@@ -44,7 +41,7 @@ namespace Hotel
         {
             Sprite.Draw(batch, gameTime);
 
-            if (Floor == 0)
+            if (RoomPosition.Y == 0)
             {
                 _elevator.Draw(batch, gameTime);
             }
