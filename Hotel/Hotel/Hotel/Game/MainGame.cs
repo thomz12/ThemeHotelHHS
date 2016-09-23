@@ -93,6 +93,7 @@ namespace Hotel
 
             _hotel.Update(deltaTime);
             _camera.Update(GraphicsDevice, deltaTime);
+            Input.Instance.Update(gameTime);
 
             base.Update(gameTime);
         }
