@@ -89,8 +89,10 @@ namespace Hotel
             if (Keyboard.GetState().IsKeyDown(Keys.Escape))
                 this.Exit();
 
-            _hotel.Update(gameTime);
-            _camera.Update(GraphicsDevice, gameTime);
+            float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds * 1.0f;
+
+            _hotel.Update(deltaTime);
+            _camera.Update(GraphicsDevice, deltaTime);
 
             base.Update(gameTime);
         }

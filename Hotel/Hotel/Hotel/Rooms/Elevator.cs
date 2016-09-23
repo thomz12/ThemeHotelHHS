@@ -167,21 +167,21 @@ namespace Hotel
         /// <summary>
         /// Called every frame.
         /// </summary>
-        /// <param name="gameTime">The game time.</param>
-        public void Update(GameTime gameTime)
+        /// <param name="deltaTime">The game time.</param>
+        public void Update(float deltaTime)
         {
-            Sprite.Update(gameTime);
+            Sprite.Update(deltaTime);
 
             Sprite.SetPosition(new Point((int)Position.X, (int)Position.Y));
 
             if (_waitTime <= 0)
             {
                 if(_queue.Count > 0)
-                MoveToFloor(_targetFloor, gameTime);
+                MoveToFloor(_targetFloor, deltaTime);
             }
             else
             {
-                _waitTime -= (float)gameTime.ElapsedGameTime.TotalSeconds;
+                _waitTime -= deltaTime;
             }
         }
 
@@ -189,10 +189,10 @@ namespace Hotel
         /// Moves the elevator to the given floor.
         /// </summary>
         /// <param name="floor">The floor to move the elevator to.</param>
-        private void MoveToFloor(int floor, GameTime gameTime)
+        private void MoveToFloor(int floor, float deltaTime)
         {
             // When the elevator reached its destination
-            if (Math.Abs(Position.Y - floor * Sprite.Texture.Height) < Speed * (float)gameTime.ElapsedGameTime.TotalSeconds)
+            if (Math.Abs(Position.Y - floor * Sprite.Texture.Height) < Speed * deltaTime)
             {
                 Position = new Vector2(Position.X, floor * Sprite.Texture.Height);
                 _queue.Remove(_targetFloor);
@@ -218,10 +218,10 @@ namespace Hotel
 
             // Going up
             if (Position.Y > floor * Sprite.Texture.Height)
-                Position = new Vector2(Position.X, Position.Y - Speed * (float)gameTime.ElapsedGameTime.TotalSeconds);
+                Position = new Vector2(Position.X, Position.Y - Speed * deltaTime);
             // Going down
             else
-                Position = new Vector2(Position.X, Position.Y + Speed * (float)gameTime.ElapsedGameTime.TotalSeconds);
+                Position = new Vector2(Position.X, Position.Y + Speed * deltaTime);
         }
 
         /// <summary>

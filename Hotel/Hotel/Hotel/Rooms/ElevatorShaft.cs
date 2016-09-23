@@ -26,14 +26,14 @@ namespace Hotel
             }
         }
 
-        public override void Update(GameTime gameTime)
+        public override void Update(float deltaTime)
         {
-            Sprite.Update(gameTime);
+            Sprite.Update(deltaTime);
 
             if (RoomPosition.Y == 0)
             {
                 _elevator.Position = new Vector2(((RoomPosition.X + RoomSize.X) * ROOMWIDTH)- _elevator.Sprite.Texture.Width, _elevator.Position.Y);
-                _elevator.Update(gameTime);
+                _elevator.Update(deltaTime);
             }
         }
 

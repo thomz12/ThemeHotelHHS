@@ -33,8 +33,8 @@ namespace Hotel
         /// Called every frame
         /// </summary>
         /// <param name="device">The graphics device.</param>
-        /// <param name="gameTime">The gametime.</param>
-        public void Update(GraphicsDevice device, GameTime gameTime)
+        /// <param name="deltaTime">The gametime.</param>
+        public void Update(GraphicsDevice device, float deltaTime)
         {
             // The current mouse state
             MouseState curState = Mouse.GetState();
