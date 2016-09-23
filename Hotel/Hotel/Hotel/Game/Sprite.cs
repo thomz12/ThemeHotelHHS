@@ -53,8 +53,8 @@ namespace Hotel
         /// <summary>
         /// Called every frame
         /// </summary>
-        /// <param name="gameTime">The game time.</param>
-        public void Update(GameTime gameTime)
+        /// <param name="deltaTime">The game time.</param>
+        public void Update(float deltaTime)
         {
             
         }

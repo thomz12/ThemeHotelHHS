@@ -53,10 +53,10 @@ namespace Hotel
         /// <summary>
         /// Update
         /// </summary>
-        /// <param name="gameTime">The game time.</param>
-        public virtual void Update(GameTime gameTime)
+        /// <param name="deltaTime">The game time.</param>
+        public virtual void Update(float deltaTime)
         {
-            Sprite.Update(gameTime);
+            Sprite.Update(deltaTime);
         }
 
         public virtual void Draw(SpriteBatch batch, GameTime gameTime)

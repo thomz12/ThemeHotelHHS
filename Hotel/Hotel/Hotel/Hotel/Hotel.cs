@@ -23,19 +23,19 @@ namespace Hotel
         {
             Rooms = new List<Room>();
 
-            PlaceRoom(new Lobby(content, new Point(0, 0), new Point(2, 1)));
-            PlaceRoom(new ElevatorShaft(content, new Point(2, 0)));
+            _contentManager = content;
 
-            PlaceRoom(new GuestRoom(content, new Point(0, 1), new Point(1, 1)));
-            PlaceRoom(new GuestRoom(content, new Point(1, 1), new Point(1, 1)));
-            PlaceRoom(new ElevatorShaft(content, new Point(2, 1)));
+            PlaceRoom(new Lobby(_contentManager, new Point(0, 0), new Point(2, 1)));
+            //PlaceRoom(new GuestRoom(content, new Point(1, 0), new Point(1, 1)));
+            PlaceRoom(new ElevatorShaft(_contentManager, new Point(2, 0)));
 
-            PlaceRoom(new GuestRoom(content, new Point(0, 2), new Point(1, 1)));
-            PlaceRoom(new GuestRoom(content, new Point(1, 2), new Point(1, 1)));
-            PlaceRoom(new ElevatorShaft(content, new Point(2, 2)));
+            PlaceRoom(new GuestRoom(_contentManager, new Point(0, 1), new Point(1, 1)));
+            PlaceRoom(new GuestRoom(_contentManager, new Point(1, 1), new Point(1, 1)));
+            PlaceRoom(new ElevatorShaft(_contentManager, new Point(2, 1)));
 
-            PlaceRoom(new Cafe(content, new Point(0, 3), new Point(2, 1)));
-            PlaceRoom(new ElevatorShaft(content, new Point(2, 3)));
+            PlaceRoom(new GuestRoom(_contentManager, new Point(0, 2), new Point(1, 1)));
+            PlaceRoom(new GuestRoom(_contentManager, new Point(1, 2), new Point(1, 1)));
+            PlaceRoom(new ElevatorShaft(_contentManager, new Point(2, 2)));
         }
 
         public void PlaceRoom(Room room)
@@ -97,11 +97,11 @@ namespace Hotel
 
         }
 
-        public void Update(GameTime gameTime)
+        public void Update(float deltaTime)
         {
             foreach(Room room in Rooms)
             {
-                room.Update(gameTime);
+                room.Update(deltaTime);
             }
         }
 
