@@ -84,6 +84,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Game\MainGame.cs" />
+    <Compile Include="Rooms\Cafe.cs" />
     <Compile Include="Rooms\Elevator.cs" />
     <Compile Include="Rooms\ElevatorShaft.cs" />
     <Compile Include="Rooms\GuestRoom.cs" />
