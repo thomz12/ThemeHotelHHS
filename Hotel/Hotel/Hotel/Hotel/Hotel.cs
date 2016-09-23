@@ -21,9 +21,9 @@ namespace Hotel
         {
             Rooms = new List<Room>();
             
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < 100; j++)
+                for (int j = 0; j < 10; j++)
                 {
                     if (i == 0 && j == 0)
                     {
