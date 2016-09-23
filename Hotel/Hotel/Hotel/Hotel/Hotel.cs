@@ -36,6 +36,9 @@ namespace Hotel
             PlaceRoom(new GuestRoom(_contentManager, new Point(0, 2), new Point(1, 1)));
             PlaceRoom(new GuestRoom(_contentManager, new Point(1, 2), new Point(1, 1)));
             PlaceRoom(new ElevatorShaft(_contentManager, new Point(2, 2)));
+
+            PlaceRoom(new Cafe(_contentManager, new Point(0, 3), new Point(2, 1)));
+            PlaceRoom(new ElevatorShaft(_contentManager, new Point(2, 3)));
         }
 
         public void PlaceRoom(Room room)
@@ -74,27 +77,29 @@ namespace Hotel
 
         private Direction IsNeighbor(Room room1, Room room2)
         {
-            
-            if (room1.RoomPosition.X == room2.RoomPosition.X - room2.RoomSize.X && room1.RoomPosition.Y == room2.RoomPosition.Y)
+            Rectangle room1rect = new Rectangle(room1.RoomPosition.X, room1.RoomPosition.Y, room1.RoomSize.X, room1.RoomSize.Y);
+            Rectangle room2rect = new Rectangle(room2.RoomPosition.X, room2.RoomPosition.Y, room2.RoomSize.X, room2.RoomSize.Y);
+
+            if(room1rect.Bottom == room2rect.Bottom)
             {
-                return Direction.East;
+                if (room1rect.Left == room2rect.Right)
+                    return Direction.West;
+                if (room1rect.Right == room2rect.Left)
+                    return Direction.East;
             }
-            else if(room1.RoomPosition.X == room2.RoomPosition.X + room2.RoomSize.X && room1.RoomPosition.Y == room2.RoomPosition.Y)
+
+            if(room1.Vertical)
             {
-                return Direction.West;
-            }
-            else if(room1.RoomPosition.Y == room2.RoomPosition.Y + room2.RoomSize.Y && room1.RoomPosition.X == room2.RoomPosition.X)
-            {
-                return Direction.North;
-            }
-            else if (room1.RoomPosition.Y == room2.RoomPosition.Y - room2.RoomSize.Y && room1.RoomPosition.X == room2.RoomPosition.X)
-            {
-                return Direction.South;
+                if(room1rect.Left == room2rect.Left)
+                {
+                    if (room1rect.Top == room2rect.Bottom)
+                        return Direction.South;
+                    if (room1rect.Bottom == room2rect.Top)
+                        return Direction.North;
+                }
             }
 
             return Direction.None;
-
-
         }
 
         public void Update(float deltaTime)
