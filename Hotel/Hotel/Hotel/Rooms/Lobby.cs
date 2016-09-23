@@ -11,8 +11,7 @@ namespace Hotel.Rooms
     {
         public Lobby(ContentManager content, Point position, Point size) : base(content, position, size)
         {
-            Sprite.LoadSprite("img");
-            Sprite.Color = Color.Red;
+            Sprite.LoadSprite("2x1Lobby");
         }
     }
 }

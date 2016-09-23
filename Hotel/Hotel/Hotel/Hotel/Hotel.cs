@@ -23,8 +23,8 @@ namespace Hotel
         {
             Rooms = new List<Room>();
 
-            PlaceRoom(new GuestRoom(content, new Point(0, 0), new Point(1, 1)));
-            PlaceRoom(new GuestRoom(content, new Point(1, 0), new Point(1, 1)));
+            PlaceRoom(new Lobby(content, new Point(0, 0), new Point(2, 1)));
+            //PlaceRoom(new GuestRoom(content, new Point(1, 0), new Point(1, 1)));
             PlaceRoom(new ElevatorShaft(content, new Point(2, 0)));
 
             PlaceRoom(new GuestRoom(content, new Point(0, 1), new Point(1, 1)));

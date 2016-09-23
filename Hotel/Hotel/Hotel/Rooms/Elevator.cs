@@ -59,6 +59,10 @@ namespace Hotel
             _currentFloor = 0;
             _queue = new Dictionary<int?, ElevatorDirection>();
             _queueTarget = new Dictionary<int, int>();
+
+            CallElevator(3, 2);
+            CallElevator(1, 3);
+            CallElevator(2, 1);
         }
 
         /// <summary>
@@ -197,7 +201,11 @@ namespace Hotel
 
                 if(_queueTarget.ContainsKey(_currentFloor))
                 {
-                    _queue.Add(_queueTarget[_currentFloor], ElevatorDirection.Both);
+                    if (_queue.ContainsKey(_queueTarget[_currentFloor]))
+                        _queue[_queueTarget[_currentFloor]] = ElevatorDirection.Both;
+                    else
+                        _queue.Add(_queueTarget[_currentFloor], ElevatorDirection.Both);
+
                     _queueTarget.Remove(_currentFloor);
                 }
 
