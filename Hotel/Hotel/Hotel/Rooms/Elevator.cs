@@ -52,13 +52,14 @@ namespace Hotel
             Sprite.LoadSprite("Elevator");
             Sprite.DrawOrder = 1;
             WaitTime = 1.0f;
-            Speed = 32.0f;
+            Speed = 90.0f;
             State = ElevatorState.Idle;
 
             _currentFloor = 0;
             _queue = new Dictionary<int?, ElevatorDirection>();
 
             // Create a random queue
+            /*
             for (int i = 0; i < 1; i++)
             {
                 int floor = r.Next(0, 10);
@@ -69,7 +70,10 @@ namespace Hotel
                     continue;
                 }
                 CallElevator(floor, (ElevatorDirection)r.Next(0, 2));
-            }
+            }*/
+            CallElevator(4, 3);
+            CallElevator(7, 0);
+            CallElevator(6, 9);
         }
 
         /// <summary>
@@ -152,14 +156,28 @@ namespace Hotel
         /// </summary>
         /// <param name="floor">The floor from which the call comes.</param>
         /// <param name="direction">The direction the elevator needs to travel.</param>
-        public void CallElevator(int floor, ElevatorDirection direction)
+        public void CallElevator(int floor, int targetFloor)
         {
             // TODO: USE DESTINATIONS
 
-            if (_queue.ContainsKey(floor))
-                _queue[floor] |= direction;
+            ElevatorDirection dir;
+
+            if (floor > targetFloor)
+                dir = ElevatorDirection.Down;
+            else if (floor < targetFloor)
+                dir = ElevatorDirection.Up;
             else
-                _queue.Add(floor, direction);
+                dir = ElevatorDirection.Both;
+
+            if (_queue.ContainsKey(floor))
+                _queue[floor] |= dir;
+            else
+                _queue.Add(floor, dir);
+
+            if (_queue.ContainsKey(targetFloor))
+                dir = ElevatorDirection.Up;
+            else
+                _queue.Add(targetFloor, ElevatorDirection.Down);
 
             _targetFloor = GetTargetFloor();
         }
@@ -175,7 +193,7 @@ namespace Hotel
             if (_waitTime <= 0)
             {
                 if(_queue.Count > 0)
-                MoveToFloor(90 * _targetFloor);
+                MoveToFloor(90 * _targetFloor, gameTime);
             }
             else
             {
@@ -187,28 +205,12 @@ namespace Hotel
         /// Moves the elevator to the given floor.
         /// </summary>
         /// <param name="height">The floor to move the elevator to.</param>
-        public void MoveToFloor(int height)
+        public void MoveToFloor(int height, GameTime gameTime)
         {
             // When the elevator reached its destination
-            if (Math.Abs(Position.Y - height) < Speed)
+            if (Math.Abs(Position.Y - height) < Speed * (float)gameTime.ElapsedGameTime.TotalSeconds)
             {
                 Position = new Vector2(Position.X, height);
-
-                ElevatorDirection direction = _queue[_targetFloor];
-                // ?
-                if(direction == ElevatorDirection.Up)
-                {
-                    CallElevator(r.Next(_targetFloor, 10), ElevatorDirection.Both);
-                }
-                else if(direction == ElevatorDirection.Down)
-                {
-                    CallElevator(r.Next(0, _targetFloor), ElevatorDirection.Both);
-                }
-                else
-                {
-                    ;
-                }
-
                 _queue.Remove(_targetFloor);
 
                 _currentFloor = _targetFloor;
@@ -221,10 +223,10 @@ namespace Hotel
 
             // Going up
             if (Position.Y > height)
-                Position = new Vector2(Position.X, Position.Y - Speed);
+                Position = new Vector2(Position.X, Position.Y - Speed * (float)gameTime.ElapsedGameTime.TotalSeconds);
             // Going down
             else
-                Position = new Vector2(Position.X, Position.Y + Speed);
+                Position = new Vector2(Position.X, Position.Y + Speed * (float)gameTime.ElapsedGameTime.TotalSeconds);
         }
 
         /// <summary>
