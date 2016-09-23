@@ -96,20 +96,14 @@ namespace Hotel
             // If the elevator is going up
             if (State == ElevatorState.GoingUp)
             {
-                try
-                {
-                    // Try to find a floor above the elevator, that wants to go up.
-                    floor = _queue.Keys.Where(x => x.Value > _currentFloor).Where(x => _queue[x.Value].HasFlag(ElevatorDirection.Up)).OrderBy(x => x.Value).First();
-                }
-                catch
-                {
-                    // Nobody needs to go up anymore, but we still need to pick up the people who are some stories higher and want to go down.
-                    try
-                    {
-                        // We pick the request on the highest floor for going down.
-                        floor = _queue.Keys.Where(x => x > _currentFloor).Where(x => _queue[x].HasFlag(ElevatorDirection.Down)).OrderByDescending(x => x).First();
-                    }
-                    catch
+                // Try to find a floor above the elevator, that wants to go up.
+                floor = _queue.Keys.Where(x => x.Value > _currentFloor).Where(x => _queue[x.Value].HasFlag(ElevatorDirection.Up)).OrderBy(x => x.Value).FirstOrDefault();
+                if(floor == null)
+                { 
+                    // We pick the request on the highest floor for going down.
+                    floor = _queue.Keys.Where(x => x > _currentFloor).Where(x => _queue[x].HasFlag(ElevatorDirection.Down)).OrderByDescending(x => x).FirstOrDefault();
+
+                    if (floor == null)
                     {
                         // There is no request available so the elevator's direction must turn around.
                         State = ElevatorState.GoingDown;
@@ -120,14 +114,14 @@ namespace Hotel
             // If the elevator is going down
             else if(State == ElevatorState.GoingDown)
             {
-                    // Try to find a floor below the elevator, that wants to go down.
-                    floor = _queue.Keys.Where(x => x < _currentFloor).Where(x => _queue[x].HasFlag(ElevatorDirection.Down)).OrderByDescending(x => x).First();
+                // Try to find a floor below the elevator, that wants to go down.
+                floor = _queue.Keys.Where(x => x < _currentFloor).Where(x => _queue[x].HasFlag(ElevatorDirection.Down)).OrderByDescending(x => x).FirstOrDefault();
 
                 if(floor == null)
                 {
                     // Nobody needs to go down anymore, but we sitll need to pick up people who are lower in the building and want to go up.
-                        // We go to the person who is on the lowest floor and wants to go up.
-                        floor = _queue.Keys.Where(x => x < _currentFloor).Where(x => _queue[x].HasFlag(ElevatorDirection.Up)).OrderBy(x => x).First();
+                    // We go to the person who is on the lowest floor and wants to go up.
+                    floor = _queue.Keys.Where(x => x < _currentFloor).Where(x => _queue[x].HasFlag(ElevatorDirection.Up)).OrderBy(x => x).FirstOrDefault();
 
                     if(floor == null)
                     {
@@ -175,9 +169,9 @@ namespace Hotel
                 _queue.Add(floor, dir);
 
             if (_queue.ContainsKey(targetFloor))
-                dir = ElevatorDirection.Up;
+                _queue[targetFloor] = ElevatorDirection.Both;
             else
-                _queue.Add(targetFloor, ElevatorDirection.Down);
+                _queue.Add(targetFloor, ElevatorDirection.Both);
 
             _targetFloor = GetTargetFloor();
         }
