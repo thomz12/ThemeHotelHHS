@@ -24,7 +24,6 @@ namespace Hotel
             Rooms = new List<Room>();
 
             PlaceRoom(new Lobby(content, new Point(0, 0), new Point(2, 1)));
-            //PlaceRoom(new GuestRoom(content, new Point(1, 0), new Point(1, 1)));
             PlaceRoom(new ElevatorShaft(content, new Point(2, 0)));
 
             PlaceRoom(new GuestRoom(content, new Point(0, 1), new Point(1, 1)));
@@ -34,6 +33,9 @@ namespace Hotel
             PlaceRoom(new GuestRoom(content, new Point(0, 2), new Point(1, 1)));
             PlaceRoom(new GuestRoom(content, new Point(1, 2), new Point(1, 1)));
             PlaceRoom(new ElevatorShaft(content, new Point(2, 2)));
+
+            PlaceRoom(new Cafe(content, new Point(0, 3), new Point(2, 1)));
+            PlaceRoom(new ElevatorShaft(content, new Point(2, 3)));
         }
 
         public void PlaceRoom(Room room)
@@ -72,6 +74,7 @@ namespace Hotel
 
         private Direction IsNeighbor(Room room1, Room room2)
         {
+            
             if (room1.RoomPosition.X == room2.RoomPosition.X - room2.RoomSize.X && room1.RoomPosition.Y == room2.RoomPosition.Y)
             {
                 return Direction.East;
@@ -90,6 +93,8 @@ namespace Hotel
             }
 
             return Direction.None;
+
+
         }
 
         public void Update(GameTime gameTime)
