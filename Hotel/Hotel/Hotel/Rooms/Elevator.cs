@@ -41,8 +41,6 @@ namespace Hotel
         private Dictionary<int?, ElevatorDirection> _queue;
         private Dictionary<int, int> _queueTarget;
 
-        private static Random r = new Random();
-
         /// <summary>
         /// Default constructor.
         /// </summary>
