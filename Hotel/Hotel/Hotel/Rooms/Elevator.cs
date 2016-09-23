@@ -39,6 +39,7 @@ namespace Hotel
         private float _waitTime;
         private int _targetFloor;
         private Dictionary<int?, ElevatorDirection> _queue;
+        private Dictionary<int, int> _queueTarget;
 
         private static Random r = new Random();
 
@@ -57,23 +58,11 @@ namespace Hotel
 
             _currentFloor = 0;
             _queue = new Dictionary<int?, ElevatorDirection>();
+            _queueTarget = new Dictionary<int, int>();
 
-            // Create a random queue
-            /*
-            for (int i = 0; i < 1; i++)
-            {
-                int floor = r.Next(0, 10);
-
-                if(_queue.ContainsKey(floor))
-                {
-                    i--;
-                    continue;
-                }
-                CallElevator(floor, (ElevatorDirection)r.Next(0, 2));
-            }*/
-            CallElevator(4, 3);
-            CallElevator(7, 0);
-            CallElevator(6, 9);
+            CallElevator(9, 0);
+            CallElevator(8, 1);
+            CallElevator(7, 2);
         }
 
         /// <summary>
@@ -168,10 +157,7 @@ namespace Hotel
             else
                 _queue.Add(floor, dir);
 
-            if (_queue.ContainsKey(targetFloor))
-                _queue[targetFloor] = ElevatorDirection.Both;
-            else
-                _queue.Add(targetFloor, ElevatorDirection.Both);
+            _queueTarget.Add(floor, targetFloor);
 
             _targetFloor = GetTargetFloor();
         }
@@ -208,6 +194,13 @@ namespace Hotel
                 _queue.Remove(_targetFloor);
 
                 _currentFloor = _targetFloor;
+
+                if(_queueTarget.ContainsKey(_currentFloor))
+                {
+                    _queue.Add(_queueTarget[_currentFloor], ElevatorDirection.Both);
+                    _queueTarget.Remove(_currentFloor);
+                }
+
                 _targetFloor = GetTargetFloor();
 
                 _waitTime = WaitTime;
