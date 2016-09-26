@@ -25,11 +25,9 @@ namespace Hotel
 
             _contentManager = content;
 
-
             //Read a file and build the hotel!
 
             PlaceRoom(new Lobby(_contentManager, new Point(0, 0), new Point(2, 1)));
-            //PlaceRoom(new GuestRoom(content, new Point(1, 0), new Point(1, 1)));
             PlaceRoom(new ElevatorShaft(_contentManager, new Point(2, 0)));
 
             PlaceRoom(new GuestRoom(_contentManager, new Point(0, 1), new Point(1, 1)));
@@ -40,8 +38,19 @@ namespace Hotel
             PlaceRoom(new GuestRoom(_contentManager, new Point(1, 2), new Point(1, 1)));
             PlaceRoom(new ElevatorShaft(_contentManager, new Point(2, 2)));
 
-            PlaceRoom(new Cafe(_contentManager, new Point(0, 3), new Point(2, 1)));
+            PlaceRoom(new GuestRoom(_contentManager, new Point(0, 3), new Point(1, 1)));
+            PlaceRoom(new GuestRoom(_contentManager, new Point(1, 3), new Point(1, 1)));
             PlaceRoom(new ElevatorShaft(_contentManager, new Point(2, 3)));
+
+            PlaceRoom(new GuestRoom(_contentManager, new Point(1, 4), new Point(1, 1)));
+            PlaceRoom(new ElevatorShaft(_contentManager, new Point(2, 4)));
+
+            PlaceRoom(new GuestRoom(_contentManager, new Point(0, 5), new Point(1, 2)));
+            PlaceRoom(new GuestRoom(_contentManager, new Point(1, 5), new Point(1, 1)));
+            PlaceRoom(new ElevatorShaft(_contentManager, new Point(2, 5)));
+
+            PlaceRoom(new Cafe(_contentManager, new Point(0, 6), new Point(2, 1)));
+            PlaceRoom(new ElevatorShaft(_contentManager, new Point(2, 6)));
         }
 
         public void PlaceRoom(Room room)
@@ -83,7 +92,7 @@ namespace Hotel
             Rectangle room1rect = new Rectangle(room1.RoomPosition.X, room1.RoomPosition.Y, room1.RoomSize.X, room1.RoomSize.Y);
             Rectangle room2rect = new Rectangle(room2.RoomPosition.X, room2.RoomPosition.Y, room2.RoomSize.X, room2.RoomSize.Y);
 
-            if(room1rect.Bottom == room2rect.Bottom)
+            if(room1rect.Y - room1rect.Height == room2rect.Y - room2rect.Height)
             {
                 if (room1rect.Left == room2rect.Right)
                     return Direction.West;
