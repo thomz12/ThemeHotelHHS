@@ -1300,6 +1300,12 @@
               <referencedTypeMoniker Id="6318edcc-dd69-477c-9de7-492f83a353f2" LastKnownName="string" />
             </type_NamedElement>
           </property>
+          <property Id="e3ecc397-d4a5-4561-95c9-841456af858a" name="BoundingBox" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="21b38750-08f0-45b2-8d44-fb044be22e59" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="b3e5a1cc-4474-4dc4-92c0-5eb4fe7c1b62" LastKnownName="Rectangle" />
+            </type_NamedElement>
+          </property>
         </ownedAttributesInternal>
         <ownedOperationsInternal>
           <operation Id="98cb29c8-ae45-46f8-a4d1-63d5bd21dec2" name="Draw" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
@@ -1357,6 +1363,11 @@
     <packageHasNamedElement>
       <referencedType Id="4ba35c96-86cc-43bf-be1f-65d7b34cc6e8" name="int" isAbstract="false" isLeaf="false" cachedFullName="int">
         <elementDefinition Id="d3244994-074a-42a2-9f22-28d1164fe700" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="b3e5a1cc-4474-4dc4-92c0-5eb4fe7c1b62" name="Rectangle" isAbstract="false" isLeaf="false" cachedFullName="Rectangle">
+        <elementDefinition Id="02e5494c-07ff-4d4f-bf8e-6542be60b334" />
       </referencedType>
     </packageHasNamedElement>
   </packagedElements>
