@@ -135,8 +135,6 @@ namespace Hotel
         /// <param name="direction">The direction the elevator needs to travel.</param>
         public void CallElevator(int floor, int targetFloor)
         {
-            Console.WriteLine("Call: " + floor + " Target: " + targetFloor);
-
             // Calculate if the up or down button was pressed.
             ElevatorDirection dir;
 
@@ -160,6 +158,7 @@ namespace Hotel
 
             _targetFloor = GetTargetFloor();
 
+            // GLORIUS CONSOLE PRINT MASTERRACE
             Console.WriteLine($"Call {floor} -> Target {targetFloor}");
         }
 
@@ -167,7 +166,7 @@ namespace Hotel
         /// Called every frame.
         /// </summary>
         /// <param name="deltaTime">The game time.</param>
-        public void Update(float deltaTime)
+        public override void Update(float deltaTime)
         {
             Sprite.Update(deltaTime);
 
@@ -223,16 +222,6 @@ namespace Hotel
             // Going down
             else
                 Position = new Vector2(Position.X, Position.Y + Speed * deltaTime);
-        }
-
-        /// <summary>
-        /// Called when drawing to the screen.
-        /// </summary>
-        /// <param name="batch"></param>
-        /// <param name="gameTime"></param>
-        public void Draw(SpriteBatch batch, GameTime gameTime)
-        {
-            Sprite.Draw(batch, gameTime);
         }
     }
 }
