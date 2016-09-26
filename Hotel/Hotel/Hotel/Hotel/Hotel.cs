@@ -32,11 +32,11 @@ namespace Hotel
 
             PlaceRoom(new GuestRoom(_contentManager, new Point(0, 1), new Point(1, 1)));
             PlaceRoom(new GuestRoom(_contentManager, new Point(1, 1), new Point(1, 1)));
-            PlaceRoom(new ElevatorShaft(_contentManager, new Point(2, 1)));
+            PlaceRoom(new ElevatorShaft(_contentManager, new Point(2, 2)));
 
             PlaceRoom(new GuestRoom(_contentManager, new Point(0, 2), new Point(1, 1)));
             PlaceRoom(new GuestRoom(_contentManager, new Point(1, 2), new Point(1, 1)));
-            PlaceRoom(new ElevatorShaft(_contentManager, new Point(2, 2)));
+            PlaceRoom(new ElevatorShaft(_contentManager, new Point(2, 1)));
 
             PlaceRoom(new GuestRoom(_contentManager, new Point(0, 3), new Point(1, 1)));
             PlaceRoom(new GuestRoom(_contentManager, new Point(1, 3), new Point(1, 1)));
@@ -53,6 +53,7 @@ namespace Hotel
             PlaceRoom(new ElevatorShaft(_contentManager, new Point(2, 6)));
             // /TEMP!
         }
+
 
         /// <summary>
         /// Places a room in the hotel.

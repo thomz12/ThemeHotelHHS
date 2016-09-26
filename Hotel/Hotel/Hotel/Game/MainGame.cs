@@ -90,6 +90,7 @@ namespace Hotel
 
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds * 1.0f;
 
+            // TEMP
             if(_selected != null)
                 _selected.Sprite.Color = Color.White;
 
@@ -101,6 +102,8 @@ namespace Hotel
 
                 if (Input.Instance.OnLeftMouseButtonRelease())
                 {
+                    _selected.OnClick(new EventArgs());
+
                     Random r = new Random();
                     if (_selected is ElevatorShaft)
                     {
@@ -117,6 +120,8 @@ namespace Hotel
                     }
                 }
             }
+
+            // /TEMP
 
             _hotel.Update(deltaTime);
             _camera.Update(GraphicsDevice, deltaTime);

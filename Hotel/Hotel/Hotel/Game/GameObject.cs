@@ -17,6 +17,8 @@ namespace Hotel
 
         private ContentManager _content;
 
+        public event EventHandler Click;
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -26,6 +28,12 @@ namespace Hotel
             _content = content;
             BoundingBox = new Rectangle();
             Sprite = new Sprite(content);
+        }
+
+        public void OnClick(EventArgs e)
+        {
+            if(Click != null)
+                Click(this, e);
         }
 
         /// <summary>
@@ -38,10 +46,10 @@ namespace Hotel
         }
 
         /// <summary>
-        /// 
+        /// Called when drawing to the sprite batch.
         /// </summary>
-        /// <param name="batch"></param>
-        /// <param name="gameTime"></param>
+        /// <param name="batch">The sprite batch to draw to.</param>
+        /// <param name="gameTime">The game time.</param>
         public virtual void Draw(SpriteBatch batch, GameTime gameTime)
         {
             Sprite.Draw(batch, gameTime);
