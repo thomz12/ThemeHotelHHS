@@ -3573,6 +3573,24 @@
                 LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
+          <property
+            Id="21b38750-08f0-45b2-8d44-fb044be22e59"
+            name="BoundingBox"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="02e5494c-07ff-4d4f-bf8e-6542be60b334"
+                LastKnownName="Rectangle"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
         </ownedAttributesInternal>
         <ownedOperationsInternal>
           <operation
@@ -3651,6 +3669,16 @@
       <undefinedType
         Id="ff32bbca-5dde-4627-bbe8-274e07afd3bd"
         name="Int" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="f548a904-2d05-47dd-b6ff-813a24d65749"
+        name="Rect" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="02e5494c-07ff-4d4f-bf8e-6542be60b334"
+        name="Rectangle" />
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType
