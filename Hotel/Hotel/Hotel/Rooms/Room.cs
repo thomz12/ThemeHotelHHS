@@ -48,6 +48,8 @@ namespace Hotel
 
             Sprite.SetPosition(new Point((int)Position.X, (int)Position.Y));
             Sprite.SetSize(new Point(size.X * ROOMWIDTH, size.Y * ROOMHEIGHT));
+
+            BoundingBox = Sprite.DrawDestination;
         }
     }
 }

@@ -133,6 +133,17 @@ namespace Hotel
             return Direction.None;
         }
 
+        public GameObject GetObject(Point p)
+        {
+            foreach(Room r in Rooms)
+            {
+                if (r.BoundingBox.Contains(p))
+                    return r;
+            }
+
+            return null;
+        }
+
         /// <summary>
         /// Called every frame.
         /// </summary>

@@ -32,6 +32,7 @@ namespace Hotel
         {
             Sprite.Update(deltaTime);
 
+            // Update elevator positions
             if (RoomPosition.Y == 0)
             {
                 _elevator.Position = new Vector2(((RoomPosition.X + RoomSize.X) * ROOMWIDTH)- _elevator.Sprite.Texture.Width, _elevator.Position.Y);

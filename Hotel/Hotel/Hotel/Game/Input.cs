@@ -191,15 +191,5 @@ namespace Hotel
         {
             return new Point(_curMouseState.X, _curMouseState.Y);
         }
-
-        /// <summary>
-        /// Gets the World coordinates from the mouse's position
-        /// </summary>
-        /// <param name="cam">The main camera.</param>
-        /// <returns></returns>
-        public Point ScreenToWorld(Point screenSpace, Camera cam)
-        {
-            return new Point(screenSpace.X - (int)cam.TransformMatrix.M41, screenSpace.Y - (int)cam.TransformMatrix.M42);
-        }
     }
 }

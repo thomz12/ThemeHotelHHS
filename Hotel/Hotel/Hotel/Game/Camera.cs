@@ -27,6 +27,17 @@ namespace Hotel
             Zoom = 0.6f;
         }
 
+
+        /// <summary>
+        /// Gets the World coordinates from the mouse's position
+        /// </summary>
+        /// <param name="cam">The main camera.</param>
+        /// <returns></returns>
+        public Point ScreenToWorld(Point screenSpace)
+        {
+            return new Point((int)(((float)screenSpace.X - (int)(TransformMatrix.M41)) / Zoom), (int)(((float)screenSpace.Y - (int)(TransformMatrix.M42)) / Zoom));
+        }
+
         /// <summary>
         /// Called every frame
         /// </summary>

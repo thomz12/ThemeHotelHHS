@@ -13,6 +13,7 @@ namespace Hotel
         public Sprite Sprite { get; set; }
         public Vector2 Position { get; set; }
         public string Name { get; set; }
+        public Rectangle BoundingBox { get; set; }
 
         private ContentManager _content;
 
@@ -23,6 +24,7 @@ namespace Hotel
         public GameObject(ContentManager content)
         {
             _content = content;
+            BoundingBox = new Rectangle();
             Sprite = new Sprite(content);
         }
 
