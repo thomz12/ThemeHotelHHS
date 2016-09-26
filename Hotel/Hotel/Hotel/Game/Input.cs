@@ -107,7 +107,7 @@ namespace Hotel
         /// Returns true while the button is pressed.
         /// </summary>
         /// <returns>Boolean, true if pressed, else false.</returns>
-        public bool IsLMBPressed()
+        public bool IsLeftMouseButtonPressed()
         {
             if (_curMouseState.LeftButton == ButtonState.Pressed)
                 return true;
@@ -118,7 +118,7 @@ namespace Hotel
         /// Returns true while the button is pressed.
         /// </summary>
         /// <returns>Boolean, true if pressed, else false.</returns>
-        public bool IsRMBPPressed()
+        public bool IsRightMouseButtonPressed()
         {
             if (_curMouseState.RightButton == ButtonState.Pressed)
                 return true;
@@ -129,7 +129,7 @@ namespace Hotel
         /// Returns true when the button is pressed.
         /// </summary>
         /// <returns>Boolean, true if pressed, else false.</returns>
-        public bool OnLMBPress()
+        public bool OnLeftMouseButtonPress()
         {
             if (_curMouseState.LeftButton == ButtonState.Pressed && _priorMouseState.RightButton == ButtonState.Released)
                 return true;
@@ -140,7 +140,7 @@ namespace Hotel
         /// Returns true when the button is pressed.
         /// </summary>
         /// <returns>Boolean, true if pressed, else false.</returns>
-        public bool OnRMBPress()
+        public bool OnRightMouseButtonPress()
         {
             if (_curMouseState.RightButton == ButtonState.Pressed && _priorMouseState.RightButton == ButtonState.Released)
                 return true;
@@ -151,7 +151,7 @@ namespace Hotel
         /// Returns true when the button is released.
         /// </summary>
         /// <returns>Boolean, true if released, else false.</returns>
-        public bool OnLMBRelease()
+        public bool OnLeftMouseButtonRelease()
         {
             if (_curMouseState.LeftButton == ButtonState.Released && _priorMouseState.LeftButton == ButtonState.Pressed)
                 return true;
@@ -162,11 +162,20 @@ namespace Hotel
         /// Returns true when the button is released.
         /// </summary>
         /// <returns>Boolean, true if released, else false.</returns>
-        public bool OnRMBRelease()
+        public bool OnRightMouseButtonRelease()
         {
             if (_curMouseState.RightButton == ButtonState.Released && _curMouseState.RightButton == ButtonState.Pressed)
                 return true;
             return false;
+        }
+
+        /// <summary>
+        /// Returns the current position of the mouse in screenspace.
+        /// </summary>
+        /// <returns>The screenspace coordinates of the mouse.</returns>
+        public Point GetMousePos()
+        {
+            return new Point(_curMouseState.X, _curMouseState.Y);
         }
 
         /// <summary>
