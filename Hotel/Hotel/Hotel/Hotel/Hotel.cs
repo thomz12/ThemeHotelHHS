@@ -85,6 +85,17 @@ namespace Hotel
             }
         }
 
+        public GameObject GetObject(Point p)
+        {
+            foreach(Room r in Rooms)
+            {
+                if (r.BoundingBox.Contains(p))
+                    return r;
+            }
+
+            return null;
+        }
+
         /// <summary>
         /// Called when drawing to the screen.
         /// </summary>
