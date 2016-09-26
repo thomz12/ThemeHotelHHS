@@ -62,88 +62,17 @@ namespace Hotel
         {
             foreach(Room r in Rooms)
             {
-                Direction dir = IsNeighbor(room, r);
+                Direction dir = room.IsNeighbor(r);
                 if(dir != Direction.None)
                 {
                     room.Neighbors[dir] = r;
-                    r.Neighbors[ReverseDirection(dir)] = room;
+                    r.Neighbors[r.ReverseDirection(dir)] = room;
                 }
             }
 
             Rooms.Add(room);
         }
         
-        /// <summary>
-        /// Reverses the given direction
-        /// </summary>
-        /// <param name="dir">The direction to reverse</param>
-        /// <returns>The reversed direction</returns>
-        private Direction ReverseDirection(Direction dir)
-        {
-            switch (dir)
-            {
-                case Direction.None:
-                    return Direction.None;
-                case Direction.North:
-                    return Direction.South;
-                case Direction.East:
-                    return Direction.West;
-                case Direction.South:
-                    return Direction.North;
-                case Direction.West:
-                    return Direction.East;
-                default:
-                    return Direction.None;
-            }
-        }
-
-        /// <summary>
-        /// Check if the room is neighbor
-        /// </summary>
-        /// <param name="room1">The room to check from</param>
-        /// <param name="room2">The room to check</param>
-        /// <returns>The direction of the room, None if it is not a neighbor.</returns>
-        private Direction IsNeighbor(Room room1, Room room2)
-        {
-            // Room rectangles.
-            Rectangle room1rect = new Rectangle(room1.RoomPosition.X, room1.RoomPosition.Y, room1.RoomSize.X, room1.RoomSize.Y);
-            Rectangle room2rect = new Rectangle(room2.RoomPosition.X, room2.RoomPosition.Y, room2.RoomSize.X, room2.RoomSize.Y);
-
-            // Check for rooms on the same floor
-            if(room1rect.Y - room1rect.Height == room2rect.Y - room2rect.Height)
-            {
-                if (room1rect.Left == room2rect.Right)
-                    return Direction.West;
-                if (room1rect.Right == room2rect.Left)
-                    return Direction.East;
-            }
-
-            // Check for rooms above or below.
-            if(room1.Vertical)
-            {
-                if(room1rect.Left == room2rect.Left)
-                {
-                    if (room1rect.Top == room2rect.Bottom)
-                        return Direction.South;
-                    if (room1rect.Bottom == room2rect.Top)
-                        return Direction.North;
-                }
-            }
-
-            return Direction.None;
-        }
-
-        public GameObject GetObject(Point p)
-        {
-            foreach(Room r in Rooms)
-            {
-                if (r.BoundingBox.Contains(p))
-                    return r;
-            }
-
-            return null;
-        }
-
         /// <summary>
         /// Called every frame.
         /// </summary>
