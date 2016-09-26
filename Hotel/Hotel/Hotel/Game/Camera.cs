@@ -38,11 +38,8 @@ namespace Hotel
             if (Input.Instance.IsRightMouseButtonPressed())
                 CamPosition = new Vector2(CamPosition.X - (Input.Instance.GetMouseDelta().X / Zoom), CamPosition.Y - (Input.Instance.GetMouseDelta().Y / Zoom));
 
-            if (Input.Instance.GetScrollDelta() > 0)
-                Zoom += 0.1f;
-
-            if (Input.Instance.GetScrollDelta() < 0)
-                Zoom -= 0.1f;
+            // Zoom in or out.
+            Zoom += (float)(Input.Instance.GetScrollDelta() / 1000.0f);
 
             if (Zoom < MINZOOM)
                 Zoom = MINZOOM;
