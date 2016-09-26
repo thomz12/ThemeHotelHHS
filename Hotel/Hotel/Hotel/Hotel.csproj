@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Game\Camera.cs" />
+    <Compile Include="Game\Input.cs" />
     <Compile Include="Hotel\Hotel.cs" />
     <Compile Include="Persons\Cleaner.cs" />
     <Compile Include="Persons\Guest.cs" />

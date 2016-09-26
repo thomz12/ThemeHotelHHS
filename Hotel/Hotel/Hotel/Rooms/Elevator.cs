@@ -216,7 +216,7 @@ namespace Hotel
                 return;
             }
 
-            // Going up
+            // Going up+
             if (Position.Y > floor * Sprite.Texture.Height)
                 Position = new Vector2(Position.X, Position.Y - Speed * deltaTime);
             // Going down
