@@ -28,7 +28,6 @@ namespace Hotel
 
             //Read a file and build the hotel!
 
-
             PlaceRoom(new Lobby(_contentManager, new Point(0, 0), new Point(2, 1)));
             //PlaceRoom(new GuestRoom(content, new Point(1, 0), new Point(1, 1)));
             PlaceRoom(new ElevatorShaft(_contentManager, new Point(2, 0)));

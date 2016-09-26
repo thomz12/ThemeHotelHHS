@@ -30,6 +30,10 @@ namespace Hotel
         private KeyboardState _priorKeyboardState;
         private KeyboardState _curKeyboardState;
 
+        // Mouse states
+        private MouseState _priorMouseState;
+        private MouseState _curMouseState;
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -46,6 +50,9 @@ namespace Hotel
         {
             _priorKeyboardState = _curKeyboardState;
             _curKeyboardState = Keyboard.GetState();
+
+            _priorMouseState = _curMouseState;
+            _curMouseState = Mouse.GetState();
         }
 
         /// <summary>
@@ -97,14 +104,79 @@ namespace Hotel
         }
 
         /// <summary>
+        /// Returns true while the button is pressed.
+        /// </summary>
+        /// <returns>Boolean, true if pressed, else false.</returns>
+        public bool IsLMBPressed()
+        {
+            if (_curMouseState.LeftButton == ButtonState.Pressed)
+                return true;
+            return false;
+        }
+
+        /// <summary>
+        /// Returns true while the button is pressed.
+        /// </summary>
+        /// <returns>Boolean, true if pressed, else false.</returns>
+        public bool IsRMBPPressed()
+        {
+            if (_curMouseState.RightButton == ButtonState.Pressed)
+                return true;
+            return false;
+        }
+
+        /// <summary>
+        /// Returns true when the button is pressed.
+        /// </summary>
+        /// <returns>Boolean, true if pressed, else false.</returns>
+        public bool OnLMBPress()
+        {
+            if (_curMouseState.LeftButton == ButtonState.Pressed && _priorMouseState.RightButton == ButtonState.Released)
+                return true;
+            return false;
+        }
+
+        /// <summary>
+        /// Returns true when the button is pressed.
+        /// </summary>
+        /// <returns>Boolean, true if pressed, else false.</returns>
+        public bool OnRMBPress()
+        {
+            if (_curMouseState.RightButton == ButtonState.Pressed && _priorMouseState.RightButton == ButtonState.Released)
+                return true;
+            return false;
+        }
+
+        /// <summary>
+        /// Returns true when the button is released.
+        /// </summary>
+        /// <returns>Boolean, true if released, else false.</returns>
+        public bool OnLMBRelease()
+        {
+            if (_curMouseState.LeftButton == ButtonState.Released && _priorMouseState.LeftButton == ButtonState.Pressed)
+                return true;
+            return false;
+        }
+
+        /// <summary>
+        /// Returns true when the button is released.
+        /// </summary>
+        /// <returns>Boolean, true if released, else false.</returns>
+        public bool OnRMBRelease()
+        {
+            if (_curMouseState.RightButton == ButtonState.Released && _curMouseState.RightButton == ButtonState.Pressed)
+                return true;
+            return false;
+        }
+
+        /// <summary>
         /// Gets the World coordinates from the mouse's position
         /// </summary>
-        /// <param name="mousePos">The current position of the mouse.</param>
         /// <param name="cam">The main camera.</param>
         /// <returns></returns>
-        public Point ScreenToWorld(Point mousePos, Camera cam)
+        public Point ScreenToWorld(Point screenSpace, Camera cam)
         {
-            return new Point(mousePos.X - (int)cam.TransformMatrix.M41, mousePos.Y - (int)cam.TransformMatrix.M42);
+            return new Point(screenSpace.X - (int)cam.TransformMatrix.M41, screenSpace.Y - (int)cam.TransformMatrix.M42);
         }
     }
 }
