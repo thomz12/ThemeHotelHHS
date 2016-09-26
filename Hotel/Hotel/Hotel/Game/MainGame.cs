@@ -102,7 +102,15 @@ namespace Hotel
                 if(go is ElevatorShaft)
                 {
                     ElevatorShaft es = (ElevatorShaft)go;
-                    es.CallElevator(r.Next(6));
+
+                    int target = r.Next(0, 6);
+
+                    while(es.RoomPosition.Y == target)
+                    {
+                        target = r.Next(0, 6);
+                    }
+
+                    es.CallElevator(target);
                 }
             }
 
