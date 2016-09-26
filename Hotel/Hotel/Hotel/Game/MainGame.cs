@@ -22,6 +22,7 @@ namespace Hotel
 
         private Hotel _hotel;
         private Camera _camera;
+        private GameObject _selected;
 
         public MainGame()
         {
@@ -32,12 +33,10 @@ namespace Hotel
 
             // Enable v-sync
             _graphics.SynchronizeWithVerticalRetrace = true;
+            _graphics.PreferredBackBufferHeight = 720;
+            _graphics.PreferredBackBufferWidth = 1280;
 
-            /*
-            _graphics.PreferredBackBufferHeight = 1080;
-            _graphics.PreferredBackBufferWidth = 1920;
-            _graphics.IsFullScreen = true;
-            */
+            //_graphics.IsFullScreen = true;
 
             // Disable the fixed time step, causes low frame rates on some computers.
             IsFixedTimeStep = false;
@@ -91,26 +90,31 @@ namespace Hotel
 
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds * 1.0f;
 
-            GameObject go;
+            if(_selected != null)
+                _selected.Sprite.Color = Color.White;
 
-            if (Input.Instance.OnLeftMouseButtonRelease())
+            _selected = _hotel.GetObject(_camera.ScreenToWorld(Input.Instance.GetMousePos()));
+
+            if (_selected != null)
             {
-                Random r = new Random();
+                _selected.Sprite.Color = Color.LightBlue;
 
-                go = _hotel.GetObject(_camera.ScreenToWorld(Input.Instance.GetMousePos()));
-
-                if(go is ElevatorShaft)
+                if (Input.Instance.OnLeftMouseButtonRelease())
                 {
-                    ElevatorShaft es = (ElevatorShaft)go;
-
-                    int target = r.Next(0, 6);
-
-                    while(es.RoomPosition.Y == target)
+                    Random r = new Random();
+                    if (_selected is ElevatorShaft)
                     {
-                        target = r.Next(0, 6);
-                    }
+                        ElevatorShaft es = (ElevatorShaft)_selected;
 
-                    es.CallElevator(target);
+                        int target = r.Next(0, 6);
+
+                        while (es.RoomPosition.Y == target)
+                        {
+                            target = r.Next(0, 6);
+                        }
+
+                        es.CallElevator(target);
+                    }
                 }
             }
 
