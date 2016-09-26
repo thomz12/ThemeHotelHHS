@@ -17,9 +17,7 @@ namespace Hotel
         public Matrix TransformMatrix { get; set; }
         public float Rotation { get; set; }
         public Vector2 CamPosition { get; set; }
-        public float Zoom { get; set; } 
-
-        private MouseState _mouseState;
+        public float Zoom { get; set; }
 
         /// <summary>
         /// Constructor
@@ -33,20 +31,17 @@ namespace Hotel
         /// Called every frame
         /// </summary>
         /// <param name="device">The graphics device.</param>
-        /// <param name="deltaTime">The gametime.</param>
+        /// <param name="deltaTime">The time between frames.</param>
         public void Update(GraphicsDevice device, float deltaTime)
         {
-            // The current mouse state
-            MouseState curState = Mouse.GetState();
-
             // Move the camera position if we have the mouse button pressed.
             if (Input.Instance.IsRightMouseButtonPressed())
-                CamPosition = new Vector2(CamPosition.X - ((_mouseState.X - curState.X) / Zoom), CamPosition.Y - ((_mouseState.Y - curState.Y) / Zoom));
+                CamPosition = new Vector2(CamPosition.X - (Input.Instance.GetMouseDelta().X / Zoom), CamPosition.Y - (Input.Instance.GetMouseDelta().Y / Zoom));
 
-            if (curState.ScrollWheelValue > _mouseState.ScrollWheelValue)
+            if (Input.Instance.GetScrollDelta() > 0)
                 Zoom += 0.1f;
 
-            if (curState.ScrollWheelValue < _mouseState.ScrollWheelValue)
+            if (Input.Instance.GetScrollDelta() < 0)
                 Zoom -= 0.1f;
 
             if (Zoom < MINZOOM)
@@ -57,9 +52,6 @@ namespace Hotel
 
             // Transpose the transform matrix.
             TransformMatrix = Matrix.CreateTranslation(new Vector3(CamPosition.X, CamPosition.Y, 0)) * Matrix.CreateRotationZ(Rotation) * Matrix.CreateScale(new Vector3(Zoom, Zoom, 1)) * Matrix.CreateTranslation(new Vector3(device.Viewport.Width * 0.5f, device.Viewport.Height * 0.5f, 0));
-
-            // Set the old mousestate to this one. (to compare it for the next frame)
-            _mouseState = curState;
         }
     }
 }

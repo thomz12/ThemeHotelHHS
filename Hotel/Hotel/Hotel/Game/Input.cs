@@ -169,6 +169,20 @@ namespace Hotel
             return false;
         }
 
+        public int GetScrollDelta()
+        {
+            return _curMouseState.ScrollWheelValue - _priorMouseState.ScrollWheelValue;
+        }
+
+        /// <summary>
+        /// Gets the difference in positions of the mouse between each update.
+        /// </summary>
+        /// <returns>The difference between mouse position in a Point.</returns>
+        public Point GetMouseDelta()
+        {
+            return new Point(_priorMouseState.X - _curMouseState.X, _priorMouseState.Y - _curMouseState.Y);
+        }
+
         /// <summary>
         /// Returns the current position of the mouse in screenspace.
         /// </summary>
