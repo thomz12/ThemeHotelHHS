@@ -157,6 +157,8 @@ namespace Hotel
                 _queueTarget.Add(floor, targetFloor);
 
             _targetFloor = GetTargetFloor();
+
+            Console.WriteLine($"Call {floor} -> Target {targetFloor}");
         }
 
         /// <summary>
