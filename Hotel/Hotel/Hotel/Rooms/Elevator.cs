@@ -153,7 +153,8 @@ namespace Hotel
                 _queue.Add(floor, dir);
 
             // Save the destination for adding later to the queue (when guest enters the room).
-            _queueTarget.Add(floor, targetFloor);
+            if(!_queueTarget.ContainsKey(floor))
+                _queueTarget.Add(floor, targetFloor);
 
             _targetFloor = GetTargetFloor();
         }

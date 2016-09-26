@@ -96,12 +96,17 @@ namespace Hotel
 
             GameObject go;
 
-            if (Input.Instance.OnLeftMouseButtonPress())
+            if (Input.Instance.OnLeftMouseButtonRelease())
             {
+                Random r = new Random();
+
                 go = _hotel.GetObject(_camera.ScreenToWorld(Input.Instance.GetMousePos()));
 
-                if(go != null)
-                    go.Sprite.Color = Color.Green;
+                if(go is ElevatorShaft)
+                {
+                    ElevatorShaft es = (ElevatorShaft)go;
+                    es.CallElevator(r.Next(6));
+                }
             }
 
             _hotel.Update(deltaTime);

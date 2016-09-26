@@ -10,7 +10,7 @@ namespace Hotel
 {
     public class ElevatorShaft : Room
     {
-        private Elevator _elevator;
+        public Elevator Elevator { get; set; }
 
         /// <summary>
         /// Constructor
@@ -24,8 +24,13 @@ namespace Hotel
 
             if (RoomPosition.Y == 0)
             {
-                _elevator = new Elevator(content);
+                Elevator = new Elevator(content);
             }
+        }
+
+        public void CallElevator(int targetFloor)
+        {
+            Elevator.CallElevator(RoomPosition.Y, targetFloor);
         }
 
         public override void Update(float deltaTime)
@@ -35,8 +40,14 @@ namespace Hotel
             // Update elevator positions
             if (RoomPosition.Y == 0)
             {
-                _elevator.Position = new Vector2(((RoomPosition.X + RoomSize.X) * ROOMWIDTH)- _elevator.Sprite.Texture.Width, _elevator.Position.Y);
-                _elevator.Update(deltaTime);
+                Elevator.Position = new Vector2(((RoomPosition.X + RoomSize.X) * ROOMWIDTH)- Elevator.Sprite.Texture.Width, Elevator.Position.Y);
+                Elevator.Update(deltaTime);
+            }
+
+            if(Elevator == null)
+            {
+                ElevatorShaft es = (ElevatorShaft)Neighbors[Direction.South];
+                Elevator = es.Elevator;
             }
         }
 
@@ -46,7 +57,7 @@ namespace Hotel
 
             if (RoomPosition.Y == 0)
             {
-                _elevator.Draw(batch, gameTime);
+                Elevator.Draw(batch, gameTime);
             }
         }
     }
