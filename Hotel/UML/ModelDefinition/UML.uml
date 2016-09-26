@@ -543,7 +543,7 @@
         </suppliersInternal>
         <generalsInternal>
           <generalization
-            Id="e622b2a3-7ee6-46fb-b02e-1c4c0528116e"
+            Id="546884c2-9b18-4bbd-9e95-fe2d82c6f207"
             isSubstitutable="false">
             <classMoniker
               Id="55ac072c-29df-4bb4-98c1-40272054cc7d"
@@ -667,7 +667,7 @@
         </suppliersInternal>
         <generalsInternal>
           <generalization
-            Id="95f86385-c2c1-4cc9-9f08-fd9def853bef"
+            Id="b900467a-dc6c-4d5e-82c6-a8ad962e97bc"
             isSubstitutable="false">
             <classMoniker
               Id="55ac072c-29df-4bb4-98c1-40272054cc7d"
@@ -766,84 +766,6 @@
             </relationshipOwnedElementsInternal>
           </association>
           <association
-            Id="83679638-7479-45fc-b8de-bd5a55d44a9b"
-            isDerived="false"
-            sourceEndRoleName="Hotel"
-            targetEndRoleName="Person"
-            isLeaf="false"
-            isAbstract="false">
-            <classMoniker
-              Id="caeb5208-aadf-4176-bba1-85266132bbff"
-              LastKnownName="Person"
-              LastKnownLocation="UML.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="e0bb7a44-22c5-4f5c-ad45-1eb13c6a8b7b"
-                  name="Hotel"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="Composite"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="262e7a03-29c9-4711-a84d-cedee4f53bd6"
-                  name="Person"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="true" />
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-          <association
-            Id="f99e5ece-c313-44e5-bc99-517a6ebdee79"
-            isDerived="false"
-            sourceEndRoleName="Hotel"
-            targetEndRoleName="HotelRoom"
-            isLeaf="false"
-            isAbstract="false">
-            <classMoniker
-              Id="55ac072c-29df-4bb4-98c1-40272054cc7d"
-              LastKnownName="Room"
-              LastKnownLocation="UML.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="ece3df0e-a923-451d-912f-c93fe5044b81"
-                  name="Hotel"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="Composite"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="1374f15b-25ab-4e2d-b1c1-4fb4626c4fb9"
-                  name="HotelRoom"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="true" />
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-          <association
             Id="bc183440-d6b5-4747-9e1d-c90dd9cf20f7"
             isDerived="false"
             sourceEndRoleName="Hotel"
@@ -882,51 +804,22 @@
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
-        </targetEnds>
-        <ownedOperationsInternal>
-          <operation
-            Id="ab1e68e0-2e97-469d-9766-a04aadd238c2"
-            name="Update"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false" />
-          <operation
-            Id="e748212a-5852-4fed-ab7e-7f5cf89ce086"
-            name="Draw"
-            isLeaf="false"
-            isStatic="false"
-            isAbstract="false"
-            concurrency="Sequential"
-            isQuery="false" />
-        </ownedOperationsInternal>
-      </class>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <class
-        Id="55ac072c-29df-4bb4-98c1-40272054cc7d"
-        name="Room"
-        isAbstract="true"
-        isLeaf="false"
-        isActiveClass="false">
-        <targetEnds>
           <association
-            Id="8360075a-8157-4450-81a7-5a6a6797a588"
+            Id="37f9f85c-229a-4636-9227-a83145dcddb0"
             isDerived="false"
-            sourceEndRoleName="HotelRoom"
-            targetEndRoleName="Sprite"
+            sourceEndRoleName="exists in"
+            targetEndRoleName="has a list of"
             isLeaf="false"
             isAbstract="false">
             <classMoniker
-              Id="e6649528-2e64-4f8b-b2ea-098a1c2ba9ff"
-              LastKnownName="Sprite"
+              Id="55ac072c-29df-4bb4-98c1-40272054cc7d"
+              LastKnownName="Room"
               LastKnownLocation="UML.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="bf757288-dfc8-4270-827d-3a968a9c6f81"
-                  name="HotelRoom"
+                  Id="68c45539-a06d-479c-9ad8-b107ebdb5686"
+                  name="exists in"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -938,19 +831,292 @@
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="c9613f7a-c226-4091-a183-212511a1bae9"
-                  name="Sprite"
+                  Id="d8cb3a84-2cd6-40d8-bbbb-d519a0ce93b8"
+                  name="has a list of"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
                   isDerived="false"
                   isDerivedUnion="false"
                   aggregation="None"
-                  isComposite="false" />
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="838e4e3b-28a6-42dc-aa6e-f18a7977f2d7"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="456bdf17-36f7-4ad2-bb4a-b548af93ad08"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="be39dd5d-448f-4fa5-84c0-2cfd40e4d74b"
+            isDerived="false"
+            sourceEndRoleName="exists in"
+            targetEndRoleName="has a list of"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="caeb5208-aadf-4176-bba1-85266132bbff"
+              LastKnownName="Person"
+              LastKnownLocation="UML.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="5db2914c-17a1-4232-87e2-2929a22c4bfc"
+                  name="exists in"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f49cf14f-39d1-4881-99ce-00fc99d63e5d"
+                  name="has a list of"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="336a7818-b8e4-48cd-9003-a10e097c73c1"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="0f00b6d2-eccc-4cbd-b2a7-cb9bcab9583f"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="2bf391e7-3705-4ee1-9dd5-0ba1e23ae777"
+            isDerived="false"
+            sourceEndRoleName="exists in"
+            targetEndRoleName="has a list of"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="a2c2cc6c-d893-4e14-97e6-681917ae9e7c"
+              LastKnownName="GameObject"
+              LastKnownLocation="UML.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="7d0e2f8f-0347-409d-9a40-b320bf5c5cc0"
+                  name="exists in"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="be1c75d0-49b9-47b9-a30c-ae08b1129c58"
+                  name="has a list of"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="2205c0a0-c1e0-4253-b8bf-f4c000c6a9b4"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="84babede-1498-47ce-a0a4-c966af89cf78"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
         </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="b900ebac-cc38-4467-b436-e1914ee09652"
+            name="_contentManager"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="01ba2594-8b9a-4c2f-b7aa-2a19ad25c763"
+                LastKnownName="ContentManager"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="ab1e68e0-2e97-469d-9766-a04aadd238c2"
+            name="Update"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="83e4dce8-f3a0-458f-9975-e13a0510f360"
+                  name="deltaTime"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="0f323a25-acbf-44ab-aa94-ceea63344cfb"
+                      LastKnownName="float"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="e748212a-5852-4fed-ab7e-7f5cf89ce086"
+            name="Draw"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="28d33e17-14a4-437b-974c-f294d844d971"
+                  name="batch"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="a0498109-b517-4f16-a510-b5a98639b589"
+                      LastKnownName="SpriteBatch"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="82524fc0-6d2d-478d-8dbf-bb8a83e70430"
+                  name="gameTime"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="f78b17d4-2e89-4708-817b-77afb22ff038"
+                      LastKnownName="GameTime"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="c9dda610-0069-4273-a7ff-e511c889f8fa"
+            name="Hotel"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="45021c67-1823-4b9a-b331-0209560927a7"
+                  name="content"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="01ba2594-8b9a-4c2f-b7aa-2a19ad25c763"
+                      LastKnownName="ContentManager"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="cdf8c967-1774-487c-a647-8d014efe8a1f"
+            name="PlaceRoom"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="347ba9dd-a780-4004-b73c-28ac7367d096"
+                  name="room"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="55ac072c-29df-4bb4-98c1-40272054cc7d"
+                      LastKnownName="Room"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="55ac072c-29df-4bb4-98c1-40272054cc7d"
+        name="Room"
+        isAbstract="true"
+        isLeaf="false"
+        isActiveClass="false">
+        <generalsInternal>
+          <generalization
+            Id="b1e1e673-1646-4acb-ba8b-e4a71107f27c"
+            isSubstitutable="false">
+            <classMoniker
+              Id="a2c2cc6c-d893-4e14-97e6-681917ae9e7c"
+              LastKnownName="GameObject"
+              LastKnownLocation="UML.uml" />
+          </generalization>
+        </generalsInternal>
         <ownedAttributesInternal>
           <property
             Id="c56c58d4-110e-4ef1-b8b5-74a425a6943f"
@@ -962,7 +1128,14 @@
             isDerived="false"
             isDerivedUnion="false"
             aggregation="None"
-            isComposite="false" />
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="d3244994-074a-42a2-9f22-28d1164fe700"
+                LastKnownName="int"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
           <property
             Id="8f42e92a-9b57-47af-bc9e-e5f085cae0fc"
             name="Neighbors"
@@ -1083,6 +1256,85 @@
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
+          <operation
+            Id="c46b1668-2a98-473a-9aeb-ddb1ca307ab7"
+            name="ReverseDirection"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="6320ff64-1495-400d-8741-8e5f11308441"
+                  name="dir"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="bdb0bd4a-6dfd-4af1-aee4-65fcd3ffedb8"
+                      LastKnownName="Direction"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="aa6a4640-468e-4e5e-91d0-7e51aea7eccd"
+            name="IsNeighbor"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="fd71c8d1-32c6-4d55-9d37-be526a52ef7a"
+                  name="room1"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="55ac072c-29df-4bb4-98c1-40272054cc7d"
+                      LastKnownName="Room"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="f4c17341-70f5-49a8-a921-8f3b66a2c090"
+                  name="room2"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="55ac072c-29df-4bb4-98c1-40272054cc7d"
+                      LastKnownName="Room"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="d5fdf337-43d1-44d9-b424-b929a0caa57a"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="bdb0bd4a-6dfd-4af1-aee4-65fcd3ffedb8"
+                      LastKnownName="Direction"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
         </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
@@ -1103,12 +1355,22 @@
         isAbstract="true"
         isLeaf="false"
         isActiveClass="false">
+        <generalsInternal>
+          <generalization
+            Id="96d0018c-7fe8-47a0-9c67-806c014bbe7d"
+            isSubstitutable="false">
+            <classMoniker
+              Id="a2c2cc6c-d893-4e14-97e6-681917ae9e7c"
+              LastKnownName="GameObject"
+              LastKnownLocation="UML.uml" />
+          </generalization>
+        </generalsInternal>
         <targetEnds>
           <association
             Id="9f222e09-227f-4125-b4e2-1d8dd0166b12"
             isDerived="false"
-            sourceEndRoleName="Person"
-            targetEndRoleName="HotelRoom"
+            sourceEndRoleName="has people"
+            targetEndRoleName="can be in"
             isLeaf="false"
             isAbstract="false">
             <classMoniker
@@ -1119,7 +1381,7 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="f15a7603-904a-4a61-8189-68f1acad5fbe"
-                  name="Person"
+                  name="has people"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -1145,46 +1407,7 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="d092a2ab-1930-41fd-95f0-53b80cbd0069"
-                  name="HotelRoom"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false" />
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-          <association
-            Id="9020b3ea-18fc-4463-b447-d72a3e6126b2"
-            isDerived="false"
-            sourceEndRoleName="Person"
-            targetEndRoleName="Sprite"
-            isLeaf="false"
-            isAbstract="false">
-            <classMoniker
-              Id="e6649528-2e64-4f8b-b2ea-098a1c2ba9ff"
-              LastKnownName="Sprite"
-              LastKnownLocation="UML.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="9056a15b-9259-4f65-a55c-480ccf0a0638"
-                  name="Person"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="b1339a10-b3fd-4559-9a3c-f64aa57da05d"
-                  name="Sprite"
+                  name="can be in"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -1242,7 +1465,38 @@
             isStatic="false"
             isAbstract="false"
             concurrency="Sequential"
-            isQuery="false" />
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="ec2fd8ce-71ae-4529-8898-bd4e3e5785f8"
+                  name="batch"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="a0498109-b517-4f16-a510-b5a98639b589"
+                      LastKnownName="SpriteBatch"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="10f60a5c-44cf-47e5-ab6c-dc4ac0ff9326"
+                  name="gameTime"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="f78b17d4-2e89-4708-817b-77afb22ff038"
+                      LastKnownName="GameTime"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
           <operation
             Id="98c7b480-a17d-41c5-bae2-a4f2f029b9dc"
             name="Update"
@@ -1250,7 +1504,24 @@
             isStatic="false"
             isAbstract="false"
             concurrency="Sequential"
-            isQuery="false" />
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="13a37aec-e119-4b88-95e8-bbe13c42d8c4"
+                  name="deltaTime"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="0f323a25-acbf-44ab-aa94-ceea63344cfb"
+                      LastKnownName="float"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
           <operation
             Id="4b308efc-599c-418f-a274-0bcf1900d0c3"
             name="FindPath"
@@ -3203,6 +3474,183 @@
       <undefinedType
         Id="c6a81ffe-7443-459e-96db-b11718f7bf35"
         name="Dictionary&lt;int, int&gt;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="a2c2cc6c-d893-4e14-97e6-681917ae9e7c"
+        name="GameObject"
+        isAbstract="true"
+        isLeaf="false"
+        isActiveClass="false">
+        <targetEnds>
+          <association
+            Id="4e7f656a-dea8-453a-8323-b73786b8caa1"
+            isDerived="false"
+            sourceEndRoleName="of"
+            targetEndRoleName="has a"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="e6649528-2e64-4f8b-b2ea-098a1c2ba9ff"
+              LastKnownName="Sprite"
+              LastKnownLocation="UML.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="a99d7717-47aa-4b79-a397-2c70bb6f224b"
+                  name="of"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false">
+                  <lowerValueInternal>
+                    <literalString
+                      Id="79e12584-b73f-4df4-94c6-9ee290988618"
+                      name="Lower"
+                      value="*" />
+                  </lowerValueInternal>
+                  <upperValueInternal>
+                    <literalString
+                      Id="9b769dee-5ba1-410b-a7d5-c12e212ef0cc"
+                      name="Upper"
+                      value="*" />
+                  </upperValueInternal>
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="5ade7107-9144-44c1-8ab7-3bfd04406492"
+                  name="has a"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property
+            Id="4a4e6cb1-dd85-400f-aa90-443e91fcadf7"
+            name="Position"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="78321d53-5c8d-442f-959f-0c1eeab40d20"
+                LastKnownName="Vector2"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="6cf074f4-d509-49b3-ada7-c5065f747ed9"
+            name="Name"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="d08b55ce-c611-428f-8970-5ee80e046b2f"
+                LastKnownName="string"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="2fa4d0b1-7da2-4ecf-901a-b2935b7687cf"
+            name="Draw"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="3ac9ffde-75fb-428d-85a4-023a30ff5ac3"
+                  name="batch"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="a0498109-b517-4f16-a510-b5a98639b589"
+                      LastKnownName="SpriteBatch"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="7ae338d5-8900-41f5-9ff4-71e05a566bd5"
+                  name="gameTime"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="f78b17d4-2e89-4708-817b-77afb22ff038"
+                      LastKnownName="GameTime"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="d2f58541-f612-4258-b59b-6f71f4aa1c4b"
+            name="Update"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="ee9c8242-4d30-49bf-a0a0-5fee83c8a7b6"
+                  name="deltaTime"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="0f323a25-acbf-44ab-aa94-ceea63344cfb"
+                      LastKnownName="float"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="bdb0bd4a-6dfd-4af1-aee4-65fcd3ffedb8"
+        name="Direction" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="ff32bbca-5dde-4627-bbe8-274e07afd3bd"
+        name="Int" />
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType
