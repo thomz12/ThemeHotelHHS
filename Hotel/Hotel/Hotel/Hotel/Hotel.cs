@@ -53,6 +53,10 @@ namespace Hotel
             PlaceRoom(new ElevatorShaft(_contentManager, new Point(2, 6)));
         }
 
+        /// <summary>
+        /// Places a room in the hotel.
+        /// </summary>
+        /// <param name="room">The room to add to the hotel.</param>
         public void PlaceRoom(Room room)
         {
             foreach(Room r in Rooms)
@@ -114,6 +118,10 @@ namespace Hotel
             return Direction.None;
         }
 
+        /// <summary>
+        /// Called every frame.
+        /// </summary>
+        /// <param name="deltaTime">The delta time.</param>
         public void Update(float deltaTime)
         {
             foreach(Room room in Rooms)
@@ -122,6 +130,11 @@ namespace Hotel
             }
         }
 
+        /// <summary>
+        /// Called when drawing to the screen.
+        /// </summary>
+        /// <param name="batch">The batch to draw to.</param>
+        /// <param name="gameTime">the game time.</param>
         public void Draw(SpriteBatch batch, GameTime gameTime)
         {
             foreach(Room room in Rooms)

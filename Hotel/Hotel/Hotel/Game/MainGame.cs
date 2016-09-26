@@ -86,7 +86,7 @@ namespace Hotel
         protected override void Update(GameTime gameTime)
         {
             // Allows the game to exit
-            if (Keyboard.GetState().IsKeyDown(Keys.Escape))
+            if (Input.Instance.IsKeyPressed(Keys.Escape))
                 this.Exit();
 
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds * 1.0f;

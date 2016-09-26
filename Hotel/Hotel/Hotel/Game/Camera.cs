@@ -40,7 +40,7 @@ namespace Hotel
             MouseState curState = Mouse.GetState();
 
             // Move the camera position if we have the mouse button pressed.
-            if (curState.LeftButton == ButtonState.Pressed)
+            if (Input.Instance.IsRMBPPressed())
                 CamPosition = new Vector2(CamPosition.X - ((_mouseState.X - curState.X) / Zoom), CamPosition.Y - ((_mouseState.Y - curState.Y) / Zoom));
 
             if (curState.ScrollWheelValue > _mouseState.ScrollWheelValue)
