@@ -159,7 +159,7 @@ namespace Hotel
 
             _targetFloor = GetTargetFloor();
 
-            // GLORIUS CONSOLE PRINT MASTERRACE
+            // GLORIUS CONSOLE PRINT MASTERRACE.
             Console.WriteLine($"Call {floor} -> Target {targetFloor}");
         }
 
