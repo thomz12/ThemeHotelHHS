@@ -190,10 +190,13 @@ namespace Hotel
             // When the elevator reached its destination
             if (Math.Abs(Position.Y - floor * Sprite.Texture.Height) < Speed * deltaTime)
             {
+                // Set the position on the exact floor position.
                 Position = new Vector2(Position.X, floor * Sprite.Texture.Height);
                 _queue.Remove(_targetFloor);
 
+                // The current floor is now the target.
                 _currentFloor = _targetFloor;
+
 
                 if(_queueTarget.ContainsKey(_currentFloor))
                 {
@@ -212,7 +215,7 @@ namespace Hotel
                 return;
             }
 
-            // Going up+
+            // Going up
             if (Position.Y > floor * Sprite.Texture.Height)
                 Position = new Vector2(Position.X, Position.Y - Speed * deltaTime);
             // Going down
