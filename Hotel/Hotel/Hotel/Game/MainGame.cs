@@ -91,9 +91,6 @@ namespace Hotel
 
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds * 1.0f;
 
-
-            Console.WriteLine(_camera.ScreenToWorld(Input.Instance.GetMousePos()));
-
             GameObject go;
 
             if (Input.Instance.OnLeftMouseButtonPress())
