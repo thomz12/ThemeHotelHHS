@@ -135,6 +135,8 @@ namespace Hotel
         /// <param name="direction">The direction the elevator needs to travel.</param>
         public void CallElevator(int floor, int targetFloor)
         {
+            Console.WriteLine("Call: " + floor + " Target: " + targetFloor);
+
             // Calculate if the up or down button was pressed.
             ElevatorDirection dir;
 
