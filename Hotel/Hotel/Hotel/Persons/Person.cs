@@ -9,31 +9,17 @@ using Hotel;
 
 namespace Hotel.Persons
 {
-    public abstract class Person
+    public abstract class Person : GameObject
     {
-        public Vector2 Position { get; set; }
-
-        public Sprite Sprite { get; set; }
-
         public float WalkingSpeed { get; set; }
 
         /// <summary>
         /// Constructor.
         /// </summary>
         /// <param name="content">The content manager used to load in images.</param>
-        public Person(ContentManager content)
+        public Person(ContentManager content) : base(content)
         {
 
-        }
-
-        public void Update(GameTime gameTime)
-        {
-           
-        }
-
-        public void Draw(SpriteBatch batch, GameTime gameTime)
-        {
-            Sprite.Draw(batch, gameTime);
         }
 
         public void FindPath()

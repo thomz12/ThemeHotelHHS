@@ -26,7 +26,7 @@ namespace Hotel
             _contentManager = content;
 
             //Read a file and build the hotel!
-
+            // TEMP!
             PlaceRoom(new Lobby(_contentManager, new Point(0, 0), new Point(2, 1)));
             PlaceRoom(new ElevatorShaft(_contentManager, new Point(2, 0)));
 
@@ -51,6 +51,7 @@ namespace Hotel
 
             PlaceRoom(new Cafe(_contentManager, new Point(0, 6), new Point(2, 1)));
             PlaceRoom(new ElevatorShaft(_contentManager, new Point(2, 6)));
+            // /TEMP!
         }
 
         /// <summary>
@@ -72,6 +73,11 @@ namespace Hotel
             Rooms.Add(room);
         }
         
+        /// <summary>
+        /// Reverses the given direction
+        /// </summary>
+        /// <param name="dir">The direction to reverse</param>
+        /// <returns>The reversed direction</returns>
         private Direction ReverseDirection(Direction dir)
         {
             switch (dir)
@@ -91,11 +97,19 @@ namespace Hotel
             }
         }
 
+        /// <summary>
+        /// Check if the room is neighbor
+        /// </summary>
+        /// <param name="room1">The room to check from</param>
+        /// <param name="room2">The room to check</param>
+        /// <returns>The direction of the room, None if it is not a neighbor.</returns>
         private Direction IsNeighbor(Room room1, Room room2)
         {
+            // Room rectangles.
             Rectangle room1rect = new Rectangle(room1.RoomPosition.X, room1.RoomPosition.Y, room1.RoomSize.X, room1.RoomSize.Y);
             Rectangle room2rect = new Rectangle(room2.RoomPosition.X, room2.RoomPosition.Y, room2.RoomSize.X, room2.RoomSize.Y);
 
+            // Check for rooms on the same floor
             if(room1rect.Y - room1rect.Height == room2rect.Y - room2rect.Height)
             {
                 if (room1rect.Left == room2rect.Right)
@@ -104,6 +118,7 @@ namespace Hotel
                     return Direction.East;
             }
 
+            // Check for rooms above or below.
             if(room1.Vertical)
             {
                 if(room1rect.Left == room2rect.Left)

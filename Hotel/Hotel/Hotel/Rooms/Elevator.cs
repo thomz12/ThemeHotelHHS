@@ -27,10 +27,8 @@ namespace Hotel
     /// <summary>
     /// An elevator that can go up or down and can get called by an elevator shaft to come pick up people and drop them off at their destination.
     /// </summary>
-    public class Elevator
+    public class Elevator : GameObject
     {
-        public Sprite Sprite { get; private set; }
-        public Vector2 Position { get; set; }
         public float Speed { get; set; }
         public ElevatorState State { get; private set; }
         public float WaitTime { get; set; }
@@ -45,7 +43,7 @@ namespace Hotel
         /// Default constructor.
         /// </summary>
         /// <param name="content">The content manager used to load in images.</param>
-        public Elevator(ContentManager content)
+        public Elevator(ContentManager content) : base(content)
         {
             Sprite = new Sprite(content);
             Sprite.LoadSprite("Elevator");
@@ -173,7 +171,7 @@ namespace Hotel
             if (_waitTime <= 0)
             {
                 if(_queue.Count > 0)
-                MoveToFloor(_targetFloor, deltaTime);
+                    MoveToFloor(_targetFloor, deltaTime);
             }
             else
             {
@@ -196,7 +194,6 @@ namespace Hotel
 
                 // The current floor is now the target.
                 _currentFloor = _targetFloor;
-
 
                 if(_queueTarget.ContainsKey(_currentFloor))
                 {

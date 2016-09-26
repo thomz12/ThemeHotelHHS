@@ -17,12 +17,10 @@ namespace Hotel
         West
     }
 
-    public abstract class Room
+    public abstract class Room : GameObject
     {
         public const int ROOMHEIGHT = 90;
         public const int ROOMWIDTH = 192;
-
-        public Sprite Sprite { get; private set; }
 
         public Point RoomPosition { get; set; }
         public Point RoomSize { get; set; }
@@ -37,7 +35,7 @@ namespace Hotel
         /// Default constructor.
         /// </summary>
         /// <param name="content">The content manager used to load in images.</param>
-        public Room(ContentManager content, Point position, Point size)
+        public Room(ContentManager content, Point position, Point size) : base(content)
         {
             Sprite = new Sprite(content);
             RoomPosition = position;
@@ -46,22 +44,10 @@ namespace Hotel
 
             Neighbors = new Dictionary<Direction, Room>();
 
-            Sprite.SetPosition(new Point(position.X * ROOMWIDTH, position.Y * ROOMHEIGHT));
+            Position = new Vector2(position.X * ROOMWIDTH, position.Y* ROOMHEIGHT);
+
+            Sprite.SetPosition(new Point((int)Position.X, (int)Position.Y));
             Sprite.SetSize(new Point(size.X * ROOMWIDTH, size.Y * ROOMHEIGHT));
-        }
-
-        /// <summary>
-        /// Update
-        /// </summary>
-        /// <param name="deltaTime">The game time.</param>
-        public virtual void Update(float deltaTime)
-        {
-            Sprite.Update(deltaTime);
-        }
-
-        public virtual void Draw(SpriteBatch batch, GameTime gameTime)
-        {
-            Sprite.Draw(batch, gameTime);
         }
     }
 }
