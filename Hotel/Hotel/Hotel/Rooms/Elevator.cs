@@ -59,10 +59,6 @@ namespace Hotel
             _currentFloor = 0;
             _queue = new Dictionary<int?, ElevatorDirection>();
             _queueTarget = new Dictionary<int, int>();
-
-            CallElevator(3, 2);
-            CallElevator(1, 3);
-            CallElevator(2, 1);
         }
 
         /// <summary>
