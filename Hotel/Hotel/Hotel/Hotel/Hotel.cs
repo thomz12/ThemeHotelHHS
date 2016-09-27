@@ -56,8 +56,8 @@ namespace Hotel
             PlaceRoom(new ElevatorShaft(_contentManager, new Point(2, 6)));
             // /TEMP!
 
-            Persons.Add(new Guest(content, Rooms[1]));
-            Persons[0].FindPath(Rooms[9], Rooms);
+            Persons.Add(new Guest(content, Rooms[0]));
+            List<Room> path = Persons[0].FindPath(Rooms[9]);
         }
 
 

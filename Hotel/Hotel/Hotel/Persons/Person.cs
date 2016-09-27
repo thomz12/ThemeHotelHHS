@@ -22,7 +22,6 @@ namespace Hotel.Persons
         public float WalkingSpeed { get; set; }
         public PersonTask CurrentTask { get; set; }
         public Room CurrentRoom { get; set; }
-
         public List<Room> Path { get; set; }
 
         /// <summary>
@@ -83,27 +82,34 @@ namespace Hotel.Persons
             base.Draw(batch, gameTime);
         }
 
+        // Node used for finding the path.
         class RoomNode
         {
             public Room Room;
             public int Weight;
             public RoomNode PrevRoom;
-            public bool Visited;
 
             public RoomNode(Room room, int weight, RoomNode prevRoom)
             {
                 Room = room;
                 Weight = weight;
                 PrevRoom = prevRoom;
-                Visited = false;
             }
         }
 
-        public List<Room> FindPath(Room targetRoom, List<Room> rooms)
+        /// <summary>
+        /// Finds the shortest path to a given room.
+        /// </summary>
+        /// <param name="targetRoom"></param>
+        /// <param name="rooms"></param>
+        /// <returns>The shortest path to take to the given room.</returns>
+        public List<Room> FindPath(Room targetRoom)
         {
             List<RoomNode> queue = new List<RoomNode>();
             List<RoomNode> visited = new List<RoomNode>();
+            RoomNode endNode = null;
 
+            // Add the current room.
             queue.Add(new RoomNode(CurrentRoom, 0, null));
 
             while(queue.Count > 0)
@@ -111,20 +117,43 @@ namespace Hotel.Persons
                 RoomNode current = queue.OrderBy(x => x.Weight).First();
 
                 if (current.Room == targetRoom)
+                {
+                    endNode = current;
                     break;
+                }
 
                 foreach(Room room in current.Room.Neighbors.Values)
                 {
                     if(!visited.Contains(current))
-                        queue.Add(new RoomNode(room, current.Weight, current));
+                        queue.Add(new RoomNode(room, current.Weight + room.Weight, current));
                 }
 
-                current.Visited = true;
                 visited.Add(current);
                 queue.Remove(current);
             }
 
-            return null;
+            // If no end node was found, return null.
+            if (endNode == null)
+                return null;
+
+            // The path to follow
+            List<RoomNode> path = new List<RoomNode>();
+            // begin with the end node
+            path.Add(endNode);
+            // keep adding the previous node to the final path
+            while(true)
+            {
+                // the previous node
+                RoomNode node = path.Last().PrevRoom;
+
+                if (node != null)
+                    path.Add(node);
+                else
+                    break;
+            }
+
+            // reverse so that current room is start room, and end room is the last room.
+            return path.Select(x => x.Room).Reverse().ToList();
         }
     }
 }

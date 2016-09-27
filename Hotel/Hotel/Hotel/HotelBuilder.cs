@@ -12,6 +12,7 @@ namespace Hotel
     {
         public HotelBuilder()
         {
+
         }
     }
 }
