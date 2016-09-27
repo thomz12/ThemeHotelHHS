@@ -39,7 +39,7 @@ namespace Hotel
             PlaceRoom(new ElevatorShaft(_contentManager, new Point(2, 1)));
 
             PlaceRoom(new GuestRoom(_contentManager, new Point(0, 3), new Point(1, 1)));
-            PlaceRoom(new GuestRoom(_contentManager, new Point(1, 3), new Point(1, 1)));
+            //PlaceRoom(new GuestRoom(_contentManager, new Point(1, 3), new Point(1, 1)));
             PlaceRoom(new ElevatorShaft(_contentManager, new Point(2, 3)));
 
             PlaceRoom(new GuestRoom(_contentManager, new Point(1, 4), new Point(1, 1)));
@@ -53,7 +53,6 @@ namespace Hotel
             PlaceRoom(new ElevatorShaft(_contentManager, new Point(2, 6)));
             // /TEMP!
         }
-
 
         /// <summary>
         /// Places a room in the hotel.
@@ -74,11 +73,11 @@ namespace Hotel
             Rooms.Add(room);
         }
 
-        public HotelObject GetObject(Point p)
+        public HotelObject GetObject(Point position)
         {
             foreach(Room r in Rooms)
             {
-                if (r.BoundingBox.Contains(p))
+                if (r.BoundingBox.Contains(position))
                     return r;
             }
 

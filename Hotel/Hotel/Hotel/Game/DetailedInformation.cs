@@ -11,10 +11,12 @@ namespace Hotel
     public class DetailedInformation
     {
         private SpriteFont _spriteFont;
+        private HotelObject _object;
 
-        public void Detailedinformation(ContentManager content)
+        public void Detailedinformation(ContentManager content, HotelObject DisplayThis)
         {
             _spriteFont = content.Load<SpriteFont>("ArcadeClassic");
+            _object = DisplayThis;
         }
 
         public void Update(float deltaTime)
