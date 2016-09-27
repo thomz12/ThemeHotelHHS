@@ -98,10 +98,6 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Content Include="Hotel.layout">
-      <Name>Hotel</Name>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Compile Include="Stairs.png">
       <Name>Stairs</Name>
       <Importer>TextureImporter</Importer>
