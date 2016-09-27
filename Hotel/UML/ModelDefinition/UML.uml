@@ -969,7 +969,7 @@
             isAbstract="false">
             <classMoniker
               Id="b913dc1e-3392-4568-8d41-895a15bed870"
-              LastKnownName="DetailedInformation"
+              LastKnownName="DetailedInformationOfAHotelObject"
               LastKnownLocation="UML.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
@@ -3721,7 +3721,7 @@
     <packageHasNamedElement>
       <class
         Id="b913dc1e-3392-4568-8d41-895a15bed870"
-        name="DetailedInformation"
+        name="DetailedInformationOfAHotelObject"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">

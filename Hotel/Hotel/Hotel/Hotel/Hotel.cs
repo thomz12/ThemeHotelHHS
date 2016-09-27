@@ -73,18 +73,6 @@ namespace Hotel
 
             Rooms.Add(room);
         }
-        
-        /// <summary>
-        /// Called every frame.
-        /// </summary>
-        /// <param name="deltaTime">The delta time.</param>
-        public void Update(float deltaTime)
-        {
-            foreach(Room room in Rooms)
-            {
-                room.Update(deltaTime);
-            }
-        }
 
         public HotelObject GetObject(Point p)
         {
@@ -95,6 +83,18 @@ namespace Hotel
             }
 
             return null;
+        }
+
+        /// <summary>
+        /// Called every frame.
+        /// </summary>
+        /// <param name="deltaTime">The delta time.</param>
+        public void Update(float deltaTime)
+        {
+            foreach(Room room in Rooms)
+            {
+                room.Update(deltaTime);
+            }
         }
 
         /// <summary>

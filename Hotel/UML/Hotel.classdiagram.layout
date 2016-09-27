@@ -373,7 +373,7 @@
       </nodes>
     </associationConnector>
     <classShape Id="4c58775a-d2b4-4aaa-86f4-d40de7917325" absoluteBounds="10, 1, 2.75, 1.2226562251647315" hideQualifiedName="false" increaseHeight="0" customColor="181, 193, 223">
-      <classMoniker Id="a6c1c452-6c61-4a93-8913-ee10ab6459ec" LastKnownName="DetailedInformation" />
+      <classMoniker Id="a6c1c452-6c61-4a93-8913-ee10ab6459ec" LastKnownName="DetailedInformationOfAHotelObject" />
       <nestedChildShapes>
         <AttributeElementListCompartment Id="b723e5fb-dfb9-4686-920f-14700674971a" absoluteBounds="10.015, 1.3900000000000001, 2.7199999999999998, 0.36132811258236563" name="AttributesCompartment" titleTextColor="Black" itemTextColor="Black" />
         <OperationElementListCompartment Id="d3ad8485-c6b0-4996-996d-46fc533de1fd" absoluteBounds="10.015, 1.7613281125823657, 2.7199999999999998, 0.36132811258236563" name="OperationsCompartment" titleTextColor="Black" itemTextColor="Black" />

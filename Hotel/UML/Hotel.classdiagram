@@ -369,7 +369,7 @@
             <elementDefinition Id="2bf391e7-3705-4ee1-9dd5-0ba1e23ae777" />
           </association>
           <association Id="a192d56e-0742-4136-9a80-1b147406d2aa" isDerived="false" sourceEndRoleName="" targetEndRoleName="gets clicked" isLeaf="false" isAbstract="false">
-            <classMoniker Id="a6c1c452-6c61-4a93-8913-ee10ab6459ec" LastKnownName="DetailedInformation" />
+            <classMoniker Id="a6c1c452-6c61-4a93-8913-ee10ab6459ec" LastKnownName="DetailedInformationOfAHotelObject" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd Id="50c86aab-9d28-4faa-a6d7-845643107e64" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
@@ -1387,7 +1387,7 @@
       </referencedType>
     </packageHasNamedElement>
     <logicalClassDesignerModelHasTypes>
-      <class Id="a6c1c452-6c61-4a93-8913-ee10ab6459ec" name="DetailedInformation" isAbstract="false" isLeaf="false" isActiveClass="false">
+      <class Id="a6c1c452-6c61-4a93-8913-ee10ab6459ec" name="DetailedInformationOfAHotelObject" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="b913dc1e-3392-4568-8d41-895a15bed870" />
         <ownedAttributesInternal>
           <property Id="e1b324e0-59fe-4810-93f3-ee13cd3db5c0" name="_target" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">

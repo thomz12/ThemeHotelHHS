@@ -120,7 +120,7 @@ namespace Hotel
                     }
                 }
             }
-
+           
             // /TEMP
 
             _hotel.Update(deltaTime);
@@ -138,11 +138,20 @@ namespace Hotel
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
+            // GameObject Spritebatch
             _spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, _camera.TransformMatrix);
 
             _hotel.Draw(_spriteBatch, gameTime);
 
+            // End the drawing on the spritebatch.
             _spriteBatch.End();
+
+            // HUD Spritebatch
+            _spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, SamplerState.PointClamp, null, null);
+
+            // End the drawing on the spritebatch.
+            _spriteBatch.End();
+
             base.Draw(gameTime);
         }
     }
