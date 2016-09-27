@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Hotel
 {
-    public class GameObject
+    public class HotelObject
     {
         public Sprite Sprite { get; set; }
         public Vector2 Position { get; set; }
@@ -23,7 +23,7 @@ namespace Hotel
         /// Constructor
         /// </summary>
         /// <param name="content">The content manager</param>
-        public GameObject(ContentManager content)
+        public HotelObject(ContentManager content)
         {
             _content = content;
             BoundingBox = new Rectangle();

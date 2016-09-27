@@ -17,7 +17,7 @@ namespace Hotel
         West
     }
 
-    public abstract class Room : GameObject
+    public abstract class Room : HotelObject
     {
         public const int ROOMHEIGHT = 90;
         public const int ROOMWIDTH = 192;

@@ -9,7 +9,7 @@ using Hotel;
 
 namespace Hotel.Persons
 {
-    public abstract class Person : GameObject
+    public abstract class Person : HotelObject
     {
         public float WalkingSpeed { get; set; }
 
