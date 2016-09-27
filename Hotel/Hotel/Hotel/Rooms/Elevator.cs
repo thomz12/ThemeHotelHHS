@@ -27,7 +27,7 @@ namespace Hotel
     /// <summary>
     /// An elevator that can go up or down and can get called by an elevator shaft to come pick up people and drop them off at their destination.
     /// </summary>
-    public class Elevator : GameObject
+    public class Elevator : HotelObject
     {
         public float Speed { get; set; }
         public ElevatorState State { get; private set; }

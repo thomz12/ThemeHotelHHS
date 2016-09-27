@@ -86,7 +86,7 @@ namespace Hotel
             }
         }
 
-        public GameObject GetObject(Point p)
+        public HotelObject GetObject(Point p)
         {
             foreach(Room r in Rooms)
             {

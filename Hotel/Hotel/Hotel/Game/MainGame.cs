@@ -22,13 +22,13 @@ namespace Hotel
 
         private Hotel _hotel;
         private Camera _camera;
-        private GameObject _selected;
+        private HotelObject _selected;
 
         public MainGame()
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            Window.Title = "Blue Hotel";
+            Window.Title = "Hotel";
             IsMouseVisible = true;
 
             // Enable v-sync
@@ -36,7 +36,7 @@ namespace Hotel
             _graphics.PreferredBackBufferHeight = 720;
             _graphics.PreferredBackBufferWidth = 1280;
 
-            //_graphics.IsFullScreen = true;
+            _graphics.IsFullScreen = false;
 
             // Disable the fixed time step, causes low frame rates on some computers.
             IsFixedTimeStep = false;
