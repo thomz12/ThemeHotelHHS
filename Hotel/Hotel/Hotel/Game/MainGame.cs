@@ -98,7 +98,7 @@ namespace Hotel
 
             if (_selected != null)
             {
-                _selected.Sprite.Color = Color.LightBlue;
+                _selected.Sprite.Color = Color.LightGreen;
 
                 if (Input.Instance.OnLeftMouseButtonRelease())
                 {

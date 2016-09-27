@@ -56,7 +56,8 @@ namespace Hotel.Persons
                     Position = new Vector2(Position.X + WalkingSpeed * deltaTime, Position.Y);
                     break;
                 case PersonTask.MovingCenter:
-                    if(Position.X < CurrentRoom.Position.X + (CurrentRoom.RoomSize.Y * Room.ROOMWIDTH / 2))
+
+                    if(Position.X < CurrentRoom.Position.X + (CurrentRoom.RoomSize.X * Room.ROOMWIDTH / 2))
                         Position = new Vector2(Position.X + WalkingSpeed * deltaTime, Position.Y);
                     else
                         Position = new Vector2(Position.X - WalkingSpeed * deltaTime, Position.Y);
