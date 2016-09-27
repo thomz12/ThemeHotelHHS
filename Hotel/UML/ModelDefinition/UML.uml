@@ -917,7 +917,7 @@
             isAbstract="false">
             <classMoniker
               Id="a2c2cc6c-d893-4e14-97e6-681917ae9e7c"
-              LastKnownName="GameObject"
+              LastKnownName="HotelObject"
               LastKnownLocation="UML.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
@@ -957,6 +957,44 @@
                       value="*" />
                   </upperValueInternal>
                 </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="321457d9-392c-4207-99b4-3456c2e54c7c"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName="gets clicked"
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="b913dc1e-3392-4568-8d41-895a15bed870"
+              LastKnownName="DetailedInformation"
+              LastKnownLocation="UML.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="b2de6e88-8021-4cff-aaf0-020beb8b8b10"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="22e41477-af43-4b41-af1c-47282f198caa"
+                  name="gets clicked"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
@@ -1113,7 +1151,7 @@
             isSubstitutable="false">
             <classMoniker
               Id="a2c2cc6c-d893-4e14-97e6-681917ae9e7c"
-              LastKnownName="GameObject"
+              LastKnownName="HotelObject"
               LastKnownLocation="UML.uml" />
           </generalization>
         </generalsInternal>
@@ -1361,7 +1399,7 @@
             isSubstitutable="false">
             <classMoniker
               Id="a2c2cc6c-d893-4e14-97e6-681917ae9e7c"
-              LastKnownName="GameObject"
+              LastKnownName="HotelObject"
               LastKnownLocation="UML.uml" />
           </generalization>
         </generalsInternal>
@@ -3478,7 +3516,7 @@
     <packageHasNamedElement>
       <class
         Id="a2c2cc6c-d893-4e14-97e6-681917ae9e7c"
-        name="GameObject"
+        name="HotelObject"
         isAbstract="true"
         isLeaf="false"
         isActiveClass="false">
@@ -3679,6 +3717,46 @@
       <undefinedType
         Id="02e5494c-07ff-4d4f-bf8e-6542be60b334"
         name="Rectangle" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="b913dc1e-3392-4568-8d41-895a15bed870"
+        name="DetailedInformation"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <ownedAttributesInternal>
+          <property
+            Id="8b272579-2e11-4d5a-928f-173620725a06"
+            name="_target"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <classMoniker
+                Id="a2c2cc6c-d893-4e14-97e6-681917ae9e7c"
+                LastKnownName="HotelObject"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="99729a22-f6c3-40f3-b7f6-8a6d83e4cd00"
+            name="ShowMenu"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false" />
+        </ownedOperationsInternal>
+      </class>
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType

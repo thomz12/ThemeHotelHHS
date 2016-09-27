@@ -190,7 +190,7 @@ namespace Hotel
         /// <param name="floor">The floor to move the elevator to.</param>
         private void MoveToFloor(int floor, float deltaTime)
         {
-            // When the elevator reached its destination
+            // When the elevator has yet to reach its destination
             if (Math.Abs(Position.Y - floor * Sprite.Texture.Height) < Speed * deltaTime)
             {
                 // Set the position on the exact floor position.

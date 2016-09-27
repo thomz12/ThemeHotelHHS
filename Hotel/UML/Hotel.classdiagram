@@ -343,7 +343,7 @@
             <elementDefinition Id="be39dd5d-448f-4fa5-84c0-2cfd40e4d74b" />
           </association>
           <association Id="9432a06a-bf23-4856-ac28-643cb5b5fdb4" isDerived="false" sourceEndRoleName="exists in" targetEndRoleName="has a list of" isLeaf="false" isAbstract="false">
-            <classMoniker Id="d7d39747-0ccd-4d46-ae32-7ea538c05319" LastKnownName="GameObject" />
+            <classMoniker Id="d7d39747-0ccd-4d46-ae32-7ea538c05319" LastKnownName="HotelObject" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd Id="1cd203c6-3d18-45e5-a831-9d4756f54f44" name="exists in" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
@@ -367,6 +367,22 @@
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="2bf391e7-3705-4ee1-9dd5-0ba1e23ae777" />
+          </association>
+          <association Id="a192d56e-0742-4136-9a80-1b147406d2aa" isDerived="false" sourceEndRoleName="" targetEndRoleName="gets clicked" isLeaf="false" isAbstract="false">
+            <classMoniker Id="a6c1c452-6c61-4a93-8913-ee10ab6459ec" LastKnownName="DetailedInformation" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="50c86aab-9d28-4faa-a6d7-845643107e64" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="b2de6e88-8021-4cff-aaf0-020beb8b8b10" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="1829a19a-1737-46be-958e-fc37785d5394" name="gets clicked" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="22e41477-af43-4b41-af1c-47282f198caa" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="321457d9-392c-4207-99b4-3456c2e54c7c" />
           </association>
         </targetEnds>
         <ownedAttributesInternal>
@@ -446,7 +462,7 @@
         <elementDefinition Id="55ac072c-29df-4bb4-98c1-40272054cc7d" />
         <generalsInternal>
           <generalization Id="0b48e113-47d2-456f-981f-bd45c2470ee6" isSubstitutable="false">
-            <classMoniker Id="d7d39747-0ccd-4d46-ae32-7ea538c05319" LastKnownName="GameObject" />
+            <classMoniker Id="d7d39747-0ccd-4d46-ae32-7ea538c05319" LastKnownName="HotelObject" />
             <elementDefinition Id="b1e1e673-1646-4acb-ba8b-e4a71107f27c" />
           </generalization>
         </generalsInternal>
@@ -571,7 +587,7 @@
         <elementDefinition Id="caeb5208-aadf-4176-bba1-85266132bbff" />
         <generalsInternal>
           <generalization Id="60f792e5-d679-41dc-9cb9-d860641d4547" isSubstitutable="false">
-            <classMoniker Id="d7d39747-0ccd-4d46-ae32-7ea538c05319" LastKnownName="GameObject" />
+            <classMoniker Id="d7d39747-0ccd-4d46-ae32-7ea538c05319" LastKnownName="HotelObject" />
             <elementDefinition Id="96d0018c-7fe8-47a0-9c67-806c014bbe7d" />
           </generalization>
         </generalsInternal>
@@ -1257,7 +1273,7 @@
       </referencedType>
     </packageHasNamedElement>
     <logicalClassDesignerModelHasTypes>
-      <class Id="d7d39747-0ccd-4d46-ae32-7ea538c05319" name="GameObject" isAbstract="true" isLeaf="false" isActiveClass="false">
+      <class Id="d7d39747-0ccd-4d46-ae32-7ea538c05319" name="HotelObject" isAbstract="true" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="a2c2cc6c-d893-4e14-97e6-681917ae9e7c" />
         <targetEnds>
           <association Id="aa7c6d54-e2c9-42fc-ab62-36324f464255" isDerived="false" sourceEndRoleName="of" targetEndRoleName="has a" isLeaf="false" isAbstract="false">
@@ -1368,6 +1384,29 @@
     <packageHasNamedElement>
       <referencedType Id="b3e5a1cc-4474-4dc4-92c0-5eb4fe7c1b62" name="Rectangle" isAbstract="false" isLeaf="false" cachedFullName="Rectangle">
         <elementDefinition Id="02e5494c-07ff-4d4f-bf8e-6542be60b334" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="a6c1c452-6c61-4a93-8913-ee10ab6459ec" name="DetailedInformation" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="b913dc1e-3392-4568-8d41-895a15bed870" />
+        <ownedAttributesInternal>
+          <property Id="e1b324e0-59fe-4810-93f3-ee13cd3db5c0" name="_target" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="8b272579-2e11-4d5a-928f-173620725a06" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="74ef6857-7470-4b0a-9eba-ff1d3ac564e5" LastKnownName="HotelObject" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation Id="d81ff9a2-5da8-4df0-9211-3cc3fecca05e" name="ShowMenu" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="99729a22-f6c3-40f3-b7f6-8a6d83e4cd00" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="74ef6857-7470-4b0a-9eba-ff1d3ac564e5" name="HotelObject" isAbstract="false" isLeaf="false" cachedFullName="UML::HotelObject">
+        <elementDefinition Id="a2c2cc6c-d893-4e14-97e6-681917ae9e7c" />
       </referencedType>
     </packageHasNamedElement>
   </packagedElements>
