@@ -13,12 +13,13 @@ namespace Hotel
         public Elevator Elevator { get; set; }
 
         /// <summary>
-        /// Constructor
+        /// Constructor.
         /// </summary>
-        /// <param name="content">The content manager used to load in images</param>
+        /// <param name="content">The content manager used to load in images.</param>
+        /// <param name="position">The position of the room.</param>
         public ElevatorShaft(ContentManager content, Point position) : base(content, position, new Point(1, 1))
         {
-            Sprite.LoadSprite("ElevatorRoom");
+            Sprite.LoadSprite("1x1ElevatorShaft");
 
             Vertical = true;
 
@@ -44,7 +45,7 @@ namespace Hotel
                 Elevator.Update(deltaTime);
             }
 
-            if(Elevator == null)
+            if(Elevator == null && RoomPosition.Y != 0)
             {
                 ElevatorShaft es = (ElevatorShaft)Neighbors[Direction.South];
                 Elevator = es.Elevator;
