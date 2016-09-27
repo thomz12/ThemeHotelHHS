@@ -42,6 +42,7 @@ namespace Hotel
         /// <param name="deltaTime">Time since last frame.</param>
         public virtual void Update(float deltaTime)
         {
+            Sprite.SetPosition(new Point((int)Position.X, (int)Position.Y));
             Sprite.Update(deltaTime);
         }
 

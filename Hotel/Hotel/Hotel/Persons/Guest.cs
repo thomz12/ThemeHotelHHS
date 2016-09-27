@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Hotel;
+using Microsoft.Xna.Framework;
 
 namespace Hotel.Persons
 {
@@ -13,7 +14,7 @@ namespace Hotel.Persons
         /// Constructor.
         /// </summary>
         /// <param name="content">The content manager used to load in images.</param>
-        public Guest(ContentManager content) : base(content)
+        public Guest(ContentManager content, Room room) : base(content, room)
         {
 
         }

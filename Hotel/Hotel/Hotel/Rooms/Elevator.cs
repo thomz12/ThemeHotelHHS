@@ -45,7 +45,6 @@ namespace Hotel
         /// <param name="content">The content manager used to load in images.</param>
         public Elevator(ContentManager content) : base(content)
         {
-            Sprite = new Sprite(content);
             Sprite.LoadSprite("Elevator");
             Sprite.DrawOrder = 1;
             WaitTime = 1.0f;
