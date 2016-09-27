@@ -61,7 +61,7 @@ namespace Hotel.Persons
                     else
                         Position = new Vector2(Position.X - WalkingSpeed * deltaTime, Position.Y);
 
-                    if(Math.Abs(Position.X - CurrentRoom.Position.X - (CurrentRoom.RoomSize.Y * Room.ROOMWIDTH / 2)) < WalkingSpeed * deltaTime)
+                    if(Math.Abs(Position.X - CurrentRoom.Position.X - (CurrentRoom.RoomSize.X * Room.ROOMWIDTH / 2)) < WalkingSpeed * deltaTime)
                     {
                         CurrentTask = PersonTask.Waiting;
                     }
@@ -124,7 +124,7 @@ namespace Hotel.Persons
 
                 foreach(Room room in current.Room.Neighbors.Values)
                 {
-                    if(!visited.Contains(current))
+                    if(!visited.Select(x => x.Room).Contains(room))
                         queue.Add(new RoomNode(room, current.Weight + room.Weight, current));
                 }
 

@@ -20,7 +20,7 @@ namespace Hotel
         public ElevatorShaft(ContentManager content, Point position) : base(content, position, new Point(1, 1))
         {
             Sprite.LoadSprite("1x1ElevatorShaft");
-
+            Weight = 1;
             Vertical = true;
 
             if (RoomPosition.Y == 0)

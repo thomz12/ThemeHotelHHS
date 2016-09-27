@@ -17,9 +17,9 @@ namespace Hotel.Rooms
         /// <param name="size">the size of the room.</param>
         public Staircase(ContentManager content, Point position, Point size) : base(content, position, size)
         {
-            throw new NotImplementedException();
-            Sprite.LoadSprite("");
+            Sprite.LoadSprite("Stairs");
             Vertical = true;
+            Weight = 10;
         }
     }
 }
