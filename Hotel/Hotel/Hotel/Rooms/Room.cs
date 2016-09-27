@@ -44,6 +44,7 @@ namespace Hotel
 
             Neighbors = new Dictionary<Direction, Room>();
 
+            // Set the 'real' position of the room.
             Position = new Vector2(position.X * ROOMWIDTH, position.Y* ROOMHEIGHT);
 
             Sprite.SetPosition(new Point((int)Position.X, (int)Position.Y));

@@ -6,12 +6,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Hotel.Rooms;
+using Hotel.Persons;
 
 namespace Hotel
 {
     public class Hotel
     {
         public List<Room> Rooms { get; set; }
+        public List<Person> Persons { get; set; }
 
         private ContentManager _contentManager;
 
@@ -22,6 +24,7 @@ namespace Hotel
         public Hotel(ContentManager content)
         {
             Rooms = new List<Room>();
+            Persons = new List<Person>();
 
             _contentManager = content;
 
@@ -52,6 +55,9 @@ namespace Hotel
             PlaceRoom(new Cafe(_contentManager, new Point(0, 6), new Point(2, 1)));
             PlaceRoom(new ElevatorShaft(_contentManager, new Point(2, 6)));
             // /TEMP!
+
+            Persons.Add(new Guest(content, Rooms[1]));
+            Persons[0].FindPath(Rooms[9], Rooms);
         }
 
         /// <summary>
@@ -72,7 +78,7 @@ namespace Hotel
 
             Rooms.Add(room);
         }
-
+        
         public HotelObject GetObject(Point position)
         {
             foreach(Room r in Rooms)
@@ -90,10 +96,39 @@ namespace Hotel
         /// <param name="deltaTime">The delta time.</param>
         public void Update(float deltaTime)
         {
-            foreach(Room room in Rooms)
+            foreach (Room room in Rooms)
             {
                 room.Update(deltaTime);
             }
+
+            foreach (Person person in Persons)
+            {
+                person.Update(deltaTime);
+            }
+        }
+
+        /// <summary>
+        /// Gets the object on a given point in the world
+        /// </summary>
+        /// <param name="p">The point the object should contain</param>
+        /// <returns>Null if nothing was found, if something was found, return that object.</returns>
+        public HotelObject GetObject(Point p)
+        {
+            foreach(Person person in Persons)
+            {
+                if(person.BoundingBox.Contains(p))
+                {
+                    return person;
+                }
+            }
+
+            foreach(Room room in Rooms)
+            {
+                if (room.BoundingBox.Contains(p))
+                    return room;
+            }
+
+            return null;
         }
 
         /// <summary>
@@ -103,6 +138,11 @@ namespace Hotel
         /// <param name="gameTime">the game time.</param>
         public void Draw(SpriteBatch batch, GameTime gameTime)
         {
+            foreach(Person person in Persons)
+            {
+                person.Draw(batch, gameTime);
+            }
+
             foreach(Room room in Rooms)
             {
                 room.Draw(batch, gameTime);

@@ -85,6 +85,7 @@
     <Compile Include="Game\Input.cs" />
     <Compile Include="HotelBuilder.cs" />
     <Compile Include="Hotel\Hotel.cs" />
+    <Compile Include="Misc\RoomNode.cs" />
     <Compile Include="Persons\Cleaner.cs" />
     <Compile Include="Persons\Guest.cs" />
     <Compile Include="Persons\Person.cs" />
