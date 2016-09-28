@@ -19,7 +19,6 @@ namespace Hotel
 
         private SpriteFont _spriteFont;
         private Sprite _windowSprite;
-        private Sprite _headerSprite;
         private string _objectName;
         private string _objectInformation;
 
@@ -33,17 +32,12 @@ namespace Hotel
             Intensity = 1f;
 
             // Load the font
-            _spriteFont = content.Load<SpriteFont>("Default");
+            _spriteFont = content.Load<SpriteFont>("InformationWindowFont");
 
             // Load the asset for the window's background
             _windowSprite = new Sprite(content);
             _windowSprite.LoadSprite("Paper");
             _windowSprite.Color *= Intensity;
-
-            // Load another asset for the window's name bar
-            _headerSprite = new Sprite(content);
-            _headerSprite.LoadSprite("GUIDetailWindowBackSprite");
-            _headerSprite.Color *= 1.0f;
 
             // Set some default values for privates
             _objectInformation = "<Null>";
@@ -51,10 +45,6 @@ namespace Hotel
             // Set the window Size and Position
             _windowSprite.SetSize(WindowSize);
             _windowSprite.SetPosition(new Point(WindowPosition.X, WindowPosition.Y * -1));
-
-            // Set the header Size and Position relative to window size.
-            _headerSprite.SetSize(new Point(WindowSize.X - 10, 40));
-            _headerSprite.SetPosition(new Point(WindowPosition.X + 5, WindowPosition.Y - 30));
         }
 
         public void ShowInformation(HotelObject objectToDisplay)
@@ -73,7 +63,6 @@ namespace Hotel
         public void Update(float deltaTime)
         {
             _windowSprite.Update(deltaTime);
-            _headerSprite.Update(deltaTime);
         }
 
         public void Draw(SpriteBatch batch, GameTime gameTime)
@@ -81,7 +70,6 @@ namespace Hotel
             if (IsShowingInfo)
             { 
                 _windowSprite.Draw(batch, gameTime);
-                //_headerSprite.Draw(batch, gameTime);
 
                 Vector2 namePos = new Vector2(WindowPosition.X + WindowSize.X / 2, WindowPosition.Y + 50);
                 Vector2 nameOrigin = _spriteFont.MeasureString(_objectName) / 2;

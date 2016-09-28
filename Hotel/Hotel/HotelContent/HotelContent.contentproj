@@ -93,8 +93,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Default.spritefont">
-      <Name>Default</Name>
+    <Compile Include="InformationWindowFont.spritefont">
+      <Name>InformationWindowFont</Name>
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
     </Compile>
