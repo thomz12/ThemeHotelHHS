@@ -36,7 +36,7 @@ namespace Hotel
 
             // Load the asset for the window's background
             _windowSprite = new Sprite(content);
-            _windowSprite.LoadSprite("Paper");
+            _windowSprite.LoadSprite("PaperClean");
             _windowSprite.Color *= Intensity;
 
             // Set some default values for privates
