@@ -62,6 +62,9 @@ namespace Hotel
             PlaceRoom(new ElevatorShaft(_contentManager, new Point(-1, 6)));
             PlaceRoom(new Staircase(_contentManager, new Point(2, 6), new Point(1, 1)));
 
+            HotelBuilder builder = new HotelBuilder();
+            //Rooms = builder.Hotel(@"C:\Users\Thom\Desktop\Hotel2.layout");
+
             Persons.Add(new Guest(content, Rooms[0]));
             List<Room> path = Persons[0].FindPath(Rooms[15]);
             // /TEMP!
