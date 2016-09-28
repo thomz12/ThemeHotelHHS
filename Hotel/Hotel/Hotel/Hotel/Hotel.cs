@@ -29,11 +29,11 @@ namespace Hotel
             _contentManager = content;
 
              HotelBuilder builder = new HotelBuilder(content);
-            Rooms = builder.Hotel(@"Hotel2.layout");
-
-            Persons.Add(new Guest(content, Rooms[0]));
-            List<Room> path = Persons[0].FindPath(Rooms[15]);
-            ;
+            List<Room> buildedRooms = builder.Hotel(@"Hotel2.layout");
+            for(int i = 0; i < buildedRooms.Count; i++)
+            {
+                PlaceRoom(buildedRooms[i]);
+            }
         }
 
         /// <summary>

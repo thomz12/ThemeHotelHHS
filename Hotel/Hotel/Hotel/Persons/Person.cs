@@ -40,7 +40,7 @@ namespace Hotel.Persons
 
             WalkingSpeed = 50.0f;
 
-            CurrentTask = PersonTask.MovingCenter;
+            CurrentTask = PersonTask.MovingRight;
         }
 
         public override void Update(float deltaTime)
