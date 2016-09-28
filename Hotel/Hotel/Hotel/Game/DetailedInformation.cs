@@ -18,7 +18,8 @@ namespace Hotel
 
         private SpriteFont _spriteFont;
         private Sprite _sprite;
-        private string _displayThis;
+        private string _objectName;
+        private string _objectInformation;
 
         public DetailedInformation(ContentManager content)
         {
@@ -32,7 +33,7 @@ namespace Hotel
             _sprite.LoadSprite("GUIDetailWindowBackSprite");
             _sprite.Color *= Intensity;
 
-            _displayThis = "<Null>";
+            _objectInformation = "<Null>";
 
             _sprite.SetSize(WindowSize);
             _sprite.SetPosition(WindowPosition);
@@ -40,7 +41,8 @@ namespace Hotel
 
         public void ShowInformation(HotelObject objectToDisplay)
         {
-            _displayThis = objectToDisplay.ToString();
+            _objectName = objectToDisplay.ToString().Split(';')[0];
+            _objectInformation = objectToDisplay.ToString().Split(';')[1];
 
             IsShowingInfo = true;
         }
@@ -63,7 +65,7 @@ namespace Hotel
                 
                 
                 Vector2 position = new Vector2(0, 0);
-                batch.DrawString(_spriteFont, _displayThis, position, Color.Black, 0f, new Vector2(0,0), Scale, SpriteEffects.None, 1);
+                batch.DrawString(_spriteFont, _objectInformation, position, Color.Black, 0f, new Vector2(0,0), Scale, SpriteEffects.None, 1);
             }
         }
     }
