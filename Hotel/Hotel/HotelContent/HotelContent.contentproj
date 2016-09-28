@@ -93,8 +93,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArcadeClassic.spritefont">
-      <Name>ArcadeClassic</Name>
+    <Compile Include="Default.spritefont">
+      <Name>Default</Name>
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
     </Compile>

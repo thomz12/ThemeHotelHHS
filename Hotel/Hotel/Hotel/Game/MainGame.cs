@@ -23,7 +23,9 @@ namespace Hotel
 
         private Hotel _hotel;
         private Camera _camera;
-        private HotelObject _selected;
+        private HotelObject _mouseIsOver;
+        private HotelObject _wasSelected;
+        private DetailedInformation _DI;
 
         public MainGame()
         {
@@ -70,6 +72,8 @@ namespace Hotel
             // Create a new SpriteBatch, which can be used to draw textures.
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
+            _DI = new DetailedInformation(Content);
+
             _hotel = new Hotel(Content);
             _camera = new Camera();
         }
@@ -108,24 +112,49 @@ namespace Hotel
         public void MouseOver()
         {
             // Reset the color of the room that is being hovered over
-            if (_selected != null)
-                _selected.Sprite.Color = Color.White;
+            if (_mouseIsOver != null)
+                _mouseIsOver.Sprite.Color = Color.White;
 
-            _selected = _hotel.GetObject(_camera.ScreenToWorld(Input.Instance.GetMousePos()));
+            _mouseIsOver = _hotel.GetObject(_camera.ScreenToWorld(Input.Instance.GetMousePos()));
 
-            if (_selected != null)
+            if (_mouseIsOver != null)
             {
-                _selected.Sprite.Color = Color.LightGreen;
+                _mouseIsOver.Sprite.Color = Color.LightGreen;
+
+                if (Input.Instance.OnLeftMouseButtonRelease())
+                {
+                    if (!_DI.IsShowingInfo)
+                    {
+                        _wasSelected = _mouseIsOver;
+                        _DI.ShowInformation(_mouseIsOver);
+                    }
+                    else
+                    {
+                        if (_wasSelected.Equals(_mouseIsOver))
+                        {
+                            _DI.HideInformation();
+                        }
+                        else
+            {
+                            _wasSelected = _mouseIsOver;
+                            _DI.ShowInformation(_mouseIsOver);
+                        }
+                    }
+                }
+
+
 
                 // Temp
                 if (Input.Instance.OnLeftMouseButtonRelease())
                 {
-                    _selected.OnClick(new EventArgs());
+                    _mouseIsOver.OnClick(new EventArgs());
+
+                    _mouseIsOver.ToString();
 
                     Random r = new Random();
-                    if (_selected is ElevatorShaft)
+                    if (_mouseIsOver is ElevatorShaft)
                     {
-                        ElevatorShaft es = (ElevatorShaft)_selected;
+                        ElevatorShaft es = (ElevatorShaft)_mouseIsOver;
 
                         int target = r.Next(0, 6);
 
@@ -159,6 +188,8 @@ namespace Hotel
 
             // HUD Spritebatch
             _spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, SamplerState.PointClamp, null, null);
+
+            _DI.Draw(_spriteBatch, gameTime);
 
             // End the drawing on the spritebatch.
             _spriteBatch.End();

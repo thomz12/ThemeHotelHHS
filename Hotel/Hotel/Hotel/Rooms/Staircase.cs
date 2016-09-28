@@ -18,6 +18,7 @@ namespace Hotel.Rooms
         public Staircase(ContentManager content, Point position) : base(content, position, new Point(1,1))
         {
             Sprite.LoadSprite("Stairs");
+            Name = "Staircase";
             Vertical = true;
             Weight = 10;
         }

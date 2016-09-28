@@ -8,7 +8,7 @@ using System.Text;
 
 namespace Hotel
 {
-    public class HotelObject
+    public abstract class HotelObject
     {
         public Sprite Sprite { get; set; }
         public Vector2 Position { get; set; }
@@ -28,6 +28,8 @@ namespace Hotel
             _content = content;
             BoundingBox = new Rectangle();
             Sprite = new Sprite(content);
+
+            Name = "HotelObject";
         }
 
         public void OnClick(EventArgs e)
@@ -54,6 +56,11 @@ namespace Hotel
         public virtual void Draw(SpriteBatch batch, GameTime gameTime)
         {
             Sprite.Draw(batch, gameTime);
+        }
+
+        public override string ToString()
+        {
+            return $"{Name}, {Position}";
         }
     }
 }
