@@ -70,7 +70,6 @@ namespace Hotel
             List<Room> path = Persons[0].FindPath(Rooms[15]);
         }
 
-
         /// <summary>
         /// Places a room in the hotel.
         /// </summary>
@@ -89,7 +88,23 @@ namespace Hotel
 
             Rooms.Add(room);
         }
-        
+
+        /// <summary>
+        /// Gets the object on a given point in the world
+        /// </summary>
+        /// <param name="position">The point the object should contain</param>
+        /// <returns>Null if nothing was found, if something was found, return that object.</returns>
+        public HotelObject GetObject(Point position)
+        {
+            foreach(Room r in Rooms)
+            {
+                if (r.BoundingBox.Contains(position))
+                    return r;
+            }
+
+            return null;
+        }
+
         /// <summary>
         /// Called every frame.
         /// </summary>
@@ -105,30 +120,6 @@ namespace Hotel
             {
                 person.Update(deltaTime);
             }
-        }
-
-        /// <summary>
-        /// Gets the object on a given point in the world
-        /// </summary>
-        /// <param name="p">The point the object should contain</param>
-        /// <returns>Null if nothing was found, if something was found, return that object.</returns>
-        public HotelObject GetObject(Point p)
-        {
-            foreach(Person person in Persons)
-            {
-                if(person.BoundingBox.Contains(p))
-                {
-                    return person;
-                }
-            }
-
-            foreach(Room room in Rooms)
-            {
-                if (room.BoundingBox.Contains(p))
-                    return room;
-            }
-
-            return null;
         }
 
         /// <summary>

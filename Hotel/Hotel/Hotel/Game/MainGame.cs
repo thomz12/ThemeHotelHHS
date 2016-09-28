@@ -90,8 +90,19 @@ namespace Hotel
 
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds * 1.0f;
 
-            // TEMP
-            if(_selected != null)
+            MouseOver();
+
+            _hotel.Update(deltaTime);
+            _camera.Update(GraphicsDevice, deltaTime);
+            Input.Instance.Update(gameTime);
+
+            base.Update(gameTime);
+        }
+
+        public void MouseOver()
+        {
+            // Reset the color of the room that is being hovered over
+            if (_selected != null)
                 _selected.Sprite.Color = Color.White;
 
             _selected = _hotel.GetObject(_camera.ScreenToWorld(Input.Instance.GetMousePos()));
@@ -100,6 +111,7 @@ namespace Hotel
             {
                 _selected.Sprite.Color = Color.LightGreen;
 
+                // Temp
                 if (Input.Instance.OnLeftMouseButtonRelease())
                 {
                     _selected.OnClick(new EventArgs());
@@ -119,15 +131,8 @@ namespace Hotel
                         es.CallElevator(target);
                     }
                 }
+                // /Temp
             }
-
-            // /TEMP
-
-            _hotel.Update(deltaTime);
-            _camera.Update(GraphicsDevice, deltaTime);
-            Input.Instance.Update(gameTime);
-
-            base.Update(gameTime);
         }
 
         /// <summary>
@@ -138,11 +143,20 @@ namespace Hotel
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
+            // GameObject Spritebatch
             _spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, _camera.TransformMatrix);
 
             _hotel.Draw(_spriteBatch, gameTime);
 
+            // End the drawing on the spritebatch.
             _spriteBatch.End();
+
+            // HUD Spritebatch
+            _spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, SamplerState.PointClamp, null, null);
+
+            // End the drawing on the spritebatch.
+            _spriteBatch.End();
+
             base.Draw(gameTime);
         }
     }

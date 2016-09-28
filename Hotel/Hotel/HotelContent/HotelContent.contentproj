@@ -93,11 +93,27 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArcadeClassic.spritefont">
+      <Name>ArcadeClassic</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
     <Compile Include="Guest.png">
       <Name>Guest</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
+    <Compile Include="GUIDetailWindowBackSprite.png">
+      <Name>GUIDetailWindowBackSprite</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Content Include="Hotel.layout">
+      <Name>Hotel</Name>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Compile Include="Stairs.png">
       <Name>Stairs</Name>
       <Importer>TextureImporter</Importer>
