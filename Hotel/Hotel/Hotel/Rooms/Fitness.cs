@@ -12,6 +12,7 @@ namespace Hotel.Rooms
         public Fitness(ContentManager content, Point position, Point size) : base(content, position, size)
         {
             Sprite.LoadSprite("3x1Fitness");
+            Name = "Fitness";
         }
     }
 }

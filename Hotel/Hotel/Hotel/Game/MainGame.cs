@@ -96,10 +96,14 @@ namespace Hotel
         {
             // Allows the game to exit
             if (Input.Instance.IsKeyPressed(Keys.Escape))
-                this.Exit();
+            {
+                HotelEventManager.Stop();
+                Exit();
+            }
 
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds * 1.0f;
 
+            // Check for mouseover
             MouseOver();
 
             _hotel.Update(deltaTime);
@@ -111,16 +115,20 @@ namespace Hotel
 
         public void MouseOver()
         {
-            // Reset the color of the room that is being hovered over
+            // Reset the color of the object that was being hovered over
             if (_mouseIsOver != null)
                 _mouseIsOver.Sprite.Color = Color.White;
 
+            // Get the object the mouse is hovering.
             _mouseIsOver = _hotel.GetObject(_camera.ScreenToWorld(Input.Instance.GetMousePos()));
 
+            // If a mouseover object is found
             if (_mouseIsOver != null)
             {
+                // Highlight the sprite.
                 _mouseIsOver.Sprite.Color = Color.LightGreen;
 
+                // When the left mouse is clicked
                 if (Input.Instance.OnLeftMouseButtonRelease())
                 {
                     if (!_DI.IsShowingInfo)
@@ -135,38 +143,12 @@ namespace Hotel
                             _DI.HideInformation();
                         }
                         else
-            {
+                        {
                             _wasSelected = _mouseIsOver;
                             _DI.ShowInformation(_mouseIsOver);
                         }
                     }
                 }
-
-
-
-                // Temp
-                if (Input.Instance.OnLeftMouseButtonRelease())
-                {
-                    _mouseIsOver.OnClick(new EventArgs());
-
-                    _mouseIsOver.ToString();
-
-                    Random r = new Random();
-                    if (_mouseIsOver is ElevatorShaft)
-                    {
-                        ElevatorShaft es = (ElevatorShaft)_mouseIsOver;
-
-                        int target = r.Next(0, 6);
-
-                        while (es.RoomPosition.Y == target)
-                        {
-                            target = r.Next(0, 6);
-                        }
-
-                        es.CallElevator(target);
-                    }
-                }
-                // /Temp
             }
         }
 
