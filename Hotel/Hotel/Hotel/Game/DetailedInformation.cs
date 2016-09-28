@@ -36,7 +36,7 @@ namespace Hotel
             // Load the asset for the window's background
             _windowSprite = new Sprite(content);
             _windowSprite.LoadSprite("GUIDetailWindowBackSprite");
-            _windowSprite.Color *= Intensity;
+            _windowSprite.Color *= 1.0f;
 
             // Load another asset for the window's name bar
             _headerSprite = new Sprite(content);
@@ -51,8 +51,8 @@ namespace Hotel
             _windowSprite.SetPosition(new Point(WindowPosition.X, WindowPosition.Y * -1));
 
             // Set the header Size and Position relative to window size.
-            _windowSprite.SetSize(new Point(WindowSize.X - 10, 60));
-            _windowSprite.SetPosition(new Point(WindowPosition.X + 5, WindowPosition.Y + 10));
+            _headerSprite.SetSize(new Point(WindowSize.X - 10, 40));
+            _headerSprite.SetPosition(new Point(WindowPosition.X + 5, WindowPosition.Y - 20));
         }
 
         public void ShowInformation(HotelObject objectToDisplay)
@@ -71,6 +71,7 @@ namespace Hotel
         public void Update(float deltaTime)
         {
             _windowSprite.Update(deltaTime);
+            _headerSprite.Update(deltaTime);
         }
 
         public void Draw(SpriteBatch batch, GameTime gameTime)
@@ -78,12 +79,13 @@ namespace Hotel
             if (IsShowingInfo)
             { 
                 _windowSprite.Draw(batch, gameTime);
+                _headerSprite.Draw(batch, gameTime);
 
                 Vector2 namePos = new Vector2(WindowPosition.X + WindowSize.X / 2, WindowPosition.Y + 20);
                 Vector2 nameOrigin = _spriteFont.MeasureString(_objectName) / 2;
                 batch.DrawString(_spriteFont, _objectName, namePos, Color.Black, 0f, nameOrigin, Scale, SpriteEffects.None, 1);
                 
-                Vector2 infoPos = new Vector2(WindowPosition.X + 20, WindowPosition.Y + 200);
+                Vector2 infoPos = new Vector2(WindowPosition.X + 20, WindowPosition.Y + 250);
                 batch.DrawString(_spriteFont, _objectInformation, infoPos, Color.Black, 0f, new Vector2(0,0), Scale, SpriteEffects.None, 1);
             }
         }
