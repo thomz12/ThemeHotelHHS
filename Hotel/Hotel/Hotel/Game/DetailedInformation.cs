@@ -27,7 +27,7 @@ namespace Hotel
             // Set some default values for properties
             Scale = 0.5f;
             WindowSize = new Point(300, 400);
-            WindowPosition = new Point(200, 60);
+            WindowPosition = new Point(10, 10);
             Intensity = 0.8f;
 
             // Load the font
