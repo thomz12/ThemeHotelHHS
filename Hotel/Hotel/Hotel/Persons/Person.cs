@@ -40,12 +40,12 @@ namespace Hotel.Persons
 
             WalkingSpeed = 50.0f;
 
-            CurrentTask = PersonTask.MovingRight;
+            CurrentTask = PersonTask.Waiting;
         }
 
         public override void Update(float deltaTime)
         {
-            // y-position
+            // y-position (jumping)
             Position = new Vector2(Position.X, ((float)Math.Sin(Position.X) * JumpHeight) + CurrentRoom.Position.Y - (CurrentRoom.RoomSize.Y * Room.ROOMHEIGHT) + Sprite.Texture.Height);
 
             // Do moving in the room.

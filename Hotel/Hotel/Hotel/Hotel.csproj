@@ -104,6 +104,7 @@
     <Compile Include="Rooms\Fitness.cs" />
     <Compile Include="Rooms\GuestRoom.cs" />
     <Compile Include="Rooms\Lobby.cs" />
+    <Compile Include="Rooms\Outside.cs" />
     <Compile Include="Rooms\Room.cs" />
     <Compile Include="Game\Sprite.cs" />
     <Compile Include="Rooms\Staircase.cs" />
