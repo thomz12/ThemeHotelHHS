@@ -11,7 +11,12 @@ namespace Hotel.Rooms
     {
         public Outside(ContentManager content, Point position) : base(content, position, new Point(1, 1))
         {
+            BoundingBox = new Rectangle();
+            Name = "Outside";
+        }
 
+        public override void Update(float deltaTime)
+        {
         }
     }
 }

@@ -26,7 +26,7 @@ namespace Hotel
         public Point RoomSize { get; set; }
 
         public bool Vertical { get; set; }
-
+        public int People { get; set; }
         public int Weight { get; set; }
 
         public Dictionary<Direction, Room> Neighbors { get; set; }

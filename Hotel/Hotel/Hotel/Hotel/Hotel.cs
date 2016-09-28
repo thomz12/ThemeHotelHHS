@@ -30,10 +30,17 @@ namespace Hotel
 
              HotelBuilder builder = new HotelBuilder(content);
             List<Room> buildedRooms = builder.Hotel(@"Hotel2.layout");
+
+            Room outside = new Outside(content, new Point(-1, 0));
+            Rooms.Add(outside);
             for(int i = 0; i < buildedRooms.Count; i++)
             {
                 PlaceRoom(buildedRooms[i]);
             }
+
+            Persons.Add(new Guest(content, outside));
+            List<Room> path = Persons[0].FindPath(Rooms[3]);
+            ;
         }
 
         /// <summary>
@@ -62,10 +69,16 @@ namespace Hotel
         /// <returns>Null if nothing was found, if something was found, return that object.</returns>
         public HotelObject GetObject(Point position)
         {
-            foreach(Room r in Rooms)
+            foreach(Person person in Persons)
             {
-                if (r.BoundingBox.Contains(position))
-                    return r;
+                if (person.BoundingBox.Contains(position))
+                    return person;
+            }
+
+            foreach(Room room in Rooms)
+            {
+                if (room.BoundingBox.Contains(position))
+                    return room;
             }
 
             return null;

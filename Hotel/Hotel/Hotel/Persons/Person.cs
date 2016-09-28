@@ -43,6 +43,13 @@ namespace Hotel.Persons
             CurrentTask = PersonTask.Waiting;
         }
 
+        public void MoveToRoom(Room room)
+        {
+            CurrentRoom.People--;
+            CurrentRoom = room;
+            room.People++;
+        }
+
         public override void Update(float deltaTime)
         {
             // y-position (jumping)

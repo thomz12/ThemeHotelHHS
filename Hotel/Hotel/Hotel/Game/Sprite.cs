@@ -66,7 +66,8 @@ namespace Hotel
         /// <param name="gameTime">The game time.</param>
         public void Draw(SpriteBatch batch, GameTime gameTime)
         {
-            batch.Draw(Texture, DrawDestination, new Rectangle(0, 0, Texture.Width, Texture.Height), Color, 0, Vector2.Zero, SpriteEffects.None, DrawOrder);
+            if(Texture != null)
+                batch.Draw(Texture, DrawDestination, new Rectangle(0, 0, Texture.Width, Texture.Height), Color, 0, Vector2.Zero, SpriteEffects.None, DrawOrder);
         }
     }
 }
