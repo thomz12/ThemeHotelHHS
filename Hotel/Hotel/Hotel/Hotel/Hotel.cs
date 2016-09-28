@@ -31,33 +31,40 @@ namespace Hotel
             //Read a file and build the hotel!
             // TEMP!
             PlaceRoom(new Lobby(_contentManager, new Point(0, 0), new Point(2, 1)));
-            PlaceRoom(new ElevatorShaft(_contentManager, new Point(2, 0)));
+            PlaceRoom(new ElevatorShaft(_contentManager, new Point(-1, 0)));
+            PlaceRoom(new Staircase(_contentManager, new Point(2, 0), new Point(1, 1)));
 
             PlaceRoom(new GuestRoom(_contentManager, new Point(0, 1), new Point(1, 1)));
             PlaceRoom(new GuestRoom(_contentManager, new Point(1, 1), new Point(1, 1)));
-            PlaceRoom(new ElevatorShaft(_contentManager, new Point(2, 2)));
+            PlaceRoom(new ElevatorShaft(_contentManager, new Point(-1, 1)));
+            PlaceRoom(new Staircase(_contentManager, new Point(2, 1), new Point(1, 1)));
 
             PlaceRoom(new GuestRoom(_contentManager, new Point(0, 2), new Point(1, 1)));
             PlaceRoom(new GuestRoom(_contentManager, new Point(1, 2), new Point(1, 1)));
-            PlaceRoom(new ElevatorShaft(_contentManager, new Point(2, 1)));
+            PlaceRoom(new ElevatorShaft(_contentManager, new Point(-1, 2)));
+            PlaceRoom(new Staircase(_contentManager, new Point(2, 2), new Point(1, 1)));
 
             PlaceRoom(new GuestRoom(_contentManager, new Point(0, 3), new Point(1, 1)));
-            //PlaceRoom(new GuestRoom(_contentManager, new Point(1, 3), new Point(1, 1)));
-            PlaceRoom(new ElevatorShaft(_contentManager, new Point(2, 3)));
+            PlaceRoom(new GuestRoom(_contentManager, new Point(1, 3), new Point(1, 1)));
+            PlaceRoom(new ElevatorShaft(_contentManager, new Point(-1, 3)));
+            PlaceRoom(new Staircase(_contentManager, new Point(2, 3), new Point(1, 1)));
 
             PlaceRoom(new GuestRoom(_contentManager, new Point(1, 4), new Point(1, 1)));
-            PlaceRoom(new ElevatorShaft(_contentManager, new Point(2, 4)));
+            PlaceRoom(new ElevatorShaft(_contentManager, new Point(-1, 4)));
+            PlaceRoom(new Staircase(_contentManager, new Point(2, 4), new Point(1, 1)));
 
             PlaceRoom(new GuestRoom(_contentManager, new Point(0, 5), new Point(1, 2)));
             PlaceRoom(new GuestRoom(_contentManager, new Point(1, 5), new Point(1, 1)));
-            PlaceRoom(new ElevatorShaft(_contentManager, new Point(2, 5)));
+            PlaceRoom(new ElevatorShaft(_contentManager, new Point(-1, 5)));
+            PlaceRoom(new Staircase(_contentManager, new Point(2, 5), new Point(1, 1)));
 
             PlaceRoom(new Cafe(_contentManager, new Point(0, 6), new Point(2, 1)));
-            PlaceRoom(new ElevatorShaft(_contentManager, new Point(2, 6)));
+            PlaceRoom(new ElevatorShaft(_contentManager, new Point(-1, 6)));
+            PlaceRoom(new Staircase(_contentManager, new Point(2, 6), new Point(1, 1)));
             // /TEMP!
 
-            Persons.Add(new Guest(content, Rooms[1]));
-            Persons[0].FindPath(Rooms[9], Rooms);
+            Persons.Add(new Guest(content, Rooms[0]));
+            List<Room> path = Persons[0].FindPath(Rooms[15]);
         }
 
         /// <summary>
@@ -78,7 +85,12 @@ namespace Hotel
 
             Rooms.Add(room);
         }
-        
+
+        /// <summary>
+        /// Gets the object on a given point in the world
+        /// </summary>
+        /// <param name="position">The point the object should contain</param>
+        /// <returns>Null if nothing was found, if something was found, return that object.</returns>
         public HotelObject GetObject(Point position)
         {
             foreach(Room r in Rooms)
@@ -105,30 +117,6 @@ namespace Hotel
             {
                 person.Update(deltaTime);
             }
-        }
-
-        /// <summary>
-        /// Gets the object on a given point in the world
-        /// </summary>
-        /// <param name="p">The point the object should contain</param>
-        /// <returns>Null if nothing was found, if something was found, return that object.</returns>
-        public HotelObject GetObject(Point p)
-        {
-            foreach(Person person in Persons)
-            {
-                if(person.BoundingBox.Contains(p))
-                {
-                    return person;
-                }
-            }
-
-            foreach(Room room in Rooms)
-            {
-                if (room.BoundingBox.Contains(p))
-                    return room;
-            }
-
-            return null;
         }
 
         /// <summary>
