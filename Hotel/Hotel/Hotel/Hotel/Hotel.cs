@@ -33,6 +33,7 @@ namespace Hotel
 
             Persons.Add(new Guest(content, Rooms[0]));
             List<Room> path = Persons[0].FindPath(Rooms[15]);
+            ;
         }
 
         /// <summary>

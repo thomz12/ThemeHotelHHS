@@ -19,22 +19,31 @@ namespace Hotel
             _content = content;
         }
 
+        public void ConnectRooms()
+        {
+
+        }
+
         public List<Room> Hotel(string path)
         {
+            // List of all rooms.
             List<Room> rooms = new List<Room>();
 
+            // The hotel width, and height.
             int extremeX = 0;
             int extremeY = 0;
 
             TextReader textReader = new StreamReader(path);
             JsonReader jsonReader = new JsonTextReader(textReader);
 
+            // Dictionary containg room data.
             Dictionary<string, string> data = new Dictionary<string, string>();
 
             while(jsonReader.Read())
             {
                 if(jsonReader.Value != null)
                 {
+                    // Read and add the values from the file.
                     string value = jsonReader.Value.ToString();
                     jsonReader.Read();
                     data.Add(value, jsonReader.Value.ToString());
@@ -50,15 +59,18 @@ namespace Hotel
                         string[] posData = data["Position"].Split(',');
                         string[] dimData = data["Dimension"].Split(',');
 
+                        // get the room dimensions.
                         Point dimensions = new Point(Int32.Parse(dimData[0]), Int32.Parse(dimData[1]));
-
+                        // calculate the room position.
                         Point position = new Point(Int32.Parse(posData[0]), Int32.Parse(posData[1]) + (dimensions.Y - 1));
 
+                        // Set the extreme values (hotel size)
                         if (extremeX < position.X)
                             extremeX = position.X;
                         if (extremeY < position.Y)
                             extremeY = position.Y;
 
+                        // All the types of rooms.
                         switch (data["AreaType"])
                         {
                             case "Restaurant":
@@ -81,16 +93,19 @@ namespace Hotel
                 }
             }
 
+            // Add elevator shafts to the hotel.
             for(int i = 0; i <= extremeY; i++)
             {
                 rooms.Add(new ElevatorShaft(_content, new Point(0, i)));
             }
 
+            // Add Stairs to the hotel.
             for (int i = 0; i <= extremeY; i++)
             {
                 rooms.Add(new Staircase(_content, new Point(extremeX + 1, i)));
             }
 
+            // Add lobbies.
             for(int i = 1; i <= extremeX; i++)
             {
                 rooms.Add(new Lobby(_content, new Point(i, 0), new Point(1,1)));
