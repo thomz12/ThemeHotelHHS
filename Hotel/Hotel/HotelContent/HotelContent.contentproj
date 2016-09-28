@@ -105,11 +105,6 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="GUIDetailWindowBackSprite.png">
-      <Name>GUIDetailWindowBackSprite</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
     <Compile Include="Stairs.png">
       <Name>Stairs</Name>
       <Importer>TextureImporter</Importer>

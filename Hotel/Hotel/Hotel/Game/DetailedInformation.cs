@@ -73,10 +73,10 @@ namespace Hotel
 
                 Vector2 namePos = new Vector2(WindowPosition.X + WindowSize.X / 2, WindowPosition.Y + 50);
                 Vector2 nameOrigin = _spriteFont.MeasureString(_objectName) / 2;
-                batch.DrawString(_spriteFont, _objectName, namePos, Color.Black, 0f, nameOrigin, HeaderSize, SpriteEffects.None, 1);
+                batch.DrawString(_spriteFont, _objectName, namePos, Color.DarkSlateBlue, 0f, nameOrigin, HeaderSize, SpriteEffects.None, 1);
                 
                 Vector2 infoPos = new Vector2(WindowPosition.X + 60, WindowPosition.Y + 310);
-                batch.DrawString(_spriteFont, _objectInformation, infoPos, Color.Black, 0f, new Vector2(0,0), TextSize, SpriteEffects.None, 1);
+                batch.DrawString(_spriteFont, _objectInformation, infoPos, Color.DarkSlateBlue, 0f, new Vector2(0,0), TextSize, SpriteEffects.None, 1);
             }
         }
     }
