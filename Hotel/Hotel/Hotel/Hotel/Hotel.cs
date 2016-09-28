@@ -39,8 +39,7 @@ namespace Hotel
             }
 
             Persons.Add(new Guest(content, outside));
-            List<Room> path = Persons[0].FindPath(Rooms[3]);
-            ;
+            Persons[0].TargetRoom = Rooms[3];
         }
 
         /// <summary>

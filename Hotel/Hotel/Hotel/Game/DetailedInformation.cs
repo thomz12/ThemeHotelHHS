@@ -15,7 +15,6 @@ namespace Hotel
         public Point WindowSize { get; set; }
         public Point WindowPosition { get; set; }
         public bool IsShowingInfo{ get; private set;}
-        public float Intensity { get; set; }
 
         private SpriteFont _spriteFont;
         private Sprite _windowSprite;
@@ -29,7 +28,6 @@ namespace Hotel
             TextSize = 0.5f;
             WindowSize = new Point(300, 500);
             WindowPosition = new Point(0, 0);
-            Intensity = 1f;
 
             // Load the font
             _spriteFont = content.Load<SpriteFont>("InformationWindowFont");
@@ -37,7 +35,7 @@ namespace Hotel
             // Load the asset for the window's background
             _windowSprite = new Sprite(content);
             _windowSprite.LoadSprite("PaperClean");
-            _windowSprite.Color *= Intensity;
+            _windowSprite.DrawOrder = 0.0f;
 
             // Set some default values for privates
             _objectInformation = "<Null>";

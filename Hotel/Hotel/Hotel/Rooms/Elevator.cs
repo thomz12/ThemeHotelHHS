@@ -47,7 +47,7 @@ namespace Hotel
         {
             Sprite.LoadSprite("Elevator");
             Name = "Elevator";
-            Sprite.DrawOrder = 1;
+            Sprite.DrawOrder = 0.5f;
             WaitTime = 1.0f;
             Speed = 90.0f;
             State = ElevatorState.Idle;

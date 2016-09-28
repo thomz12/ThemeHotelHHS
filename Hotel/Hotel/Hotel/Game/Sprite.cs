@@ -13,7 +13,7 @@ namespace Hotel
         public Texture2D Texture { get; private set; }
         public Rectangle DrawDestination { get; set; }
         public Color Color { get; set; }
-        public int DrawOrder{ get; set; }
+        public float DrawOrder{ get; set; }
 
         private ContentManager _content;
 

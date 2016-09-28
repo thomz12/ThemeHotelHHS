@@ -14,6 +14,8 @@ namespace Hotel.Persons
         Waiting,
         MovingLeft,
         MovingRight,
+        MovingUp,
+        MovingDown,
         MovingCenter
     }
 
@@ -22,6 +24,21 @@ namespace Hotel.Persons
         public float WalkingSpeed { get; set; }
         public PersonTask CurrentTask { get; set; }
         public Room CurrentRoom { get; set; }
+
+        private Room _targetRoom;
+        public Room TargetRoom
+        {
+            get
+            {
+                return _targetRoom;
+            }
+            set
+            {
+                _targetRoom = value;
+                Path = FindPath(_targetRoom);
+            }
+        }
+
         public List<Room> Path { get; set; }
         public float JumpHeight { get; set; }
 
@@ -38,6 +55,8 @@ namespace Hotel.Persons
             JumpHeight = 4;
             CurrentRoom = room;
 
+            Path = new List<Room>();
+
             WalkingSpeed = 50.0f;
 
             CurrentTask = PersonTask.Waiting;
@@ -53,7 +72,48 @@ namespace Hotel.Persons
         public override void Update(float deltaTime)
         {
             // y-position (jumping)
-            Position = new Vector2(Position.X, ((float)Math.Sin(Position.X) * JumpHeight) + CurrentRoom.Position.Y - (CurrentRoom.RoomSize.Y * Room.ROOMHEIGHT) + Sprite.Texture.Height);
+            if(CurrentTask != PersonTask.MovingUp && CurrentTask != PersonTask.MovingDown)
+                Position = new Vector2(Position.X, ((float)Math.Sin(Position.X) * JumpHeight + JumpHeight / 2) + CurrentRoom.Position.Y - (CurrentRoom.RoomSize.Y * Room.ROOMHEIGHT) + Sprite.Texture.Height);
+
+            if(Path.Count > 0)
+            {
+                if (CurrentRoom == Path[0])
+                    Path.RemoveAt(0);
+
+                if (Path.Count > 0 && CurrentRoom.Neighbors.Values.Contains(Path[0]))
+                {
+                    Direction dir = Direction.None;
+                    foreach(KeyValuePair<Direction, Room> kvp in CurrentRoom.Neighbors)
+                    {
+                        if (kvp.Value == Path[0])
+                            dir = kvp.Key;
+                    }
+
+                    switch (dir)
+                    {
+                        case Direction.None:
+                            break;
+                        case Direction.North:
+                            CurrentTask = PersonTask.MovingUp;
+                            break;
+                        case Direction.East:
+                            CurrentTask = PersonTask.MovingRight;
+                            break;
+                        case Direction.South:
+                            CurrentTask = PersonTask.MovingDown;
+                            break;
+                        case Direction.West:
+                            CurrentTask = PersonTask.MovingLeft;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+            else
+            {
+                CurrentTask = PersonTask.MovingCenter;
+            }
 
             // Do moving in the room.
             switch (CurrentTask)
@@ -64,10 +124,30 @@ namespace Hotel.Persons
                 // When person is moving left.
                 case PersonTask.MovingLeft:
                     Position = new Vector2(Position.X - WalkingSpeed * deltaTime, Position.Y);
+
+                    if (Position.X < CurrentRoom.Position.X - Sprite.Texture.Width)
+                        MoveToRoom(CurrentRoom.Neighbors[Direction.West]);
+
                     break;
                 // When person is moving right.
                 case PersonTask.MovingRight:
                     Position = new Vector2(Position.X + WalkingSpeed * deltaTime, Position.Y);
+
+                    if (Position.X > CurrentRoom.Position.X + CurrentRoom.RoomSize.Y * Room.ROOMWIDTH)
+                        MoveToRoom(CurrentRoom.Neighbors[Direction.East]);
+
+                    break;
+                // When person is moving up.
+                case PersonTask.MovingUp:
+                    Position = new Vector2(Position.X, Position.Y + WalkingSpeed * deltaTime);
+
+                    if (Position.Y > CurrentRoom.Position.Y + Room.ROOMHEIGHT)
+                        MoveToRoom(CurrentRoom.Neighbors[Direction.North]);
+
+                    break;
+                // When person is moving down.
+                case PersonTask.MovingDown:
+                    Position = new Vector2(Position.X, Position.Y - WalkingSpeed * deltaTime);
                     break;
                 // When person is moving to the center of the room.
                 case PersonTask.MovingCenter:
@@ -174,7 +254,7 @@ namespace Hotel.Persons
 
         public override string ToString()
         {
-            return $"{Name};In Room: {CurrentRoom}{Environment.NewLine}";
+            return $"{Name};In Room: {CurrentRoom}{Environment.NewLine}Target: {TargetRoom.Name}";
         }
     }
 }

@@ -114,8 +114,7 @@ namespace Hotel
 
         public override string ToString()
         {
-            string returnString = $"{Name};Floor: {RoomPosition.Y}{Environment.NewLine}Size: X:{RoomSize.X} Y: {RoomSize.Y}";
-            //Console.WriteLine($"{Name}, {Position}, {RoomPosition.Y}, {Vertical}");
+            string returnString = $"{Name};Floor: {RoomPosition.Y}{Environment.NewLine}Size: X:{RoomSize.X} Y: {RoomSize.Y}{Environment.NewLine}People: {People}";
             return returnString;
         }
     }
