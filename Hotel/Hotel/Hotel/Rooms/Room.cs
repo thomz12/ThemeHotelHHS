@@ -111,5 +111,11 @@ namespace Hotel
 
             return Direction.None;
         }
+
+        public override string ToString()
+        {
+            Console.WriteLine($"{Name}, {Position}, {RoomPosition.Y}, {Vertical}");
+            return $"{Name}, {Position}, {RoomPosition.Y}, {Vertical}";
+        }
     }
 }

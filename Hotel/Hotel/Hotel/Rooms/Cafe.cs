@@ -13,6 +13,7 @@ namespace Hotel.Rooms
         public Cafe(ContentManager content, Point position, Point size) : base(content, position, size)
         {
             Sprite.LoadSprite("2x1Cafe");
+            Name = "Cafe";
         }
     }
 }

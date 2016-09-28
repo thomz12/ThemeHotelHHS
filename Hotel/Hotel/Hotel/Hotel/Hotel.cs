@@ -61,10 +61,10 @@ namespace Hotel
             PlaceRoom(new Cafe(_contentManager, new Point(0, 6), new Point(2, 1)));
             PlaceRoom(new ElevatorShaft(_contentManager, new Point(-1, 6)));
             PlaceRoom(new Staircase(_contentManager, new Point(2, 6), new Point(1, 1)));
-            // /TEMP!
 
             Persons.Add(new Guest(content, Rooms[0]));
             List<Room> path = Persons[0].FindPath(Rooms[15]);
+            // /TEMP!
         }
 
         /// <summary>

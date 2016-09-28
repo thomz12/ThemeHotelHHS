@@ -46,6 +46,7 @@ namespace Hotel
         public Elevator(ContentManager content) : base(content)
         {
             Sprite.LoadSprite("Elevator");
+            Name = "Elevator";
             Sprite.DrawOrder = 1;
             WaitTime = 1.0f;
             Speed = 90.0f;

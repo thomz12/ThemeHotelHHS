@@ -12,6 +12,7 @@ namespace Hotel
         public GuestRoom(ContentManager content, Point position, Point size) : base(content, position, size)
         {
             Sprite.LoadSprite("GuestRoom");
+            Name = "1 Star Guest Room";
         }
     }
 }
