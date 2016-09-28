@@ -10,7 +10,8 @@ namespace Hotel
 {
     public class DetailedInformation
     {
-        public float Scale { get; set; }
+        public float HeaderSize { get; set; }
+        public float TextSize { get; set; }
         public Point WindowSize { get; set; }
         public Point WindowPosition { get; set; }
         public bool IsShowingInfo{ get; private set;}
@@ -25,17 +26,18 @@ namespace Hotel
         public DetailedInformation(ContentManager content)
         {
             // Set some default values for properties
-            Scale = 0.5f;
-            WindowSize = new Point(300, 400);
-            WindowPosition = new Point(10, 10);
-            Intensity = 0.8f;
+            HeaderSize = 0.7f;
+            TextSize = 0.5f;
+            WindowSize = new Point(300, 500);
+            WindowPosition = new Point(0, 0);
+            Intensity = 1f;
 
             // Load the font
             _spriteFont = content.Load<SpriteFont>("Default");
 
             // Load the asset for the window's background
             _windowSprite = new Sprite(content);
-            _windowSprite.LoadSprite("GUIDetailWindowBackSprite");
+            _windowSprite.LoadSprite("Paper");
             _windowSprite.Color *= Intensity;
 
             // Load another asset for the window's name bar
@@ -79,14 +81,14 @@ namespace Hotel
             if (IsShowingInfo)
             { 
                 _windowSprite.Draw(batch, gameTime);
-                _headerSprite.Draw(batch, gameTime);
+                //_headerSprite.Draw(batch, gameTime);
 
-                Vector2 namePos = new Vector2(WindowPosition.X + WindowSize.X / 2, WindowPosition.Y + 35);
+                Vector2 namePos = new Vector2(WindowPosition.X + WindowSize.X / 2, WindowPosition.Y + 50);
                 Vector2 nameOrigin = _spriteFont.MeasureString(_objectName) / 2;
-                batch.DrawString(_spriteFont, _objectName, namePos, Color.Black, 0f, nameOrigin, Scale, SpriteEffects.None, 1);
+                batch.DrawString(_spriteFont, _objectName, namePos, Color.Black, 0f, nameOrigin, HeaderSize, SpriteEffects.None, 1);
                 
-                Vector2 infoPos = new Vector2(WindowPosition.X + 20, WindowPosition.Y + 300);
-                batch.DrawString(_spriteFont, _objectInformation, infoPos, Color.Black, 0f, new Vector2(0,0), Scale, SpriteEffects.None, 1);
+                Vector2 infoPos = new Vector2(WindowPosition.X + 60, WindowPosition.Y + 310);
+                batch.DrawString(_spriteFont, _objectInformation, infoPos, Color.Black, 0f, new Vector2(0,0), TextSize, SpriteEffects.None, 1);
             }
         }
     }
