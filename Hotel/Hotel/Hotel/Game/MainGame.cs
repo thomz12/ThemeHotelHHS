@@ -116,7 +116,14 @@ namespace Hotel
 
                 if (Input.Instance.OnLeftMouseButtonRelease())
                 {
-                    _DI.ShowInformation(_selected);
+                    if (!_DI.IsShowingInfo)
+                    {
+                        _DI.ShowInformation(_selected);
+                    }
+                    else
+                    {
+                        _DI.HideInformation();
+                    }
                 }
 
 
@@ -165,10 +172,6 @@ namespace Hotel
             // HUD Spritebatch
             _spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, SamplerState.PointClamp, null, null);
 
-            SpriteFont sf = Content.Load<SpriteFont>("Default");
-            string _displayThis = "Hello World";
-            Vector2 position = new Vector2(0, 0);
-            _spriteBatch.DrawString(sf, _displayThis, position, Color.Black, 0f, new Vector2(0, 0), 0f, SpriteEffects.None, 0);
             _DI.Draw(_spriteBatch, gameTime);
 
             // End the drawing on the spritebatch.

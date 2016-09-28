@@ -10,13 +10,17 @@ namespace Hotel
 {
     public class DetailedInformation
     {
+        public float Scale { get; set; }
+        public bool IsShowingInfo{ get; private set;}
+
         private SpriteFont _spriteFont;
         private Sprite _sprite;
-        private bool _isShowingInfo;
         private string _displayThis;
 
         public DetailedInformation(ContentManager content)
         {
+            Scale = 0.5f;
+
             _spriteFont = content.Load<SpriteFont>("Default");
             _sprite = new Sprite(content);
             _sprite.LoadSprite("GUIDetailWindowBackSprite");
@@ -31,12 +35,12 @@ namespace Hotel
         {
             string _displayThis = objectToDisplay.ToString();
 
-            _isShowingInfo = true;
+            IsShowingInfo = true;
         }
 
         public void HideInformation()
         {
-            _isShowingInfo = false;
+            IsShowingInfo = false;
         }
 
         public void Update(float deltaTime)
@@ -46,12 +50,12 @@ namespace Hotel
 
         public void Draw(SpriteBatch batch, GameTime gameTime)
         {
-            if (_isShowingInfo)
+            if (IsShowingInfo)
             {
                 _sprite.Draw(batch, gameTime);
                 
                 Vector2 position = new Vector2(0, 0);
-                batch.DrawString(_spriteFont, _displayThis, position, Color.Black, 0f, new Vector2(0,0), 0f, SpriteEffects.None, 1);
+                batch.DrawString(_spriteFont, _displayThis, position, Color.Black, 0f, new Vector2(0,0), Scale, SpriteEffects.None, 1);
             }
         }
     }
