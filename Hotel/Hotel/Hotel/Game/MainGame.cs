@@ -41,6 +41,8 @@ namespace Hotel
 
             _graphics.IsFullScreen = false;
 
+            Exiting += MainGame_Exiting;
+
             HotelEventManager.Start();
 
             HotelEventListener listener = new EventListener();
@@ -48,6 +50,11 @@ namespace Hotel
 
             // Disable the fixed time step, causes low frame rates on some computers.
             IsFixedTimeStep = false;
+        }
+
+        private void MainGame_Exiting(object sender, EventArgs e)
+        {
+            HotelEventManager.Stop();
         }
 
         /// <summary>
@@ -97,7 +104,6 @@ namespace Hotel
             // Allows the game to exit
             if (Input.Instance.IsKeyPressed(Keys.Escape))
             {
-                HotelEventManager.Stop();
                 Exit();
             }
 

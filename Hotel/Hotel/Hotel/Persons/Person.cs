@@ -23,6 +23,7 @@ namespace Hotel.Persons
         public PersonTask CurrentTask { get; set; }
         public Room CurrentRoom { get; set; }
         public List<Room> Path { get; set; }
+        public float JumpHeight { get; set; }
 
         /// <summary>
         /// Constructor.
@@ -34,7 +35,7 @@ namespace Hotel.Persons
             Sprite.DrawOrder = 1;
             Sprite.SetSize(new Point(25, 90));
             Position = new Vector2(room.Position.X, room.Position.Y);
-
+            JumpHeight = 4;
             CurrentRoom = room;
 
             WalkingSpeed = 50.0f;
@@ -44,17 +45,24 @@ namespace Hotel.Persons
 
         public override void Update(float deltaTime)
         {
+            // y-position
+            Position = new Vector2(Position.X, ((float)Math.Sin(Position.X) * JumpHeight) + CurrentRoom.Position.Y - (CurrentRoom.RoomSize.Y * Room.ROOMHEIGHT) + Sprite.Texture.Height);
+
             // Do moving in the room.
             switch (CurrentTask)
             {
+                //When the person is waiting.
                 case PersonTask.Waiting:
                     break;
+                // When person is moving left.
                 case PersonTask.MovingLeft:
                     Position = new Vector2(Position.X - WalkingSpeed * deltaTime, Position.Y);
                     break;
+                // When person is moving right.
                 case PersonTask.MovingRight:
                     Position = new Vector2(Position.X + WalkingSpeed * deltaTime, Position.Y);
                     break;
+                // When person is moving to the center of the room.
                 case PersonTask.MovingCenter:
 
                     if(Position.X < CurrentRoom.Position.X + (CurrentRoom.RoomSize.X * Room.ROOMWIDTH / 2))
