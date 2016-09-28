@@ -29,10 +29,10 @@ namespace Hotel
             _contentManager = content;
 
              HotelBuilder builder = new HotelBuilder(content);
-            Rooms = builder.Hotel(@"C:\Users\Thom\Desktop\Hotel2.layout");
+            Rooms = builder.Hotel(@"Hotel2.layout");
 
-            //Persons.Add(new Guest(content, Rooms[0]));
-            //List<Room> path = Persons[0].FindPath(Rooms[15]);
+            Persons.Add(new Guest(content, Rooms[0]));
+            List<Room> path = Persons[0].FindPath(Rooms[15]);
         }
 
         /// <summary>
