@@ -16,6 +16,7 @@ namespace Hotel
         public Point WindowPosition { get; set; }
         public bool IsShowingInfo{ get; private set;}
 
+        private HotelObject _objectToDisplay;
         private SpriteFont _spriteFont;
         private Sprite _windowSprite;
         private string _objectName;
@@ -47,8 +48,7 @@ namespace Hotel
 
         public void ShowInformation(HotelObject objectToDisplay)
         {
-            _objectName = objectToDisplay.ToString().Split(';')[0];
-            _objectInformation = objectToDisplay.ToString().Split(';')[1];
+            _objectToDisplay = objectToDisplay;
 
             IsShowingInfo = true;
         }
@@ -66,7 +66,10 @@ namespace Hotel
         public void Draw(SpriteBatch batch, GameTime gameTime)
         {
             if (IsShowingInfo)
-            { 
+            {
+                _objectName = _objectToDisplay.ToString().Split(';')[0];
+                _objectInformation = _objectToDisplay.ToString().Split(';')[1];
+
                 _windowSprite.Draw(batch, gameTime);
 
                 Vector2 namePos = new Vector2(WindowPosition.X + WindowSize.X / 2, WindowPosition.Y + 50);
