@@ -11,7 +11,10 @@ namespace Hotel
     public class DetailedInformation
     {
         public float Scale { get; set; }
+        public Point WindowSize { get; set; }
+        public Point WindowPosition { get; set; }
         public bool IsShowingInfo{ get; private set;}
+        public float Intensity { get; set; }
 
         private SpriteFont _spriteFont;
         private Sprite _sprite;
@@ -20,20 +23,24 @@ namespace Hotel
         public DetailedInformation(ContentManager content)
         {
             Scale = 0.5f;
+            WindowSize = new Point(300, 400);
+            WindowPosition = new Point(0, 0);
+            Intensity = 0.8f;
 
             _spriteFont = content.Load<SpriteFont>("Default");
             _sprite = new Sprite(content);
             _sprite.LoadSprite("GUIDetailWindowBackSprite");
+            _sprite.Color *= Intensity;
 
             _displayThis = "<Null>";
 
-            _sprite.SetSize(new Point(200, 100));
-            _sprite.SetPosition(new Point(0, 0));
+            _sprite.SetSize(WindowSize);
+            _sprite.SetPosition(WindowPosition);
         }
 
         public void ShowInformation(HotelObject objectToDisplay)
         {
-            string _displayThis = objectToDisplay.ToString();
+            _displayThis = objectToDisplay.ToString();
 
             IsShowingInfo = true;
         }
@@ -51,8 +58,9 @@ namespace Hotel
         public void Draw(SpriteBatch batch, GameTime gameTime)
         {
             if (IsShowingInfo)
-            {
+            { 
                 _sprite.Draw(batch, gameTime);
+                
                 
                 Vector2 position = new Vector2(0, 0);
                 batch.DrawString(_spriteFont, _displayThis, position, Color.Black, 0f, new Vector2(0,0), Scale, SpriteEffects.None, 1);
