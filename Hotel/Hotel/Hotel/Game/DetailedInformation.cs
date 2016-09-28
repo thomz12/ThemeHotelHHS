@@ -36,12 +36,12 @@ namespace Hotel
             // Load the asset for the window's background
             _windowSprite = new Sprite(content);
             _windowSprite.LoadSprite("GUIDetailWindowBackSprite");
-            _windowSprite.Color *= 1.0f;
+            _windowSprite.Color *= Intensity;
 
             // Load another asset for the window's name bar
             _headerSprite = new Sprite(content);
             _headerSprite.LoadSprite("GUIDetailWindowBackSprite");
-            _headerSprite.Color *= Intensity;
+            _headerSprite.Color *= 1.0f;
 
             // Set some default values for privates
             _objectInformation = "<Null>";
@@ -52,7 +52,7 @@ namespace Hotel
 
             // Set the header Size and Position relative to window size.
             _headerSprite.SetSize(new Point(WindowSize.X - 10, 40));
-            _headerSprite.SetPosition(new Point(WindowPosition.X + 5, WindowPosition.Y - 20));
+            _headerSprite.SetPosition(new Point(WindowPosition.X + 5, WindowPosition.Y - 30));
         }
 
         public void ShowInformation(HotelObject objectToDisplay)
@@ -81,11 +81,11 @@ namespace Hotel
                 _windowSprite.Draw(batch, gameTime);
                 _headerSprite.Draw(batch, gameTime);
 
-                Vector2 namePos = new Vector2(WindowPosition.X + WindowSize.X / 2, WindowPosition.Y + 20);
+                Vector2 namePos = new Vector2(WindowPosition.X + WindowSize.X / 2, WindowPosition.Y + 35);
                 Vector2 nameOrigin = _spriteFont.MeasureString(_objectName) / 2;
                 batch.DrawString(_spriteFont, _objectName, namePos, Color.Black, 0f, nameOrigin, Scale, SpriteEffects.None, 1);
                 
-                Vector2 infoPos = new Vector2(WindowPosition.X + 20, WindowPosition.Y + 250);
+                Vector2 infoPos = new Vector2(WindowPosition.X + 20, WindowPosition.Y + 300);
                 batch.DrawString(_spriteFont, _objectInformation, infoPos, Color.Black, 0f, new Vector2(0,0), Scale, SpriteEffects.None, 1);
             }
         }
