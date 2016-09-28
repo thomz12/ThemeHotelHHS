@@ -171,5 +171,10 @@ namespace Hotel.Persons
             // reverse so that current room is start room, and end room is the last room.
             return path.Select(x => x.Room).Reverse().ToList();
         }
+
+        public override string ToString()
+        {
+            return $"{Name};In Room: {CurrentRoom}{Environment.NewLine}";
+        }
     }
 }
