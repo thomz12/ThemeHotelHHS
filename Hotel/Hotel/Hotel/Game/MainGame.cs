@@ -9,6 +9,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
 using Nuclex.UserInterface;
+using HotelEvents;
 
 namespace Hotel
 {
@@ -37,6 +38,11 @@ namespace Hotel
             _graphics.PreferredBackBufferWidth = 1280;
 
             _graphics.IsFullScreen = false;
+
+            HotelEventManager.Start();
+
+            HotelEventListener listener = new EventListener();
+            HotelEventManager.Register(listener);
 
             // Disable the fixed time step, causes low frame rates on some computers.
             IsFixedTimeStep = false;

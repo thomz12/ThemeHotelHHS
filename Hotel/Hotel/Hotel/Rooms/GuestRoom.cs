@@ -9,9 +9,12 @@ namespace Hotel
 {
     public class GuestRoom : Room
     {
-        public GuestRoom(ContentManager content, Point position, Point size) : base(content, position, size)
+        public int Classification { get; private set; }
+
+        public GuestRoom(ContentManager content, Point position, Point size, int classification) : base(content, position, size)
         {
             Sprite.LoadSprite("GuestRoom");
+            Classification = classification;
         }
     }
 }

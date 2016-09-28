@@ -84,6 +84,7 @@
   <ItemGroup>
     <Compile Include="Game\Camera.cs" />
     <Compile Include="Game\DetailedInformation.cs" />
+    <Compile Include="Game\EventListener.cs" />
     <Compile Include="Game\HotelObject.cs" />
     <Compile Include="Game\Input.cs" />
     <Compile Include="HotelBuilder.cs" />
@@ -96,8 +97,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Game\MainGame.cs" />
     <Compile Include="Rooms\Cafe.cs" />
+    <Compile Include="Rooms\Cinema.cs" />
+    <Compile Include="Rooms\ConentManager.cs" />
     <Compile Include="Rooms\Elevator.cs" />
     <Compile Include="Rooms\ElevatorShaft.cs" />
+    <Compile Include="Rooms\Fitness.cs" />
     <Compile Include="Rooms\GuestRoom.cs" />
     <Compile Include="Rooms\Lobby.cs" />
     <Compile Include="Rooms\Room.cs" />

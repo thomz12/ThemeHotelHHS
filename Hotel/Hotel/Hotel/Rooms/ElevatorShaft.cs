@@ -44,12 +44,12 @@ namespace Hotel
                 Elevator.Position = new Vector2(((RoomPosition.X + RoomSize.X) * ROOMWIDTH)- Elevator.Sprite.Texture.Width, Elevator.Position.Y);
                 Elevator.Update(deltaTime);
             }
-
+            /*
             if(Elevator == null && RoomPosition.Y != 0)
             {
                 ElevatorShaft es = (ElevatorShaft)Neighbors[Direction.South];
                 Elevator = es.Elevator;
-            }
+            }*/
         }
 
         public override void Draw(SpriteBatch batch, GameTime gameTime)
