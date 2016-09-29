@@ -121,7 +121,7 @@ namespace Hotel
 
             _hotel.Update(deltaTime);
             _camera.Update(GraphicsDevice.PresentationParameters.BackBufferWidth, GraphicsDevice.PresentationParameters.BackBufferHeight, deltaTime);
-            _closeUpCamera.Update(0, 0, deltaTime);
+            _closeUpCamera.Update(200, 200, deltaTime);
             Input.Instance.Update(gameTime);
 
             base.Update(gameTime);
@@ -137,14 +137,13 @@ namespace Hotel
             _mouseIsOver = _hotel.GetObject(_camera.ScreenToWorld(Input.Instance.GetMousePos()));
 
             if(_wasSelected != null)
-                _closeUpCamera.CamPosition = new Vector2(-_wasSelected.Position.X + _renderTexture.Width / 2, _wasSelected.Position.Y + _renderTexture.Height / 2);
+                _closeUpCamera.CamPosition = new Vector2(-_wasSelected.Position.X - _wasSelected.Sprite.Texture.Width / 2, _wasSelected.Position.Y - _wasSelected.Sprite.Texture.Height / 2);
 
             // If a mouseover object is found
             if (_mouseIsOver != null)
             {
                 // Highlight the sprite.
                 _mouseIsOver.Sprite.Color = Color.LightGreen;
-
 
                 // When the left mouse is clicked
                 if (Input.Instance.OnLeftMouseButtonRelease())
@@ -224,7 +223,7 @@ namespace Hotel
             // HUD Spritebatch
             _spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, SamplerState.PointClamp, null, null);
 
-            _DI.texture = _renderTexture;
+            _DI.RenderTexture = _renderTexture;
             _DI.Draw(_spriteBatch, gameTime);
 
             // End the drawing on the spritebatch.
