@@ -12,6 +12,7 @@ namespace Hotel
 {
     public class Hotel
     {
+        public string HotelLayoutFilePath { get; set; }
         public List<Room> Rooms { get; set; }
         public List<Person> Persons { get; set; }
 
@@ -25,11 +26,12 @@ namespace Hotel
         {
             Rooms = new List<Room>();
             Persons = new List<Person>();
+            HotelLayoutFilePath = @"Extra\Hotel2.layout";
 
             _contentManager = content;
 
              HotelBuilder builder = new HotelBuilder(content);
-            List<Room> buildedRooms = builder.Hotel(@"Hotel2.layout");
+            List<Room> buildedRooms = builder.Hotel(HotelLayoutFilePath);
 
             Room outside = new Outside(content, new Point(-1, 0));
             Rooms.Add(outside);

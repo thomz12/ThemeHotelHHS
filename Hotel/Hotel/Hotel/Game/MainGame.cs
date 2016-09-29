@@ -157,6 +157,11 @@ namespace Hotel
                     }
                 }
             }
+            else
+            {
+                if(Input.Instance.OnLeftMouseButtonRelease())
+                    _DI.HideInformation();
+            }
         }
 
         /// <summary>

@@ -108,6 +108,7 @@ namespace Hotel
                         room.Sprite.Color = Color.DarkGray;
                     }
 
+                    person.CurrentRoom.Sprite.Color = Color.White;
                     person.TargetRoom.Sprite.Color = Color.Red;
                 }
 
