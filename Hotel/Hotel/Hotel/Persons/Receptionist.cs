@@ -16,7 +16,8 @@ namespace Hotel.Persons
         /// <param name="content">The content manager used to load in images.</param>
         public Receptionist(ContentManager content, Room room) : base(content, room)
         {
-
+            Name = "Receptionist";
+            Sprite.LoadSprite("Receptionist");
         }
     }
 }
