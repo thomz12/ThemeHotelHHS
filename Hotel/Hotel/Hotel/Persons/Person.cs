@@ -72,16 +72,20 @@ namespace Hotel.Persons
         public override void Update(float deltaTime)
         {
             // y-position (jumping)
-            if(CurrentTask != PersonTask.MovingUp && CurrentTask != PersonTask.MovingDown)
+            if(CurrentTask != PersonTask.MovingUp && CurrentTask != PersonTask.MovingDown && CurrentTask != PersonTask.Waiting)
                 Position = new Vector2(Position.X, ((float)Math.Sin(Position.X) * JumpHeight + JumpHeight / 2) + CurrentRoom.Position.Y - (CurrentRoom.RoomSize.Y * Room.ROOMHEIGHT) + Sprite.Texture.Height);
 
+            // If there are more rooms to go through
             if(Path.Count > 0)
             {
+                // If the currently vistited room 
                 if (CurrentRoom == Path[0])
                     Path.RemoveAt(0);
 
+                // If there are still some more rooms to go through, and the next room in line is a neighbor.
                 if (Path.Count > 0 && CurrentRoom.Neighbors.Values.Contains(Path[0]))
                 {
+                    // Get the direction of the neighbor.
                     Direction dir = Direction.None;
                     foreach(KeyValuePair<Direction, Room> kvp in CurrentRoom.Neighbors)
                     {
@@ -89,6 +93,7 @@ namespace Hotel.Persons
                             dir = kvp.Key;
                     }
 
+                    // Choose the action to take based on the direction.
                     switch (dir)
                     {
                         case Direction.None:
@@ -110,6 +115,7 @@ namespace Hotel.Persons
                     }
                 }
             }
+            // If there is nothing left to do, move towards the center.
             else
             {
                 CurrentTask = PersonTask.MovingCenter;
