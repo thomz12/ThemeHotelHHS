@@ -14,7 +14,7 @@ namespace Hotel
         public bool IsShowingInfo{ get; private set;}
         public float TitleTextSize { get; set; }
         public float InfoTextSize { get; set; }
-        public Texture2D texture { get; set; }
+        public Texture2D RenderTexture { get; set; }
         public Point WindowSize { get; set; }
         public Point WindowPosition { get; set; }
         public Color TextColor { get; set; }
@@ -127,7 +127,7 @@ namespace Hotel
                 // Use the above vectors to change the position of the object.
                 batch.DrawString(_spriteFont, _objectName, namePos, TextColor, 0f, nameOrigin, TitleTextSize, SpriteEffects.None, 1);
 
-                batch.Draw(texture, new Rectangle(WindowPosition.X + 60, WindowPosition.Y + 80, texture.Width, texture.Height), new Rectangle(0, 0, texture.Width, texture.Height), Color.White, 0, Vector2.Zero, SpriteEffects.None, 1.0f);
+                batch.Draw(RenderTexture, new Rectangle(WindowPosition.X + 60, WindowPosition.Y + 80, RenderTexture.Width, RenderTexture.Height), new Rectangle(0, 0, RenderTexture.Width, RenderTexture.Height), Color.White, 0, Vector2.Zero, SpriteEffects.None, 1.0f);
 
                 // Do the same as the above for the information, but then without centering the text.
                 Vector2 infoPos = new Vector2(WindowPosition.X + _infoOffset.X, WindowPosition.Y + _infoOffset.Y);

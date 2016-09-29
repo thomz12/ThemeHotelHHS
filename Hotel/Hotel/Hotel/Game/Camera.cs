@@ -62,9 +62,9 @@ namespace Hotel
                 if (Zoom > MAXZOOM)
                     Zoom = MAXZOOM;
 
-                // Transpose the transform matrix.
             }
 
+            // Transpose the transform matrix.
             TransformMatrix = Matrix.CreateTranslation(new Vector3(CamPosition.X, CamPosition.Y, 0)) * Matrix.CreateRotationZ(Rotation) * Matrix.CreateScale(new Vector3(Zoom, Zoom, 1)) * Matrix.CreateTranslation(new Vector3(width * 0.5f, height * 0.5f, 0));
         }
     }
