@@ -38,10 +38,10 @@ namespace Hotel
                 PlaceRoom(buildedRooms[i]);
             }
             Random r = new Random();
-            for (int i = 0; i < 1; i++)
+            for (int i = 0; i < 100; i++)
             {
-                Persons.Add(new Guest(content, outside));
-                Persons.Last().TargetRoom = Rooms[r.Next(1, Rooms.Count)];
+                Persons.Add(new Guest(content, Rooms[r.Next(0, Rooms.Count)]));
+                Persons.Last().TargetRoom = Rooms[r.Next(0, Rooms.Count)];
             }
         }
 
