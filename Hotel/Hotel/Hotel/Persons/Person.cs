@@ -135,7 +135,7 @@ namespace Hotel.Persons
 
                     if (Position.Y < CurrentRoom.Position.Y - Room.ROOMHEIGHT)
                     {
-                        MoveToRoom(CurrentRoom.Neighbors[Direction.North]);
+                        MoveToRoom(CurrentRoom.Neighbors[Direction.South]);
                         CurrentTask = PersonTask.MovingCenter;
                     }
 
