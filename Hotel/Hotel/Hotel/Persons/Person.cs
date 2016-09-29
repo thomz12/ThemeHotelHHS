@@ -36,11 +36,14 @@ namespace Hotel.Persons
             {
                 _targetRoom = value;
                 Path = FindPath(_targetRoom);
+                GetCurrentTask();
             }
         }
 
         public List<Room> Path { get; set; }
         public float JumpHeight { get; set; }
+
+        private bool _calledElevator;
 
         /// <summary>
         /// Constructor.
@@ -54,6 +57,7 @@ namespace Hotel.Persons
             Position = new Vector2(room.Position.X, room.Position.Y);
             JumpHeight = 4;
             CurrentRoom = room;
+            _calledElevator = false;
 
             Path = new List<Room>();
 
@@ -72,11 +76,92 @@ namespace Hotel.Persons
         public override void Update(float deltaTime)
         {
             // y-position (jumping)
-            if(CurrentTask != PersonTask.MovingUp && CurrentTask != PersonTask.MovingDown && CurrentTask != PersonTask.Waiting)
+            if (CurrentTask != PersonTask.MovingUp && CurrentTask != PersonTask.MovingDown && CurrentTask != PersonTask.Waiting)
                 Position = new Vector2(Position.X, ((float)Math.Sin(Position.X) * JumpHeight + JumpHeight / 2) + CurrentRoom.Position.Y - (CurrentRoom.RoomSize.Y * Room.ROOMHEIGHT) + Sprite.Texture.Height);
 
+            Move(deltaTime);
+
+            // Update sprite position
+            Sprite.SetPosition(new Point((int)Position.X, (int)Position.Y));
+
+            // Get the new bounding box (the exact position on the sprite batch)
+            BoundingBox = Sprite.DrawDestination;
+        }
+
+        private void Move(float deltaTime)
+        {
+            // Do moving in the room.
+            switch (CurrentTask)
+            {
+                //When the person is waiting.
+                case PersonTask.Waiting:
+                    break;
+                // When person is moving left.
+                case PersonTask.MovingLeft:
+                    Position = new Vector2(Position.X - WalkingSpeed * deltaTime, Position.Y);
+
+                    if (Position.X < CurrentRoom.Position.X - Sprite.Texture.Width)
+                    {
+                        MoveToRoom(CurrentRoom.Neighbors[Direction.West]);
+                        CurrentTask = PersonTask.MovingCenter;
+                    }
+
+                    break;
+                // When person is moving right.
+                case PersonTask.MovingRight:
+                    Position = new Vector2(Position.X + WalkingSpeed * deltaTime, Position.Y);
+
+                    if (Position.X > CurrentRoom.Position.X + CurrentRoom.RoomSize.Y * Room.ROOMWIDTH)
+                    {
+                        MoveToRoom(CurrentRoom.Neighbors[Direction.East]);
+                        CurrentTask = PersonTask.MovingCenter;
+                    }
+
+                    break;
+                // When person is moving up.
+                case PersonTask.MovingUp:
+                    Position = new Vector2(Position.X, Position.Y + WalkingSpeed * deltaTime);
+
+                    if (Position.Y > CurrentRoom.Position.Y + Room.ROOMHEIGHT)
+                    {
+                        MoveToRoom(CurrentRoom.Neighbors[Direction.North]);
+                        CurrentTask = PersonTask.MovingCenter;
+                    }
+
+                    break;
+                // When person is moving down.
+                case PersonTask.MovingDown:
+                    Position = new Vector2(Position.X, Position.Y - WalkingSpeed * deltaTime);
+
+                    if (Position.Y < CurrentRoom.Position.Y - Room.ROOMHEIGHT)
+                    {
+                        MoveToRoom(CurrentRoom.Neighbors[Direction.North]);
+                        CurrentTask = PersonTask.MovingCenter;
+                    }
+
+                    break;
+                // When person is moving to the center of the room.
+                case PersonTask.MovingCenter:
+
+                    if (Position.X < CurrentRoom.Position.X + (CurrentRoom.RoomSize.X * Room.ROOMWIDTH / 2))
+                        Position = new Vector2(Position.X + WalkingSpeed * deltaTime, Position.Y);
+                    else
+                        Position = new Vector2(Position.X - WalkingSpeed * deltaTime, Position.Y);
+
+                    if (Math.Abs(Position.X - CurrentRoom.Position.X - (CurrentRoom.RoomSize.X * Room.ROOMWIDTH / 2)) < WalkingSpeed * deltaTime)
+                    {
+                        GetCurrentTask();
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void GetCurrentTask()
+        {
             // If there are more rooms to go through
-            if(Path.Count > 0)
+            if (Path.Count > 0)
             {
                 // If the currently vistited room 
                 if (CurrentRoom == Path[0])
@@ -87,7 +172,7 @@ namespace Hotel.Persons
                 {
                     // Get the direction of the neighbor.
                     Direction dir = Direction.None;
-                    foreach(KeyValuePair<Direction, Room> kvp in CurrentRoom.Neighbors)
+                    foreach (KeyValuePair<Direction, Room> kvp in CurrentRoom.Neighbors)
                     {
                         if (kvp.Value == Path[0])
                             dir = kvp.Key;
@@ -120,63 +205,6 @@ namespace Hotel.Persons
             {
                 CurrentTask = PersonTask.MovingCenter;
             }
-
-            // Do moving in the room.
-            switch (CurrentTask)
-            {
-                //When the person is waiting.
-                case PersonTask.Waiting:
-                    break;
-                // When person is moving left.
-                case PersonTask.MovingLeft:
-                    Position = new Vector2(Position.X - WalkingSpeed * deltaTime, Position.Y);
-
-                    if (Position.X < CurrentRoom.Position.X - Sprite.Texture.Width)
-                        MoveToRoom(CurrentRoom.Neighbors[Direction.West]);
-
-                    break;
-                // When person is moving right.
-                case PersonTask.MovingRight:
-                    Position = new Vector2(Position.X + WalkingSpeed * deltaTime, Position.Y);
-
-                    if (Position.X > CurrentRoom.Position.X + CurrentRoom.RoomSize.Y * Room.ROOMWIDTH)
-                        MoveToRoom(CurrentRoom.Neighbors[Direction.East]);
-
-                    break;
-                // When person is moving up.
-                case PersonTask.MovingUp:
-                    Position = new Vector2(Position.X, Position.Y + WalkingSpeed * deltaTime);
-
-                    if (Position.Y > CurrentRoom.Position.Y + Room.ROOMHEIGHT)
-                        MoveToRoom(CurrentRoom.Neighbors[Direction.North]);
-
-                    break;
-                // When person is moving down.
-                case PersonTask.MovingDown:
-                    Position = new Vector2(Position.X, Position.Y - WalkingSpeed * deltaTime);
-                    break;
-                // When person is moving to the center of the room.
-                case PersonTask.MovingCenter:
-
-                    if(Position.X < CurrentRoom.Position.X + (CurrentRoom.RoomSize.X * Room.ROOMWIDTH / 2))
-                        Position = new Vector2(Position.X + WalkingSpeed * deltaTime, Position.Y);
-                    else
-                        Position = new Vector2(Position.X - WalkingSpeed * deltaTime, Position.Y);
-
-                    if(Math.Abs(Position.X - CurrentRoom.Position.X - (CurrentRoom.RoomSize.X * Room.ROOMWIDTH / 2)) < WalkingSpeed * deltaTime)
-                    {
-                        CurrentTask = PersonTask.Waiting;
-                    }
-                    break;
-                default:
-                    break;
-            }
-
-            // Update sprite position
-            Sprite.SetPosition(new Point((int)Position.X, (int)Position.Y));
-
-            // Get the new bounding box (the exact position on the sprite batch)
-            BoundingBox = Sprite.DrawDestination;
         }
 
         public override void Draw(SpriteBatch batch, GameTime gameTime)
