@@ -26,11 +26,13 @@ namespace Hotel
         {
             Rooms = new List<Room>();
             Persons = new List<Person>();
+
+            // Get the filepath of the layout file.
             HotelLayoutFilePath = @"Extra\Hotel2.layout";
 
             _contentManager = content;
 
-             HotelBuilder builder = new HotelBuilder(content);
+            HotelBuilder builder = new HotelBuilder(content);
             List<Room> buildedRooms = builder.Hotel(HotelLayoutFilePath);
 
             Room outside = new Outside(content, new Point(-1, 0));

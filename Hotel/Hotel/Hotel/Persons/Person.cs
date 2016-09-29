@@ -288,7 +288,7 @@ namespace Hotel.Persons
 
         public override string ToString()
         {
-            return $"{Name};In Room: {CurrentRoom.Name}{Environment.NewLine}Target: {TargetRoom.Name}{Environment.NewLine}";
+            return $"{Name};In Room: {CurrentRoom.Name}";
         }
     }
 }

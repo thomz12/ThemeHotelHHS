@@ -87,6 +87,7 @@
     <Compile Include="Game\EventListener.cs" />
     <Compile Include="Game\HotelObject.cs" />
     <Compile Include="Game\Input.cs" />
+    <Compile Include="Game\NameGenerator.cs" />
     <Compile Include="Hotel\HotelBuilder.cs" />
     <Compile Include="Hotel\Hotel.cs" />
     <Compile Include="Persons\Cleaner.cs" />
@@ -110,9 +111,18 @@
     <Compile Include="Rooms\Staircase.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Extra\FemaleNames.txt" />
-    <Content Include="Extra\LastNames.txt" />
-    <Content Include="Extra\MaleNames.txt" />
+    <Content Include="Extra\FemaleNames.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Extra\Hotel2.layout">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Extra\LastNames.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Extra\MaleNames.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="GameIcon.ico" />
     <Content Include="GameThumbnail.png">
       <XnaPlatformSpecific>true</XnaPlatformSpecific>
@@ -143,14 +153,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Hotel2.layout">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Extra\Hotel2.layout" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
