@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using Hotel.Persons;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,9 @@ namespace Hotel
     public class GuestRoom : Room
     {
         public int Classification { get; private set; }
+
+        public bool Dirty { get; set; }
+        public Guest Guest { get; set; } 
 
         public GuestRoom(ContentManager content, Point position, Point size, int classification) : base(content, position, size)
         {

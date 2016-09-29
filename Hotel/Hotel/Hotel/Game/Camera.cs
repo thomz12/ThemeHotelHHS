@@ -18,6 +18,7 @@ namespace Hotel
         public float Rotation { get; set; }
         public Vector2 CamPosition { get; set; }
         public float Zoom { get; set; }
+        public bool Controlable { get; set; }
 
         /// <summary>
         /// Constructor
@@ -25,6 +26,7 @@ namespace Hotel
         public Camera()
         {
             Zoom = 0.6f;
+            Controlable = false;
         }
 
 
@@ -43,23 +45,27 @@ namespace Hotel
         /// </summary>
         /// <param name="device">The graphics device.</param>
         /// <param name="deltaTime">The time between frames.</param>
-        public void Update(GraphicsDevice device, float deltaTime)
+        public void Update(int width, int height, float deltaTime)
         {
-            // Move the camera position if we have the mouse button pressed.
-            if (Input.Instance.IsRightMouseButtonPressed())
-                CamPosition = new Vector2(CamPosition.X - (Input.Instance.GetMouseDelta().X / Zoom), CamPosition.Y - (Input.Instance.GetMouseDelta().Y / Zoom));
+            if (Controlable)
+            {
+                // Move the camera position if we have the mouse button pressed.
+                if (Input.Instance.IsRightMouseButtonPressed())
+                    CamPosition = new Vector2(CamPosition.X - (Input.Instance.GetMouseDelta().X / Zoom), CamPosition.Y - (Input.Instance.GetMouseDelta().Y / Zoom));
 
-            // Zoom in or out.
-            Zoom += (float)(Input.Instance.GetScrollDelta() / 10000.0f);
+                // Zoom in or out.
+                Zoom += (float)(Input.Instance.GetScrollDelta() / 10000.0f);
 
-            if (Zoom < MINZOOM)
-                Zoom = MINZOOM;
+                if (Zoom < MINZOOM)
+                    Zoom = MINZOOM;
 
-            if (Zoom > MAXZOOM)
-                Zoom = MAXZOOM;
+                if (Zoom > MAXZOOM)
+                    Zoom = MAXZOOM;
 
-            // Transpose the transform matrix.
-            TransformMatrix = Matrix.CreateTranslation(new Vector3(CamPosition.X, CamPosition.Y, 0)) * Matrix.CreateRotationZ(Rotation) * Matrix.CreateScale(new Vector3(Zoom, Zoom, 1)) * Matrix.CreateTranslation(new Vector3(device.Viewport.Width * 0.5f, device.Viewport.Height * 0.5f, 0));
+                // Transpose the transform matrix.
+            }
+
+            TransformMatrix = Matrix.CreateTranslation(new Vector3(CamPosition.X, CamPosition.Y, 0)) * Matrix.CreateRotationZ(Rotation) * Matrix.CreateScale(new Vector3(Zoom, Zoom, 1)) * Matrix.CreateTranslation(new Vector3(width * 0.5f, height * 0.5f, 0));
         }
     }
 }
