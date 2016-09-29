@@ -32,9 +32,15 @@ namespace Hotel.Persons
             generator = new NameGenerator();
 
             if (_random.Next(0, 2) == 0)
+            {
                 Gender = Gender.Male;
+                Sprite.LoadSprite("Guest");
+            }
             else
+            {
                 Gender = Gender.Female;
+                Sprite.LoadSprite("FemaleGuest");
+            }
 
             // Give this person a name.
             Name = generator.GenerateName(Gender);
