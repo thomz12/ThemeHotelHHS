@@ -16,7 +16,6 @@ namespace Hotel.Persons
         Genderless
     }
 
-
     public class Guest : Person
     {
         public Gender Gender { get; private set; }

@@ -101,7 +101,7 @@ namespace Hotel
             if (IsShowingInfo)
             {
                 // Make the target room red and the path room blue
-                if (_objectToDisplay is Person)
+                if (_objectToDisplay is Guest)
                 {
                     Person person = (Person)_objectToDisplay;
                     foreach (Room room in person.Path)
