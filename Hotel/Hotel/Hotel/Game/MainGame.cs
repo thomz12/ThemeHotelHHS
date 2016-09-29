@@ -151,6 +151,7 @@ namespace Hotel
                         else
                         {
                             _wasSelected = _mouseIsOver;
+                            _DI.HideInformation();
                             _DI.ShowInformation(_mouseIsOver);
                         }
                     }

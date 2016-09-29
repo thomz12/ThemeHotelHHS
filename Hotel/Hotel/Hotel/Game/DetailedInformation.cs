@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
+using Hotel.Persons;
 
 namespace Hotel
 {
@@ -64,6 +65,7 @@ namespace Hotel
         public void ShowInformation(HotelObject objectToDisplay)
         {
             _objectToDisplay = objectToDisplay;
+
             IsShowingInfo = true;
         }
 
@@ -72,6 +74,18 @@ namespace Hotel
         /// </summary>
         public void HideInformation()
         {
+            // Unred the target room
+            if(_objectToDisplay is Person)
+            {
+                Person person = (Person)_objectToDisplay;
+                foreach (Room room in person.Path)
+                {
+                    room.Sprite.Color = Color.White;
+                }
+
+                person.TargetRoom.Sprite.Color = Color.White;
+            }
+
             IsShowingInfo = false;
         }
 
@@ -85,6 +99,18 @@ namespace Hotel
             // Check if the window may actually be drawn.
             if (IsShowingInfo)
             {
+                // Make the target room red and the path room blue
+                if (_objectToDisplay is Person)
+                {
+                    Person person = (Person)_objectToDisplay;
+                    foreach (Room room in person.Path)
+                    {
+                        room.Sprite.Color = Color.DarkGray;
+                    }
+
+                    person.TargetRoom.Sprite.Color = Color.Red;
+                }
+
                 // Split the spring into a Title and Information part, which are drawn seperately.
                 string[] appropriateName = _objectToDisplay.ToString().Split(';');
                 _objectName = appropriateName[0];
