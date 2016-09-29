@@ -76,9 +76,10 @@ namespace Hotel.Persons
         public override void Update(float deltaTime)
         {
             // y-position (jumping)
+            /*
             if (CurrentTask != PersonTask.MovingUp && CurrentTask != PersonTask.MovingDown && CurrentTask != PersonTask.Waiting)
                 Position = new Vector2(Position.X, ((float)Math.Sin(Position.X) * JumpHeight + JumpHeight / 2) + CurrentRoom.Position.Y - (CurrentRoom.RoomSize.Y * Room.ROOMHEIGHT) + Sprite.Texture.Height);
-
+            */
             Move(deltaTime);
 
             // Update sprite position
@@ -209,6 +210,9 @@ namespace Hotel.Persons
 
         public override void Draw(SpriteBatch batch, GameTime gameTime)
         {
+            // Make the person jump while moving.
+            Sprite.SetPosition( new Point((int)Position.X, (int)(Position.Y + (JumpHeight / 2)) + (int)(Math.Sin(Position.X) * JumpHeight)));
+
             base.Draw(batch, gameTime);
         }
 
