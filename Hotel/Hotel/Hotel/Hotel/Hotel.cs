@@ -37,9 +37,12 @@ namespace Hotel
             {
                 PlaceRoom(buildedRooms[i]);
             }
-
-            Persons.Add(new Guest(content, outside));
-            Persons[0].TargetRoom = Rooms[3];
+            Random r = new Random();
+            for (int i = 0; i < 1; i++)
+            {
+                Persons.Add(new Guest(content, outside));
+                Persons.Last().TargetRoom = Rooms[r.Next(1, Rooms.Count)];
+            }
         }
 
         /// <summary>
