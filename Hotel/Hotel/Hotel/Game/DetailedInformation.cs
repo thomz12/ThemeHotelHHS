@@ -10,28 +10,38 @@ namespace Hotel
 {
     public class DetailedInformation
     {
-        public float HeaderSize { get; set; }
-        public float TextSize { get; set; }
+        public bool IsShowingInfo{ get; private set;}
+        public float TitleTextSize { get; set; }
+        public float InfoTextSize { get; set; }
         public Point WindowSize { get; set; }
         public Point WindowPosition { get; set; }
-        public bool IsShowingInfo{ get; private set;}
+        public Color TextColor { get; set; }
 
         private HotelObject _objectToDisplay;
         private SpriteFont _spriteFont;
         private Sprite _windowSprite;
         private string _objectName;
         private string _objectInformation;
+        private Point _titleOffset;
+        private Point _infoOffset;
 
         public DetailedInformation(ContentManager content)
         {
             // Set some default values for properties
-            HeaderSize = 0.7f;
-            TextSize = 0.5f;
+            TitleTextSize = 0.7f;
+            InfoTextSize = 0.5f;
             WindowSize = new Point(300, 500);
             WindowPosition = new Point(0, 0);
 
+            // Set the offset for the text
+            _titleOffset = new Point(0, 50);
+            _infoOffset = new Point(45, 310);
+
             // Load the font
             _spriteFont = content.Load<SpriteFont>("InformationWindowFont");
+
+            // Set the text color
+            TextColor = Color.DarkSlateBlue;
 
             // Load the asset for the window's background
             _windowSprite = new Sprite(content);
@@ -39,20 +49,27 @@ namespace Hotel
             _windowSprite.DrawOrder = 0.0f;
 
             // Set some default values for privates
-            _objectInformation = "<Null>";
+            _objectName = "<Null>";
+            _objectInformation = "Something went wrong!";
 
             // Set the window Size and Position
             _windowSprite.SetSize(WindowSize);
             _windowSprite.SetPosition(new Point(WindowPosition.X, WindowPosition.Y * -1));
         }
 
+        /// <summary>
+        /// Show the information window with text from a specific object.
+        /// </summary>
+        /// <param name="objectToDisplay">The object to display information about.</param>
         public void ShowInformation(HotelObject objectToDisplay)
         {
             _objectToDisplay = objectToDisplay;
-
             IsShowingInfo = true;
         }
 
+        /// <summary>
+        /// Hide the information window.
+        /// </summary>
         public void HideInformation()
         {
             IsShowingInfo = false;
@@ -65,19 +82,26 @@ namespace Hotel
 
         public void Draw(SpriteBatch batch, GameTime gameTime)
         {
+            // Check if the window may actually be drawn.
             if (IsShowingInfo)
             {
-                _objectName = _objectToDisplay.ToString().Split(';')[0];
-                _objectInformation = _objectToDisplay.ToString().Split(';')[1];
-
+                // Split the spring into a Title and Information part, which are drawn seperately.
+                string[] appropriateName = _objectToDisplay.ToString().Split(';');
+                _objectName = appropriateName[0];
+                _objectInformation = appropriateName[1];
+                
+                // Draw the background for the window
                 _windowSprite.Draw(batch, gameTime);
 
-                Vector2 namePos = new Vector2(WindowPosition.X + WindowSize.X / 2, WindowPosition.Y + 50);
+                // Unleash some calculations to determine the center of the window and string, to center the title text.
+                Vector2 namePos = new Vector2(WindowPosition.X + WindowSize.X / 2 + _titleOffset.X, WindowPosition.Y + _titleOffset.Y);
                 Vector2 nameOrigin = _spriteFont.MeasureString(_objectName) / 2;
-                batch.DrawString(_spriteFont, _objectName, namePos, Color.DarkSlateBlue, 0f, nameOrigin, HeaderSize, SpriteEffects.None, 1);
+                // Use the above vectors to change the position of the object.
+                batch.DrawString(_spriteFont, _objectName, namePos, TextColor, 0f, nameOrigin, TitleTextSize, SpriteEffects.None, 1);
                 
-                Vector2 infoPos = new Vector2(WindowPosition.X + 60, WindowPosition.Y + 310);
-                batch.DrawString(_spriteFont, _objectInformation, infoPos, Color.DarkSlateBlue, 0f, new Vector2(0,0), TextSize, SpriteEffects.None, 1);
+                // Do the same as the above for the information, but then without centering the text.
+                Vector2 infoPos = new Vector2(WindowPosition.X + _infoOffset.X, WindowPosition.Y + _infoOffset.Y);
+                batch.DrawString(_spriteFont, _objectInformation, infoPos, TextColor, 0f, new Vector2(0,0), InfoTextSize, SpriteEffects.None, 1);
             }
         }
     }
