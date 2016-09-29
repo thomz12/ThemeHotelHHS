@@ -53,14 +53,14 @@ namespace Hotel.Persons
         {
             Sprite.LoadSprite("Guest");
             Sprite.DrawOrder = 1;
-            Sprite.SetSize(new Point(25, 90));
-            Position = new Vector2(room.Position.X, room.Position.Y);
+            Sprite.SetSize(new Point(Sprite.Texture.Width, Sprite.Texture.Height));
+            Position = new Vector2(room.Position.X, room.Position.Y - (Room.ROOMHEIGHT - Sprite.Texture.Height));
             JumpHeight = 4;
             CurrentRoom = room;
             _calledElevator = false;
 
             Path = new List<Room>();
-
+            room.People++;
             WalkingSpeed = 50.0f;
 
             CurrentTask = PersonTask.Waiting;
@@ -76,13 +76,11 @@ namespace Hotel.Persons
         public override void Update(float deltaTime)
         {
             // y-position (jumping)
+            /*
             if (CurrentTask != PersonTask.MovingUp && CurrentTask != PersonTask.MovingDown && CurrentTask != PersonTask.Waiting)
                 Position = new Vector2(Position.X, ((float)Math.Sin(Position.X) * JumpHeight + JumpHeight / 2) + CurrentRoom.Position.Y - (CurrentRoom.RoomSize.Y * Room.ROOMHEIGHT) + Sprite.Texture.Height);
-
+            */
             Move(deltaTime);
-
-            // Update sprite position
-            Sprite.SetPosition(new Point((int)Position.X, (int)Position.Y));
 
             // Get the new bounding box (the exact position on the sprite batch)
             BoundingBox = Sprite.DrawDestination;
@@ -122,8 +120,9 @@ namespace Hotel.Persons
                 case PersonTask.MovingUp:
                     Position = new Vector2(Position.X, Position.Y + WalkingSpeed * deltaTime);
 
-                    if (Position.Y > CurrentRoom.Position.Y + Room.ROOMHEIGHT)
+                    if (Position.Y > CurrentRoom.Position.Y + Room.ROOMHEIGHT - Sprite.Texture.Height)
                     {
+                        Position = new Vector2(Position.X, CurrentRoom.Position.Y + (Room.ROOMHEIGHT - Sprite.Texture.Height));
                         MoveToRoom(CurrentRoom.Neighbors[Direction.North]);
                         CurrentTask = PersonTask.MovingCenter;
                     }
@@ -209,6 +208,9 @@ namespace Hotel.Persons
 
         public override void Draw(SpriteBatch batch, GameTime gameTime)
         {
+            // Make the person jump while moving.
+            Sprite.SetPosition( new Point((int)Position.X, (int)(Position.Y + (JumpHeight / 2)) + (int)(Math.Sin(Position.X) * JumpHeight)));
+
             base.Draw(batch, gameTime);
         }
 

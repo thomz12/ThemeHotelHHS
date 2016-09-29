@@ -23,9 +23,12 @@ namespace Hotel
 
         private Hotel _hotel;
         private Camera _camera;
+        private Camera _closeUpCamera;
         private HotelObject _mouseIsOver;
         private HotelObject _wasSelected;
         private DetailedInformation _DI;
+
+        private RenderTarget2D _renderTexture;
 
         public MainGame()
         {
@@ -68,6 +71,8 @@ namespace Hotel
             // TODO: Add your initialization logic here
 
             base.Initialize();
+
+            _renderTexture = new RenderTarget2D(GraphicsDevice, 200, 200, false, SurfaceFormat.Color, DepthFormat.None);
         }
 
         /// <summary>
@@ -83,6 +88,8 @@ namespace Hotel
 
             _hotel = new Hotel(Content);
             _camera = new Camera();
+            _camera.Controlable = true;
+            _closeUpCamera = new Camera();
         }
 
         /// <summary>
@@ -113,7 +120,8 @@ namespace Hotel
             MouseOver();
 
             _hotel.Update(deltaTime);
-            _camera.Update(GraphicsDevice, deltaTime);
+            _camera.Update(GraphicsDevice.PresentationParameters.BackBufferWidth, GraphicsDevice.PresentationParameters.BackBufferHeight, deltaTime);
+            _closeUpCamera.Update(0, 0, deltaTime);
             Input.Instance.Update(gameTime);
 
             base.Update(gameTime);
@@ -128,11 +136,15 @@ namespace Hotel
             // Get the object the mouse is hovering.
             _mouseIsOver = _hotel.GetObject(_camera.ScreenToWorld(Input.Instance.GetMousePos()));
 
+            if(_wasSelected != null)
+                _closeUpCamera.CamPosition = new Vector2(-_wasSelected.Position.X + _renderTexture.Width / 2, _wasSelected.Position.Y + _renderTexture.Height / 2);
+
             // If a mouseover object is found
             if (_mouseIsOver != null)
             {
                 // Highlight the sprite.
                 _mouseIsOver.Sprite.Color = Color.LightGreen;
+
 
                 // When the left mouse is clicked
                 if (Input.Instance.OnLeftMouseButtonRelease())
@@ -165,16 +177,45 @@ namespace Hotel
         }
 
         /// <summary>
+        /// Render hotel to a texture (for the closeup)
+        /// </summary>
+        /// <param name="gameTime">The gametime</param>
+        protected void DrawToTarget(GameTime gameTime)
+        {
+            // Set the render target
+            GraphicsDevice.SetRenderTarget(_renderTexture);
+
+            // Clear
+            GraphicsDevice.Clear(Color.CornflowerBlue);
+
+            // GameObject Spritebatch
+            _spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, _closeUpCamera.TransformMatrix);
+
+            // Draw the hotel to the texture
+            _hotel.Draw(_spriteBatch, gameTime);
+
+            // End the drawing on the spritebatch.
+            _spriteBatch.End();
+
+            GraphicsDevice.SetRenderTarget(null);
+        }
+
+        /// <summary>
         /// This is called when the game should draw itself.
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
+            // Draw the hotel to a render texture.
+            DrawToTarget(gameTime);
+
+            // Clear
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
-            // GameObject Spritebatch
+            // Hotel Spritebatch
             _spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, _camera.TransformMatrix);
 
+            // Draw the hotel.
             _hotel.Draw(_spriteBatch, gameTime);
 
             // End the drawing on the spritebatch.
@@ -183,6 +224,7 @@ namespace Hotel
             // HUD Spritebatch
             _spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, SamplerState.PointClamp, null, null);
 
+            _DI.texture = _renderTexture;
             _DI.Draw(_spriteBatch, gameTime);
 
             // End the drawing on the spritebatch.

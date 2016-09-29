@@ -41,12 +41,17 @@ namespace Hotel
             {
                 PlaceRoom(buildedRooms[i]);
             }
-            Random r = new Random();
-            for (int i = 0; i < 100; i++)
-            {
-                Persons.Add(new Guest(content, Rooms[r.Next(0, Rooms.Count)]));
-                Persons.Last().TargetRoom = Rooms[r.Next(0, Rooms.Count)];
-            }
+
+            Persons.Add(new Receptionist(_contentManager, Rooms[45]));
+
+            AddGuest();
+        }
+
+        public void AddGuest()
+        {
+            Guest guest = new Guest(_contentManager, Rooms[0]);
+            guest.TargetRoom = Rooms[3];
+            Persons.Add(guest);
         }
 
         /// <summary>
