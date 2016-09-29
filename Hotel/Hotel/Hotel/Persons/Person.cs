@@ -60,7 +60,7 @@ namespace Hotel.Persons
             _calledElevator = false;
 
             Path = new List<Room>();
-
+            room.People++;
             WalkingSpeed = 50.0f;
 
             CurrentTask = PersonTask.Waiting;
