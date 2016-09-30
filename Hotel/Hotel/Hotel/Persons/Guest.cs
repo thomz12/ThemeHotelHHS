@@ -21,7 +21,7 @@ namespace Hotel.Persons
         public Gender Gender { get; private set; }
         
         private static Random _random = new Random();
-        private NameGenerator generator;
+        private NameGenerator _generator;
 
         /// <summary>
         /// Constructor.
@@ -29,7 +29,7 @@ namespace Hotel.Persons
         /// <param name="content">The content manager used to load in images.</param>
         public Guest(ContentManager content, Room room) : base(content, room)
         {
-            generator = new NameGenerator();
+            _generator = new NameGenerator();
 
             if (_random.Next(0, 2) == 0)
             {
@@ -43,7 +43,7 @@ namespace Hotel.Persons
             }
 
             // Give this person a name.
-            Name = generator.GenerateName(Gender);
+            Name = _generator.GenerateName(Gender);
         }
 
         public override string ToString()
