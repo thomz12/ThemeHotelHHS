@@ -11,9 +11,9 @@
       <class Id="e9a6e7c1-18f4-4c29-9e26-553b21385ff9" name="MainGame" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="3b7c79ac-0da6-4f6b-95c3-79215163cbf8" />
         <suppliersInternal>
-          <dependency Id="eb57da06-48b3-4db6-953b-17c6607b2f41">
+          <dependency Id="d9da1917-825c-41a7-afc1-30c1de0f86f3">
             <classMoniker Id="8df1e328-8843-4af4-92f2-5d2b01cfa621" LastKnownName="Input" />
-            <elementDefinition Id="99ee8b15-10ec-4b07-b5d5-0aeea67337d2" />
+            <elementDefinition Id="37c7ebfa-04d2-49e9-b0aa-9cea2311c008" />
           </dependency>
         </suppliersInternal>
         <generalsInternal>
@@ -2365,6 +2365,218 @@
     <logicalClassDesignerModelHasTypes>
       <class Id="8df1e328-8843-4af4-92f2-5d2b01cfa621" name="Input" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="57c3f5a6-c183-4fb4-8985-84fc57c302c6" />
+        <ownedAttributesInternal>
+          <property Id="3744810c-3864-43a9-9d00-36087e46821c" name="_input" visibility="Private" isLeaf="false" isStatic="true" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="f6177ca9-a806-4206-9740-327d90f7daaf" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="1b3ce5e8-930d-4abc-b36a-fb668ad42b1e" LastKnownName="Input" />
+            </type_NamedElement>
+          </property>
+          <property Id="d32e8489-fa8d-4f29-b95b-8f9943cbacfa" name="Instance" isLeaf="false" isStatic="true" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="7b59acd2-dfac-4ea1-8cfe-26c4249d4c7c" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="1b3ce5e8-930d-4abc-b36a-fb668ad42b1e" LastKnownName="Input" />
+            </type_NamedElement>
+          </property>
+          <property Id="1a99f79b-0e5f-4fff-aecf-bf968a2bd2cc" name="_priorKeyboardState" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="94e0a6e9-8023-42e0-b108-e7571e5527c7" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="ffb8008d-68a0-4478-9999-6204c478ca7c" LastKnownName="KeyboardState" />
+            </type_NamedElement>
+          </property>
+          <property Id="97028fa8-edee-4907-bfd0-1525193a09ca" name="_curKeyboardState" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="b1b06e97-e92f-40c5-92a5-b9c6254b56a3" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="ffb8008d-68a0-4478-9999-6204c478ca7c" LastKnownName="KeyboardState" />
+            </type_NamedElement>
+          </property>
+          <property Id="2745d34f-64bb-41be-bfb1-4a62b42ffabf" name="_priorMouseState" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="d9892719-d3a1-466a-a147-eb1785e53918" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="242b346f-b9f5-49c1-a5f1-25fdc3c50a07" LastKnownName="MouseState" />
+            </type_NamedElement>
+          </property>
+          <property Id="00fc9763-8060-47da-9508-24d4aaf0be01" name="_curMouseState" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="7dbc9f83-75bb-49bd-87de-77ee8bc2bfe1" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="242b346f-b9f5-49c1-a5f1-25fdc3c50a07" LastKnownName="MouseState" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation Id="603d2cc2-c3fb-4419-bea7-417d5a5b7719" name="Update" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="4f08bd66-3d1b-4e43-ae66-225c47f38477" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="f30ce097-57b1-4a0e-bae9-ad217ffb019e" name="gameTime" direction="In" isUnique="false">
+                  <elementDefinition Id="fdd4f3bf-74b2-4f34-b786-3a853f5a26da" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="bcadd61f-dcd9-4a8a-82d5-1fbc20f762bd" LastKnownName="GameTime" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="a513aa6a-0815-4dff-8df9-c4bee8271ab7" name="IsKeyPressed" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="7fa6f755-251f-4f4d-b3d4-0eda89008062" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="d51eab62-febd-44f6-8266-9d3d81b7b3d8" name="key" direction="In" isUnique="false">
+                  <elementDefinition Id="d24169b6-5ecb-4553-a7ef-3de3571f316c" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="79c28476-1a77-4594-8862-42b3c79380e6" LastKnownName="Keys" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="32807408-d9c1-4616-b6f6-62d3c7293a9f" direction="Return" isUnique="false">
+                  <elementDefinition Id="b87231a8-716c-4d44-97d6-b2072455f3c5" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="1a286c1d-3492-4b27-86a2-a7fd217983b6" LastKnownName="bool" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="ae241477-be8f-4078-922e-bd333bf16c81" name="OnKeyPress" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="3623d38b-e155-4d2c-a138-fd20c8d320f2" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="bfac5ce9-09d1-468c-a306-aea1d385de86" name="key" direction="In" isUnique="false">
+                  <elementDefinition Id="7f7da0b9-14e6-4e8c-9f25-df3cf75b0747" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="a79e4b49-bbbc-413d-9c9d-24e204170285" LastKnownName="Keyss" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="ad012e9a-54e4-4759-81bb-b0bb23d01cdb" direction="Return" isUnique="false">
+                  <elementDefinition Id="23678e67-8a9a-4abb-a6b8-4ee8dba99784" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="1a286c1d-3492-4b27-86a2-a7fd217983b6" LastKnownName="bool" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="eb951f1e-7dd3-46fc-b6c0-9b247f376d96" name="IsLeftMouseButtonPressed" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="b5fb2c87-49fc-49b8-95f4-9bfa6041dd0a" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="361042d4-e6c5-4eee-acb3-0ea43a062b39" direction="Return" isUnique="false">
+                  <elementDefinition Id="cc642722-0c0d-400f-95a6-264e76f0077d" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="1a286c1d-3492-4b27-86a2-a7fd217983b6" LastKnownName="bool" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="686322e9-773d-4d4b-bcec-21e137a11862" name="IsRightMouseButtonPressed" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="af796bb2-aa65-4f54-a450-139d5711b54a" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="1161bb1e-a51c-4d7e-b708-9136dc114084" direction="Return" isUnique="false">
+                  <elementDefinition Id="37f6c384-489d-408e-8def-4f4dc915ed2d" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="1a286c1d-3492-4b27-86a2-a7fd217983b6" LastKnownName="bool" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="df4baf47-7f31-44ae-b62f-255e7f587bcf" name="OnLeftMouseButtonPress" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="1bae9ea8-5a9c-40dd-8a09-124d19a19533" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="438721e9-a377-4892-a8dd-5283d3c1cf14" direction="Return" isUnique="false">
+                  <elementDefinition Id="fda1ee4d-a24f-48f0-9a75-e32618b8ecda" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="1a286c1d-3492-4b27-86a2-a7fd217983b6" LastKnownName="bool" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="a442ba32-b963-43d2-9e91-cce2a99be4db" name="OnRightMouseButtonPress" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="dd84372c-9114-4367-ab47-19f15f17a37c" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="60fa355d-ca8b-4ce0-bb52-cb816359867d" direction="Return" isUnique="false">
+                  <elementDefinition Id="2f903ab2-9406-4478-8ee6-36ac4d5b0dfe" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="1a286c1d-3492-4b27-86a2-a7fd217983b6" LastKnownName="bool" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="26453971-7754-4174-ac9b-278fe001ebef" name="OnLeftMouseButtonRelease" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="f698b17e-8b15-4f21-aa62-57dcb5e512d3" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="f17c47b9-3634-4760-96ee-6da658ce5baf" direction="Return" isUnique="false">
+                  <elementDefinition Id="536da3d8-c3d5-4e22-8e7f-fa2e267b9586" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="1a286c1d-3492-4b27-86a2-a7fd217983b6" LastKnownName="bool" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="a0e3d433-11f6-4d86-80e2-b0e541058a5e" name="OnRightMouseButtonRelease" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="7d1d37a2-22ff-4c80-9e77-7c262be18c58" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="ced0400b-f6a0-4232-b2f8-282aef1eadb3" direction="Return" isUnique="false">
+                  <elementDefinition Id="d5f2d4c4-2a17-450f-a641-20a6ecf669c4" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="1a286c1d-3492-4b27-86a2-a7fd217983b6" LastKnownName="bool" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="a629fdd7-d7ed-41f9-a111-0cfda91237ee" name="GetScrollDelta" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="90fadb33-82d5-4859-b86f-024d0eaa14fb" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="53eebd6b-5d17-42ef-a35b-5982c765d470" direction="Return" isUnique="false">
+                  <elementDefinition Id="1d2cdc8d-c80f-4026-b7cf-a55a26e13681" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="fdf7999c-b852-4111-ac85-a8351ec2b670" LastKnownName="int" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="310ad90e-d2ea-4a21-9a32-4ee6083af71b" name="GetMouseDelta" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="d7d87a35-18d8-4849-9e28-876a44422f6e" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="2fc43ebf-7953-4b68-bae4-797e8db222bb" direction="Return" isUnique="false">
+                  <elementDefinition Id="8d657f28-f998-4362-89d6-d35a99ed06ea" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="970176b4-919c-42af-be23-e2119523979c" LastKnownName="Point" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="f1f407e2-11ad-4df3-b96c-8c27bd4fb402" name="GetMousePos" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="daf09e79-6f18-4499-bd86-4d8c776a7ba1" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="e3900582-5d1e-4650-9936-f04f9bf9e04f" direction="Return" isUnique="false">
+                  <elementDefinition Id="d62f8b77-136e-492c-b2e4-ff9898a8103d" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="970176b4-919c-42af-be23-e2119523979c" LastKnownName="Point" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
@@ -2552,6 +2764,31 @@
     <packageHasNamedElement>
       <referencedType Id="961bbba6-42ce-4c4e-a3d7-64db0fd21d25" name="string[]" isAbstract="false" isLeaf="false" cachedFullName="string[]">
         <elementDefinition Id="cfb067db-49f1-4286-bf6c-711348cdbe93" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="1b3ce5e8-930d-4abc-b36a-fb668ad42b1e" name="Input" isAbstract="false" isLeaf="false" cachedFullName="UML::Input">
+        <elementDefinition Id="57c3f5a6-c183-4fb4-8985-84fc57c302c6" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="ffb8008d-68a0-4478-9999-6204c478ca7c" name="KeyboardState" isAbstract="false" isLeaf="false" cachedFullName="KeyboardState">
+        <elementDefinition Id="9f4c69fd-8c96-46ac-bbf2-92370f031ba4" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="242b346f-b9f5-49c1-a5f1-25fdc3c50a07" name="MouseState" isAbstract="false" isLeaf="false" cachedFullName="MouseState">
+        <elementDefinition Id="5d2b29c6-124d-4934-b32d-e4d08a5cea5d" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="79c28476-1a77-4594-8862-42b3c79380e6" name="Keys" isAbstract="false" isLeaf="false" cachedFullName="Keys">
+        <elementDefinition Id="5897944d-1b94-4880-b2c7-bbf9de128ea4" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="a79e4b49-bbbc-413d-9c9d-24e204170285" name="Keyss" isAbstract="false" isLeaf="false" cachedFullName="Keyss">
+        <elementDefinition Id="9f551e40-5cea-4304-a4a9-0cf7c89378c5" />
       </referencedType>
     </packageHasNamedElement>
   </packagedElements>
