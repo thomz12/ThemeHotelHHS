@@ -99,7 +99,6 @@
     <Compile Include="Game\MainGame.cs" />
     <Compile Include="Rooms\Cafe.cs" />
     <Compile Include="Rooms\Cinema.cs" />
-    <Compile Include="Rooms\ConentManager.cs" />
     <Compile Include="Rooms\Elevator.cs" />
     <Compile Include="Rooms\ElevatorShaft.cs" />
     <Compile Include="Rooms\Fitness.cs" />

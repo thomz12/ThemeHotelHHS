@@ -91,7 +91,7 @@ namespace Hotel.Persons
             // Do moving in the room.
             switch (CurrentTask)
             {
-                //When the person is waiting.
+                //When the person is waiting, do nothing.
                 case PersonTask.Waiting:
                     break;
                 // When person is moving left.
@@ -120,9 +120,8 @@ namespace Hotel.Persons
                 case PersonTask.MovingUp:
                     Position = new Vector2(Position.X, Position.Y + WalkingSpeed * deltaTime);
 
-                    if (Position.Y > CurrentRoom.Position.Y + Room.ROOMHEIGHT - Sprite.Texture.Height)
+                    if (Position.Y > CurrentRoom.Position.Y + Sprite.Texture.Height)
                     {
-                        Position = new Vector2(Position.X, CurrentRoom.Position.Y + (Room.ROOMHEIGHT - Sprite.Texture.Height));
                         MoveToRoom(CurrentRoom.Neighbors[Direction.North]);
                         CurrentTask = PersonTask.MovingCenter;
                     }
@@ -132,7 +131,7 @@ namespace Hotel.Persons
                 case PersonTask.MovingDown:
                     Position = new Vector2(Position.X, Position.Y - WalkingSpeed * deltaTime);
 
-                    if (Position.Y < CurrentRoom.Position.Y - Room.ROOMHEIGHT)
+                    if (Position.Y < CurrentRoom.Position.Y - Room.ROOMHEIGHT - (Room.ROOMHEIGHT - Sprite.Texture.Height))
                     {
                         MoveToRoom(CurrentRoom.Neighbors[Direction.South]);
                         CurrentTask = PersonTask.MovingCenter;
@@ -150,6 +149,9 @@ namespace Hotel.Persons
                     if (Math.Abs(Position.X - CurrentRoom.Position.X - (CurrentRoom.RoomSize.X * Room.ROOMWIDTH / 2)) < WalkingSpeed * deltaTime)
                     {
                         GetCurrentTask();
+
+                        if (CurrentTask == PersonTask.MovingCenter)
+                            CurrentTask = PersonTask.Waiting;
                     }
                     break;
                 default:
@@ -209,7 +211,7 @@ namespace Hotel.Persons
         public override void Draw(SpriteBatch batch, GameTime gameTime)
         {
             // Make the person jump while moving.
-            Sprite.SetPosition( new Point((int)Position.X, (int)(Position.Y + (JumpHeight / 2)) + (int)(Math.Sin(Position.X) * JumpHeight)));
+            Sprite.SetPosition( new Point((int)Position.X, (int)(Position.Y + (JumpHeight / 2))+ (int)(Math.Sin(Position.X) * JumpHeight)));
 
             base.Draw(batch, gameTime);
         }

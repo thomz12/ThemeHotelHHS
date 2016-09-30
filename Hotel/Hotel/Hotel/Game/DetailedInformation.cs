@@ -79,11 +79,14 @@ namespace Hotel
             if(_objectToDisplay is Person)
             {
                 Person person = (Person)_objectToDisplay;
-                foreach (Room room in person.Path)
-                {
-                    room.Sprite.Color = Color.White;
-                }
 
+                if (person.Path.Count > 0)
+                {
+                    foreach (Room room in person.Path)
+                    {
+                        room.Sprite.Color = Color.White;
+                    }
+                }
                 person.TargetRoom.Sprite.Color = Color.White;
             }
 
