@@ -14,13 +14,13 @@ namespace Hotel
     {
         // The instance of this object
         private static Input _instance;
-        
+
         // Make the instance when this instance is null
         public static Input Instance
         {
             get
             {
-                if(_instance == null)
+                if (_instance == null)
                     _instance = new Input();
                 return _instance;
             }
