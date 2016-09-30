@@ -36,7 +36,7 @@ namespace Hotel.Persons
             {
                 _targetRoom = value;
                 Path = FindPath(_targetRoom);
-                GetCurrentTask();
+                UpdateCurrentTask();
             }
         }
 
@@ -60,7 +60,7 @@ namespace Hotel.Persons
             _calledElevator = false;
 
             Path = new List<Room>();
-            room.People++;
+            room.PeopleCount++;
             WalkingSpeed = 50.0f;
 
             CurrentTask = PersonTask.Waiting;
@@ -72,9 +72,9 @@ namespace Hotel.Persons
         /// <param name="room">The room to move to.</param>
         private void MoveToRoom(Room room)
         {
-            CurrentRoom.People--;
+            CurrentRoom.PeopleCount--;
             CurrentRoom = room;
-            room.People++;
+            room.PeopleCount++;
         }
 
         /// <summary>
@@ -152,7 +152,7 @@ namespace Hotel.Persons
 
                     if (Math.Abs(Position.X - CurrentRoom.Position.X - (CurrentRoom.RoomSize.X * Room.ROOMWIDTH / 2)) < WalkingSpeed * deltaTime)
                     {
-                        GetCurrentTask();
+                        UpdateCurrentTask();
 
                         if (CurrentTask == PersonTask.MovingCenter)
                             CurrentTask = PersonTask.Waiting;
@@ -163,7 +163,10 @@ namespace Hotel.Persons
             }
         }
 
-        private void GetCurrentTask()
+        /// <summary>
+        /// Updates the current task property to match the task that the person is doing now.
+        /// </summary>
+        private void UpdateCurrentTask()
         {
             // If there are more rooms to go through
             if (Path.Count > 0)

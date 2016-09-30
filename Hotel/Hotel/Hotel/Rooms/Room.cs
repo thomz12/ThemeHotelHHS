@@ -26,7 +26,7 @@ namespace Hotel
         public Point RoomSize { get; set; }
 
         public bool Vertical { get; set; }
-        public int People { get; set; }
+        public int PeopleCount { get; set; }
         public int Weight { get; set; }
 
         public Dictionary<Direction, Room> Neighbors { get; set; }
@@ -114,7 +114,7 @@ namespace Hotel
 
         public override string ToString()
         {
-            return $"{Name};Floor: {RoomPosition.Y}{Environment.NewLine}Size: {RoomSize.X}x{RoomSize.Y}{Environment.NewLine}People: {People}";
+            return $"{Name};Floor: {RoomPosition.Y}{Environment.NewLine}Size: {RoomSize.X}x{RoomSize.Y}{Environment.NewLine}People: {PeopleCount}";
         }
     }
 }

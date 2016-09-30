@@ -7,7 +7,7 @@ using System.IO;
 
 namespace Hotel
 {
-    class NameGenerator
+    public class NameGenerator
     {
         private string _femaleNamePath;
         private string _maleNamePath;

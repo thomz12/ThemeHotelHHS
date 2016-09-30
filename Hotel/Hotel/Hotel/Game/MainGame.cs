@@ -26,8 +26,8 @@ namespace Hotel
         private Camera _closeUpCamera;
         private HotelObject _mouseIsOver;
         private HotelObject _wasSelected;
-        private DetailedInformation _DI;
         private HotelEventListener _listener;
+        private InformationWindow _DI;
 
         private RenderTarget2D _renderTexture;
 
@@ -85,7 +85,7 @@ namespace Hotel
             // Create a new SpriteBatch, which can be used to draw textures.
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            _DI = new DetailedInformation(Content);
+            _DI = new InformationWindow(Content);
 
             _hotel = new Hotel(Content);
             _camera = new Camera();
@@ -129,7 +129,7 @@ namespace Hotel
             base.Update(gameTime);
         }
 
-        public void MouseOver()
+        private void MouseOver()
         {
             // Reset the color of the object that was being hovered over
             if (_mouseIsOver != null)
@@ -181,7 +181,7 @@ namespace Hotel
         /// Render hotel to a texture (for the closeup)
         /// </summary>
         /// <param name="gameTime">The gametime</param>
-        protected void DrawToTarget(GameTime gameTime)
+        private void DrawToTarget(GameTime gameTime)
         {
             // Set the render target
             GraphicsDevice.SetRenderTarget(_renderTexture);

@@ -12,7 +12,7 @@ namespace Hotel
 {
     public class Hotel
     {
-        public string HotelLayoutFilePath { get; set; }
+        public string HotelLayoutFilePath { get; private set; }
         public List<Room> Rooms { get; set; }
         public List<Person> Persons { get; set; }
 

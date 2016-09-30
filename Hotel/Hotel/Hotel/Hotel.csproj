@@ -83,9 +83,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Game\Camera.cs" />
-    <Compile Include="Game\DetailedInformation.cs" />
+    <Compile Include="Game\InformationWindow.cs" />
     <Compile Include="Game\EventListener.cs" />
-    <Compile Include="Game\HotelObject.cs" />
+    <Compile Include="Hotel\HotelObject.cs" />
     <Compile Include="Game\Input.cs" />
     <Compile Include="Game\NameGenerator.cs" />
     <Compile Include="Hotel\HotelBuilder.cs" />
