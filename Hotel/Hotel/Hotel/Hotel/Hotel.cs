@@ -32,9 +32,11 @@ namespace Hotel
 
             _contentManager = content;
 
+            // read the hotel from a layout file.
             HotelBuilder builder = new HotelBuilder(content);
-            List<Room> buildedRooms = builder.Hotel(HotelLayoutFilePath);
+            List<Room> buildedRooms = builder.BuildHotel(HotelLayoutFilePath);
 
+            // Add the rooms, and connect them.
             Room outside = new Outside(content, new Point(-1, 0));
             Rooms.Add(outside);
             for(int i = 0; i < buildedRooms.Count; i++)
@@ -42,9 +44,19 @@ namespace Hotel
                 PlaceRoom(buildedRooms[i]);
             }
 
+            // temp
             Persons.Add(new Receptionist(_contentManager, Rooms[45]));
 
+
+            Random r = new Random();
+            for(int i = 0; i < 100; i++)
+            {
+                Persons.Add(new Guest(_contentManager, Rooms[r.Next(0, Rooms.Count)]));
+                Persons.Last().TargetRoom = Rooms[r.Next(0, Rooms.Count)];
+            }
+
             AddGuest();
+            // /temp
         }
 
         public void AddGuest()
