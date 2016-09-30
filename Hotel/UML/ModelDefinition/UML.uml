@@ -702,6 +702,20 @@
               LastKnownName="IVisitable"
               LastKnownLocation="UML.uml" />
           </interfaceRealization>
+          <dependency
+            Id="148552f7-e733-4869-8e4f-29d254341f49">
+            <classMoniker
+              Id="fd63b3f0-955d-403c-b45d-7939f2a8ba8c"
+              LastKnownName="Guest"
+              LastKnownLocation="UML.uml" />
+          </dependency>
+          <dependency
+            Id="d2275c0f-0fe6-4a05-8d28-84f36809bc98">
+            <enumerationMoniker
+              Id="2436b42d-ffe1-453c-a0c9-3f64d26adc38"
+              LastKnownName="GuestRoomState"
+              LastKnownLocation="UML.uml" />
+          </dependency>
         </suppliersInternal>
         <generalsInternal>
           <generalization
@@ -716,7 +730,7 @@
         <ownedAttributesInternal>
           <property
             Id="d60694d7-144e-41f2-b5ea-851745c924ec"
-            name="Cleaned"
+            name="Dirty"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
@@ -732,7 +746,94 @@
                 LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
+          <property
+            Id="3be23215-2b27-4b81-8e9b-4e66c8a9faee"
+            name="Classification"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="d3244994-074a-42a2-9f22-28d1164fe700"
+                LastKnownName="int"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
         </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="b718387c-c33e-4342-9f68-71915a92555a"
+            name="GuestRoom"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="2e2db762-667e-4909-a1a1-adb12b98a580"
+                  name="content"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="01ba2594-8b9a-4c2f-b7aa-2a19ad25c763"
+                      LastKnownName="ContentManager"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="7e4b8d2c-3097-47ce-831f-45a46a45244a"
+                  name="position"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="89db2cbc-19df-4dd6-9d20-ab46f28c9a15"
+                      LastKnownName="Point"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="5c3432be-50bb-4cb5-8fe1-3c792525e47f"
+                  name="size"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="89db2cbc-19df-4dd6-9d20-ab46f28c9a15"
+                      LastKnownName="Point"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="cb008733-6198-4d93-91ed-7557e1c3a30d"
+                  name="classification"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="d3244994-074a-42a2-9f22-28d1164fe700"
+                      LastKnownName="int"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -781,6 +882,61 @@
             </type_NamedElement>
           </property>
         </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="2ee56d69-ec4a-4b8c-8a59-a16737a46429"
+            name="Cinema"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="7e72f008-bb23-4ba1-b01a-dbc6c47a21db"
+                  name="content"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="01ba2594-8b9a-4c2f-b7aa-2a19ad25c763"
+                      LastKnownName="ContentManager"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="c081a8f7-d3cc-4df1-9228-189789111fe2"
+                  name="position"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="89db2cbc-19df-4dd6-9d20-ab46f28c9a15"
+                      LastKnownName="Point"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="4a25e451-a33a-41d1-b7c3-af48db541d75"
+                  name="size"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="89db2cbc-19df-4dd6-9d20-ab46f28c9a15"
+                      LastKnownName="Point"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -809,6 +965,95 @@
               LastKnownLocation="UML.uml" />
           </generalization>
         </generalsInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="53f93d03-76d7-4949-b4df-f5ef8a8276df"
+            name="Capacity"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="d3244994-074a-42a2-9f22-28d1164fe700"
+                LastKnownName="int"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="87edf175-9402-4552-bbc4-cd543f14e87e"
+            name="Cafe"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="923c83f4-2def-4e2d-b3b9-049f289f33e9"
+                  name="content"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="01ba2594-8b9a-4c2f-b7aa-2a19ad25c763"
+                      LastKnownName="ContentManager"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="721eadc3-6c28-4b10-9664-eda0824dd8e3"
+                  name="position"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="89db2cbc-19df-4dd6-9d20-ab46f28c9a15"
+                      LastKnownName="Point"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="f68c4d7f-aa40-4720-80a0-64928689963f"
+                  name="size"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="89db2cbc-19df-4dd6-9d20-ab46f28c9a15"
+                      LastKnownName="Point"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="996168a6-3e9f-4548-ac9e-3b5ac17b759b"
+                  name="capacity"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="d3244994-074a-42a2-9f22-28d1164fe700"
+                      LastKnownName="int"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -837,6 +1082,61 @@
               LastKnownLocation="UML.uml" />
           </generalization>
         </generalsInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="20c38a74-7284-419d-b99f-7c9adc744ca9"
+            name="Fitness"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="28e65244-94aa-4553-9eb9-11d947fbfeab"
+                  name="content"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="01ba2594-8b9a-4c2f-b7aa-2a19ad25c763"
+                      LastKnownName="ContentManager"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="f7f2a036-4974-4ee0-bb4f-526688912627"
+                  name="position"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="89db2cbc-19df-4dd6-9d20-ab46f28c9a15"
+                      LastKnownName="Point"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="50cd44a9-5493-4609-b58f-b29f6d396445"
+                  name="size"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="89db2cbc-19df-4dd6-9d20-ab46f28c9a15"
+                      LastKnownName="Point"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -865,6 +1165,61 @@
               LastKnownLocation="UML.uml" />
           </generalization>
         </generalsInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="1fb26c93-ffc3-4439-94c4-22227b4ad748"
+            name="Lobby"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="bdf33058-bd3e-40fc-825f-1bbd96bd6e07"
+                  name="content"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="01ba2594-8b9a-4c2f-b7aa-2a19ad25c763"
+                      LastKnownName="ContentManager"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="e44a3070-2fab-4edf-94ae-ed9cd042f28d"
+                  name="position"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="89db2cbc-19df-4dd6-9d20-ab46f28c9a15"
+                      LastKnownName="Point"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="706a1902-9caf-4a71-88d0-589e5a736d35"
+                  name="size"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="89db2cbc-19df-4dd6-9d20-ab46f28c9a15"
+                      LastKnownName="Point"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -1372,6 +1727,15 @@
         isAbstract="true"
         isLeaf="false"
         isActiveClass="false">
+        <suppliersInternal>
+          <dependency
+            Id="80efd41f-b082-494b-bb06-fd62cd5c934f">
+            <enumerationMoniker
+              Id="2a77b4c8-2f23-40ec-8ec3-b11e46f9648c"
+              LastKnownName="Direction"
+              LastKnownLocation="UML.uml" />
+          </dependency>
+        </suppliersInternal>
         <generalsInternal>
           <generalization
             Id="b1e1e673-1646-4acb-ba8b-e4a71107f27c"
@@ -1402,26 +1766,8 @@
             </type_NamedElement>
           </property>
           <property
-            Id="8f42e92a-9b57-47af-bc9e-e5f085cae0fc"
-            name="Neighbors"
-            isLeaf="false"
-            isStatic="false"
-            isReadOnly="false"
-            isUnique="false"
-            isDerived="false"
-            isDerivedUnion="false"
-            aggregation="None"
-            isComposite="false">
-            <type_NamedElement>
-              <undefinedTypeMoniker
-                Id="86c3a089-4612-42f4-be13-ca409635e447"
-                LastKnownName="List&lt;Room&gt;"
-                LastKnownLocation="UML.uml" />
-            </type_NamedElement>
-          </property>
-          <property
             Id="0b055f44-58bb-45ba-8f6b-86a4450b4470"
-            name="GuestCount"
+            name="PeopleCount"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
@@ -1439,7 +1785,7 @@
           </property>
           <property
             Id="ad053026-5436-4467-a714-f1c57aeb83de"
-            name="Position"
+            name="RoomPosition"
             isLeaf="false"
             isStatic="false"
             isReadOnly="false"
@@ -1450,8 +1796,62 @@
             isComposite="false">
             <type_NamedElement>
               <undefinedTypeMoniker
-                Id="78321d53-5c8d-442f-959f-0c1eeab40d20"
-                LastKnownName="Vector2"
+                Id="89db2cbc-19df-4dd6-9d20-ab46f28c9a15"
+                LastKnownName="Point"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="ad18e595-38e5-4c70-a356-c876a74a1547"
+            name="RoomSize"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="89db2cbc-19df-4dd6-9d20-ab46f28c9a15"
+                LastKnownName="Point"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="512bcbe8-c148-4395-924d-7d759cc589e1"
+            name="Vertical"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="de0811ae-0944-4454-a016-6484aefd19dc"
+                LastKnownName="bool"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="a0e5ee7b-5332-45f4-9094-a5df32c7cace"
+            name="Neighbors"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="3bcd98d4-d8f5-4591-ab6c-bf24d324c076"
+                LastKnownName="Dictionary&lt;Direction, Room&gt;"
                 LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
@@ -1524,7 +1924,6 @@
           <operation
             Id="c46b1668-2a98-473a-9aeb-ddb1ca307ab7"
             name="ReverseDirection"
-            visibility="Private"
             isLeaf="false"
             isStatic="false"
             isAbstract="false"
@@ -1533,13 +1932,26 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="6320ff64-1495-400d-8741-8e5f11308441"
+                  Id="0f0712c9-dd4a-4979-8c5f-8d5e6b7f8df8"
                   name="dir"
                   direction="In"
                   isUnique="false">
                   <type_NamedElement>
-                    <undefinedTypeMoniker
-                      Id="bdb0bd4a-6dfd-4af1-aee4-65fcd3ffedb8"
+                    <enumerationMoniker
+                      Id="2a77b4c8-2f23-40ec-8ec3-b11e46f9648c"
+                      LastKnownName="Direction"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="f3641c79-363d-48cb-a94d-523c17262a1c"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <enumerationMoniker
+                      Id="2a77b4c8-2f23-40ec-8ec3-b11e46f9648c"
                       LastKnownName="Direction"
                       LastKnownLocation="UML.uml" />
                   </type_NamedElement>
@@ -1550,7 +1962,6 @@
           <operation
             Id="aa6a4640-468e-4e5e-91d0-7e51aea7eccd"
             name="IsNeighbor"
-            visibility="Private"
             isLeaf="false"
             isStatic="false"
             isAbstract="false"
@@ -1559,7 +1970,20 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="fd71c8d1-32c6-4d55-9d37-be526a52ef7a"
+                  Id="d5fdf337-43d1-44d9-b424-b929a0caa57a"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <enumerationMoniker
+                      Id="2a77b4c8-2f23-40ec-8ec3-b11e46f9648c"
+                      LastKnownName="Direction"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="f8785c93-4a23-47e1-acfe-148a928a4a89"
                   name="room1"
                   direction="In"
                   isUnique="false">
@@ -1573,7 +1997,7 @@
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="f4c17341-70f5-49a8-a921-8f3b66a2c090"
+                  Id="1f970f44-c8c1-4698-9d7b-359a4cb006fb"
                   name="room2"
                   direction="In"
                   isUnique="false">
@@ -1585,15 +2009,79 @@
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="a3a888c7-d7f3-432c-9acd-36ee27f69311"
+            name="Room"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="d5fdf337-43d1-44d9-b424-b929a0caa57a"
+                  Id="bfead3d2-5ae8-4f40-a24c-0f4c46afe1ef"
+                  name="content"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="01ba2594-8b9a-4c2f-b7aa-2a19ad25c763"
+                      LastKnownName="ContentManager"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="0c8e2580-26d4-437b-a649-dbea765cc048"
+                  name="position"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="89db2cbc-19df-4dd6-9d20-ab46f28c9a15"
+                      LastKnownName="Point"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="32b9750b-702d-4b60-9537-316e602392fc"
+                  name="size"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="89db2cbc-19df-4dd6-9d20-ab46f28c9a15"
+                      LastKnownName="Point"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="026a1ba5-e3fc-428c-9642-208ce1d9e14f"
+            name="ToString"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="17b191de-edee-4ecc-a33f-df6af35ae987"
                   direction="Return"
                   isUnique="false">
                   <type_NamedElement>
                     <undefinedTypeMoniker
-                      Id="bdb0bd4a-6dfd-4af1-aee4-65fcd3ffedb8"
-                      LastKnownName="Direction"
+                      Id="d08b55ce-c611-428f-8970-5ee80e046b2f"
+                      LastKnownName="string"
                       LastKnownLocation="UML.uml" />
                   </type_NamedElement>
                 </parameter>
@@ -2394,6 +2882,47 @@
               LastKnownLocation="UML.uml" />
           </generalization>
         </generalsInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="7f0827aa-f780-4676-a673-f139eea83c66"
+            name="Staircase"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="42e5f127-ad3f-4440-9ace-df36ebe8cd3a"
+                  name="content"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="01ba2594-8b9a-4c2f-b7aa-2a19ad25c763"
+                      LastKnownName="ContentManager"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="880c5700-f66c-4182-b525-e8e5f78056b5"
+                  name="position"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="89db2cbc-19df-4dd6-9d20-ab46f28c9a15"
+                      LastKnownName="Point"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
@@ -4499,7 +5028,84 @@
         name="Outside"
         isAbstract="false"
         isLeaf="false"
-        isActiveClass="false" />
+        isActiveClass="false">
+        <generalsInternal>
+          <generalization
+            Id="dec21dfa-89eb-4d44-aa8b-1b05cfb83a0f"
+            isSubstitutable="false">
+            <classMoniker
+              Id="55ac072c-29df-4bb4-98c1-40272054cc7d"
+              LastKnownName="Room"
+              LastKnownLocation="UML.uml" />
+          </generalization>
+        </generalsInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="7ef5415a-6535-440e-b8cc-fe82a2c70974"
+            name="Outside"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="2aa1c505-e686-4fa9-8750-afcbe3d7bea3"
+                  name="content"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="01ba2594-8b9a-4c2f-b7aa-2a19ad25c763"
+                      LastKnownName="ContentManager"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="1bbd3654-573d-4887-91d2-223c98ed82d8"
+                  name="position"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="89db2cbc-19df-4dd6-9d20-ab46f28c9a15"
+                      LastKnownName="Point"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="c254ecbc-3cbf-45b1-9b3c-7f1731124083"
+            name="Update"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="e8cbace8-9602-4aef-a482-7ae63025b918"
+                  name="deltaTime"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="0f323a25-acbf-44ab-aa94-ceea63344cfb"
+                      LastKnownName="float"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
     </packageHasNamedElement>
     <packageHasNamedElement>
       <class
@@ -4615,6 +5221,58 @@
       <undefinedType
         Id="d20ac059-ceb1-43c1-934f-cda408caba94"
         name="EventHandler" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <enumeration
+        Id="2a77b4c8-2f23-40ec-8ec3-b11e46f9648c"
+        name="Direction"
+        isAbstract="false"
+        isLeaf="false">
+        <ownedLiterals>
+          <enumerationLiteral
+            Id="3cb79a0a-339f-4866-b0d2-4e1880f0c95b"
+            name="None" />
+          <enumerationLiteral
+            Id="d9ae93f2-02d1-486a-b102-bcf00748f6ad"
+            name="North" />
+          <enumerationLiteral
+            Id="994df629-dd61-4a00-861a-693c54d8666e"
+            name="East" />
+          <enumerationLiteral
+            Id="06778642-a75f-4832-b6d9-6cf6fc7bb257"
+            name="South" />
+          <enumerationLiteral
+            Id="93a8eedb-0149-456b-8407-63287353fba8"
+            name="West" />
+        </ownedLiterals>
+      </enumeration>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="3bcd98d4-d8f5-4591-ab6c-bf24d324c076"
+        name="Dictionary&lt;Direction, Room&gt;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <enumeration
+        Id="2436b42d-ffe1-453c-a0c9-3f64d26adc38"
+        name="GuestRoomState"
+        isAbstract="false"
+        isLeaf="false">
+        <ownedLiterals>
+          <enumerationLiteral
+            Id="20b3cbcf-1422-4239-884a-7e2961294a11"
+            name="Occupied" />
+          <enumerationLiteral
+            Id="ee5e4842-ba78-4eca-b4b6-d00a073b82d9"
+            name="Dirty" />
+          <enumerationLiteral
+            Id="d726a38c-2927-4c59-902a-2d0b9b452be6"
+            name="InCleaning" />
+          <enumerationLiteral
+            Id="b2592dcb-2f54-433e-a4cc-42b72a57e96b"
+            name="Vacant" />
+        </ownedLiterals>
+      </enumeration>
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType

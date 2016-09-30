@@ -60,7 +60,7 @@ namespace Hotel.Persons
             _calledElevator = false;
 
             Path = new List<Room>();
-            room.People++;
+            room.PeopleCount++;
             WalkingSpeed = 50.0f;
 
             CurrentTask = PersonTask.Waiting;
@@ -68,9 +68,9 @@ namespace Hotel.Persons
 
         public void MoveToRoom(Room room)
         {
-            CurrentRoom.People--;
+            CurrentRoom.PeopleCount--;
             CurrentRoom = room;
-            room.People++;
+            room.PeopleCount++;
         }
 
         public override void Update(float deltaTime)
