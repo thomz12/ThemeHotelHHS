@@ -27,7 +27,7 @@ namespace Hotel
         private HotelObject _mouseIsOver;
         private HotelObject _wasSelected;
         private HotelEventListener _listener;
-        private InformationWindow _DI;
+        private InformationWindow _informationWindow;
 
         private RenderTarget2D _renderTexture;
 
@@ -85,7 +85,7 @@ namespace Hotel
             // Create a new SpriteBatch, which can be used to draw textures.
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            _DI = new InformationWindow(Content);
+            _informationWindow = new InformationWindow(Content);
 
             _hotel = new Hotel(Content);
             _camera = new Camera();
@@ -150,30 +150,35 @@ namespace Hotel
                 // When the left mouse is clicked
                 if (Input.Instance.OnLeftMouseButtonRelease())
                 {
-                    if (!_DI.IsShowingInfo)
+                    // Check if the information window is already showing some data.
+                    if (!_informationWindow.IsShowingInfo)
                     {
+                        // Set the object as selected and show its information
                         _wasSelected = _mouseIsOver;
-                        _DI.ShowInformation(_mouseIsOver);
+                        _informationWindow.ShowInformation(_mouseIsOver);
                     }
                     else
                     {
+                        // Hide the information window
                         if (_wasSelected.Equals(_mouseIsOver))
                         {
-                            _DI.HideInformation();
+                            _informationWindow.HideInformation();
                         }
                         else
                         {
+                            // Update the information window
                             _wasSelected = _mouseIsOver;
-                            _DI.HideInformation();
-                            _DI.ShowInformation(_mouseIsOver);
+                            _informationWindow.HideInformation();
+                            _informationWindow.ShowInformation(_mouseIsOver);
                         }
                     }
                 }
             }
             else
             {
+                // Hide the information window
                 if(Input.Instance.OnLeftMouseButtonRelease())
-                    _DI.HideInformation();
+                    _informationWindow.HideInformation();
             }
         }
 
@@ -225,8 +230,8 @@ namespace Hotel
             // HUD Spritebatch
             _spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, SamplerState.PointClamp, null, null);
 
-            _DI.RenderTexture = _renderTexture;
-            _DI.Draw(_spriteBatch, gameTime);
+            _informationWindow.RenderTexture = _renderTexture;
+            _informationWindow.Draw(_spriteBatch, gameTime);
 
             // End the drawing on the spritebatch.
             _spriteBatch.End();
