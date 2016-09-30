@@ -169,8 +169,10 @@ namespace Hotel
         /// <param name="deltaTime">The game time.</param>
         public override void Update(float deltaTime)
         {
+            // Update the sprite.
             Sprite.Update(deltaTime);
 
+            // Set the Sprite position.
             Sprite.SetPosition(new Point((int)Position.X, (int)Position.Y));
 
             if (_waitTime <= 0)
