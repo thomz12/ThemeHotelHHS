@@ -30,11 +30,19 @@ namespace Hotel
             }
         }
 
+        /// <summary>
+        /// Calls the elevator on this floor
+        /// </summary>
+        /// <param name="targetFloor">The floor to send the elevator to after it arrived on this floor (the destination, or target)</param>
         public void CallElevator(int targetFloor)
         {
             Elevator.CallElevator(RoomPosition.Y, targetFloor);
         }
 
+        /// <summary>
+        /// Called every frame.
+        /// </summary>
+        /// <param name="deltaTime"></param>
         public override void Update(float deltaTime)
         {
             Sprite.Update(deltaTime);

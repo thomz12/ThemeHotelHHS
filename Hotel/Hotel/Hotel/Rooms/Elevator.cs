@@ -37,7 +37,7 @@ namespace Hotel
         private float _waitTime;
         private int _targetFloor;
         private Dictionary<int?, ElevatorDirection> _queue;
-        private Dictionary<int, int> _queueTarget;
+        private List<KeyValuePair<int, int>> _queueTarget;
 
         /// <summary>
         /// Default constructor.
@@ -56,7 +56,7 @@ namespace Hotel
 
             _currentFloor = 0;
             _queue = new Dictionary<int?, ElevatorDirection>();
-            _queueTarget = new Dictionary<int, int>();
+            _queueTarget = new List<KeyValuePair<int, int>>();
         }
 
         /// <summary>
@@ -154,8 +154,8 @@ namespace Hotel
                 _queue.Add(floor, dir);
 
             // Save the destination for adding later to the queue (when guest enters the room).
-            if(!_queueTarget.ContainsKey(floor))
-                _queueTarget.Add(floor, targetFloor);
+            if(_queueTarget.Select(x => x.Key).Contains(floor))
+                _queueTarget.Add(new KeyValuePair<int, int>(floor, targetFloor));
 
             _targetFloor = GetTargetFloor();
 
@@ -192,7 +192,7 @@ namespace Hotel
         /// <param name="floor">The floor to move the elevator to.</param>
         private void MoveToFloor(int floor, float deltaTime)
         {
-            // When the elevator has yet to reach its destination
+            // When the elevator has reached its destination
             if (Math.Abs(Position.Y - floor * Sprite.Texture.Height) < Speed * deltaTime)
             {
                 // Set the position on the exact floor position.
@@ -202,14 +202,18 @@ namespace Hotel
                 // The current floor is now the target.
                 _currentFloor = _targetFloor;
 
-                if(_queueTarget.ContainsKey(_currentFloor))
+                for (int i = 0; i < _queueTarget.Count; i++)
                 {
-                    if (_queue.ContainsKey(_queueTarget[_currentFloor]))
-                        _queue[_queueTarget[_currentFloor]] = ElevatorDirection.Both;
-                    else
-                        _queue.Add(_queueTarget[_currentFloor], ElevatorDirection.Both);
+                    if (_queueTarget[i].Key == _currentFloor)
+                    {
+                        if (_queue.ContainsKey(_queueTarget[i].Value))
+                            _queue[_queueTarget[i].Value] = ElevatorDirection.Both;
+                        else
+                            _queue.Add(_queueTarget[i].Value, ElevatorDirection.Both);
 
-                    _queueTarget.Remove(_currentFloor);
+                        _queueTarget.RemoveAt(i);
+                        i--;
+                    }
                 }
 
                 _targetFloor = GetTargetFloor();

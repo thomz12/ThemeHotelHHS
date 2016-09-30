@@ -47,7 +47,7 @@ namespace Hotel
             // temp
             Persons.Add(new Receptionist(_contentManager, Rooms[45]));
 
-
+            
             Random r = new Random();
             for (int i = 0; i < 100; i++)
             {

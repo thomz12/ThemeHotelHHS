@@ -36,7 +36,7 @@ namespace Hotel.Persons
             {
                 _targetRoom = value;
                 Path = FindPath(_targetRoom);
-                UpdateCurrentTask();
+                CurrentTask = PersonTask.MovingCenter;
             }
         }
 
@@ -63,7 +63,7 @@ namespace Hotel.Persons
             room.PeopleCount++;
             WalkingSpeed = 50.0f;
 
-            CurrentTask = PersonTask.Waiting;
+            CurrentTask = PersonTask.MovingCenter;
         }
 
         /// <summary>
@@ -154,6 +154,21 @@ namespace Hotel.Persons
                     {
                         UpdateCurrentTask();
 
+                        if(!_calledElevator && CurrentRoom is ElevatorShaft)
+                        {
+                            // Get the last elevator in the path (CAN BREAK WITH MULTIPLE ELEVATORS!)
+                            ElevatorShaft targetShaft = Path.OfType<ElevatorShaft>().LastOrDefault();
+
+                            if (targetShaft != null)
+                            {
+                                // Call the elevator
+                                _calledElevator = true;
+                                (CurrentRoom as ElevatorShaft).CallElevator(Path.OfType<ElevatorShaft>().Last().RoomPosition.Y);
+                                CurrentTask = PersonTask.Waiting;
+                            }
+                        }
+
+                        // When the task is still moving to the center, we wait.
                         if (CurrentTask == PersonTask.MovingCenter)
                             CurrentTask = PersonTask.Waiting;
                     }

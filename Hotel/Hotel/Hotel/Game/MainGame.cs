@@ -51,6 +51,7 @@ namespace Hotel
 
             _listener = new EventListener();
             HotelEventManager.Register(_listener);
+            HotelEventManager.HTE_Factor = 1.0f;
 
             // Disable the fixed time step, causes low frame rates on some computers.
             IsFixedTimeStep = false;
