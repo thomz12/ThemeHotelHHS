@@ -9,7 +9,7 @@ using Hotel.Persons;
 
 namespace Hotel
 {
-    public class DetailedInformation
+    public class InformationWindow
     {
         public bool IsShowingInfo{ get; private set;}
         public float TitleTextSize { get; set; }
@@ -27,7 +27,7 @@ namespace Hotel
         private Point _titleOffset;
         private Point _infoOffset;
 
-        public DetailedInformation(ContentManager content)
+        public InformationWindow(ContentManager content)
         {
             // Set some default values for properties
             TitleTextSize = 0.7f;
@@ -76,7 +76,7 @@ namespace Hotel
         public void HideInformation()
         {
             // Unred the target room
-            if(_objectToDisplay is Person)
+            if(_objectToDisplay is Guest)
             {
                 Person person = (Person)_objectToDisplay;
                 foreach (Room room in person.Path)
