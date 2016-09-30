@@ -27,6 +27,7 @@ namespace Hotel
         private HotelObject _mouseIsOver;
         private HotelObject _wasSelected;
         private DetailedInformation _DI;
+        private HotelEventListener _listener;
 
         private RenderTarget2D _renderTexture;
 
@@ -48,8 +49,8 @@ namespace Hotel
 
             HotelEventManager.Start();
 
-            HotelEventListener listener = new EventListener();
-            HotelEventManager.Register(listener);
+            _listener = new EventListener();
+            HotelEventManager.Register(_listener);
 
             // Disable the fixed time step, causes low frame rates on some computers.
             IsFixedTimeStep = false;
@@ -116,13 +117,14 @@ namespace Hotel
 
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds * 1.0f;
 
+            Input.Instance.Update(gameTime);
+
             // Check for mouseover
             MouseOver();
 
             _hotel.Update(deltaTime);
             _camera.Update(GraphicsDevice.PresentationParameters.BackBufferWidth, GraphicsDevice.PresentationParameters.BackBufferHeight, deltaTime);
             _closeUpCamera.Update(200, 200, deltaTime);
-            Input.Instance.Update(gameTime);
 
             base.Update(gameTime);
         }
