@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="c336cf98-c95c-4a4b-93e5-88c57cd10a56" name="Hotel" linkedPackageId="dcd36c7c-ee69-4234-8b0d-a3b8dc3f548d" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="c336cf98-c95c-4a4b-93e5-88c57cd10a56" name="Hotel" linkedPackageId="dcd36c7c-ee69-4234-8b0d-a3b8dc3f548d" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
   <ownedCommentsInternal>
     <comment Id="e9330e3b-3675-4b6e-862b-4eec85fe053e">
       <elementDefinition Id="6aaa30ed-457b-4a34-b31a-8123c2fcaf80" />
@@ -1285,32 +1285,6 @@
           </dependency>
         </suppliersInternal>
         <targetEnds>
-          <association Id="99fa9243-b01d-429c-aa15-bc90faae2119" isDerived="false" sourceEndRoleName="has an" targetEndRoleName="is part of" isLeaf="false" isAbstract="false">
-            <classMoniker Id="1729d142-de00-4b6a-9aa5-074571293787" LastKnownName="ElevatorShaft" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd Id="4934420f-d97a-4b67-acd6-ef771f1c98bb" name="has an" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="Composite" isComposite="false" isNavigableOwned="false">
-                  <elementDefinition Id="70aa60b1-4391-4039-a4f2-9057c7f2eb8f" />
-                </memberEnd>
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd Id="daace1ea-176b-4c03-9954-c2cb8231e3c1" name="is part of" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="true">
-                  <lowerValueInternal>
-                    <literalString Id="557e7d9f-83b9-474d-b576-9b51a6ac41d5" name="Lower" value="*">
-                      <elementDefinition Id="1c76582e-76f8-4a4a-b0dd-8cd6a60edc2b" />
-                    </literalString>
-                  </lowerValueInternal>
-                  <upperValueInternal>
-                    <literalString Id="65ac42d9-083c-4699-9ff8-0173b0a4f0a0" name="Upper" value="*">
-                      <elementDefinition Id="2fd843a9-668e-4e7c-b896-b81d81341375" />
-                    </literalString>
-                  </upperValueInternal>
-                  <elementDefinition Id="857a9c4b-3657-49bd-9bc8-326f31f99ca3" />
-                </memberEnd>
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-            <elementDefinition Id="f3bad523-1047-4ad0-9bb0-1b6e30921b1e" />
-          </association>
           <association Id="9d7c60f8-a1fd-4fdf-afc5-ee43d2545c7d" isDerived="false" sourceEndRoleName="Elevator" targetEndRoleName="Sprite" isLeaf="false" isAbstract="false">
             <classMoniker Id="b9859f48-922a-45b0-b0e0-c6cce0b3bcb3" LastKnownName="Sprite" />
             <relationshipOwnedElementsInternal>

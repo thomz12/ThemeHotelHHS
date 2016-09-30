@@ -154,8 +154,7 @@ namespace Hotel
                 _queue.Add(floor, dir);
 
             // Save the destination for adding later to the queue (when guest enters the room).
-            if(_queueTarget.Select(x => x.Key).Contains(floor))
-                _queueTarget.Add(new KeyValuePair<int, int>(floor, targetFloor));
+            _queueTarget.Add(new KeyValuePair<int, int>(floor, targetFloor));
 
             _targetFloor = GetTargetFloor();
 
@@ -202,6 +201,7 @@ namespace Hotel
                 // The current floor is now the target.
                 _currentFloor = _targetFloor;
 
+                // Add the targets for this floor.
                 for (int i = 0; i < _queueTarget.Count; i++)
                 {
                     if (_queueTarget[i].Key == _currentFloor)
@@ -216,8 +216,10 @@ namespace Hotel
                     }
                 }
 
+                // Get the next floor.
                 _targetFloor = GetTargetFloor();
 
+                // Reset the waiting time.
                 _waitTime = WaitTime;
 
                 return;
