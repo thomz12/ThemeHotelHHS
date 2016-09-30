@@ -10,7 +10,7 @@ namespace Hotel
 {
     public class ElevatorShaft : Room
     {
-        public Elevator Elevator { get; set; }
+        public Elevator Elevator { get; private set; }
 
         /// <summary>
         /// Constructor.

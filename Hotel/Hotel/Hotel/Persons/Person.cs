@@ -66,20 +66,24 @@ namespace Hotel.Persons
             CurrentTask = PersonTask.Waiting;
         }
 
-        public void MoveToRoom(Room room)
+        /// <summary>
+        /// Sets the current room of the person.
+        /// </summary>
+        /// <param name="room">The room to move to.</param>
+        private void MoveToRoom(Room room)
         {
             CurrentRoom.PeopleCount--;
             CurrentRoom = room;
             room.PeopleCount++;
         }
 
+        /// <summary>
+        /// Called every frame.
+        /// </summary>
+        /// <param name="deltaTime">The delta time.</param>
         public override void Update(float deltaTime)
         {
-            // y-position (jumping)
-            /*
-            if (CurrentTask != PersonTask.MovingUp && CurrentTask != PersonTask.MovingDown && CurrentTask != PersonTask.Waiting)
-                Position = new Vector2(Position.X, ((float)Math.Sin(Position.X) * JumpHeight + JumpHeight / 2) + CurrentRoom.Position.Y - (CurrentRoom.RoomSize.Y * Room.ROOMHEIGHT) + Sprite.Texture.Height);
-            */
+            // Move around.
             Move(deltaTime);
 
             // Get the new bounding box (the exact position on the sprite batch)

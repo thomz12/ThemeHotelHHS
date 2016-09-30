@@ -86,8 +86,8 @@ namespace Hotel
                     {
                         room.Sprite.Color = Color.White;
                     }
+                    person.TargetRoom.Sprite.Color = Color.White;
                 }
-                person.TargetRoom.Sprite.Color = Color.White;
             }
 
             IsShowingInfo = false;

@@ -39,7 +39,7 @@ namespace Hotel
             // Add the rooms, and connect them.
             Room outside = new Outside(content, new Point(-1, 0));
             Rooms.Add(outside);
-            for(int i = 0; i < buildedRooms.Count; i++)
+            for (int i = 0; i < buildedRooms.Count; i++)
             {
                 PlaceRoom(buildedRooms[i]);
             }
@@ -49,7 +49,7 @@ namespace Hotel
 
 
             Random r = new Random();
-            for(int i = 0; i < 100; i++)
+            for (int i = 0; i < 100; i++)
             {
                 Persons.Add(new Guest(_contentManager, Rooms[r.Next(0, Rooms.Count)]));
                 Persons.Last().TargetRoom = Rooms[r.Next(0, Rooms.Count)];
@@ -67,15 +67,15 @@ namespace Hotel
         }
 
         /// <summary>
-        /// Places a room in the hotel.
+        /// Places a room in the hotel. 
         /// </summary>
         /// <param name="room">The room to add to the hotel.</param>
         public void PlaceRoom(Room room)
         {
-            foreach(Room r in Rooms)
+            foreach (Room r in Rooms)
             {
                 Direction dir = room.IsNeighbor(r);
-                if(dir != Direction.None)
+                if (dir != Direction.None)
                 {
                     room.Neighbors[dir] = r;
                     r.Neighbors[r.ReverseDirection(dir)] = room;
@@ -92,13 +92,13 @@ namespace Hotel
         /// <returns>Null if nothing was found, if something was found, return that object.</returns>
         public HotelObject GetObject(Point position)
         {
-            foreach(Person person in Persons)
+            foreach (Person person in Persons)
             {
                 if (person.BoundingBox.Contains(position))
                     return person;
             }
 
-            foreach(Room room in Rooms)
+            foreach (Room room in Rooms)
             {
                 if (room.BoundingBox.Contains(position))
                     return room;
@@ -131,12 +131,12 @@ namespace Hotel
         /// <param name="gameTime">the game time.</param>
         public void Draw(SpriteBatch batch, GameTime gameTime)
         {
-            foreach(Person person in Persons)
+            foreach (Person person in Persons)
             {
                 person.Draw(batch, gameTime);
             }
 
-            foreach(Room room in Rooms)
+            foreach (Room room in Rooms)
             {
                 room.Draw(batch, gameTime);
             }
