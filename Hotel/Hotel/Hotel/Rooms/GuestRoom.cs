@@ -17,7 +17,20 @@ namespace Hotel
 
         public GuestRoom(ContentManager content, Point position, Point size, int classification) : base(content, position, size)
         {
-            Sprite.LoadSprite("GuestRoom");
+            // Check for the room size and load in specified sprites.
+            if(size.X == 2 && size.Y == 1)
+            {
+                Sprite.LoadSprite("2x1GuestRoom");
+            }
+            else if(size.X == 2 && size.Y == 2)
+            {
+                Sprite.LoadSprite("2x2GuestRoom");
+            }
+            else
+            {
+                // Load default sprite
+                Sprite.LoadSprite("1x1GuestRoom");
+            }
             Name = $"{classification} Star Guest Room";
             Classification = classification;
         }
