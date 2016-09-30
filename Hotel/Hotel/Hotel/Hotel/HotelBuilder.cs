@@ -19,12 +19,7 @@ namespace Hotel
             _content = content;
         }
 
-        public void ConnectRooms()
-        {
-
-        }
-
-        public List<Room> Hotel(string path)
+        public List<Room> BuildHotel(string path)
         {
             // List of all rooms.
             List<Room> rooms = new List<Room>();

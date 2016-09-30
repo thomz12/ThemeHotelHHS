@@ -34,7 +34,7 @@ namespace Hotel
 
             // read the hotel from a layout file.
             HotelBuilder builder = new HotelBuilder(content);
-            List<Room> buildedRooms = builder.Hotel(HotelLayoutFilePath);
+            List<Room> buildedRooms = builder.BuildHotel(HotelLayoutFilePath);
 
             // Add the rooms, and connect them.
             Room outside = new Outside(content, new Point(-1, 0));
