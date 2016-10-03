@@ -27,6 +27,15 @@ namespace Hotel
             if (RoomPosition.Y == 0)
             {
                 Elevator = new Elevator(content);
+                Elevator.Arrival += Elevator_Arrival;
+            }
+        }
+
+        private void Elevator_Arrival(object sender, EventArgs e)
+        {
+            if((sender as Elevator).CurrentFloor == RoomPosition.Y)
+            {
+
             }
         }
 
