@@ -44,8 +44,9 @@ namespace Hotel.Persons
         public float JumpHeight { get; set; }
 
         // The target position to follow.
-        private Vector2 _target;
-
+        private Elevator _elevator;
+        private ElevatorShaft _targetShaft;
+        private ElevatorShaft _startStaft;
         private bool _calledElevator;
 
         /// <summary>
@@ -95,6 +96,12 @@ namespace Hotel.Persons
 
         private void Move(float deltaTime)
         {
+            if (_elevator != null)
+            {
+                Position = new Vector2(_elevator.Position.X, _elevator.Position.Y - Room.ROOMHEIGHT + Sprite.Texture.Height);
+                return;
+            }
+
             // Do moving in the room.
             switch (CurrentTask)
             {
@@ -159,14 +166,16 @@ namespace Hotel.Persons
 
                         if(!_calledElevator && CurrentRoom is ElevatorShaft)
                         {
+                            _startStaft = CurrentRoom as ElevatorShaft;
                             // Get the last elevator in the path (CAN BREAK WITH MULTIPLE ELEVATORS!)
-                            ElevatorShaft targetShaft = Path.OfType<ElevatorShaft>().LastOrDefault();
+                            _targetShaft = Path.OfType<ElevatorShaft>().LastOrDefault();
 
-                            if (targetShaft != null)
+                            if (_targetShaft != null)
                             {
                                 // Call the elevator
                                 _calledElevator = true;
-                                (CurrentRoom as ElevatorShaft).CallElevator(Path.OfType<ElevatorShaft>().Last().RoomPosition.Y);
+                                (CurrentRoom as ElevatorShaft).CallElevator(_targetShaft.RoomPosition.Y);
+                                (CurrentRoom as ElevatorShaft).ElevatorArrival += Person_ElevatorArrival;
                                 CurrentTask = PersonTask.Waiting;
                             }
                         }
@@ -179,6 +188,29 @@ namespace Hotel.Persons
                 default:
                     break;
             }
+        }
+
+        private void TargetShaft_ElevatorArrival(object sender, EventArgs e)
+        {
+            MoveToRoom(_targetShaft);
+            _targetShaft.ElevatorArrival -= TargetShaft_ElevatorArrival;
+            _targetShaft = null;
+            _elevator = null;
+            
+            while(Path[0] != CurrentRoom)
+            {
+                Path.RemoveAt(0);
+            }
+
+            CurrentTask = PersonTask.MovingCenter;
+        }
+
+        // When the elevator Arrives on the elevatorshaft this person is waiting for.
+        private void Person_ElevatorArrival(object sender, EventArgs e)
+        {
+            _elevator = sender as Elevator;
+            _startStaft.ElevatorArrival -= Person_ElevatorArrival;
+            _targetShaft.ElevatorArrival += TargetShaft_ElevatorArrival;
         }
 
         /// <summary>

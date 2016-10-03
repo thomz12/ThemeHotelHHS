@@ -12,6 +12,8 @@ namespace Hotel
     {
         public Elevator Elevator { get; private set; }
 
+        public event EventHandler ElevatorArrival;
+
         /// <summary>
         /// Constructor.
         /// </summary>
@@ -31,11 +33,17 @@ namespace Hotel
             }
         }
 
+        private void OnElevatorArrival(EventArgs args)
+        {
+            if (ElevatorArrival != null)
+                ElevatorArrival(Elevator, args);
+        }
+
         private void Elevator_Arrival(object sender, EventArgs e)
         {
             if((sender as Elevator).CurrentFloor == RoomPosition.Y)
             {
-
+                OnElevatorArrival(e);
             }
         }
 
@@ -67,6 +75,7 @@ namespace Hotel
             {
                 ElevatorShaft es = (ElevatorShaft)Neighbors[Direction.South];
                 Elevator = es.Elevator;
+                Elevator.Arrival += Elevator_Arrival;
             }
         }
 

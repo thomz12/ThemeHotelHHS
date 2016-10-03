@@ -49,10 +49,24 @@ namespace Hotel
 
             
             Random r = new Random();
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 20; i++)
             {
-                Persons.Add(new Guest(_contentManager, Rooms[r.Next(0, Rooms.Count)]));
-                Persons.Last().TargetRoom = Rooms[r.Next(0, Rooms.Count)];
+                Room rm = Rooms[r.Next(0, Rooms.Count)];
+                if(rm is ElevatorShaft)
+                {
+                    i--;
+                    continue;
+                }
+                Persons.Add(new Guest(_contentManager, rm));
+
+                Room tr = Rooms[r.Next(0, Rooms.Count)];
+                if (tr is ElevatorShaft)
+                {
+                    i--;
+                    continue;
+                }
+
+                Persons.Last().TargetRoom = tr;
             }
 
             AddGuest();
