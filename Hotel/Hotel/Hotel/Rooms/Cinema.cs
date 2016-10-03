@@ -11,7 +11,7 @@ namespace Hotel.Rooms
     {
         public Cinema(ContentManager content, Point position, Point size) : base(content, position, size)
         {
-            Sprite.LoadSprite("4x1Cinema");
+            Sprite.LoadSprite("2x2Cinema");
             Name = "Cinema";
         }
     }

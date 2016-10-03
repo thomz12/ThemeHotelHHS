@@ -1,9 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="c336cf98-c95c-4a4b-93e5-88c57cd10a56" name="Hotel" linkedPackageId="dcd36c7c-ee69-4234-8b0d-a3b8dc3f548d" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="c336cf98-c95c-4a4b-93e5-88c57cd10a56" name="Hotel" linkedPackageId="dcd36c7c-ee69-4234-8b0d-a3b8dc3f548d" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
   <ownedCommentsInternal>
     <comment Id="e9330e3b-3675-4b6e-862b-4eec85fe053e">
       <elementDefinition Id="6aaa30ed-457b-4a34-b31a-8123c2fcaf80" />
       <body>Part of the XNA Interface</body>
+    </comment>
+    <comment Id="92bfbc25-03bf-4102-94cb-aa76d3093ee4">
+      <elementDefinition Id="00d8c2dc-9681-470c-8018-a7484e641ae1" />
+      <body>Hotel Builder is dependent on every Room :( (intentional)</body>
     </comment>
   </ownedCommentsInternal>
   <packagedElements>
@@ -957,6 +961,10 @@
           <dependency Id="77e16bd9-ce79-4e83-9423-84be2769030e">
             <enumerationMoniker Id="f32b47e5-7e0d-4715-b978-bb4403e12688" LastKnownName="PersonTask" />
             <elementDefinition Id="e0e0bb82-cb7e-4ef2-a089-a74ffc94a2ab" />
+          </dependency>
+          <dependency Id="f055a92b-18ab-496c-a5e0-8b31d4a12a10">
+            <classMoniker Id="7945fcb1-d94a-4362-ae0f-c94a98f25042" LastKnownName="Elevator" />
+            <elementDefinition Id="f506d7f9-ae2f-4f88-aea2-6d327043dc5a" />
           </dependency>
         </suppliersInternal>
         <generalsInternal>
