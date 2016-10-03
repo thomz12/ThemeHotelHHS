@@ -61,6 +61,8 @@ namespace Hotel
             }
         }
 
+        
+
         public override void Draw(SpriteBatch batch, GameTime gameTime)
         {
             Sprite.Draw(batch, gameTime);

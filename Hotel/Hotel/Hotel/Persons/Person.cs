@@ -40,8 +40,11 @@ namespace Hotel.Persons
             }
         }
 
-        public List<Room> Path { get; set; }
+        public List<Room> Path { get; private set; }
         public float JumpHeight { get; set; }
+
+        // The target position to follow.
+        private Vector2 _target;
 
         private bool _calledElevator;
 
