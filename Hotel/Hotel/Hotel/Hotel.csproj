@@ -82,6 +82,7 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Game\Background.cs" />
     <Compile Include="Game\Camera.cs" />
     <Compile Include="Game\InformationWindow.cs" />
     <Compile Include="Game\EventListener.cs" />

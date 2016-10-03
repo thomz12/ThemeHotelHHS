@@ -233,7 +233,7 @@ namespace Hotel.Persons
         public override void Draw(SpriteBatch batch, GameTime gameTime)
         {
             // Make the person jump while moving.
-            Sprite.SetPosition( new Point((int)Position.X, (int)(Position.Y + (JumpHeight / 2))+ (int)(Math.Sin(Position.X) * JumpHeight)));
+            Sprite.SetPosition(new Point((int)Position.X, (int)(Position.Y + (JumpHeight / 2))+ (int)(Math.Sin(Position.X) * JumpHeight)));
 
             base.Draw(batch, gameTime);
         }

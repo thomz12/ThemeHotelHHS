@@ -30,6 +30,7 @@ namespace Hotel
         private InformationWindow _informationWindow;
 
         private RenderTarget2D _renderTexture;
+        private Background _background;
 
         public MainGame()
         {
@@ -89,9 +90,10 @@ namespace Hotel
             _informationWindow = new InformationWindow(Content);
 
             _hotel = new Hotel(Content);
-            _camera = new Camera();
+            _camera = new Camera(GraphicsDevice.PresentationParameters.BackBufferWidth, GraphicsDevice.PresentationParameters.BackBufferHeight);
             _camera.Controlable = true;
-            _closeUpCamera = new Camera();
+            _closeUpCamera = new Camera(200, 200);
+            _background = new Background(Content, _camera);
         }
 
         /// <summary>
@@ -124,8 +126,9 @@ namespace Hotel
             MouseOver();
 
             _hotel.Update(deltaTime);
-            _camera.Update(GraphicsDevice.PresentationParameters.BackBufferWidth, GraphicsDevice.PresentationParameters.BackBufferHeight, deltaTime);
-            _closeUpCamera.Update(200, 200, deltaTime);
+            _camera.Update(deltaTime);
+            _closeUpCamera.Update(deltaTime);
+            _background.Update(deltaTime);
 
             base.Update(gameTime);
         }
@@ -193,7 +196,7 @@ namespace Hotel
             GraphicsDevice.SetRenderTarget(_renderTexture);
 
             // Clear
-            GraphicsDevice.Clear(Color.CornflowerBlue);
+            GraphicsDevice.Clear(new Color(11, 83, 159));
 
             // GameObject Spritebatch
             _spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, _closeUpCamera.TransformMatrix);
@@ -222,7 +225,8 @@ namespace Hotel
             // Hotel Spritebatch
             _spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, _camera.TransformMatrix);
 
-            // Draw the hotel.
+            // Draw the objects in the scene
+            _background.Draw(_spriteBatch, gameTime);
             _hotel.Draw(_spriteBatch, gameTime);
 
             // End the drawing on the spritebatch.
