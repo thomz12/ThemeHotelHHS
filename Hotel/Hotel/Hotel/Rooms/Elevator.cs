@@ -39,6 +39,7 @@ namespace Hotel
         private Dictionary<int?, ElevatorDirection> _queue;
         private List<KeyValuePair<int, int>> _queueTarget;
 
+        // Arrival event gets called when the elevator arrives on a floor.
         public event EventHandler Arrival;
 
         /// <summary>
