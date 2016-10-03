@@ -13,9 +13,6 @@ namespace HotelLauncher
 {
     public partial class HotelLauncherForm : Form
     {
-        private OpenFileDialog _fileDialog;
-        private string _openFileDialogDirectory;
-
         private Process _process;
 
         public HotelLauncherForm()
@@ -23,22 +20,12 @@ namespace HotelLauncher
             // DO DIS FIRST!!!
             InitializeComponent();
 
+            /* file dialoge shizz
             _fileDialog = new OpenFileDialog();
             _fileDialog.RestoreDirectory = true;
             _fileDialog.Multiselect = false;
             _fileDialog.Filter = "layout files (*.layout)|*.layout|All files (*.*)|*.*";
-            //_fileDialog.InitialDirectory = @"\..\";
-        }
-
-        private void LoadLayoutButton_Click(object sender, EventArgs e)
-        {
-            // Open the file dialog and wait for an ok.
-            if (_fileDialog.ShowDialog() == DialogResult.OK)
-            {
-                // Give some feedback.
-                FilePathLabel.Text = $"File Opened: {_fileDialog.FileName}";
-                // Set the file to use.
-            }
+            */
         }
 
         private void StartSimulationButton_Click(object sender, EventArgs e)
@@ -54,9 +41,12 @@ namespace HotelLauncher
             this.WindowState = FormWindowState.Normal;
         }
 
-        private void HTEButton_Click(object sender, EventArgs e)
+        private void SettingsButton_Click(object sender, EventArgs e)
         {
-
+            using(Settings settings = new Settings())
+            {
+                settings.ShowDialog();
+            }
         }
     }
 }
