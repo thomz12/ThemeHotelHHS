@@ -143,7 +143,7 @@ namespace Hotel
             _mouseIsOver = _hotel.GetObject(_camera.ScreenToWorld(Input.Instance.GetMousePos()));
 
             if(_wasSelected != null)
-                _closeUpCamera.CamPosition = new Vector2(-_wasSelected.Position.X - _wasSelected.Sprite.Texture.Width / 2, _wasSelected.Position.Y - _wasSelected.Sprite.Texture.Height / 2);
+                _closeUpCamera.CamPosition = new Vector2(-_wasSelected.Position.X - _wasSelected.Sprite.DrawDestination.Width / 2, _wasSelected.Position.Y - _wasSelected.Sprite.DrawDestination.Height / 2);
 
             // If a mouseover object is found
             if (_mouseIsOver != null)
