@@ -45,7 +45,13 @@ namespace HotelLauncher
         {
             // FIRE IT UP
             _process = Process.Start("Hotel Simulator.exe");
+
             this.WindowState = FormWindowState.Minimized;
+            while(!_process.HasExited)
+            {
+                
+            }
+            this.WindowState = FormWindowState.Normal;
         }
 
         private void HTEButton_Click(object sender, EventArgs e)

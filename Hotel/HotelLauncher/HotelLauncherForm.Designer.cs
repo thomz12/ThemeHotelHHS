@@ -39,9 +39,11 @@
             // 
             // ScreenPictureBox
             // 
-            this.ScreenPictureBox.Location = new System.Drawing.Point(12, 12);
+            this.ScreenPictureBox.Image = ((System.Drawing.Image)(resources.GetObject("ScreenPictureBox.Image")));
+            this.ScreenPictureBox.Location = new System.Drawing.Point(15, 12);
             this.ScreenPictureBox.Name = "ScreenPictureBox";
             this.ScreenPictureBox.Size = new System.Drawing.Size(612, 382);
+            this.ScreenPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.ScreenPictureBox.TabIndex = 0;
             this.ScreenPictureBox.TabStop = false;
             // 
