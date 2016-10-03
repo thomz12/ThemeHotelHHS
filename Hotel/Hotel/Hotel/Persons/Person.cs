@@ -35,7 +35,8 @@ namespace Hotel.Persons
             set
             {
                 _targetRoom = value;
-                Path = FindPath(_targetRoom);
+                PathFinder pathfinder = new PathFinder();
+                Path = pathfinder.FindPath(CurrentRoom, _targetRoom);
                 CurrentTask = PersonTask.MovingCenter;
             }
         }
@@ -43,10 +44,13 @@ namespace Hotel.Persons
         public List<Room> Path { get; private set; }
         public float JumpHeight { get; set; }
 
-        // The target position to follow.
+        // The Elevator to enter.
         private Elevator _elevator;
+        // The target elevator shaft (when in elevator)
         private ElevatorShaft _targetShaft;
+        // The start elevator shaft (when in elevator)
         private ElevatorShaft _startStaft;
+        // If this person already called the elevator on this floor.
         private bool _calledElevator;
 
         /// <summary>
@@ -58,6 +62,7 @@ namespace Hotel.Persons
             Sprite.LoadSprite("Guest");
             Sprite.DrawOrder = 1;
             Sprite.SetSize(new Point(Sprite.Texture.Width, Sprite.Texture.Height));
+            // Set the position in the center of the starting room.
             Position = new Vector2(room.Position.X + (room.RoomSize.X * (Room.ROOMWIDTH / 2)), room.Position.Y - (Room.ROOMHEIGHT - Sprite.Texture.Height) - (Room.ROOMHEIGHT * (room.RoomSize.Y - 1)));
             JumpHeight = 4;
             CurrentRoom = room;
@@ -94,8 +99,13 @@ namespace Hotel.Persons
             BoundingBox = Sprite.DrawDestination;
         }
 
+        /// <summary>
+        /// Move the person around.
+        /// </summary>
+        /// <param name="deltaTime"></param>
         private void Move(float deltaTime)
         {
+            // If person is in the elevator, set its position to the elevator.
             if (_elevator != null)
             {
                 Position = new Vector2(_elevator.Position.X, _elevator.Position.Y - Room.ROOMHEIGHT + Sprite.Texture.Height);
@@ -108,6 +118,7 @@ namespace Hotel.Persons
                 //When the person is waiting, do nothing.
                 case PersonTask.Waiting:
                     break;
+
                 // When person is moving left.
                 case PersonTask.MovingLeft:
                     Position = new Vector2(Position.X - WalkingSpeed * deltaTime, Position.Y);
@@ -119,6 +130,7 @@ namespace Hotel.Persons
                     }
 
                     break;
+
                 // When person is moving right.
                 case PersonTask.MovingRight:
                     Position = new Vector2(Position.X + WalkingSpeed * deltaTime, Position.Y);
@@ -130,6 +142,7 @@ namespace Hotel.Persons
                     }
 
                     break;
+
                 // When person is moving up.
                 case PersonTask.MovingUp:
                     Position = new Vector2(Position.X, Position.Y + WalkingSpeed * deltaTime);
@@ -141,6 +154,7 @@ namespace Hotel.Persons
                     }
 
                     break;
+
                 // When person is moving down.
                 case PersonTask.MovingDown:
                     Position = new Vector2(Position.X, Position.Y - WalkingSpeed * deltaTime);
@@ -152,6 +166,7 @@ namespace Hotel.Persons
                     }
 
                     break;
+
                 // When person is moving to the center of the room.
                 case PersonTask.MovingCenter:
 
@@ -160,10 +175,13 @@ namespace Hotel.Persons
                     else
                         Position = new Vector2(Position.X - WalkingSpeed * deltaTime, Position.Y);
 
+                    // If the person reached the center of the room.
                     if (Math.Abs(Position.X - CurrentRoom.Position.X - (CurrentRoom.RoomSize.X * Room.ROOMWIDTH / 2)) < WalkingSpeed * deltaTime)
                     {
+                        // Get a new task.
                         UpdateCurrentTask();
 
+                        // If the elevator is not yet called, and the person is in an elevatorshaft.
                         if(!_calledElevator && CurrentRoom is ElevatorShaft)
                         {
                             _startStaft = CurrentRoom as ElevatorShaft;
@@ -190,22 +208,33 @@ namespace Hotel.Persons
             }
         }
 
+        /// <summary>
+        /// Called when the elevator reaches the target shaft (for exiting the elevator)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void TargetShaft_ElevatorArrival(object sender, EventArgs e)
         {
             MoveToRoom(_targetShaft);
             _targetShaft.ElevatorArrival -= TargetShaft_ElevatorArrival;
             _targetShaft = null;
             _elevator = null;
+            _calledElevator = false;
             
             while(Path[0] != CurrentRoom)
             {
                 Path.RemoveAt(0);
             }
 
+            // Move out from the elevator.
             CurrentTask = PersonTask.MovingCenter;
         }
 
-        // When the elevator Arrives on the elevatorshaft this person is waiting for.
+        /// <summary>
+        /// Called when the elevator arrives on the floor. (for stepping into the elevator)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Person_ElevatorArrival(object sender, EventArgs e)
         {
             _elevator = sender as Elevator;
@@ -214,7 +243,7 @@ namespace Hotel.Persons
         }
 
         /// <summary>
-        /// Updates the current task property to match the task that the person is doing now.
+        /// Updates the current task property to match the task that the person is doing now. (Used for path finding)
         /// </summary>
         private void UpdateCurrentTask()
         {
@@ -265,86 +294,17 @@ namespace Hotel.Persons
             }
         }
 
+        /// <summary>
+        /// Draws the object onto the given sprite batch.
+        /// </summary>
+        /// <param name="batch">The sprite batch to draw to.</param>
+        /// <param name="gameTime">The game time.</param>
         public override void Draw(SpriteBatch batch, GameTime gameTime)
         {
             // Make the person jump while moving.
             Sprite.SetPosition(new Point((int)Position.X, (int)(Position.Y + (JumpHeight / 2))+ (int)(Math.Sin(Position.X) * JumpHeight)));
 
             base.Draw(batch, gameTime);
-        }
-
-        // Node used for finding the path.
-        class RoomNode
-        {
-            public Room Room;
-            public int Weight;
-            public RoomNode PrevRoom;
-
-            public RoomNode(Room room, int weight, RoomNode prevRoom)
-            {
-                Room = room;
-                Weight = weight;
-                PrevRoom = prevRoom;
-            }
-        }
-
-        /// <summary>
-        /// Finds the shortest path to a given room.
-        /// </summary>
-        /// <param name="targetRoom"></param>
-        /// <param name="rooms"></param>
-        /// <returns>The shortest path to take to the given room.</returns>
-        public List<Room> FindPath(Room targetRoom)
-        {
-            List<RoomNode> queue = new List<RoomNode>();
-            List<RoomNode> visited = new List<RoomNode>();
-            RoomNode endNode = null;
-
-            // Add the current room.
-            queue.Add(new RoomNode(CurrentRoom, 0, null));
-
-            while(queue.Count > 0)
-            {
-                RoomNode current = queue.OrderBy(x => x.Weight).First();
-
-                if (current.Room == targetRoom)
-                {
-                    endNode = current;
-                    break;
-                }
-
-                foreach(Room room in current.Room.Neighbors.Values)
-                {
-                    if(!visited.Select(x => x.Room).Contains(room))
-                        queue.Add(new RoomNode(room, current.Weight + room.Weight, current));
-                }
-
-                visited.Add(current);
-                queue.Remove(current);
-            }
-
-            // If no end node was found, return null.
-            if (endNode == null)
-                return null;
-
-            // The path to follow
-            List<RoomNode> path = new List<RoomNode>();
-            // begin with the end node
-            path.Add(endNode);
-            // keep adding the previous node to the final path
-            while(true)
-            {
-                // the previous node
-                RoomNode node = path.Last().PrevRoom;
-
-                if (node != null)
-                    path.Add(node);
-                else
-                    break;
-            }
-
-            // reverse so that current room is start room, and end room is the last room.
-            return path.Select(x => x.Room).Reverse().ToList();
         }
 
         public override string ToString()

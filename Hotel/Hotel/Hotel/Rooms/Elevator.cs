@@ -187,6 +187,7 @@ namespace Hotel
             // Set the Sprite position.
             Sprite.SetPosition(new Point((int)Position.X, (int)Position.Y));
 
+            // When done waiting.
             if (_waitTime <= 0)
             {
                 if(_queue.Count > 0)
@@ -229,6 +230,7 @@ namespace Hotel
                     }
                 }
 
+                // Call the OnArrival Event.
                 OnArrival(new EventArgs());
 
                 // Get the next floor.
