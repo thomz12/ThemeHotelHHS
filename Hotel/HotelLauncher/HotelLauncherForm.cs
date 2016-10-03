@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace HotelLauncher
 {
@@ -14,6 +15,8 @@ namespace HotelLauncher
     {
         private OpenFileDialog _fileDialog;
         private string _openFileDialogDirectory;
+
+        private Process _process;
 
         public HotelLauncherForm()
         {
@@ -24,13 +27,13 @@ namespace HotelLauncher
             _fileDialog.RestoreDirectory = true;
             _fileDialog.Multiselect = false;
             _fileDialog.Filter = "layout files (*.layout)|*.layout|All files (*.*)|*.*";
-            _fileDialog.InitialDirectory = @"\..\";
+            //_fileDialog.InitialDirectory = @"\..\";
         }
 
         private void LoadLayoutButton_Click(object sender, EventArgs e)
         {
             // Open the file dialog and wait for an ok.
-            if(_fileDialog.ShowDialog() == DialogResult.OK)
+            if (_fileDialog.ShowDialog() == DialogResult.OK)
             {
                 // Give some feedback.
                 FilePathLabel.Text = $"File Opened: {_fileDialog.FileName}";
@@ -40,7 +43,9 @@ namespace HotelLauncher
 
         private void StartSimulationButton_Click(object sender, EventArgs e)
         {
-
+            // FIRE IT UP
+            _process = Process.Start("Hotel Simulator.exe");
+            this.WindowState = FormWindowState.Minimized;
         }
 
         private void HTEButton_Click(object sender, EventArgs e)

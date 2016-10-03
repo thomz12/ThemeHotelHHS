@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(HotelLauncherForm));
             this.ScreenPictureBox = new System.Windows.Forms.PictureBox();
             this.StartSimulationButton = new System.Windows.Forms.Button();
             this.HTEButton = new System.Windows.Forms.Button();
@@ -92,7 +93,9 @@
             this.Controls.Add(this.StartSimulationButton);
             this.Controls.Add(this.ScreenPictureBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "HotelLauncherForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Simulation Launcher";
             ((System.ComponentModel.ISupportInitialize)(this.ScreenPictureBox)).EndInit();
             this.ResumeLayout(false);
