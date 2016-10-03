@@ -40,8 +40,11 @@ namespace Hotel.Persons
             }
         }
 
-        public List<Room> Path { get; set; }
+        public List<Room> Path { get; private set; }
         public float JumpHeight { get; set; }
+
+        // The target position to follow.
+        private Vector2 _target;
 
         private bool _calledElevator;
 
@@ -54,7 +57,7 @@ namespace Hotel.Persons
             Sprite.LoadSprite("Guest");
             Sprite.DrawOrder = 1;
             Sprite.SetSize(new Point(Sprite.Texture.Width, Sprite.Texture.Height));
-            Position = new Vector2(room.Position.X, room.Position.Y - (Room.ROOMHEIGHT - Sprite.Texture.Height));
+            Position = new Vector2(room.Position.X + (room.RoomSize.X * (Room.ROOMWIDTH / 2)), room.Position.Y - (Room.ROOMHEIGHT - Sprite.Texture.Height) - (Room.ROOMHEIGHT * (room.RoomSize.Y - 1)));
             JumpHeight = 4;
             CurrentRoom = room;
             _calledElevator = false;
