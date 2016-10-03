@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
   dslVersion="1.0.0.0"
   Id="90d7b128-f1fc-462a-8421-ac1bd25777ae"
   name="UML" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -7,6 +7,10 @@
     <comment
       Id="6aaa30ed-457b-4a34-b31a-8123c2fcaf80">
       <body>Part of the XNA Interface</body>
+    </comment>
+    <comment
+      Id="00d8c2dc-9681-470c-8018-a7484e641ae1">
+      <body>Hotel Builder is dependent on every Room :( (intentional)</body>
     </comment>
   </ownedCommentsInternal>
   <profileInstances>
@@ -2114,6 +2118,13 @@
             <enumerationMoniker
               Id="808fb7db-b98d-41de-9f23-a5ea926309da"
               LastKnownName="PersonTask"
+              LastKnownLocation="UML.uml" />
+          </dependency>
+          <dependency
+            Id="f506d7f9-ae2f-4f88-aea2-6d327043dc5a">
+            <classMoniker
+              Id="62023336-a266-4aac-a9c5-4421d840fe00"
+              LastKnownName="Elevator"
               LastKnownLocation="UML.uml" />
           </dependency>
         </suppliersInternal>

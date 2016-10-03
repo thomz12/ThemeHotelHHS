@@ -72,13 +72,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="4x1Cinema.png">
-      <Name>4x1Cinema</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="InformationWindowFont.spritefont">
       <Name>InformationWindowFont</Name>
       <Importer>FontDescriptionImporter</Importer>
@@ -100,13 +93,6 @@
   <ItemGroup>
     <Compile Include="1x1Lobby.png">
       <Name>1x1Lobby</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Paper.png">
-      <Name>Paper</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -189,15 +175,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="background2.jpg">
-      <Name>background2</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="background.png">
-      <Name>background</Name>
+    <Compile Include="2x2Cinema.png">
+      <Name>2x2Cinema</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
