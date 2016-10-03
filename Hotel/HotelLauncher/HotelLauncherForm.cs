@@ -32,6 +32,7 @@ namespace HotelLauncher
             // Open the file dialog and wait for an ok.
             if(_fileDialog.ShowDialog() == DialogResult.OK)
             {
+                // Give some feedback.
                 FilePathLabel.Text = $"File Opened: {_fileDialog.FileName}";
                 // Set the file to use.
             }
