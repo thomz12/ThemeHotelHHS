@@ -32,12 +32,14 @@ namespace Hotel
         public float Speed { get; set; }
         public ElevatorState State { get; private set; }
         public float WaitTime { get; set; }
+        public int CurrentFloor;
 
-        private int _currentFloor;
         private float _waitTime;
         private int _targetFloor;
         private Dictionary<int?, ElevatorDirection> _queue;
         private List<KeyValuePair<int, int>> _queueTarget;
+
+        public event EventHandler Arrival;
 
         /// <summary>
         /// Default constructor.
@@ -54,7 +56,7 @@ namespace Hotel
 
             Sprite.SetSize(new Point(Sprite.Texture.Width, Sprite.Texture.Height));
 
-            _currentFloor = 0;
+            CurrentFloor = 0;
             _queue = new Dictionary<int?, ElevatorDirection>();
             _queueTarget = new List<KeyValuePair<int, int>>();
         }
@@ -73,18 +75,18 @@ namespace Hotel
                 // Set the elevator idle.
                 State = ElevatorState.Idle;
                 // Our target floor is the current floor.
-                return _currentFloor;
+                return CurrentFloor;
             }
 
             // If the elevator is going up
             if (State == ElevatorState.GoingUp)
             {
                 // Try to find a floor above the elevator, that wants to go up.
-                floor = _queue.Keys.Where(x => x.Value > _currentFloor && _queue[x.Value].HasFlag(ElevatorDirection.Up)).OrderBy(x => x.Value).FirstOrDefault();
+                floor = _queue.Keys.Where(x => x.Value > CurrentFloor && _queue[x.Value].HasFlag(ElevatorDirection.Up)).OrderBy(x => x.Value).FirstOrDefault();
                 if(floor == null)
                 { 
                     // We pick the request on the highest floor for going down.
-                    floor = _queue.Keys.Where(x => x > _currentFloor && _queue[x].HasFlag(ElevatorDirection.Down)).OrderByDescending(x => x).FirstOrDefault();
+                    floor = _queue.Keys.Where(x => x > CurrentFloor && _queue[x].HasFlag(ElevatorDirection.Down)).OrderByDescending(x => x).FirstOrDefault();
 
                     if (floor == null)
                     {
@@ -98,13 +100,13 @@ namespace Hotel
             else if(State == ElevatorState.GoingDown)
             {
                 // Try to find a floor below the elevator, that wants to go down.
-                floor = _queue.Keys.Where(x => x < _currentFloor && _queue[x].HasFlag(ElevatorDirection.Down)).OrderByDescending(x => x).FirstOrDefault();
+                floor = _queue.Keys.Where(x => x < CurrentFloor && _queue[x].HasFlag(ElevatorDirection.Down)).OrderByDescending(x => x).FirstOrDefault();
 
                 if(floor == null)
                 {
                     // Nobody needs to go down anymore, but we sitll need to pick up people who are lower in the building and want to go up.
                     // We go to the person who is on the lowest floor and wants to go up.
-                    floor = _queue.Keys.Where(x => x < _currentFloor && _queue[x].HasFlag(ElevatorDirection.Up)).OrderBy(x => x).FirstOrDefault();
+                    floor = _queue.Keys.Where(x => x < CurrentFloor && _queue[x].HasFlag(ElevatorDirection.Up)).OrderBy(x => x).FirstOrDefault();
 
                     if(floor == null)
                     {
@@ -117,16 +119,26 @@ namespace Hotel
             else if(State == ElevatorState.Idle)
             {
                 // If the elevator is idle, find the closest target.
-                floor = _queue.Keys.Aggregate((x,y) => Math.Abs(x.Value -_currentFloor) < Math.Abs(y.Value - _currentFloor) ? x : y);
+                floor = _queue.Keys.Aggregate((x,y) => Math.Abs(x.Value -CurrentFloor) < Math.Abs(y.Value - CurrentFloor) ? x : y);
 
                 // Change the state of the elevator according to which way it is going.
-                if (floor > _currentFloor)
+                if (floor > CurrentFloor)
                     State = ElevatorState.GoingUp;
-                else if(floor < _currentFloor)
+                else if(floor < CurrentFloor)
                     State = ElevatorState.GoingDown;
             }
 
-            return floor.HasValue ? floor.Value : _currentFloor;
+            return floor.HasValue ? floor.Value : CurrentFloor;
+        }
+
+        /// <summary>
+        /// Call the arrival event.
+        /// </summary>
+        /// <param name="e"></param>
+        private void OnArrival(EventArgs e)
+        {
+            if (Arrival != null)
+                Arrival(this, e);
         }
 
         /// <summary>
@@ -199,12 +211,12 @@ namespace Hotel
                 _queue.Remove(_targetFloor);
 
                 // The current floor is now the target.
-                _currentFloor = _targetFloor;
+                CurrentFloor = _targetFloor;
 
                 // Add the targets for this floor.
                 for (int i = 0; i < _queueTarget.Count; i++)
                 {
-                    if (_queueTarget[i].Key == _currentFloor)
+                    if (_queueTarget[i].Key == CurrentFloor)
                     {
                         if (_queue.ContainsKey(_queueTarget[i].Value))
                             _queue[_queueTarget[i].Value] = ElevatorDirection.Both;
@@ -215,6 +227,8 @@ namespace Hotel
                         i--;
                     }
                 }
+
+                OnArrival(new EventArgs());
 
                 // Get the next floor.
                 _targetFloor = GetTargetFloor();
