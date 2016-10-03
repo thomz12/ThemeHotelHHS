@@ -14,30 +14,34 @@ namespace Hotel
         public const float MAXZOOM = 1.0f;
         public const float MINZOOM = 0.5f;
 
-        public Matrix TransformMatrix { get; set; }
+        public Matrix TransformMatrix { get; private set; }
         public float Rotation { get; set; }
         public Vector2 CamPosition { get; set; }
         public float Zoom { get; set; }
         public bool Controlable { get; set; }
+        public Point Size { get; private set; }
 
         /// <summary>
         /// Constructor
         /// </summary>
-        public Camera()
+        public Camera(int width, int height)
         {
             Zoom = 0.6f;
             Controlable = false;
+            // TEMP
+            CamPosition = new Vector2(-950f, 200f);
+            // /TEMP
+            Size = new Point(width, height);
         }
 
-
         /// <summary>
-        /// Gets the World coordinates from the mouse's position
+        /// Gets the World coordinates from screen position.
         /// </summary>
-        /// <param name="cam">The main camera.</param>
-        /// <returns></returns>
-        public Point ScreenToWorld(Point screenSpace)
+        /// <param name="screenPosition">The position on the screen.</param>
+        /// <returns>The position in the world. </returns>
+        public Point ScreenToWorld(Point screenPosition)
         {
-            return new Point((int)(((float)screenSpace.X - (int)(TransformMatrix.M41)) / Zoom), (int)(((float)screenSpace.Y - (int)(TransformMatrix.M42)) / Zoom));
+            return new Point((int)(((float)screenPosition.X - (int)(TransformMatrix.M41)) / Zoom), (int)(((float)screenPosition.Y - (int)(TransformMatrix.M42)) / Zoom));
         }
 
         /// <summary>
@@ -45,7 +49,7 @@ namespace Hotel
         /// </summary>
         /// <param name="device">The graphics device.</param>
         /// <param name="deltaTime">The time between frames.</param>
-        public void Update(int width, int height, float deltaTime)
+        public void Update(float deltaTime)
         {
             if (Controlable)
             {
@@ -65,7 +69,7 @@ namespace Hotel
             }
 
             // Transpose the transform matrix.
-            TransformMatrix = Matrix.CreateTranslation(new Vector3(CamPosition.X, CamPosition.Y, 0)) * Matrix.CreateRotationZ(Rotation) * Matrix.CreateScale(new Vector3(Zoom, Zoom, 1)) * Matrix.CreateTranslation(new Vector3(width * 0.5f, height * 0.5f, 0));
+            TransformMatrix = Matrix.CreateTranslation(new Vector3(CamPosition.X, CamPosition.Y, 0)) * Matrix.CreateRotationZ(Rotation) * Matrix.CreateScale(new Vector3(Zoom, Zoom, 1)) * Matrix.CreateTranslation(new Vector3(Size.X / 2, Size.Y / 2, 0));
         }
     }
 }

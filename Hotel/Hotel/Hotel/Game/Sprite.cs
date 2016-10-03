@@ -40,11 +40,19 @@ namespace Hotel
             Texture = _content.Load<Texture2D>(path);
         }
 
+        /// <summary>
+        /// Sets the position where the object should be drawn at.
+        /// </summary>
+        /// <param name="position">The position of the object.</param>
         public void SetPosition(Point position)
         {
             DrawDestination = new Rectangle(position.X, -position.Y, DrawDestination.Width, DrawDestination.Height);
         }
         
+        /// <summary>
+        /// Sets the size of the object to draw.
+        /// </summary>
+        /// <param name="size">The size of the object.</param>
         public void SetSize(Point size)
         {
             DrawDestination = new Rectangle(DrawDestination.X, DrawDestination.Y, size.X, size.Y);
@@ -60,7 +68,7 @@ namespace Hotel
         }
 
         /// <summary>
-        /// Called when drawing to the screen.
+        /// Call this to draw the object on the screen.
         /// </summary>
         /// <param name="batch">The batch to draw to.</param>
         /// <param name="gameTime">The game time.</param>

@@ -110,7 +110,7 @@ namespace Hotel
                     Person person = (Person)_objectToDisplay;
                     foreach (Room room in person.Path)
                     {
-                        room.Sprite.Color = Color.DarkGray;
+                        room.Sprite.Color = Color.Yellow;
                     }
 
                     person.CurrentRoom.Sprite.Color = Color.White;
