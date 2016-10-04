@@ -96,7 +96,8 @@ namespace Hotel
                 }
                 catch
                 {
-                    // AYY LMAO something went wrong.
+                    // AYY LMAO something went wrong and I have no idea what.
+                    // Queue generic error message.
                     Console.WriteLine("Could not read the file 'Config.cfg'.");
                     // Better try again from the launcher.
                     this.Exit();
