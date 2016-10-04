@@ -15,11 +15,13 @@ namespace HotelLauncher
         public string FilePath { get; private set; }
 
         private OpenFileDialog _fileDialog;
+        private ConfigModel model;
 
         public Settings()
         {
             InitializeComponent();
 
+            model = new ConfigModel();
             FilePath = null;
 
             _fileDialog = new OpenFileDialog();
@@ -38,6 +40,7 @@ namespace HotelLauncher
         {
             // TODO
             // Save the entered data in a settings file.
+            
 
             this.DialogResult = DialogResult.OK;
             this.Close();
@@ -50,6 +53,7 @@ namespace HotelLauncher
                 // This is the path of the file that needs to be opened.
                 FilePath = _fileDialog.FileName;
                 tb_Layout.Text = FilePath;
+                model.LayoutPath = FilePath;
             }
         }
     }
