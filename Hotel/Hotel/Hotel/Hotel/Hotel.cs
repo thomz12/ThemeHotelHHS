@@ -37,7 +37,7 @@ namespace Hotel
             List<Room> buildedRooms = builder.BuildHotel(HotelLayoutFilePath);
 
             // Add the rooms, and connect them.
-            Room outside = new Outside(content, new Point(-1, 0));
+            Room outside = new EmptyRoom(content, new Point(-1, 0), new Point(1, 1));
             Rooms.Add(outside);
             for (int i = 0; i < buildedRooms.Count; i++)
             {
@@ -45,11 +45,11 @@ namespace Hotel
             }
 
             // temp
-            Persons.Add(new Receptionist(_contentManager, Rooms[45]));
-
+            Persons.Add(new Receptionist(_contentManager, Rooms[50]));
+            
             // Add random guests to the hotel.
             Random r = new Random();
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < 200; i++)
             {
                 Room rm = Rooms[r.Next(0, Rooms.Count)];
                 if(rm is ElevatorShaft)
@@ -76,7 +76,7 @@ namespace Hotel
         public void AddGuest()
         {
             Guest guest = new Guest(_contentManager, Rooms[0]);
-            guest.TargetRoom = Rooms[3];
+            guest.TargetRoom = Rooms[4];
             Persons.Add(guest);
         }
 

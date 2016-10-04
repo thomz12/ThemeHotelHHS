@@ -20,7 +20,7 @@ namespace Hotel.Rooms
             Sprite.LoadSprite("Stairs");
             Name = "Staircase";
             Vertical = true;
-            Weight = 2;
+            Weight = 3.0f;
         }
     }
 }

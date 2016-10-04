@@ -7,9 +7,9 @@ using System.Text;
 
 namespace Hotel.Rooms
 {
-    class Outside : Room
+    class EmptyRoom : Room
     {
-        public Outside(ContentManager content, Point position) : base(content, position, new Point(1, 1))
+        public EmptyRoom(ContentManager content, Point position, Point size) : base(content, position, size)
         {
             BoundingBox = new Rectangle();
             Name = "Outside";

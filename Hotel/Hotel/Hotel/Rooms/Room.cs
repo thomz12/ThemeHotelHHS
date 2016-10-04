@@ -27,7 +27,7 @@ namespace Hotel
 
         public bool Vertical { get; set; }
         public int PeopleCount { get; set; }
-        public int Weight { get; set; }
+        public float Weight { get; set; }
 
         public Dictionary<Direction, Room> Neighbors { get; set; }
 
@@ -41,6 +41,7 @@ namespace Hotel
             RoomPosition = position;
             RoomSize = size;
             Vertical = false;
+            Weight = 1.0f;
 
             Neighbors = new Dictionary<Direction, Room>();
 

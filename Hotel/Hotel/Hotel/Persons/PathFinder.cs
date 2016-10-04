@@ -9,10 +9,10 @@ namespace Hotel.Persons
     class RoomNode
     {
         public Room Room;
-        public int Weight;
+        public float Weight;
         public RoomNode PrevRoom;
 
-        public RoomNode(Room room, int weight, RoomNode prevRoom)
+        public RoomNode(Room room, float weight, RoomNode prevRoom)
         {
             Room = room;
             Weight = weight;
@@ -37,24 +37,46 @@ namespace Hotel.Persons
             // Add the current room.
             queue.Add(new RoomNode(currentRoom, 0, null));
 
+            int asdf = 0;
+
+            // Go through all the items in the queue
             while (queue.Count > 0)
             {
+                // Get the node with the lowest weight.
                 RoomNode current = queue.OrderBy(x => x.Weight).First();
 
+                // if the current room is the target room, were done.
                 if (current.Room == targetRoom)
                 {
                     endNode = current;
                     break;
                 }
 
+                // For every neighbor in the room.
                 foreach (Room room in current.Room.Neighbors.Values)
                 {
-                    if (!visited.Select(x => x.Room).Contains(room))
+                    // Check if the neighbor is already visited.
+                    bool alreadyVisited = visited.Where(x => x.Room == room).Count() > 0;
+
+                    // If the node is not yet visited.
+                    if (!alreadyVisited)
+                    {
                         queue.Add(new RoomNode(room, current.Weight + room.Weight, current));
+                    }
+                    else
+                    {
+                        RoomNode node = visited.Where(x => x.Room == room).FirstOrDefault();
+                        if (node.Weight > current.Weight + room.Weight)
+                        {
+                            node.PrevRoom = current;
+                            node.Weight = current.Weight + room.Weight;
+                        }
+                    }
                 }
 
                 visited.Add(current);
                 queue.Remove(current);
+                asdf++;
             }
 
             // If no end node was found, return null.

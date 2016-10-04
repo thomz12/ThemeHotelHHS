@@ -83,6 +83,12 @@ namespace Hotel
                             default:
                                 break;
                         }
+
+                        for (int i = 0; i < dimensions.Y - 1; i++)
+                        {
+                            rooms.Add(new EmptyRoom(_content, new Point(position.X, position.Y + i), new Point(dimensions.X, 1)));
+                            rooms.Last().Name = data["AreaType"] + " " + position.Y + i;
+                        }
                     }
                     data.Clear();
                 }

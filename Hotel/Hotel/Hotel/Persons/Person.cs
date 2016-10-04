@@ -247,6 +247,12 @@ namespace Hotel.Persons
         /// </summary>
         private void UpdateCurrentTask()
         {
+            if (Path == null)
+            {
+                CurrentTask = PersonTask.Waiting;
+                return;
+            }
+
             // If there are more rooms to go through
             if (Path.Count > 0)
             {

@@ -105,16 +105,22 @@ namespace Hotel
             if (IsShowingInfo)
             {
                 // Make the target room red and the path room blue
-                if (_objectToDisplay is Guest)
+                if (_objectToDisplay is Person)
                 {
                     Person person = (Person)_objectToDisplay;
-                    foreach (Room room in person.Path)
-                    {
-                        room.Sprite.Color = Color.Yellow;
-                    }
 
-                    person.CurrentRoom.Sprite.Color = Color.White;
-                    person.TargetRoom.Sprite.Color = Color.Red;
+                    if (person.Path != null)
+                    {
+                        foreach (Room room in person.Path)
+                        {
+                            room.Sprite.Color = Color.Yellow;
+                        }
+
+                        person.CurrentRoom.Sprite.Color = Color.White;
+
+                        if(person.TargetRoom != null)
+                            person.TargetRoom.Sprite.Color = Color.Red;
+                    }
                 }
 
                 // Split the spring into a Title and Information part, which are drawn seperately.
