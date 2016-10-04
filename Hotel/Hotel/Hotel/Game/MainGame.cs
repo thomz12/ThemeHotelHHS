@@ -69,6 +69,14 @@ namespace Hotel
                     // Instantiate an object of type model and fill it.
                     _config = jsonSerializer.Deserialize<ConfigModel>(jsonReader);
 
+                    // Check if files exist
+                    if (!File.Exists(_config.LayoutPath))
+                    {
+                        Console.WriteLine($"There is no layout file on the end of this path: {_config.LayoutPath}");
+                        this.Exit();
+                    }
+                    
+
                     // Set other settings
                     HotelEventManager.HTE_Factor = _config.HTELength;
                 }
