@@ -25,7 +25,7 @@ namespace HotelLauncher
             _fileDialog = new OpenFileDialog();
             _fileDialog.RestoreDirectory = true;
             _fileDialog.Multiselect = false;
-            _fileDialog.Filter = "layout files (*.layout)|*.layout|All files (*.*)|*.*";
+            _fileDialog.Filter = "layout files (*.layout)|*.layout[";
         }
 
         private void btn_Cancel_Click(object sender, EventArgs e)
