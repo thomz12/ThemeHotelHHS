@@ -49,6 +49,7 @@ namespace HotelLauncher
                     num_Survivability.Value = (int)_model.Survivability;
                     num_StairsWeight.Value = (decimal)_model.StaircaseWeight;
                     tb_Layout.Text = _model.LayoutPath;
+                    FilePath = _model.LayoutPath;
                 }
             }
             catch
