@@ -36,7 +36,7 @@ namespace Hotel
         {
             _graphics = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
-            Window.Title = "Hotel";
+            Window.Title = "Hotel Simulation";
             IsMouseVisible = true;
 
             // Enable v-sync

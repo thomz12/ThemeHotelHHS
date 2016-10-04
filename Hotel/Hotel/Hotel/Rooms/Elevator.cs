@@ -152,6 +152,7 @@ namespace Hotel
             // Calculate if the up or down button was pressed.
             ElevatorDirection dir;
 
+            // Calculate the direction
             if (floor > targetFloor)
                 dir = ElevatorDirection.Down;
             else if (floor < targetFloor)
@@ -166,13 +167,10 @@ namespace Hotel
             else
                 _queue.Add(floor, dir);
 
-            // Save the destination for adding later to the queue (when guest enters the room).
+            // Save the destination for adding later to the queue (when guest enters the elevator).
             _queueTarget.Add(new KeyValuePair<int, int>(floor, targetFloor));
 
             _targetFloor = GetTargetFloor();
-
-            // GLORIUS CONSOLE PRINT MASTERRACE.
-            Console.WriteLine($"Call {floor} -> Target {targetFloor}");
         }
 
         /// <summary>
