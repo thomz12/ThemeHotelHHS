@@ -50,6 +50,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.btn_Select = new System.Windows.Forms.Button();
             this.btn_Cancel = new System.Windows.Forms.Button();
+            this.tb_Layout = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.num_HTETimespan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
@@ -104,7 +105,7 @@
             131072});
             this.num_HTETimespan.Name = "num_HTETimespan";
             this.num_HTETimespan.Size = new System.Drawing.Size(69, 20);
-            this.num_HTETimespan.TabIndex = 3;
+            this.num_HTETimespan.TabIndex = 0;
             this.num_HTETimespan.Value = new decimal(new int[] {
             1,
             0,
@@ -131,7 +132,7 @@
             131072});
             this.numericUpDown1.Name = "numericUpDown1";
             this.numericUpDown1.Size = new System.Drawing.Size(69, 20);
-            this.numericUpDown1.TabIndex = 4;
+            this.numericUpDown1.TabIndex = 1;
             this.numericUpDown1.Value = new decimal(new int[] {
             1,
             0,
@@ -158,7 +159,7 @@
             131072});
             this.numericUpDown2.Name = "numericUpDown2";
             this.numericUpDown2.Size = new System.Drawing.Size(69, 20);
-            this.numericUpDown2.TabIndex = 5;
+            this.numericUpDown2.TabIndex = 2;
             this.numericUpDown2.Value = new decimal(new int[] {
             1,
             0,
@@ -207,7 +208,7 @@
             0});
             this.numericUpDown3.Name = "numericUpDown3";
             this.numericUpDown3.Size = new System.Drawing.Size(70, 20);
-            this.numericUpDown3.TabIndex = 9;
+            this.numericUpDown3.TabIndex = 3;
             this.numericUpDown3.Value = new decimal(new int[] {
             10,
             0,
@@ -237,9 +238,10 @@
             this.btn_Save.Location = new System.Drawing.Point(207, 279);
             this.btn_Save.Name = "btn_Save";
             this.btn_Save.Size = new System.Drawing.Size(90, 32);
-            this.btn_Save.TabIndex = 12;
+            this.btn_Save.TabIndex = 8;
             this.btn_Save.Text = "Save";
             this.btn_Save.UseVisualStyleBackColor = true;
+            this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
             // 
             // label4
             // 
@@ -260,7 +262,7 @@
             0});
             this.numericUpDown4.Name = "numericUpDown4";
             this.numericUpDown4.Size = new System.Drawing.Size(70, 20);
-            this.numericUpDown4.TabIndex = 14;
+            this.numericUpDown4.TabIndex = 4;
             this.numericUpDown4.Value = new decimal(new int[] {
             3,
             0,
@@ -278,7 +280,7 @@
             // 
             // label6
             // 
-            this.label6.Location = new System.Drawing.Point(-48, 245);
+            this.label6.Location = new System.Drawing.Point(-48, 253);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(100, 19);
             this.label6.TabIndex = 16;
@@ -287,11 +289,11 @@
             // 
             // btn_Select
             // 
-            this.btn_Select.Location = new System.Drawing.Point(172, 223);
+            this.btn_Select.Location = new System.Drawing.Point(382, 253);
             this.btn_Select.Name = "btn_Select";
-            this.btn_Select.Size = new System.Drawing.Size(75, 23);
-            this.btn_Select.TabIndex = 17;
-            this.btn_Select.Text = "Select";
+            this.btn_Select.Size = new System.Drawing.Size(26, 20);
+            this.btn_Select.TabIndex = 6;
+            this.btn_Select.Text = "...";
             this.btn_Select.UseVisualStyleBackColor = true;
             // 
             // btn_Cancel
@@ -299,15 +301,25 @@
             this.btn_Cancel.Location = new System.Drawing.Point(111, 279);
             this.btn_Cancel.Name = "btn_Cancel";
             this.btn_Cancel.Size = new System.Drawing.Size(90, 32);
-            this.btn_Cancel.TabIndex = 18;
+            this.btn_Cancel.TabIndex = 7;
             this.btn_Cancel.Text = "Cancel";
             this.btn_Cancel.UseVisualStyleBackColor = true;
+            this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
+            // 
+            // tb_Layout
+            // 
+            this.tb_Layout.Location = new System.Drawing.Point(58, 253);
+            this.tb_Layout.Name = "tb_Layout";
+            this.tb_Layout.ReadOnly = true;
+            this.tb_Layout.Size = new System.Drawing.Size(318, 20);
+            this.tb_Layout.TabIndex = 5;
             // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(420, 323);
+            this.Controls.Add(this.tb_Layout);
             this.Controls.Add(this.btn_Cancel);
             this.Controls.Add(this.btn_Select);
             this.Controls.Add(this.label6);
@@ -364,5 +376,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btn_Select;
         private System.Windows.Forms.Button btn_Cancel;
+        private System.Windows.Forms.TextBox tb_Layout;
     }
 }

@@ -61,7 +61,7 @@
             this.btn_Settings.Name = "btn_Settings";
             this.btn_Settings.Size = new System.Drawing.Size(200, 50);
             this.btn_Settings.TabIndex = 2;
-            this.btn_Settings.Text = "HTE Settings";
+            this.btn_Settings.Text = "Simulation Settings";
             this.btn_Settings.UseVisualStyleBackColor = true;
             this.btn_Settings.Click += new System.EventHandler(this.SettingsButton_Click);
             // 

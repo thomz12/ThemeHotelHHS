@@ -16,5 +16,20 @@ namespace HotelLauncher
         {
             InitializeComponent();
         }
+
+        private void btn_Cancel_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
+
+        private void btn_Save_Click(object sender, EventArgs e)
+        {
+            // TODO
+            // Save the entered data in a settings file.
+
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
     }
 }
