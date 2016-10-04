@@ -87,6 +87,7 @@
             // 
             // num_HTETimespan
             // 
+            this.num_HTETimespan.DecimalPlaces = 1;
             this.num_HTETimespan.Increment = new decimal(new int[] {
             1,
             0,
@@ -94,7 +95,7 @@
             65536});
             this.num_HTETimespan.Location = new System.Drawing.Point(172, 8);
             this.num_HTETimespan.Maximum = new decimal(new int[] {
-            10,
+            50,
             0,
             0,
             0});
@@ -114,6 +115,7 @@
             // 
             // numericUpDown1
             // 
+            this.numericUpDown1.DecimalPlaces = 1;
             this.numericUpDown1.Increment = new decimal(new int[] {
             1,
             0,
@@ -141,6 +143,7 @@
             // 
             // numericUpDown2
             // 
+            this.numericUpDown2.DecimalPlaces = 1;
             this.numericUpDown2.Increment = new decimal(new int[] {
             1,
             0,
@@ -295,6 +298,7 @@
             this.btn_Select.TabIndex = 6;
             this.btn_Select.Text = "...";
             this.btn_Select.UseVisualStyleBackColor = true;
+            this.btn_Select.Click += new System.EventHandler(this.btn_Select_Click);
             // 
             // btn_Cancel
             // 

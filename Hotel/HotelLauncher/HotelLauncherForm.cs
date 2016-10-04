@@ -14,22 +14,24 @@ namespace HotelLauncher
     public partial class HotelLauncherForm : Form
     {
         private Process _process;
+        private Settings _settings;
 
         public HotelLauncherForm()
         {
             // DO DIS FIRST!!!
             InitializeComponent();
 
-            /* file dialoge shizz
-            _fileDialog = new OpenFileDialog();
-            _fileDialog.RestoreDirectory = true;
-            _fileDialog.Multiselect = false;
-            _fileDialog.Filter = "layout files (*.layout)|*.layout|All files (*.*)|*.*";
-            */
+            _settings = new Settings();
         }
 
         private void StartSimulationButton_Click(object sender, EventArgs e)
         {
+            if(_settings.FilePath == null)
+            {
+                MessageBox.Show("Please select a hotel layout file in the 'Settings' menu!", "No file loaded!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                return;
+            }
+
             // FIRE IT UP
             _process = Process.Start("Hotel Simulator.exe");
 
@@ -43,10 +45,8 @@ namespace HotelLauncher
 
         private void SettingsButton_Click(object sender, EventArgs e)
         {
-            using(Settings settings = new Settings())
-            {
-                settings.ShowDialog();
-            }
+            _settings.ShowDialog();
+            
         }
     }
 }

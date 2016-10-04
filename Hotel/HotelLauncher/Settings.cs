@@ -12,9 +12,20 @@ namespace HotelLauncher
 {
     public partial class Settings : Form
     {
+        public string FilePath { get; private set; }
+
+        private OpenFileDialog _fileDialog;
+
         public Settings()
         {
             InitializeComponent();
+
+            FilePath = null;
+
+            _fileDialog = new OpenFileDialog();
+            _fileDialog.RestoreDirectory = true;
+            _fileDialog.Multiselect = false;
+            _fileDialog.Filter = "layout files (*.layout)|*.layout|All files (*.*)|*.*";
         }
 
         private void btn_Cancel_Click(object sender, EventArgs e)
@@ -30,6 +41,16 @@ namespace HotelLauncher
 
             this.DialogResult = DialogResult.OK;
             this.Close();
+        }
+
+        private void btn_Select_Click(object sender, EventArgs e)
+        {
+            if(_fileDialog.ShowDialog() == DialogResult.OK)
+            {
+                // This is the path of the file that needs to be opened.
+                FilePath = _fileDialog.FileName;
+                tb_Layout.Text = FilePath;
+            }
         }
     }
 }
