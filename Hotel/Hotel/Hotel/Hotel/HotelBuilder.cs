@@ -86,8 +86,9 @@ namespace Hotel
 
                         for (int i = 0; i < dimensions.Y - 1; i++)
                         {
+                            Room roomToAddTo = rooms.Last();
                             rooms.Add(new EmptyRoom(_content, new Point(position.X, position.Y + i), new Point(dimensions.X, 1)));
-                            rooms.Last().Name = data["AreaType"] + " " + position.Y + i;
+                            rooms.Last().Name = roomToAddTo.Name;
                         }
                     }
                     data.Clear();
