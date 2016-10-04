@@ -91,6 +91,22 @@
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="820fecba-69a8-4d7a-918a-8d4c1fea0a45" />
           </association>
+          <association Id="a92931d9-fb7e-443a-8308-a62b30006652" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="814d07fb-1ff1-43a5-8504-8aceb98a8308" LastKnownName="ConfigModel" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a2aba006-d985-4e82-909a-f44b0840cbbc" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="4b018e27-b1be-4894-b050-9cf69f0f4820" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d5a1f565-a134-407c-a6bd-b877cd0f8214" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="037cbad1-7a3a-4310-a340-539e23b070d7" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="59d5167a-a2fa-4baa-9847-0a7edc354d24" />
+          </association>
         </targetEnds>
         <ownedAttributesInternal>
           <property Id="883af75d-e398-4a4f-8d42-0f619c7237e7" name="graphics" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
@@ -657,6 +673,22 @@
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="c7e62964-1d5c-43f6-8f2c-59a5e6738571" />
+          </association>
+          <association Id="0b02b7e5-bf75-4b07-af8c-36d59851c032" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="814d07fb-1ff1-43a5-8504-8aceb98a8308" LastKnownName="ConfigModel" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="c014e3a0-6f1c-4122-b5d9-d02287d4a0c0" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="c33195d4-c646-4f8f-aac6-41cbb3120135" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="4310b3da-9b27-40b4-857b-09d13beb2a02" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="657c0c72-4843-4e0f-ae1f-9f821d989a91" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="09d515dc-075f-4de2-bd95-80bd3e8854bd" />
           </association>
         </targetEnds>
         <ownedAttributesInternal>
@@ -2773,6 +2805,61 @@
         <elementDefinition Id="9f551e40-5cea-4304-a4a9-0cf7c89378c5" />
       </referencedType>
     </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="814d07fb-1ff1-43a5-8504-8aceb98a8308" name="ConfigModel" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="1c693fac-261b-4d9a-90af-3282a092d575" />
+        <ownedAttributesInternal>
+          <property Id="19afeed1-6f06-4d9d-8434-3edd87a00738" name="LayoutPath" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="b221dd33-46d8-4acf-875f-481e431340cc" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="6318edcc-dd69-477c-9de7-492f83a353f2" LastKnownName="string" />
+            </type_NamedElement>
+          </property>
+          <property Id="bada6313-3168-40fa-8505-cdec1567ea82" name="HTELength" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="90130762-6a9d-4d27-b807-c4f189fc9bd2" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="bcb3df8d-5b28-44ce-8651-4d7810e67549" LastKnownName="float" />
+            </type_NamedElement>
+          </property>
+          <property Id="4422e192-4f7a-4b1c-8a7e-4dd035e794f0" name="ElevatorSpeed" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="e4444fb6-1f3d-4698-bb38-91cdc9f9b733" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="bcb3df8d-5b28-44ce-8651-4d7810e67549" LastKnownName="float" />
+            </type_NamedElement>
+          </property>
+          <property Id="2626a542-7d0f-4b56-8b44-bced56217f45" name="WalkingSpeed" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="43826a62-133b-4719-afaa-0291195476cf" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="bcb3df8d-5b28-44ce-8651-4d7810e67549" LastKnownName="float" />
+            </type_NamedElement>
+          </property>
+          <property Id="6a362bc5-7c15-431f-925f-943e690ca06d" name="FilmDuration" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="b10b2e1b-fa9f-4a13-ad06-47b0fa638fac" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="fdf7999c-b852-4111-ac85-a8351ec2b670" LastKnownName="int" />
+            </type_NamedElement>
+          </property>
+          <property Id="3383c5a2-3b39-4a53-aab7-5626d9dd6299" name="CleaningDuration" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="f611735f-c561-44a3-b208-3501a6b2ba47" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="fdf7999c-b852-4111-ac85-a8351ec2b670" LastKnownName="int" />
+            </type_NamedElement>
+          </property>
+          <property Id="cd560f47-4a83-46f7-b996-f5f2acd9543c" name="Survivability" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="231a603e-a940-4f53-bf6b-2a19b0e0cacd" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="fdf7999c-b852-4111-ac85-a8351ec2b670" LastKnownName="int" />
+            </type_NamedElement>
+          </property>
+          <property Id="bcafb67e-1269-4761-9a56-ad446c9d6d0f" name="StaircaseWeight" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="19122e85-901a-48a2-892e-9430f6f36850" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="bcb3df8d-5b28-44ce-8651-4d7810e67549" LastKnownName="float" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
   </packagedElements>
   <package Id="dcd36c7c-ee69-4234-8b0d-a3b8dc3f548d" name="UML">
     <elementDefinition Id="90d7b128-f1fc-462a-8421-ac1bd25777ae" />

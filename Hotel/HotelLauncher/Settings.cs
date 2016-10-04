@@ -65,7 +65,6 @@ namespace HotelLauncher
 
         private void btn_Save_Click(object sender, EventArgs e)
         {
-            // TODO
             // Save the entered data in a model.
             _model.HTELength = (float)num_HTETimespan.Value;
             _model.ElevatorSpeed = (float)num_ElevatorSpeed.Value;
@@ -74,9 +73,15 @@ namespace HotelLauncher
             _model.CleaningDuration = (int)num_CleaningDuration.Value;
             _model.Survivability = (int)num_Survivability.Value;
             _model.StaircaseWeight = (float)num_StairsWeight.Value;
-           
-            if (_model.LayoutPath != null)
+
+            if (_model.LayoutPath == null)
             {
+                // Throw an error
+                MessageBox.Show("Not all fields have been filled in!", "404", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            else
+            { 
                 // Save the entered data in a settings file.
                 StreamWriter sw = new StreamWriter(@"Config.cfg");
                 JsonWriter jsonWriter = new JsonTextWriter(sw);
@@ -86,8 +91,6 @@ namespace HotelLauncher
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
-            // Throw an error
-            MessageBox.Show("Not all fields have been filled in!", "404", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
         }
 
         private void btn_Select_Click(object sender, EventArgs e)
