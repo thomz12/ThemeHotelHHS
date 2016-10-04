@@ -8,8 +8,9 @@ using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Media;
-using Nuclex.UserInterface;
 using HotelEvents;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace Hotel
 {
@@ -28,6 +29,7 @@ namespace Hotel
         private HotelObject _wasSelected;
         private HotelEventListener _listener;
         private InformationWindow _informationWindow;
+        private ConfigModel _config;
 
         private RenderTarget2D _renderTexture;
         private Background _background;
@@ -46,16 +48,44 @@ namespace Hotel
 
             _graphics.IsFullScreen = false;
 
+            // Subscribe to the exiting event
             Exiting += MainGame_Exiting;
 
             HotelEventManager.Start();
 
             _listener = new EventListener();
             HotelEventManager.Register(_listener);
-            HotelEventManager.HTE_Factor = 1.0f;
 
             // Disable the fixed time step, causes low frame rates on some computers.
             IsFixedTimeStep = false;
+
+            // Load Settings
+            try
+            {
+                using (StreamReader sr = new StreamReader(@"Config.cfg"))
+                using (JsonReader jsonReader = new JsonTextReader(sr))
+                {
+                    JsonSerializer jsonSerializer = new JsonSerializer();
+                    // Instantiate an object of type model and fill it.
+                    _config = jsonSerializer.Deserialize<ConfigModel>(jsonReader);
+
+                    // Check if files exist
+                    if (!File.Exists(_config.LayoutPath))
+                    {
+                        Console.WriteLine($"There is no layout file on the end of this path: {_config.LayoutPath}");
+                        this.Exit();
+                    }
+                    
+
+                    // Set other settings
+                    HotelEventManager.HTE_Factor = _config.HTELength;
+                }
+            }
+            catch
+            {
+                Console.WriteLine("Could not read 'Config.cfg', does it not exist?");
+                this.Exit();
+            }
         }
 
         private void MainGame_Exiting(object sender, EventArgs e)
@@ -89,7 +119,7 @@ namespace Hotel
 
             _informationWindow = new InformationWindow(Content);
 
-            _hotel = new Hotel(Content);
+            _hotel = new Hotel(Content, _config);
             _camera = new Camera(GraphicsDevice.PresentationParameters.BackBufferWidth, GraphicsDevice.PresentationParameters.BackBufferHeight);
             _camera.Controlable = true;
             _closeUpCamera = new Camera(200, 200);

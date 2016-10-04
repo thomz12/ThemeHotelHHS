@@ -22,13 +22,13 @@ namespace Hotel
         /// Constructor
         /// </summary>
         /// <param name="content">The content manager used to load in room images.</param>
-        public Hotel(ContentManager content)
+        public Hotel(ContentManager content, ConfigModel config)
         {
             Rooms = new List<Room>();
             Persons = new List<Person>();
 
-            // Get the filepath of the layout file.
-            HotelLayoutFilePath = @"Extra\Hotel2.layout";
+            // Set the path to the file of the hotel that needs to be loaded.
+            HotelLayoutFilePath = config.LayoutPath;
 
             _contentManager = content;
 
