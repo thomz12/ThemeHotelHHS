@@ -83,6 +83,7 @@
     <Compile Include="Game\Background.cs" />
     <Compile Include="Game\Camera.cs" />
     <Compile Include="Game\ConfigModel.cs" />
+    <Compile Include="Game\HotelEventHandler.cs" />
     <Compile Include="Game\InformationWindow.cs" />
     <Compile Include="Game\EventListener.cs" />
     <Compile Include="Hotel\HotelObject.cs" />

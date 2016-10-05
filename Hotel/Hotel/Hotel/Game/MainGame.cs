@@ -53,11 +53,6 @@ namespace Hotel
             // Subscribe to the exiting event
             Exiting += MainGame_Exiting;
 
-            HotelEventManager.Start();
-            HotelEventManager.HTE_Factor = 2;
-            _listener = new EventListener();
-            HotelEventManager.Register(_listener);
-
             // Disable the fixed time step, causes low frame rates on some computers.
             IsFixedTimeStep = false;
 
@@ -147,6 +142,13 @@ namespace Hotel
             _camera.Controlable = true;
             _closeUpCamera = new Camera(200, 200);
             _background = new Background(Content, _camera);
+
+            HotelEventManager.Start();
+
+            HotelEventHandler hem = new HotelEventHandler(_hotel);
+
+            _listener = new EventListener(hem);
+            HotelEventManager.Register(_listener);
         }
 
         /// <summary>
