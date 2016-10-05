@@ -14,7 +14,7 @@ namespace Hotel
     {
         public string HotelLayoutFilePath { get; private set; }
         public List<Room> Rooms { get; set; }
-        public List<Person> Persons { get; set; }
+        public Dictionary<string, Person> Persons { get; set; }
 
         private ContentManager _contentManager;
         private ConfigModel _config;
@@ -26,11 +26,11 @@ namespace Hotel
         public Hotel(ContentManager content, ConfigModel config)
         {
             Rooms = new List<Room>();
-            Persons = new List<Person>();
+            Persons = new Dictionary<string, Person>();
 
             _config = config;
             _contentManager = content;
-            
+
             // Set the path to the file of the hotel that needs to be loaded.
             HotelLayoutFilePath = config.LayoutPath;
 
@@ -46,33 +46,16 @@ namespace Hotel
                 PlaceRoom(buildedRooms[i]);
             }
 
-            // temp
-            Persons.Add(new Receptionist(_contentManager, Rooms[50]));
-            
-            // Add random guests to the hotel.
-            Random r = new Random();
-            for (int i = 0; i < 20; i++)
-            {
-                Room rm = Rooms[r.Next(0, Rooms.Count)];
-                if(rm is ElevatorShaft)
-                {
-                    i--;
-                    continue;
-                }
-                Persons.Add(new Guest(_contentManager, rm));
+            CreateStaff();
+        }
 
-                Room tr = Rooms[r.Next(0, Rooms.Count)];
-                if (tr is ElevatorShaft)
-                {
-                    i--;
-                    continue;
-                }
+        public void CreateStaff()
+        {
+            Room firstLobby = Rooms.OfType<Lobby>().OrderBy(x => x.RoomPosition.X).First();
+            Persons.Add("Receptionist", new Receptionist(_contentManager, firstLobby));
 
-                Persons.Last().TargetRoom = tr;
-            }
-
-            AddGuest();
-            // /temp
+            Persons.Add("Cleaner", new Cleaner(_contentManager, firstLobby));
+            Persons.Add("Cleaner1", new Cleaner(_contentManager, firstLobby));
         }
 
         /// <summary>
@@ -82,7 +65,7 @@ namespace Hotel
         {
             Guest guest = new Guest(_contentManager, Rooms[0]);
             guest.TargetRoom = Rooms[4];
-            Persons.Add(guest);
+            //Persons.Add(guest);
         }
 
         /// <summary>
@@ -111,7 +94,7 @@ namespace Hotel
         /// <returns>Null if nothing was found, if something was found, return that object.</returns>
         public HotelObject GetObject(Point position)
         {
-            foreach (Person person in Persons)
+            foreach (Person person in Persons.Values)
             {
                 if (person.BoundingBox.Contains(position))
                     return person;
@@ -137,7 +120,7 @@ namespace Hotel
                 room.Update(deltaTime);
             }
 
-            foreach (Person person in Persons)
+            foreach (Person person in Persons.Values)
             {
                 person.Update(deltaTime);
             }
@@ -150,7 +133,7 @@ namespace Hotel
         /// <param name="gameTime">the game time.</param>
         public void Draw(SpriteBatch batch, GameTime gameTime)
         {
-            foreach (Person person in Persons)
+            foreach (Person person in Persons.Values)
             {
                 person.Draw(batch, gameTime);
             }

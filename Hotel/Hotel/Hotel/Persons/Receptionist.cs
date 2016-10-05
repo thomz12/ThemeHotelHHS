@@ -18,6 +18,7 @@ namespace Hotel.Persons
         {
             Name = "Receptionist";
             Sprite.LoadSprite("Receptionist");
+            Sprite.SetSize(new Point(Sprite.Texture.Width, Sprite.Texture.Height));
         }
     }
 }
