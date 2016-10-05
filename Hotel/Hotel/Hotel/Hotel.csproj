@@ -114,9 +114,6 @@
     <Content Include="Extra\FemaleNames.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Extra\HotelFancy.layout">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="Extra\LastNames.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

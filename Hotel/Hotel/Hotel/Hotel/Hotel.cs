@@ -17,6 +17,7 @@ namespace Hotel
         public List<Person> Persons { get; set; }
 
         private ContentManager _contentManager;
+        private ConfigModel _config;
 
         /// <summary>
         /// Constructor
@@ -27,13 +28,14 @@ namespace Hotel
             Rooms = new List<Room>();
             Persons = new List<Person>();
 
+            _config = config;
+            _contentManager = content;
+            
             // Set the path to the file of the hotel that needs to be loaded.
             HotelLayoutFilePath = config.LayoutPath;
 
-            _contentManager = content;
-
             // read the hotel from a layout file.
-            HotelBuilder builder = new HotelBuilder(content);
+            HotelBuilder builder = new HotelBuilder(content, config);
             List<Room> buildedRooms = builder.BuildHotel(HotelLayoutFilePath);
 
             // Add the rooms, and connect them.

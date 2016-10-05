@@ -22,6 +22,8 @@ namespace Hotel
         public const int ROOMHEIGHT = 90;
         public const int ROOMWIDTH = 192;
 
+        public int ID { get; set; }
+
         public Point RoomPosition { get; set; }
         public Point RoomSize { get; set; }
 

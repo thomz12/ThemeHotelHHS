@@ -13,10 +13,12 @@ namespace Hotel
     public class HotelBuilder
     {
         private ContentManager _content;
+        private ConfigModel _config;
 
-        public HotelBuilder(ContentManager content)
+        public HotelBuilder(ContentManager content, ConfigModel config)
         {
             _content = content;
+            _config = config;
         }
 
         public List<Room> BuildHotel(string path)
