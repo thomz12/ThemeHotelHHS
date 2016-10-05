@@ -56,11 +56,11 @@ namespace Hotel
         public void CreateStaff()
                 {
             Room firstLobby = Rooms.OfType<Lobby>().OrderBy(x => x.RoomPosition.X).First();
-            Persons.Add("Receptionist", new Receptionist(_contentManager, firstLobby));
+            Persons.Add("Receptionist", new Receptionist(_contentManager, firstLobby, _config.WalkingSpeed));
 
             for (int i = 0; i < _cleaners; i++)
             {
-                Persons.Add("Cleaner" + i, new Cleaner(_contentManager, firstLobby));
+                Persons.Add("Cleaner" + i, new Cleaner(_contentManager, firstLobby, _config.WalkingSpeed, _config.CleaningDuration));
             }
         }
 

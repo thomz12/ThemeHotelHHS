@@ -8,6 +8,14 @@ using System.Text;
 
 namespace Hotel
 {
+    public enum RoomState
+    {
+        Dirty,
+        InCleaning,
+        Occupied,
+        Vacant
+    }
+
     public enum Direction
     {
         None,
@@ -31,6 +39,7 @@ namespace Hotel
         public int PeopleCount { get; set; }
         public int PeopleInside { get; set; }
         public float Weight { get; set; }
+        public RoomState State { get; set; }
 
         public Dictionary<Direction, Room> Neighbors { get; set; }
 

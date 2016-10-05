@@ -41,7 +41,7 @@ namespace Hotel.Persons
             }
         }
 
-        public List<Room> Path { get; private set; }
+        public List<Room> Path { get; protected set; }
         public float JumpHeight { get; set; }
 
         // The Elevator to enter.

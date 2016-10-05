@@ -750,13 +750,6 @@
               LastKnownName="Guest"
               LastKnownLocation="UML.uml" />
           </dependency>
-          <dependency
-            Id="d2275c0f-0fe6-4a05-8d28-84f36809bc98">
-            <enumerationMoniker
-              Id="2436b42d-ffe1-453c-a0c9-3f64d26adc38"
-              LastKnownName="GuestRoomState"
-              LastKnownLocation="UML.uml" />
-          </dependency>
         </suppliersInternal>
         <generalsInternal>
           <generalization
@@ -1811,6 +1804,13 @@
             <enumerationMoniker
               Id="2a77b4c8-2f23-40ec-8ec3-b11e46f9648c"
               LastKnownName="Direction"
+              LastKnownLocation="UML.uml" />
+          </dependency>
+          <dependency
+            Id="d0bd8cbc-e58c-485d-937e-dde9df5168ad">
+            <enumerationMoniker
+              Id="2436b42d-ffe1-453c-a0c9-3f64d26adc38"
+              LastKnownName="RoomState"
               LastKnownLocation="UML.uml" />
           </dependency>
         </suppliersInternal>
@@ -6256,7 +6256,7 @@
     <packageHasNamedElement>
       <enumeration
         Id="2436b42d-ffe1-453c-a0c9-3f64d26adc38"
-        name="GuestRoomState"
+        name="RoomState"
         isAbstract="false"
         isLeaf="false">
         <ownedLiterals>
