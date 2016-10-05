@@ -16,7 +16,7 @@ namespace Hotel.Persons
         /// <param name="content">The content manager used to load in images.</param>
         public Cleaner(ContentManager content, Room room, float walkingSpeed) : base(content, room, walkingSpeed)
         {
-
+            Sprite.LoadSprite("Cleaner");
         }
 
         public override string ToString()

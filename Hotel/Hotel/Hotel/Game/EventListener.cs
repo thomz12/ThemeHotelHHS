@@ -9,9 +9,16 @@ namespace Hotel
 {
     public class EventListener : HotelEventListener
     {
+        private HotelEventHandler _hotelEventManager;
+
+        public EventListener(HotelEventHandler hotelEventManager)
+        {
+            _hotelEventManager = hotelEventManager;
+        }
+
         public void Notify(HotelEvent evt)
         {
-            Console.WriteLine(evt.Message);
+            _hotelEventManager.HandleEvent(evt);
         }
     }
 }
