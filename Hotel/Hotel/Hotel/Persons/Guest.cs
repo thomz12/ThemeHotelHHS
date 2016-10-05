@@ -47,7 +47,12 @@ namespace Hotel.Persons
 
         public override string ToString()
         {
-            return $"{Name};Gender: {Gender}{Environment.NewLine}In Room: {CurrentRoom.Name}{Environment.NewLine}Target: {TargetRoom.Name}{Environment.NewLine}";
+            string returnString = $"{Name};Gender: {Gender}{Environment.NewLine}In Room: {CurrentRoom.Name}{Environment.NewLine}";
+
+            if (TargetRoom != null)
+                returnString += $"Target: {TargetRoom.Name}{Environment.NewLine}";
+
+            return returnString;
         }
     }
 }

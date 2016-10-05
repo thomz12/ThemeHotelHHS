@@ -19,6 +19,8 @@ namespace Hotel
     /// </summary>
     public class MainGame : Game
     {
+        public float HTE_Modifier { get; private set; }
+
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
@@ -59,31 +61,53 @@ namespace Hotel
             // Disable the fixed time step, causes low frame rates on some computers.
             IsFixedTimeStep = false;
 
-            // Load Settings
-            try
+            // Load in the settings, and boy a lot can go wrong here.
+            // First up is the check if there is actually a config file present.
+            if (File.Exists(@"Config.cfg"))
             {
-                using (StreamReader sr = new StreamReader(@"Config.cfg"))
-                using (JsonReader jsonReader = new JsonTextReader(sr))
+                // Ok its present so now we can TRY to read it (geddit?)
+                try
                 {
-                    JsonSerializer jsonSerializer = new JsonSerializer();
-                    // Instantiate an object of type model and fill it.
-                    _config = jsonSerializer.Deserialize<ConfigModel>(jsonReader);
-
-                    // Check if files exist
-                    if (!File.Exists(_config.LayoutPath))
+                    // Poke the garbage collector to wake up, all the readers and stuff are not needed after this anymore.
+                    using (StreamReader sr = new StreamReader(@"Config.cfg"))
+                    using (JsonReader jsonReader = new JsonTextReader(sr))
                     {
-                        Console.WriteLine($"There is no layout file on the end of this path: {_config.LayoutPath}");
-                        this.Exit();
-                    }
-                    
+                        // It seems like someone neglected to make the serializer inherit from the IDisposable interface, so we will just have to instantiate it here.
+                        JsonSerializer jsonSerializer = new JsonSerializer();
+                        // Now its time for the one line magic!
+                        // Deserialize the config file into a config object.
+                        _config = jsonSerializer.Deserialize<ConfigModel>(jsonReader);
 
-                    // Set other settings
-                    HotelEventManager.HTE_Factor = _config.HTELength;
+                        // We now have some data, but someone may have screwed with our files.
+                        // Check again if there is a layout file on the end of the filepath that was in the config file.
+                        if (!File.Exists(_config.LayoutPath))
+                        {
+                            // Throw some more error messages at the user.
+                            Console.WriteLine($"There is no layout file on the end of this path: {_config.LayoutPath}!");
+                            // Quit the simulation
+                            this.Exit();
+                        }
+                        // Now its time to change all the settings (if they were not different in the first place)
+
+                        // Change settings related to HTE timespan.
+                        HotelEventManager.HTE_Factor = _config.HTELength;
+                        HTE_Modifier = _config.HTELength;
+                    }
+                }
+                catch
+                {
+                    // AYY LMAO something went wrong and I have no idea what.
+                    // Queue generic error message.
+                    Console.WriteLine("Could not read the file 'Config.cfg'.");
+                    // Better try again from the launcher.
+                    this.Exit();
                 }
             }
-            catch
+            else
             {
-                Console.WriteLine("Could not read 'Config.cfg', does it not exist?");
+                // Y U REMOVE FILE BETWEEN OK AND LOAD?
+                Console.WriteLine("The config file does not exist, please exit the simulator and make one in the 'settings' screen of the launcher.");
+                // Quit the simulation
                 this.Exit();
             }
         }
@@ -102,7 +126,6 @@ namespace Hotel
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-
             base.Initialize();
 
             _renderTexture = new RenderTarget2D(GraphicsDevice, 200, 200, false, SurfaceFormat.Color, DepthFormat.None);
@@ -148,7 +171,7 @@ namespace Hotel
                 Exit();
             }
 
-            float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds * 1.0f;
+            float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds / HTE_Modifier;
 
             Input.Instance.Update(gameTime);
 

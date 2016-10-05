@@ -14,8 +14,6 @@ namespace HotelLauncher
 {
     public partial class Settings : Form
     {
-        public string FilePath { get; private set; }
-
         private OpenFileDialog _fileDialog;
         private ConfigModel _model;
         private JsonSerializer _jsonSerializer;
@@ -25,7 +23,6 @@ namespace HotelLauncher
             InitializeComponent();
 
             _jsonSerializer = new JsonSerializer();
-            FilePath = null;
 
             _fileDialog = new OpenFileDialog();
             _fileDialog.RestoreDirectory = true;
@@ -49,7 +46,6 @@ namespace HotelLauncher
                     num_Survivability.Value = (int)_model.Survivability;
                     num_StairsWeight.Value = (decimal)_model.StaircaseWeight;
                     tb_Layout.Text = _model.LayoutPath;
-                    FilePath = _model.LayoutPath;
                 }
             }
             catch
@@ -99,9 +95,8 @@ namespace HotelLauncher
             if(_fileDialog.ShowDialog() == DialogResult.OK)
             {
                 // This is the path of the file that needs to be opened.
-                FilePath = _fileDialog.FileName;
-                tb_Layout.Text = FilePath;
-                _model.LayoutPath = FilePath;
+                tb_Layout.Text = _fileDialog.FileName;
+                _model.LayoutPath = _fileDialog.FileName;
             }
         }
     }
