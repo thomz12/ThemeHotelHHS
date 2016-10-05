@@ -21,39 +21,13 @@ namespace Hotel.Persons
         public Cleaner(ContentManager content, Room room, float walkingSpeed, int cleaningDuration) : base(content, room, walkingSpeed)
         {
             Sprite.LoadSprite("Cleaner");
+            _isCleaning = false;
             _cleaningDuration = cleaningDuration;
         }
 
         public override void Update(float deltaTime)
         {
-            if (_isCleaning)
-            {
-                _cleaningTimer--;
-            }
-
             base.Update(deltaTime);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="rooms">The list of rooms in the hotel.</param>
-        public void GoClean(List<Room> rooms)
-        {
-            // Check if this cleaner is already cleaning.
-            if (_isCleaning)
-            {
-                return;
-            }
-            else
-            {
-                // Find a new room to clean
-                PathFinder pathFinder = new PathFinder();
-                Path = pathFinder.GetPathToDirtyRoom(CurrentRoom);
-
-                _cleaningTimer = _cleaningDuration;
-                _isCleaning = true;
-            }
         }
 
         public override string ToString()
