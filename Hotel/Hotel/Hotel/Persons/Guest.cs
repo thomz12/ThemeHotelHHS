@@ -19,7 +19,21 @@ namespace Hotel.Persons
     public class Guest : Person
     {
         public Gender Gender { get; private set; }
-        
+
+        private GuestRoom _room;
+        public GuestRoom Room
+        {
+            get
+            {
+                return _room;
+            }
+            set
+            {
+                _room = value;
+                TargetRoom = _room;
+            }
+        }
+
         private static Random _random = new Random();
 
         /// <summary>
