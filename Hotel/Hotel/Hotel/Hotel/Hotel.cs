@@ -49,7 +49,7 @@ namespace Hotel
             
             // Add random guests to the hotel.
             Random r = new Random();
-            for (int i = 0; i < 500; i++)
+            for (int i = 0; i < 20; i++)
             {
                 Room rm = Rooms[r.Next(0, Rooms.Count)];
                 if(rm is ElevatorShaft)
@@ -73,6 +73,9 @@ namespace Hotel
             // /temp
         }
 
+        /// <summary>
+        /// Creates a guest outside
+        /// </summary>
         public void AddGuest()
         {
             Guest guest = new Guest(_contentManager, Rooms[0]);

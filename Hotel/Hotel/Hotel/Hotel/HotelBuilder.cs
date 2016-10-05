@@ -36,6 +36,7 @@ namespace Hotel
 
             while(jsonReader.Read())
             {
+                Console.WriteLine(jsonReader.Value?.ToString());
                 if(jsonReader.Value != null)
                 {
                     // Read and add the values from the file.
@@ -45,7 +46,7 @@ namespace Hotel
                 }
 
                 // When we know the dimension, add the room.
-                if(data.ContainsKey("Dimension"))
+                if(data.Keys.Count > 0 && jsonReader.Value == null)
                 {
                     // if we have data.
                     if (data.Count > 0)
@@ -84,6 +85,7 @@ namespace Hotel
                                 break;
                         }
 
+                        // Add empty rooms to rooms bigger in height. ( used for path finding)
                         for (int i = 0; i < dimensions.Y - 1; i++)
                         {
                             Room roomToAddTo = rooms.Last();

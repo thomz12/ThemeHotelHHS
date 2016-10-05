@@ -27,6 +27,7 @@ namespace Hotel
 
         public bool Vertical { get; set; }
         public int PeopleCount { get; set; }
+        public int PeopleInside { get; set; }
         public float Weight { get; set; }
 
         public Dictionary<Direction, Room> Neighbors { get; set; }

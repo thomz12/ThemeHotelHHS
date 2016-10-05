@@ -52,7 +52,7 @@ namespace Hotel
             Exiting += MainGame_Exiting;
 
             HotelEventManager.Start();
-
+            HotelEventManager.HTE_Factor = 2;
             _listener = new EventListener();
             HotelEventManager.Register(_listener);
 
