@@ -19,7 +19,7 @@ namespace Hotel
         /// </summary>
         /// <param name="content">The content manager used to load in images.</param>
         /// <param name="position">The position of the room.</param>
-        public ElevatorShaft(ContentManager content, Point position) : base(content, position, new Point(1, 1))
+        public ElevatorShaft(ContentManager content, int id, Point position) : base(content, id, position, new Point(1, 1))
         {
             Sprite.LoadSprite("1x1ElevatorShaft");
             Name = "Elevator Shaft";

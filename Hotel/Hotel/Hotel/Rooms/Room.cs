@@ -35,12 +35,16 @@ namespace Hotel
         public Dictionary<Direction, Room> Neighbors { get; set; }
 
         /// <summary>
-        /// Default constructor.
+        /// Constructor.
         /// </summary>
-        /// <param name="content">The content manager used to load in images.</param>
-        public Room(ContentManager content, Point position, Point size) : base(content)
+        /// <param name="content">The content manager.</param>
+        /// <param name="ID">The id given to the room.</param>
+        /// <param name="position">The position of the room.</param>
+        /// <param name="size">The size of the room.</param>
+        public Room(ContentManager content, int id, Point position, Point size) : base(content)
         {
             Sprite = new Sprite(content);
+            ID = id;
             RoomPosition = position;
             RoomSize = size;
             Vertical = false;

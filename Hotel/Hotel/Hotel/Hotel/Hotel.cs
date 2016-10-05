@@ -38,8 +38,8 @@ namespace Hotel
             HotelBuilder builder = new HotelBuilder(content, config);
             List<Room> buildedRooms = builder.BuildHotel(HotelLayoutFilePath);
 
-            // Add the rooms, and connect them.
-            Room outside = new EmptyRoom(content, new Point(-1, 0), new Point(1, 1));
+            // Add the rooms, and connect them, starts with an empty room outside with ID 0.
+            Room outside = new EmptyRoom(content, 0, new Point(-1, 0), new Point(1, 1));
             Rooms.Add(outside);
             for (int i = 0; i < buildedRooms.Count; i++)
             {

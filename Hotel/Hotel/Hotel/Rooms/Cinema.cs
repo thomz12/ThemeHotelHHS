@@ -9,7 +9,7 @@ namespace Hotel.Rooms
 {
     public class Cinema : Room
     {
-        public Cinema(ContentManager content, Point position, Point size) : base(content, position, size)
+        public Cinema(ContentManager content, int id, Point position, Point size) : base(content, id, position, size)
         {
             Sprite.LoadSprite("2x2Cinema");
             Name = "Cinema";

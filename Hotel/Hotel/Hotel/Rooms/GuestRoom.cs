@@ -15,7 +15,7 @@ namespace Hotel
         public bool Dirty { get; set; }
         public Guest Guest { get; set; } 
 
-        public GuestRoom(ContentManager content, Point position, Point size, int classification) : base(content, position, size)
+        public GuestRoom(ContentManager content, int id, Point position, Point size, int classification) : base(content, id, position, size)
         {
             // Check for the room size and load in specified sprites.
             if(size.X == 2 && size.Y == 1)

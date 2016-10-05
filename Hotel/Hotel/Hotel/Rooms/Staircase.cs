@@ -15,7 +15,7 @@ namespace Hotel.Rooms
         /// <param name="content">The content manager.</param>
         /// <param name="position">The position of the room.</param>
         /// <param name="size">the size of the room.</param>
-        public Staircase(ContentManager content, Point position) : base(content, position, new Point(1,1))
+        public Staircase(ContentManager content, int id, Point position) : base(content, id, position, new Point(1,1))
         {
             Sprite.LoadSprite("Stairs");
             Name = "Staircase";
