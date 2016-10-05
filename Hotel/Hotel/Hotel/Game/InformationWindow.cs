@@ -11,7 +11,7 @@ namespace Hotel
 {
     public class InformationWindow
     {
-        public bool IsShowingInfo{ get; private set;}
+        public bool IsShowingInfo { get; private set; }
         public float TitleTextSize { get; set; }
         public float InfoTextSize { get; set; }
         public Texture2D RenderTexture { get; set; }
@@ -76,18 +76,11 @@ namespace Hotel
         public void HideInformation()
         {
             // Unred the target room
-            if(_objectToDisplay is Guest)
+            if (_objectToDisplay is Guest)
             {
-                Person person = (Person)_objectToDisplay;
+                Guest person = (Guest)_objectToDisplay;
 
-                if (person.Path.Count > 0)
-                {
-                    foreach (Room room in person.Path)
-                    {
-                        room.Sprite.Color = Color.White;
-                    }
-                }
-                if(person.TargetRoom != null)
+                if (person.TargetRoom != null)
                     person.TargetRoom.Sprite.Color = Color.White;
             }
 
@@ -109,17 +102,12 @@ namespace Hotel
                 {
                     Person person = (Person)_objectToDisplay;
 
-                    if (person.Path != null)
+                    if (person.TargetRoom != null)
                     {
-                        foreach (Room room in person.Path)
+                        if(person.CurrentRoom != person.TargetRoom)
                         {
-                            room.Sprite.Color = Color.Yellow;
-                        }
-
-                        person.CurrentRoom.Sprite.Color = Color.White;
-
-                        if(person.TargetRoom != null)
                             person.TargetRoom.Sprite.Color = Color.Red;
+                        }
                     }
                 }
 
@@ -127,7 +115,7 @@ namespace Hotel
                 string[] appropriateName = _objectToDisplay.ToString().Split(';');
                 _objectName = appropriateName[0];
                 _objectInformation = appropriateName[1];
-                
+
                 // Draw the background for the window
                 _windowSprite.Draw(batch, gameTime);
 
@@ -141,7 +129,7 @@ namespace Hotel
 
                 // Do the same as the above for the information, but then without centering the text.
                 Vector2 infoPos = new Vector2(WindowPosition.X + _infoOffset.X, WindowPosition.Y + _infoOffset.Y);
-                batch.DrawString(_spriteFont, _objectInformation, infoPos, TextColor, 0f, new Vector2(0,0), InfoTextSize, SpriteEffects.None, 1);
+                batch.DrawString(_spriteFont, _objectInformation, infoPos, TextColor, 0f, new Vector2(0, 0), InfoTextSize, SpriteEffects.None, 1);
             }
         }
     }
