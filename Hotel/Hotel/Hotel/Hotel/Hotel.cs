@@ -47,7 +47,7 @@ namespace Hotel
             }
 
             // temp
-            Persons.Add(new Receptionist(_contentManager, Rooms[50]));
+            Persons.Add(new Receptionist(_contentManager, Rooms[50], _config.WalkingSpeed));
             
             // Add random guests to the hotel.
             Random r = new Random();
@@ -59,7 +59,7 @@ namespace Hotel
                     i--;
                     continue;
                 }
-                Persons.Add(new Guest(_contentManager, rm));
+                Persons.Add(new Guest(_contentManager, rm, _config.WalkingSpeed));
 
                 Room tr = Rooms[r.Next(0, Rooms.Count)];
                 if (tr is ElevatorShaft)
@@ -80,7 +80,7 @@ namespace Hotel
         /// </summary>
         public void AddGuest()
         {
-            Guest guest = new Guest(_contentManager, Rooms[0]);
+            Guest guest = new Guest(_contentManager, Rooms[0], _config.WalkingSpeed);
             guest.TargetRoom = Rooms[4];
             Persons.Add(guest);
         }
