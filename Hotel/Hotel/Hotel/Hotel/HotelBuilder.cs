@@ -84,7 +84,7 @@ namespace Hotel
                                 rooms.Add(new GuestRoom(_content, id, position, dimensions, Int32.Parse(data["Classification"][0].ToString())));
                                 break;
                             case "Cinema":
-                                rooms.Add(new Cinema(_content, id, position, dimensions));
+                                rooms.Add(new Cinema(_content, id, position, dimensions, _config.FilmDuration));
                                 break;
                             case "Fitness":
                                 rooms.Add(new Fitness(_content, id, position, dimensions));
@@ -109,14 +109,14 @@ namespace Hotel
             for(int i = 0; i <= extremeY; i++)
             {
                 extremeID++;
-                rooms.Add(new ElevatorShaft(_content, extremeID, new Point(0, i)));
+                rooms.Add(new ElevatorShaft(_content, extremeID, new Point(0, i), _config.ElevatorSpeed));
             }
 
             // Add Stairs to the hotel.
             for (int i = 0; i <= extremeY; i++)
             {
                 extremeID++;
-                rooms.Add(new Staircase(_content, extremeID, new Point(extremeX + 1, i)));
+                rooms.Add(new Staircase(_content, extremeID, new Point(extremeX + 1, i), _config.StaircaseWeight));
             }
 
             // Add lobbies.

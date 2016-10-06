@@ -80,7 +80,7 @@
             this.Text = "Simulation Launcher";
             ((System.ComponentModel.ISupportInitialize)(this.pb_Splash)).EndInit();
             this.ResumeLayout(false);
-
+            this.MaximizeBox = false;
         }
 
         #endregion

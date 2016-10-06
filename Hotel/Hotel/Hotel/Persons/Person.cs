@@ -44,7 +44,7 @@ namespace Hotel.Persons
             }
         }
 
-        public List<Room> Path { get; private set; }
+        public List<Room> Path { get; protected set; }
         public float JumpHeight { get; set; }
 
         // The Elevator to enter.
@@ -62,7 +62,7 @@ namespace Hotel.Persons
         /// Constructor.
         /// </summary>
         /// <param name="content">The content manager used to load in images.</param>
-        public Person(ContentManager content, Room room) : base(content)
+        public Person(ContentManager content, Room room, float walkingSpeed) : base(content)
         {
             Sprite.LoadSprite("Guest");
             Sprite.DrawOrder = 1;
@@ -75,7 +75,7 @@ namespace Hotel.Persons
 
             Path = new List<Room>();
             room.PeopleCount++;
-            WalkingSpeed = 50.0f;
+            WalkingSpeed = walkingSpeed * Room.ROOMWIDTH;
 
             CurrentTask = PersonTask.MovingCenter;
         }
@@ -325,7 +325,7 @@ namespace Hotel.Persons
         public override void Draw(SpriteBatch batch, GameTime gameTime)
         {
             // Make the person jump while moving.
-            Sprite.SetPosition(new Point((int)Position.X, (int)(Position.Y + (JumpHeight / 2))+ (int)(Math.Sin(Position.X) * JumpHeight)));
+            Sprite.SetPosition(new Point((int)Position.X, (int)(Position.Y + (JumpHeight / 2))+ (int)(Math.Sin(Position.X / 5) * JumpHeight)));
 
             base.Draw(batch, gameTime);
         }

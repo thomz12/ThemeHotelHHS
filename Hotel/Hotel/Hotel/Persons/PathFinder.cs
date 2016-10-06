@@ -36,9 +36,7 @@ namespace Hotel.Persons
 
             // Add the current room.
             queue.Add(new RoomNode(currentRoom, 0, null));
-
-            int asdf = 0;
-
+            
             // Go through all the items in the queue
             while (queue.Count > 0)
             {
@@ -55,28 +53,105 @@ namespace Hotel.Persons
                 // For every neighbor in the room.
                 foreach (Room room in current.Room.Neighbors.Values)
                 {
-                    // Check if the neighbor is already visited.
-                    bool alreadyVisited = visited.Where(x => x.Room == room).Count() > 0;
+                    // Returns this room from the queue or null when it is not yet in the queue.
+                    RoomNode nodeToCheck = visited.Where(x => x.Room == room).FirstOrDefault();
 
                     // If the node is not yet visited.
-                    if (!alreadyVisited)
+                    if (nodeToCheck == null)
                     {
                         queue.Add(new RoomNode(room, current.Weight + room.Weight, current));
                     }
                     else
                     {
-                        RoomNode node = visited.Where(x => x.Room == room).FirstOrDefault();
-                        if (node.Weight > current.Weight + room.Weight)
+                        if (nodeToCheck.Weight > current.Weight + room.Weight)
                         {
-                            node.PrevRoom = current;
-                            node.Weight = current.Weight + room.Weight;
+                            nodeToCheck.PrevRoom = current;
+                            nodeToCheck.Weight = current.Weight + room.Weight;
                         }
                     }
                 }
 
                 visited.Add(current);
                 queue.Remove(current);
-                asdf++;
+            }
+
+            // If no end node was found, return null.
+            if (endNode == null)
+                return null;
+
+            // The path to follow
+            List<RoomNode> path = new List<RoomNode>();
+            // begin with the end node
+            path.Add(endNode);
+            // keep adding the previous node to the final path
+            while (true)
+            {
+                // the previous node
+                RoomNode node = path.Last().PrevRoom;
+
+                if (node != null)
+                    path.Add(node);
+                else
+                    break;
+            }
+
+            // reverse so that current room is start room, and end room is the last room.
+            return path.Select(x => x.Room).Reverse().ToList();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="currentRoom"></param>
+        /// <returns></returns>
+        public List<Room> FindPathToDirtyRoom(Room currentRoom)
+        {
+            // Initialize variables
+            List<RoomNode> queue = new List<RoomNode>();
+            List<RoomNode> visited = new List<RoomNode>();
+            RoomNode endNode = null;
+
+            // add the current room to the list to start off dijkstra's.
+            queue.Add(new RoomNode(currentRoom, 0, null));
+
+            // Go through all the items in the queue O(n2)
+            while(queue.Count > 0)
+            {
+                // Get the node with the lowest weight
+                RoomNode current = queue.OrderBy(x => x.Weight).First();
+
+                // Check if a room is dirty
+                if(current.Room.State == RoomState.Dirty)
+                {
+                    endNode = current;
+                    break;
+                }
+
+                // For every neighbor in the room, check if it is already in the list
+                foreach (Room thisNeighbor in current.Room.Neighbors.Values)
+                {
+                    // Returns thisNeighbor from the queue or null when it is not yet in the queue.
+                    RoomNode nodeToCheck = queue.Where(x => x.Room == thisNeighbor).FirstOrDefault();
+
+                    // If the nodeToCheck is null, add a new node to the queue
+                    if(nodeToCheck == null)
+                    {
+                        queue.Add(new RoomNode(thisNeighbor, current.Weight + thisNeighbor.Weight, current));
+                    }
+                    else
+                    {
+                        // This neighbor is already in the queue.
+                        if(nodeToCheck.Weight > thisNeighbor.Weight + current.Weight)
+                        {
+                            nodeToCheck.PrevRoom = current;
+                            nodeToCheck.Weight = current.Weight + thisNeighbor.Weight;
+                        }
+                    }
+                }
+
+                // We are done with this node, so add it to the visited list and remove it from the queue.
+                visited.Add(current);
+                queue.Remove(current);
             }
 
             // If no end node was found, return null.

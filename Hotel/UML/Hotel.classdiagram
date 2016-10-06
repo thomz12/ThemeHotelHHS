@@ -318,10 +318,6 @@
             <classMoniker Id="5d19b3f0-3d42-48ca-9aa7-7106c9177fd3" LastKnownName="Guest" />
             <elementDefinition Id="148552f7-e733-4869-8e4f-29d254341f49" />
           </dependency>
-          <dependency Id="4e162721-5c4e-42e5-bda8-4ed33f878280">
-            <enumerationMoniker Id="83884e17-ed3a-44aa-b521-d5aca931e4c2" LastKnownName="GuestRoomState" />
-            <elementDefinition Id="d2275c0f-0fe6-4a05-8d28-84f36809bc98" />
-          </dependency>
         </suppliersInternal>
         <generalsInternal>
           <generalization Id="20d6ae0a-3d89-426b-8a6a-5510f023503a" isSubstitutable="false">
@@ -800,6 +796,10 @@
           <dependency Id="c5ea709d-47e3-45aa-aa20-e770d0080efa">
             <enumerationMoniker Id="1ec2e4ad-252c-40f8-91e5-c145ee51e5be" LastKnownName="Direction" />
             <elementDefinition Id="80efd41f-b082-494b-bb06-fd62cd5c934f" />
+          </dependency>
+          <dependency Id="f5fe6d25-b676-49e1-bc91-8672f6195169">
+            <enumerationMoniker Id="83884e17-ed3a-44aa-b521-d5aca931e4c2" LastKnownName="RoomState" />
+            <elementDefinition Id="d0bd8cbc-e58c-485d-937e-dde9df5168ad" />
           </dependency>
         </suppliersInternal>
         <generalsInternal>
@@ -2656,7 +2656,7 @@
       </referencedType>
     </packageHasNamedElement>
     <logicalClassDesignerModelHasTypes>
-      <enumeration Id="83884e17-ed3a-44aa-b521-d5aca931e4c2" name="GuestRoomState" isAbstract="false" isLeaf="false">
+      <enumeration Id="83884e17-ed3a-44aa-b521-d5aca931e4c2" name="RoomState" isAbstract="false" isLeaf="false">
         <elementDefinition Id="2436b42d-ffe1-453c-a0c9-3f64d26adc38" />
         <ownedLiterals>
           <enumerationLiteral Id="cfc0cb23-8b07-464e-b599-64821b65f461" name="Occupied">

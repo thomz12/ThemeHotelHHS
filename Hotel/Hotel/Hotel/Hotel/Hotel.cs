@@ -64,7 +64,7 @@ namespace Hotel
 
             for (int i = 0; i < _cleaners; i++)
             {
-                Persons.Add("Cleaner" + i, new Cleaner(_contentManager, firstLobby));
+                Persons.Add("Cleaner" + i, new Cleaner(_contentManager, firstLobby, _config.WalkingSpeed, _config.CleaningDuration, Rooms));
             }
         }
 
