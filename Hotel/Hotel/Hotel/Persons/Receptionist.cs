@@ -35,6 +35,9 @@ namespace Hotel.Persons
             // TODO: make this adjustable.
             _workSpeed = 1.0f;
 
+            _checkInTimer = _workSpeed;
+            _checkOutTimer = _workSpeed;
+
             _rooms = rooms;
 
             if (room is Rooms.Lobby)
@@ -45,7 +48,8 @@ namespace Hotel.Persons
         {
             base.Update(deltaTime);
 
-            _checkInTimer -= deltaTime;
+            if(CheckinQueue.Count > 0)
+                _checkInTimer -= deltaTime;
 
             if(_checkInTimer <= 0 && CheckinQueue.Count > 0)
             {
@@ -54,7 +58,8 @@ namespace Hotel.Persons
                 CheckinQueue.RemoveAt(0);
             }
 
-            _checkOutTimer -= deltaTime;
+            if(CheckOutQueue.Count > 0)
+                _checkOutTimer -= deltaTime;
 
             if(_checkOutTimer <= 0 && CheckOutQueue.Count > 0)
             {
