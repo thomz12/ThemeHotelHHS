@@ -62,7 +62,7 @@ namespace Hotel
             RoomPosition = position;
             RoomSize = size;
             Vertical = false;
-            Weight = 1.0f;
+            Weight = 1.0f * size.X;
 
             Neighbors = new Dictionary<Direction, Room>();
 
