@@ -10,10 +10,11 @@ namespace Hotel
 {
     public enum RoomState
     {
+        None,
+        Vacant,
         Dirty,
         InCleaning,
-        Occupied,
-        Vacant
+        Occupied
     }
 
     public enum Direction

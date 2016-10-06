@@ -37,19 +37,15 @@
             this.tt_Settings = new System.Windows.Forms.ToolTip(this.components);
             this.num_ElevatorSpeed = new System.Windows.Forms.NumericUpDown();
             this.num_WalkingSpeed = new System.Windows.Forms.NumericUpDown();
-            this.lbl_01 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.num_FilmDuration = new System.Windows.Forms.NumericUpDown();
             this.lbl_FilmDuration = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.btn_Save = new System.Windows.Forms.Button();
             this.lbl_CleaningDuration = new System.Windows.Forms.Label();
             this.num_CleaningDuration = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.btn_Select = new System.Windows.Forms.Button();
-            this.btn_Cancel = new System.Windows.Forms.Button();
             this.tb_Layout = new System.Windows.Forms.TextBox();
             this.lbl_Survivability = new System.Windows.Forms.Label();
             this.num_Survivability = new System.Windows.Forms.NumericUpDown();
@@ -57,6 +53,10 @@
             this.num_StairsWeight = new System.Windows.Forms.NumericUpDown();
             this.lbl_StaircaseWeight = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.lbl_01 = new System.Windows.Forms.Label();
+            this.btn_Save = new System.Windows.Forms.Button();
+            this.btn_Select = new System.Windows.Forms.Button();
+            this.btn_Cancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.num_HTETimespan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_ElevatorSpeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_WalkingSpeed)).BeginInit();
@@ -183,15 +183,6 @@
             0,
             0});
             // 
-            // lbl_01
-            // 
-            this.lbl_01.AutoSize = true;
-            this.lbl_01.Location = new System.Drawing.Point(247, 12);
-            this.lbl_01.Name = "lbl_01";
-            this.lbl_01.Size = new System.Drawing.Size(47, 13);
-            this.lbl_01.TabIndex = 6;
-            this.lbl_01.Text = "seconds";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -257,16 +248,6 @@
             this.label3.Text = "HTE(s)";
             this.tt_Settings.SetToolTip(this.label3, "A HTE (Hotel Tijds Eenheid) is a unit of time that is used in the simulation.");
             // 
-            // btn_Save
-            // 
-            this.btn_Save.Location = new System.Drawing.Point(207, 279);
-            this.btn_Save.Name = "btn_Save";
-            this.btn_Save.Size = new System.Drawing.Size(90, 32);
-            this.btn_Save.TabIndex = 8;
-            this.btn_Save.Text = "Save";
-            this.btn_Save.UseVisualStyleBackColor = true;
-            this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
-            // 
             // lbl_CleaningDuration
             // 
             this.lbl_CleaningDuration.Location = new System.Drawing.Point(66, 111);
@@ -314,26 +295,6 @@
             this.label6.Text = "Layout";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.tt_Settings.SetToolTip(this.label6, "Choose a layout file for the simulator to display.");
-            // 
-            // btn_Select
-            // 
-            this.btn_Select.Location = new System.Drawing.Point(382, 253);
-            this.btn_Select.Name = "btn_Select";
-            this.btn_Select.Size = new System.Drawing.Size(26, 20);
-            this.btn_Select.TabIndex = 6;
-            this.btn_Select.Text = "...";
-            this.btn_Select.UseVisualStyleBackColor = true;
-            this.btn_Select.Click += new System.EventHandler(this.btn_Select_Click);
-            // 
-            // btn_Cancel
-            // 
-            this.btn_Cancel.Location = new System.Drawing.Point(111, 279);
-            this.btn_Cancel.Name = "btn_Cancel";
-            this.btn_Cancel.Size = new System.Drawing.Size(90, 32);
-            this.btn_Cancel.TabIndex = 7;
-            this.btn_Cancel.Text = "Cancel";
-            this.btn_Cancel.UseVisualStyleBackColor = true;
-            this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
             // 
             // tb_Layout
             // 
@@ -439,6 +400,45 @@
             this.label10.TabIndex = 22;
             this.label10.Text = "HTE(s)";
             this.tt_Settings.SetToolTip(this.label10, "A HTE (Hotel Tijds Eenheid) is a unit of time that is used in the simulation.");
+            // 
+            // lbl_01
+            // 
+            this.lbl_01.AutoSize = true;
+            this.lbl_01.Location = new System.Drawing.Point(247, 12);
+            this.lbl_01.Name = "lbl_01";
+            this.lbl_01.Size = new System.Drawing.Size(47, 13);
+            this.lbl_01.TabIndex = 6;
+            this.lbl_01.Text = "seconds";
+            // 
+            // btn_Save
+            // 
+            this.btn_Save.Location = new System.Drawing.Point(108, 279);
+            this.btn_Save.Name = "btn_Save";
+            this.btn_Save.Size = new System.Drawing.Size(90, 32);
+            this.btn_Save.TabIndex = 8;
+            this.btn_Save.Text = "Save";
+            this.btn_Save.UseVisualStyleBackColor = true;
+            this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
+            // 
+            // btn_Select
+            // 
+            this.btn_Select.Location = new System.Drawing.Point(382, 253);
+            this.btn_Select.Name = "btn_Select";
+            this.btn_Select.Size = new System.Drawing.Size(26, 20);
+            this.btn_Select.TabIndex = 6;
+            this.btn_Select.Text = "...";
+            this.btn_Select.UseVisualStyleBackColor = true;
+            this.btn_Select.Click += new System.EventHandler(this.btn_Select_Click);
+            // 
+            // btn_Cancel
+            // 
+            this.btn_Cancel.Location = new System.Drawing.Point(204, 279);
+            this.btn_Cancel.Name = "btn_Cancel";
+            this.btn_Cancel.Size = new System.Drawing.Size(90, 32);
+            this.btn_Cancel.TabIndex = 7;
+            this.btn_Cancel.Text = "Cancel";
+            this.btn_Cancel.UseVisualStyleBackColor = true;
+            this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
             // 
             // Settings
             // 

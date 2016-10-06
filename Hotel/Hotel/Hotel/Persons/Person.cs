@@ -37,8 +37,11 @@ namespace Hotel.Persons
                 _targetRoom = value;
                 if (_targetRoom != null)
                 {
-                    PathFinder pathfinder = new PathFinder();
-                    Path = pathfinder.FindPath(CurrentRoom, _targetRoom);
+                    if(Path == null || Path.Count == 0 || _targetRoom != Path.Last())
+                    {
+                        PathFinder pathfinder = new PathFinder();
+                        Path = pathfinder.FindPath(CurrentRoom, _targetRoom);
+                    }
                     CurrentTask = PersonTask.MovingCenter;
                 }
             }
@@ -332,7 +335,12 @@ namespace Hotel.Persons
 
         public override string ToString()
         {
-            return $"{Name};In Room: {CurrentRoom.Name}";
+            string returnString = $"{Name};In Room: {CurrentRoom.Name}{Environment.NewLine}";
+
+            if(TargetRoom != null)
+                returnString += $"Target: {TargetRoom.Name}{Environment.NewLine}";
+
+            return returnString;
         }
     }
 }

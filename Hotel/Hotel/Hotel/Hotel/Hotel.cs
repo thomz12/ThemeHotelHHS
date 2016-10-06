@@ -94,7 +94,7 @@ namespace Hotel
                     r.Neighbors[r.ReverseDirection(dir)] = room;
                 }
             }
-
+            
             Rooms.Add(room);
         }
 

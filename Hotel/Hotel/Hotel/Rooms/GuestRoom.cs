@@ -33,6 +33,9 @@ namespace Hotel
             }
             Name = $"{classification} Star Guest Room";
             Classification = classification;
+
+            // All the rooms are default Vacant
+            State = RoomState.Vacant;
         }
 
         public override string ToString()
