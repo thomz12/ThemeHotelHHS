@@ -42,6 +42,8 @@ namespace Hotel.Persons
 
         public override void Update(float deltaTime)
         {
+
+            GoClean();
             // Check to see if the cleaner is currently cleaning, will be set to true when arriving at a dirty room.
             if (_isCleaning)
             {
