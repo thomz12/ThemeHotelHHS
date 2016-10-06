@@ -453,7 +453,7 @@
             this.cb_EmptyRooms.Name = "cb_EmptyRooms";
             this.cb_EmptyRooms.Size = new System.Drawing.Size(198, 17);
             this.cb_EmptyRooms.TabIndex = 23;
-            this.cb_EmptyRooms.Text = "People can fly through 2 high rooms.";
+            this.cb_EmptyRooms.Text = "People can fly through higher rooms.";
             this.cb_EmptyRooms.UseVisualStyleBackColor = true;
             // 
             // Settings
