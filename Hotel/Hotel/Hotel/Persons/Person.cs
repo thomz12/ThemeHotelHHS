@@ -237,6 +237,9 @@ namespace Hotel.Persons
         {
             MoveToRoom(_targetShaft);
             _targetShaft.ElevatorArrival -= TargetShaft_ElevatorArrival;
+
+            Position = new Vector2(_elevator.Position.X, _elevator.Position.Y - Room.ROOMHEIGHT + Sprite.Texture.Height);
+
             _targetShaft = null;
             _elevator = null;
             _calledElevator = false;
