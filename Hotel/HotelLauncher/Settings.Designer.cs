@@ -388,8 +388,8 @@
             this.lbl_StaircaseWeight.TabIndex = 21;
             this.lbl_StaircaseWeight.Text = "Staircase Weight";
             this.lbl_StaircaseWeight.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.tt_Settings.SetToolTip(this.lbl_StaircaseWeight, "This sets the amount of time guests can wait for the elevator. Guests die when th" +
-        "ey wait longer for the elevator.");
+            this.tt_Settings.SetToolTip(this.lbl_StaircaseWeight, "This sets the difficulty to go up or down stairs. The higher the number the less " +
+        "likely guests are to take the stairs.");
             // 
             // label10
             // 

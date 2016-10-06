@@ -69,6 +69,7 @@ namespace Hotel.Persons
             {
                 guest.Room = potentialRooms.First();
                 potentialRooms.First().Guest = guest;
+                potentialRooms.First().State = RoomState.Occupied;
                 guest.TargetRoom = guest.Room;
             }
         }
