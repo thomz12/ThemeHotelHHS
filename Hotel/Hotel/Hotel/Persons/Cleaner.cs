@@ -22,10 +22,12 @@ namespace Hotel.Persons
         /// <param name="content">The content manager used to load in images.</param>
         public Cleaner(ContentManager content, Room room, float walkingSpeed, int cleaningDuration, List<Room> allRooms) : base(content, room, walkingSpeed)
         {
+            Name = "Cleaner";
             Sprite.LoadSprite("Cleaner");
             _isCleaning = false;
             _cleaningDuration = (float)cleaningDuration;
             _allRoomsInHotel = allRooms;
+            _cleaningTimer = _cleaningDuration;
 
             Arrival += Cleaner_Arrival;
         }
@@ -34,7 +36,7 @@ namespace Hotel.Persons
         {
             // Cleaner has arrived at the dirty room.
             // If the room where the cleaner has arrived at is dirty set _isCleaning to true.
-            if(TargetRoom.State == RoomState.Dirty)
+            if(TargetRoom.State == RoomState.InCleaning)
                 _isCleaning = true;
         }
 
@@ -97,11 +99,6 @@ namespace Hotel.Persons
                 // Set busy to true because this cleaner is busy with walking or cleaning.
                 _isBusy = true;
             }
-        }
-
-        public override string ToString()
-        {
-            return $"{Name};In Room: {CurrentRoom.Name}{Environment.NewLine}Target: {TargetRoom.Name}{Environment.NewLine}";
         }
     }
 }

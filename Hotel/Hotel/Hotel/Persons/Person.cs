@@ -335,7 +335,12 @@ namespace Hotel.Persons
 
         public override string ToString()
         {
-            return $"{Name};In Room: {CurrentRoom.Name}";
+            string returnString = $"{Name};In Room: {CurrentRoom.Name}{Environment.NewLine}";
+
+            if(TargetRoom != null)
+                returnString += $"Target: {TargetRoom.Name}{Environment.NewLine}";
+
+            return returnString;
         }
     }
 }
