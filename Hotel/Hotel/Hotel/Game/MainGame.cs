@@ -174,7 +174,7 @@ namespace Hotel
                 Exit();
             }
 
-            float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds / HTE_Modifier;
+            float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds * HTE_Modifier;
 
             Input.Instance.Update(gameTime);
 

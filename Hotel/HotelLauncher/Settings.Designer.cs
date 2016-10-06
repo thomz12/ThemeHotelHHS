@@ -72,9 +72,10 @@
             this.lbl_HTETimespan.Name = "lbl_HTETimespan";
             this.lbl_HTETimespan.Size = new System.Drawing.Size(100, 19);
             this.lbl_HTETimespan.TabIndex = 0;
-            this.lbl_HTETimespan.Text = "Length of HTE";
+            this.lbl_HTETimespan.Text = "Simulation Speed";
             this.lbl_HTETimespan.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.tt_Settings.SetToolTip(this.lbl_HTETimespan, "A HTE (Hotel Tijds Eenheid) is a unit of time that is used in the simulation.");
+            this.tt_Settings.SetToolTip(this.lbl_HTETimespan, "A HTE (Hotel Tijds Eenheid) is a unit of time that is used in the simulation. The" +
+        " higher the number, the faster the simulation plays.");
             // 
             // lbl_ElevatorSpeed
             // 
@@ -118,7 +119,8 @@
             this.num_HTETimespan.Name = "num_HTETimespan";
             this.num_HTETimespan.Size = new System.Drawing.Size(69, 20);
             this.num_HTETimespan.TabIndex = 0;
-            this.tt_Settings.SetToolTip(this.num_HTETimespan, "A HTE (Hotel Tijds Eenheid) is a unit of time that is used in the simulation.");
+            this.tt_Settings.SetToolTip(this.num_HTETimespan, "A HTE (Hotel Tijds Eenheid) is a unit of time that is used in the simulation. The" +
+        " higher the number, the faster the simulation plays.");
             this.num_HTETimespan.Value = new decimal(new int[] {
             1,
             0,
@@ -372,8 +374,8 @@
             this.num_StairsWeight.Name = "num_StairsWeight";
             this.num_StairsWeight.Size = new System.Drawing.Size(70, 20);
             this.num_StairsWeight.TabIndex = 20;
-            this.tt_Settings.SetToolTip(this.num_StairsWeight, "This sets the amount of time guests can wait for the elevator. Guests die when th" +
-        "ey wait longer for the elevator.");
+            this.tt_Settings.SetToolTip(this.num_StairsWeight, "This sets the difficulty to go up or down stairs. The higher the number the less " +
+        "likely guests are to take the stairs.");
             this.num_StairsWeight.Value = new decimal(new int[] {
             2,
             0,
@@ -406,9 +408,10 @@
             this.lbl_01.AutoSize = true;
             this.lbl_01.Location = new System.Drawing.Point(247, 12);
             this.lbl_01.Name = "lbl_01";
-            this.lbl_01.Size = new System.Drawing.Size(47, 13);
+            this.lbl_01.Size = new System.Drawing.Size(80, 13);
             this.lbl_01.TabIndex = 6;
-            this.lbl_01.Text = "seconds";
+            this.lbl_01.Text = "HTE / seconds";
+            this.tt_Settings.SetToolTip(this.lbl_01, "A HTE (Hotel Tijds Eenheid) is a unit of time that is used in the simulation.");
             // 
             // btn_Save
             // 
