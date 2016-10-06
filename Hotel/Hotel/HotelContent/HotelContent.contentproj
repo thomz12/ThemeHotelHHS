@@ -182,8 +182,43 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CleaningEmergency.png">
-      <Name>CleaningEmergency</Name>
+    <Compile Include="1x1GuestRoomCleaning.png">
+      <Name>1x1GuestRoomCleaning</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="1x1GuestRoomDirty.png">
+      <Name>1x1GuestRoomDirty</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="2x1GuestRoomCleaning.png">
+      <Name>2x1GuestRoomCleaning</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="2x1GuestRoomDirty.png">
+      <Name>2x1GuestRoomDirty</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="2x2GuestRoomCleaning.png">
+      <Name>2x2GuestRoomCleaning</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="2x2GuestRoomDirty.png">
+      <Name>2x2GuestRoomDirty</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
