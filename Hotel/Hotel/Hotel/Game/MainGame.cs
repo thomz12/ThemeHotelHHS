@@ -109,6 +109,7 @@ namespace Hotel
 
         private void MainGame_Exiting(object sender, EventArgs e)
         {
+            (_listener as EventListener).Exit();
             HotelEventManager.Stop();
         }
 

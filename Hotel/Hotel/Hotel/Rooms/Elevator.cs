@@ -94,7 +94,7 @@ namespace Hotel
                     if (floor == null)
                     {
                         // There is no request available so the elevator's direction must turn around.
-                        State = ElevatorState.GoingDown;
+                        State = ElevatorState.Idle;
                         floor = GetTargetFloor();
                     }
                 }
@@ -114,7 +114,7 @@ namespace Hotel
                     if(floor == null)
                     {
                         // There is no request available anymore so the elevator's direction must turn around.
-                        State = ElevatorState.GoingUp;
+                        State = ElevatorState.Idle;
                         floor = GetTargetFloor();
                     }
                 }
