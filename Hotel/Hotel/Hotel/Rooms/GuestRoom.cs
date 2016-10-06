@@ -34,5 +34,10 @@ namespace Hotel
             Name = $"{classification} Star Guest Room";
             Classification = classification;
         }
+
+        public override string ToString()
+        {
+            return base.ToString() + Environment.NewLine + "Guest: " + (Guest == null ? "none" : Guest.Name);
+        }
     }
 }
