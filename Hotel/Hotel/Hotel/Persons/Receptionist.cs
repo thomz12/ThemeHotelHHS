@@ -32,6 +32,9 @@ namespace Hotel.Persons
             CheckinQueue = new List<Guest>();
             CheckOutQueue = new List<Guest>();
 
+            // TODO: make this adjustable.
+            _workSpeed = 1.0f;
+
             _rooms = rooms;
 
             if (room is Rooms.Lobby)
@@ -52,16 +55,22 @@ namespace Hotel.Persons
             }
 
             _checkOutTimer -= deltaTime;
-
-
         }
 
         private void CheckIn(Guest guest)
         {
             List<GuestRoom> potentialRooms = _rooms.OfType<GuestRoom>().Where(x => x.Classification == guest.Classification && x.Guest == null).ToList();
-            guest.Room = potentialRooms.First();
-            potentialRooms.First().Guest = guest;
-            guest.TargetRoom = guest.Room;
+
+            if (potentialRooms.Count == 0)
+            {
+                guest.TargetRoom = _rooms[0];
+            }
+            else
+            {
+                guest.Room = potentialRooms.First();
+                potentialRooms.First().Guest = guest;
+                guest.TargetRoom = guest.Room;
+            }
         }
 
         private void CheckOut(Guest guest)
