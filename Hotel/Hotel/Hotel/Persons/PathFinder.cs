@@ -104,7 +104,7 @@ namespace Hotel.Persons
         /// </summary>
         /// <param name="currentRoom"></param>
         /// <returns></returns>
-        public List<Room> GetPathToDirtyRoom(Room currentRoom)
+        public List<Room> FindPathToDirtyRoom(Room currentRoom)
         {
             // Initialize variables
             List<RoomNode> queue = new List<RoomNode>();

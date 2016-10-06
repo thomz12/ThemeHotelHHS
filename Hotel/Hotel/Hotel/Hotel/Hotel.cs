@@ -32,7 +32,7 @@ namespace Hotel
 
             _config = config;
             _contentManager = content;
-            
+
             // Set the path to the file of the hotel that needs to be loaded.
             HotelLayoutFilePath = config.LayoutPath;
 
@@ -49,18 +49,18 @@ namespace Hotel
             }
 
             _cleaners = 2;
-            
+
             CreateStaff();
-                }
+        }
 
         public void CreateStaff()
-                {
+        {
             Room firstLobby = Rooms.OfType<Lobby>().OrderBy(x => x.RoomPosition.X).First();
             Persons.Add("Receptionist", new Receptionist(_contentManager, firstLobby, _config.WalkingSpeed));
 
             for (int i = 0; i < _cleaners; i++)
             {
-                Persons.Add("Cleaner" + i, new Cleaner(_contentManager, firstLobby, _config.WalkingSpeed, _config.CleaningDuration));
+                Persons.Add("Cleaner" + i, new Cleaner(_contentManager, firstLobby, _config.WalkingSpeed, _config.CleaningDuration, Rooms));
             }
         }
 
