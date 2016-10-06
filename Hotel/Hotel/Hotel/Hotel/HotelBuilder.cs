@@ -15,10 +15,13 @@ namespace Hotel
         private ContentManager _content;
         private ConfigModel _config;
 
+        private bool _createEmptyRooms;
+
         public HotelBuilder(ContentManager content, ConfigModel config)
         {
             _content = content;
             _config = config;
+            _createEmptyRooms = _config.CreateEmptyRooms;
         }
 
         public List<Room> BuildHotel(string path)
@@ -93,12 +96,15 @@ namespace Hotel
                                 break;
                         }
 
-                        // Add empty rooms to rooms bigger in height. (used for path finding)
-                        for (int i = 0; i < dimensions.Y - 1; i++)
+                        if (_createEmptyRooms)
                         {
-                            Room roomToAddTo = rooms.Last();
-                            rooms.Add(new EmptyRoom(_content, -1, new Point(position.X, position.Y + i), new Point(dimensions.X, 1)));
-                            rooms.Last().Name = roomToAddTo.Name;
+                            // Add empty rooms to rooms bigger in height. (used for path finding)
+                            for (int i = 0; i < dimensions.Y - 1; i++)
+                            {
+                                Room roomToAddTo = rooms.Last();
+                                rooms.Add(new EmptyRoom(_content, -1, new Point(position.X, position.Y + i), new Point(dimensions.X, 1)));
+                                rooms.Last().Name = roomToAddTo.Name;
+                            }
                         }
                     }
                     data.Clear();

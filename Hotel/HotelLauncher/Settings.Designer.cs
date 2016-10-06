@@ -57,6 +57,7 @@
             this.btn_Save = new System.Windows.Forms.Button();
             this.btn_Select = new System.Windows.Forms.Button();
             this.btn_Cancel = new System.Windows.Forms.Button();
+            this.cb_EmptyRooms = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.num_HTETimespan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_ElevatorSpeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_WalkingSpeed)).BeginInit();
@@ -443,11 +444,24 @@
             this.btn_Cancel.UseVisualStyleBackColor = true;
             this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
             // 
+            // cb_EmptyRooms
+            // 
+            this.cb_EmptyRooms.AutoSize = true;
+            this.cb_EmptyRooms.Checked = true;
+            this.cb_EmptyRooms.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cb_EmptyRooms.Location = new System.Drawing.Point(108, 230);
+            this.cb_EmptyRooms.Name = "cb_EmptyRooms";
+            this.cb_EmptyRooms.Size = new System.Drawing.Size(198, 17);
+            this.cb_EmptyRooms.TabIndex = 23;
+            this.cb_EmptyRooms.Text = "People can fly through 2 high rooms.";
+            this.cb_EmptyRooms.UseVisualStyleBackColor = true;
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(420, 323);
+            this.Controls.Add(this.cb_EmptyRooms);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.lbl_StaircaseWeight);
             this.Controls.Add(this.num_StairsWeight);
@@ -520,5 +534,6 @@
         private System.Windows.Forms.NumericUpDown num_StairsWeight;
         private System.Windows.Forms.Label lbl_StaircaseWeight;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.CheckBox cb_EmptyRooms;
     }
 }
