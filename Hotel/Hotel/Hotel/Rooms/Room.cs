@@ -137,6 +137,10 @@ namespace Hotel
             return Direction.None;
         }
 
+        /// <summary>
+        /// Called every frame.
+        /// </summary>
+        /// <param name="deltaTime"></param>
         public override void Update(float deltaTime)
         {
             base.Update(deltaTime);

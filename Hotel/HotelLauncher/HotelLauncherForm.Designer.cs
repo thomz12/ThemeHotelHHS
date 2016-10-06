@@ -75,12 +75,13 @@
             this.Controls.Add(this.pb_Splash);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "HotelLauncherForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Simulation Launcher";
             ((System.ComponentModel.ISupportInitialize)(this.pb_Splash)).EndInit();
             this.ResumeLayout(false);
-            this.MaximizeBox = false;
+
         }
 
         #endregion
