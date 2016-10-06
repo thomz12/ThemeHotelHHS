@@ -18,7 +18,7 @@ namespace Hotel
 
         private ContentManager _contentManager;
         private ConfigModel _config;
-
+        private Receptionist _receptionist;
         private int _cleaners;
 
         /// <summary>
@@ -53,10 +53,14 @@ namespace Hotel
             CreateStaff();
         }
 
+        /// <summary>
+        ///  Creates the staff for the hotel.
+        /// </summary>
         public void CreateStaff()
         {
             Room firstLobby = Rooms.OfType<Lobby>().OrderBy(x => x.RoomPosition.X).First();
-            Persons.Add("Receptionist", new Receptionist(_contentManager, firstLobby));
+            _receptionist = new Receptionist(_contentManager, firstLobby);
+            Persons.Add("Receptionist", _receptionist);
 
             for (int i = 0; i < _cleaners; i++)
             {
@@ -65,12 +69,14 @@ namespace Hotel
         }
 
         /// <summary>
-        /// Creates a guest outside
+        /// Creates a guest outside.
         /// </summary>
-        public void AddGuest()
+        public void AddGuest(string name, int stars)
         {
             Guest guest = new Guest(_contentManager, Rooms[0]);
-            guest.TargetRoom = Persons.OfType<Receptionist>().FirstOrDefault().CurrentRoom;
+            guest.Classification = stars;
+            Persons.Add(name, guest);
+            guest.TargetRoom = _receptionist.CurrentRoom;
         }
 
         /// <summary>

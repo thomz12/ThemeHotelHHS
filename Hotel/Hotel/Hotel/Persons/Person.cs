@@ -35,9 +35,12 @@ namespace Hotel.Persons
             set
             {
                 _targetRoom = value;
-                PathFinder pathfinder = new PathFinder();
-                Path = pathfinder.FindPath(CurrentRoom, _targetRoom);
-                CurrentTask = PersonTask.MovingCenter;
+                if (_targetRoom != null)
+                {
+                    PathFinder pathfinder = new PathFinder();
+                    Path = pathfinder.FindPath(CurrentRoom, _targetRoom);
+                    CurrentTask = PersonTask.MovingCenter;
+                }
             }
         }
 
@@ -52,6 +55,8 @@ namespace Hotel.Persons
         private ElevatorShaft _startStaft;
         // If this person already called the elevator on this floor.
         private bool _calledElevator;
+
+        public event EventHandler Arrival;
 
         /// <summary>
         /// Constructor.
@@ -73,6 +78,12 @@ namespace Hotel.Persons
             WalkingSpeed = 50.0f;
 
             CurrentTask = PersonTask.MovingCenter;
+        }
+
+        public void OnArrival(EventArgs e)
+        {
+            if (Arrival != null)
+                Arrival(this, e);
         }
 
         /// <summary>
@@ -180,6 +191,12 @@ namespace Hotel.Persons
                     {
                         // Get a new task.
                         UpdateCurrentTask();
+
+                        if (TargetRoom == CurrentRoom)
+                        {
+                            OnArrival(new EventArgs());
+                            TargetRoom = null;
+                        }
 
                         // If the elevator is not yet called, and the person is in an elevatorshaft.
                         if(!_calledElevator && CurrentRoom is ElevatorShaft)

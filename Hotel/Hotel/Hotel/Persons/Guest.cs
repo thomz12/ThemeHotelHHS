@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Hotel;
+using Hotel.Rooms;
 using Microsoft.Xna.Framework;
 using System.IO;
 
@@ -34,6 +35,8 @@ namespace Hotel.Persons
             }
         }
 
+        public int Classification { get; set; }
+
         private static Random _random = new Random();
 
         /// <summary>
@@ -57,6 +60,17 @@ namespace Hotel.Persons
 
             // Give this person a name.
             Name = generator.GenerateName(Gender);
+
+            Arrival += Guest_Arrival;
+        }
+
+        // When the guest arrives
+        private void Guest_Arrival(object sender, EventArgs e)
+        {
+            if(CurrentRoom is Lobby)
+            {
+                (CurrentRoom as Lobby)
+            }
         }
 
         public override string ToString()

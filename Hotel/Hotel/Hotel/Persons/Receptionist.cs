@@ -8,8 +8,11 @@ using Microsoft.Xna.Framework;
 
 namespace Hotel.Persons
 {
-    class Receptionist : Person
+    public class Receptionist : Person
     {
+        public List<Guest> CheckinQueue { get; set; }
+        public List<Guest> CheckOutQueue { get; set; }
+
         /// <summary>
         /// Constructor.
         /// </summary>
@@ -20,6 +23,9 @@ namespace Hotel.Persons
             Sprite.LoadSprite("Receptionist");
             Sprite.SetSize(new Point(Sprite.Texture.Width, Sprite.Texture.Height));
             CurrentRoom = room;
+
+            if (room is Rooms.Lobby)
+                (room as Rooms.Lobby).Receptionist = this;
         }
     }
 }
