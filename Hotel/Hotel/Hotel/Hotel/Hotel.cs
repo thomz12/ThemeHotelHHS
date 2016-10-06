@@ -59,7 +59,7 @@ namespace Hotel
         public void CreateStaff()
         {
             Room firstLobby = Rooms.OfType<Lobby>().OrderBy(x => x.RoomPosition.X).First();
-            _receptionist = new Receptionist(_contentManager, firstLobby);
+            _receptionist = new Receptionist(_contentManager, firstLobby, _config.WalkingSpeed);
             Persons.Add("Receptionist", _receptionist);
 
             for (int i = 0; i < _cleaners; i++)
@@ -73,7 +73,7 @@ namespace Hotel
         /// </summary>
         public void AddGuest(string name, int stars)
         {
-            Guest guest = new Guest(_contentManager, Rooms[0]);
+            Guest guest = new Guest(_contentManager, Rooms[0], _config.WalkingSpeed);
             guest.Classification = stars;
             Persons.Add(name, guest);
             guest.TargetRoom = _receptionist.CurrentRoom;

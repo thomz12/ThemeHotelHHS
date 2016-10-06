@@ -69,7 +69,7 @@ namespace Hotel.Persons
         {
             if(CurrentRoom is Lobby)
             {
-                (CurrentRoom as Lobby)
+                //
             }
         }
 
