@@ -40,7 +40,7 @@ namespace Hotel
 
         public override string ToString()
         {
-            return base.ToString() + Environment.NewLine + "Guest: " + (Guest == null ? "none" : Guest.Name);
+            return base.ToString() + $"{Environment.NewLine}Guest: {(Guest == null ? "none" : Guest.Name)}";
         }
     }
 }
