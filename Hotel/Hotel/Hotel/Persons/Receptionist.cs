@@ -55,6 +55,14 @@ namespace Hotel.Persons
             }
 
             _checkOutTimer -= deltaTime;
+
+            if(_checkOutTimer <= 0 && CheckOutQueue.Count > 0)
+            {
+                _checkOutTimer = _workSpeed;
+                CheckOut(CheckOutQueue.First());
+                CheckOutQueue.RemoveAt(0);
+            }
+
         }
 
         private void CheckIn(Guest guest)
@@ -75,7 +83,10 @@ namespace Hotel.Persons
 
         private void CheckOut(Guest guest)
         {
-
+            guest.Room.State = RoomState.Dirty;
+            guest.Room.Guest = null;
+            guest.Room = null;
+            guest.TargetRoom = _rooms[0];
         }
     }
 }

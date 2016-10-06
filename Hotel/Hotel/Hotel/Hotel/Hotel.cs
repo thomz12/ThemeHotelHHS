@@ -15,10 +15,10 @@ namespace Hotel
         public string HotelLayoutFilePath { get; private set; }
         public List<Room> Rooms { get; set; }
         public Dictionary<string, Person> Persons { get; set; }
+        public Receptionist Receptionist { get; set; }
 
         private ContentManager _contentManager;
         private ConfigModel _config;
-        private Receptionist _receptionist;
         private int _cleaners;
 
         /// <summary>
@@ -59,8 +59,8 @@ namespace Hotel
         public void CreateStaff()
         {
             Room firstLobby = Rooms.OfType<Lobby>().OrderBy(x => x.RoomPosition.X).First();
-            _receptionist = new Receptionist(_contentManager, firstLobby, Rooms, _config.WalkingSpeed);
-            Persons.Add("Receptionist", _receptionist);
+            Receptionist = new Receptionist(_contentManager, firstLobby, Rooms, _config.WalkingSpeed);
+            Persons.Add("Receptionist", Receptionist);
 
             for (int i = 0; i < _cleaners; i++)
             {
@@ -74,9 +74,10 @@ namespace Hotel
         public void AddGuest(string name, int stars)
         {
             Guest guest = new Guest(_contentManager, Rooms[0], _config.WalkingSpeed);
+            guest.StayState = StayState.CheckIn;
             guest.Classification = stars;
             Persons.Add(name, guest);
-            guest.TargetRoom = _receptionist.CurrentRoom;
+            guest.TargetRoom = Receptionist.CurrentRoom;
         }
 
         /// <summary>
@@ -94,7 +95,7 @@ namespace Hotel
                     r.Neighbors[r.ReverseDirection(dir)] = room;
                 }
             }
-            
+
             Rooms.Add(room);
         }
 

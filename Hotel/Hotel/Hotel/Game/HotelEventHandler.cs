@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Hotel.Persons;
+using Hotel.Rooms;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,11 +24,10 @@ namespace Hotel
                 case HotelEvents.HotelEventType.NONE:
                     break;
                 case HotelEvents.HotelEventType.CHECK_IN:
-
                     _hotel.AddGuest(evt.Data.Keys.ElementAt(0), Int32.Parse(Regex.Replace(evt.Data.Values.ElementAt(0), "[^0-9]+", string.Empty)));
-
                     break;
                 case HotelEvents.HotelEventType.CHECK_OUT:
+                    (_hotel.Persons[evt.Data.Keys.ElementAt(0) + evt.Data.Values.ElementAt(0)] as Guest).CheckOut(_hotel.Receptionist.CurrentRoom as Lobby);
                     break;
                 case HotelEvents.HotelEventType.CLEANING_EMERGENCY:
                     break;

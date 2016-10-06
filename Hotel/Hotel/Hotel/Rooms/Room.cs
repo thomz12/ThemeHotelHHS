@@ -14,7 +14,8 @@ namespace Hotel
         Vacant,
         Dirty,
         InCleaning,
-        Occupied
+        Occupied,
+        Emergency
     }
 
     public enum Direction
@@ -42,6 +43,9 @@ namespace Hotel
         public float Weight { get; set; }
         public RoomState State { get; set; }
 
+        private Texture2D _emergencyTexture;
+        private float _emergencyTime;
+
         public Dictionary<Direction, Room> Neighbors { get; set; }
 
         /// <summary>
@@ -64,6 +68,8 @@ namespace Hotel
 
             // Set the 'real' position of the room.
             Position = new Vector2(position.X * ROOMWIDTH, position.Y * ROOMHEIGHT);
+
+            _emergencyTexture = content.Load<Texture2D>("CleaningEmergency");
 
             Sprite.SetPosition(new Point((int)Position.X, (int)Position.Y));
             Sprite.SetSize(new Point(size.X * ROOMWIDTH, size.Y * ROOMHEIGHT));
@@ -129,6 +135,30 @@ namespace Hotel
             }
 
             return Direction.None;
+        }
+
+        public override void Update(float deltaTime)
+        {
+            base.Update(deltaTime);
+
+            if (State == RoomState.Emergency)
+            {
+                _emergencyTime += deltaTime;
+            }
+            else
+                _emergencyTime = 0;
+        }
+
+        public override void Draw(SpriteBatch batch, GameTime gameTime)
+        {
+            base.Draw(batch, gameTime);
+
+            // if cleaning emergency, show emergency sprite
+            if (State == RoomState.Emergency)
+            {
+                if ((int)_emergencyTime % 2 == 0)
+                    batch.Draw(_emergencyTexture, Sprite.DrawDestination, null, Color.White, 0, Vector2.Zero, SpriteEffects.None, 1.0f);
+            }
         }
 
         public override string ToString()

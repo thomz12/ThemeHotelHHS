@@ -17,6 +17,14 @@ namespace Hotel.Persons
         Genderless
     }
 
+    public enum StayState
+    {
+        None,
+        CheckIn,
+        CheckOut,
+        Staying
+    }
+
     public class Guest : Person
     {
         public Gender Gender { get; private set; }
@@ -34,6 +42,8 @@ namespace Hotel.Persons
                 TargetRoom = _room;
             }
         }
+
+        public StayState StayState { get; set; }
 
         public int Classification { get; set; }
 
@@ -58,6 +68,8 @@ namespace Hotel.Persons
                 Sprite.LoadSprite("FemaleGuest");
             }
 
+            StayState = StayState.None;
+
             // Give this person a name.
             Name = generator.GenerateName(Gender);
 
@@ -69,8 +81,17 @@ namespace Hotel.Persons
         {
             if(CurrentRoom is Lobby)
             {
-                (CurrentRoom as Lobby).CheckIn(this);
+                if(StayState == StayState.CheckIn)
+                    (CurrentRoom as Lobby).CheckIn(this);
+                else if(StayState == StayState.CheckOut)
+                    (CurrentRoom as Lobby).CheckOut(this);
             }
+        }
+
+        public void CheckOut(Lobby lobby)
+        {
+            TargetRoom = lobby;
+            StayState = StayState.CheckOut;
         }
 
         public override string ToString()
