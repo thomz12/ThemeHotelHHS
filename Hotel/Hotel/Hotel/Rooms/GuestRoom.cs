@@ -37,5 +37,10 @@ namespace Hotel
             // All the rooms are default Vacant
             State = RoomState.Vacant;
         }
+
+        public override string ToString()
+        {
+            return base.ToString() + Environment.NewLine + "Guest: " + (Guest == null ? "none" : Guest.Name);
+        }
     }
 }
