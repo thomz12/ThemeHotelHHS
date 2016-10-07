@@ -305,7 +305,7 @@
             this.tb_Layout.Name = "tb_Layout";
             this.tb_Layout.ReadOnly = true;
             this.tb_Layout.Size = new System.Drawing.Size(318, 20);
-            this.tb_Layout.TabIndex = 5;
+            this.tb_Layout.TabIndex = 9;
             this.tt_Settings.SetToolTip(this.tb_Layout, "Choose a layout file for the simulator to display.");
             // 
             // lbl_Survivability
@@ -334,7 +334,7 @@
             0});
             this.num_Survivability.Name = "num_Survivability";
             this.num_Survivability.Size = new System.Drawing.Size(70, 20);
-            this.num_Survivability.TabIndex = 18;
+            this.num_Survivability.TabIndex = 5;
             this.tt_Settings.SetToolTip(this.num_Survivability, "This sets the amount of time guests can wait for the elevator. Guests die when th" +
         "ey wait longer for the elevator.");
             this.num_Survivability.Value = new decimal(new int[] {
@@ -374,7 +374,7 @@
             65536});
             this.num_StairsWeight.Name = "num_StairsWeight";
             this.num_StairsWeight.Size = new System.Drawing.Size(70, 20);
-            this.num_StairsWeight.TabIndex = 20;
+            this.num_StairsWeight.TabIndex = 6;
             this.tt_Settings.SetToolTip(this.num_StairsWeight, "This sets the difficulty to go up or down stairs. The higher the number the less " +
         "likely guests are to take the stairs.");
             this.num_StairsWeight.Value = new decimal(new int[] {
@@ -419,7 +419,7 @@
             this.btn_Save.Location = new System.Drawing.Point(108, 279);
             this.btn_Save.Name = "btn_Save";
             this.btn_Save.Size = new System.Drawing.Size(90, 32);
-            this.btn_Save.TabIndex = 8;
+            this.btn_Save.TabIndex = 11;
             this.btn_Save.Text = "Save";
             this.btn_Save.UseVisualStyleBackColor = true;
             this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
@@ -429,7 +429,7 @@
             this.btn_Select.Location = new System.Drawing.Point(382, 253);
             this.btn_Select.Name = "btn_Select";
             this.btn_Select.Size = new System.Drawing.Size(26, 20);
-            this.btn_Select.TabIndex = 6;
+            this.btn_Select.TabIndex = 8;
             this.btn_Select.Text = "...";
             this.btn_Select.UseVisualStyleBackColor = true;
             this.btn_Select.Click += new System.EventHandler(this.btn_Select_Click);
@@ -439,7 +439,7 @@
             this.btn_Cancel.Location = new System.Drawing.Point(204, 279);
             this.btn_Cancel.Name = "btn_Cancel";
             this.btn_Cancel.Size = new System.Drawing.Size(90, 32);
-            this.btn_Cancel.TabIndex = 7;
+            this.btn_Cancel.TabIndex = 10;
             this.btn_Cancel.Text = "Cancel";
             this.btn_Cancel.UseVisualStyleBackColor = true;
             this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
@@ -452,7 +452,7 @@
             this.cb_EmptyRooms.Location = new System.Drawing.Point(108, 230);
             this.cb_EmptyRooms.Name = "cb_EmptyRooms";
             this.cb_EmptyRooms.Size = new System.Drawing.Size(198, 17);
-            this.cb_EmptyRooms.TabIndex = 23;
+            this.cb_EmptyRooms.TabIndex = 7;
             this.cb_EmptyRooms.Text = "People can fly through higher rooms.";
             this.cb_EmptyRooms.UseVisualStyleBackColor = true;
             // 
