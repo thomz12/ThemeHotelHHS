@@ -212,7 +212,7 @@
             // 
             this.num_FilmDuration.Location = new System.Drawing.Point(172, 86);
             this.num_FilmDuration.Maximum = new decimal(new int[] {
-            20,
+            1337,
             0,
             0,
             0});

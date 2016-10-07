@@ -33,7 +33,7 @@ namespace Hotel
                     break;
                 case HotelEvents.HotelEventType.EVACUATE:
                     break;
-                case HotelEvents.HotelEventType.GODZILLA:
+                case HotelEvents.HotelEventType.GODZILLA: 
                     Console.WriteLine("AAAAAAAHHHHHHHH!");
                     break;
                 case HotelEvents.HotelEventType.NEED_FOOD:
@@ -43,6 +43,8 @@ namespace Hotel
                 case HotelEvents.HotelEventType.GOTO_FITNESS:
                     break;
                 case HotelEvents.HotelEventType.START_CINEMA:
+                    Cinema cinema = (Cinema)_hotel.Rooms.Where(x => x.ID == Int32.Parse(evt.Data.Values.ElementAt(0))).FirstOrDefault();
+                    cinema?.StartMovie();
                     break;
                 default:
                     break;
