@@ -34,6 +34,7 @@ namespace Hotel
                 case HotelEvents.HotelEventType.EVACUATE:
                     break;
                 case HotelEvents.HotelEventType.GODZILLA:
+                    Console.WriteLine("AAAAAAAHHHHHHHH!");
                     break;
                 case HotelEvents.HotelEventType.NEED_FOOD:
                     break;
