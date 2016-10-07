@@ -104,6 +104,8 @@ namespace Hotel
 
                     if (person.TargetRoom != null)
                     {
+                        person.CurrentRoom.Sprite.Color = Color.White;
+
                         if(person.CurrentRoom != person.TargetRoom)
                         {
                             person.TargetRoom.Sprite.Color = Color.Red;

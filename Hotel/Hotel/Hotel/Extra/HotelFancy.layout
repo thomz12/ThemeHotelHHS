@@ -1,0 +1,174 @@
+[{
+		"ID" : 3,
+		"AreaType" : "Cinema",
+		"Position" : "1, 7",
+		"Dimension" : "2, 2"
+	}, {
+		"Capacity" : 5,
+		"ID" : 4,
+		"AreaType" : "Restaurant",
+		"Position" : "1, 2",
+		"Dimension" : "2, 1"
+	}, {
+		"Capacity" : 7,
+		"ID" : 5,
+		"AreaType" : "Restaurant",
+		"Position" : "7, 6",
+		"Dimension" : "2, 1"
+	}, {
+		"ID" : 6,
+		"AreaType" : "Fitness",
+		"Position" : "7, 2",
+		"Dimension" : "2, 1"
+	}, {
+		"Classification" : "1 Star",
+		"ID" : 7,
+		"AreaType" : "Room",
+		"Position" : "1, 1",
+		"Dimension" : "1, 1"
+	}, {
+		"Classification" : "1 Star",
+		"ID" : 8,
+		"AreaType" : "Room",
+		"Position" : "2, 1",
+		"Dimension" : "1, 1"
+	}, {
+		"Classification" : "1 Star",
+		"ID" : 9,
+		"AreaType" : "Room",
+		"Position" : "3, 1",
+		"Dimension" : "1, 1"
+	}, {
+		"Classification" : "1 Star",
+		"ID" : 10,
+		"AreaType" : "Room",
+		"Position" : "6, 1",
+		"Dimension" : "1, 1"
+	}, {
+		"Classification" : "1 Star",
+		"ID" : 11,
+		"AreaType" : "Room",
+		"Position" : "7, 1",
+		"Dimension" : "1, 1"
+	}, {
+		"Classification" : "1 Star",
+		"ID" : 12,
+		"AreaType" : "Room",
+		"Position" : "8, 1",
+		"Dimension" : "1, 1"
+	}, {
+		"Classification" : "1 Star",
+		"ID" : 13,
+		"AreaType" : "Room",
+		"Position" : "1, 3",
+		"Dimension" : "1, 1"
+	}, {
+		"Classification" : "1 Star",
+		"ID" : 14,
+		"AreaType" : "Room",
+		"Position" : "2, 3",
+		"Dimension" : "1, 1"
+	}, {
+		"Classification" : "1 Star",
+		"ID" : 15,
+		"AreaType" : "Room",
+		"Position" : "1, 4",
+		"Dimension" : "1, 1"
+	}, {
+		"Classification" : "1 Star",
+		"ID" : 16,
+		"AreaType" : "Room",
+		"Position" : "2, 4",
+		"Dimension" : "1, 1"
+	}, {
+		"Classification" : "2 stars",
+		"ID" : 17,
+		"AreaType" : "Room",
+		"Position" : "4, 1",
+		"Dimension" : "1, 1"
+	}, {
+		"Classification" : "2 stars",
+		"ID" : 18,
+		"AreaType" : "Room",
+		"Position" : "5, 1",
+		"Dimension" : "1, 1"
+	}, {
+		"Classification" : "2 stars",
+		"ID" : 19,
+		"AreaType" : "Room",
+		"Position" : "7, 3",
+		"Dimension" : "1, 1"
+	}, {
+		"Classification" : "2 stars",
+		"ID" : 20,
+		"AreaType" : "Room",
+		"Position" : "8, 3",
+		"Dimension" : "1, 1"
+	}, {
+		"Classification" : "3 stars",
+		"ID" : 21,
+		"AreaType" : "Room",
+		"Position" : "7, 7",
+		"Dimension" : "2, 1"
+	}, {
+		"Classification" : "3 stars",
+		"ID" : 22,
+		"AreaType" : "Room",
+		"Position" : "7, 8",
+		"Dimension" : "2, 1"
+	}, {
+		"Classification" : "3 stars",
+		"ID" : 23,
+		"AreaType" : "Room",
+		"Position" : "7, 9",
+		"Dimension" : "2, 1"
+	}, {
+		"Classification" : "3 stars",
+		"ID" : 24,
+		"AreaType" : "Room",
+		"Position" : "7, 10",
+		"Dimension" : "2, 1"
+	}, {
+		"Classification" : "4 stars",
+		"ID" : 25,
+		"AreaType" : "Room",
+		"Position" : "3, 2",
+		"Dimension" : "2, 1"
+	}, {
+		"Classification" : "4 stars",
+		"ID" : 26,
+		"AreaType" : "Room",
+		"Position" : "5, 2",
+		"Dimension" : "2, 1"
+	}, {
+		"Classification" : "4 stars",
+		"ID" : 27,
+		"AreaType" : "Room",
+		"Position" : "7, 4",
+		"Dimension" : "2, 2"
+	}, {
+		"Classification" : "5 stars",
+		"ID" : 28,
+		"AreaType" : "Room",
+		"Position" : "1, 5",
+		"Dimension" : "2, 2"
+	}, {
+		"Classification" : "5 stars",
+		"ID" : 29,
+		"AreaType" : "Room",
+		"Position" : "1, 9",
+		"Dimension" : "2, 2"
+	}, {
+    "Classification" : "5 stars",
+		"ID" : 30,
+		"AreaType" : "Room",
+		"Position" : "3, 7",
+		"Dimension" : "2, 2"
+  }, {
+    "Classification" : "5 stars",
+		"ID" : 31,
+		"AreaType" : "Room",
+		"Position" : "5, 7",
+		"Dimension" : "2, 2"
+  }
+]
