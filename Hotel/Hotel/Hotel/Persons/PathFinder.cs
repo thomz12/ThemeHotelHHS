@@ -20,7 +20,7 @@ namespace Hotel.Persons
         }
     }
 
-    class PathFinder
+    public class PathFinder
     {
         /// <summary>
         /// Finds the path from the currentRoom to the targetRoom
@@ -100,11 +100,12 @@ namespace Hotel.Persons
         }
 
         /// <summary>
-        /// 
+        /// Finds the path to the closest room with a certain state.
         /// </summary>
-        /// <param name="currentRoom"></param>
-        /// <returns></returns>
-        public List<Room> FindPathToDirtyRoom(Room currentRoom)
+        /// <param name="startRoom">The room to start the search from.</param>
+        /// <param name="state">The state the room must have.</param>
+        /// <returns>A path from the start room to the closest room with a certain state.</returns>
+        public List<Room> FindPathToRoomWithState(Room startRoom, RoomState state)
         {
             // Initialize variables
             List<RoomNode> queue = new List<RoomNode>();
@@ -112,7 +113,7 @@ namespace Hotel.Persons
             RoomNode endNode = null;
 
             // add the current room to the list to start off dijkstra's.
-            queue.Add(new RoomNode(currentRoom, 0, null));
+            queue.Add(new RoomNode(startRoom, 0, null));
 
             // Go through all the items in the queue O(n2)
             while(queue.Count > 0)
@@ -121,7 +122,7 @@ namespace Hotel.Persons
                 RoomNode current = queue.OrderBy(x => x.Weight).First();
 
                 // Check if a room is dirty
-                if(current.Room.State == RoomState.Dirty)
+                if(current.Room.State == state)
                 {
                     endNode = current;
                     break;

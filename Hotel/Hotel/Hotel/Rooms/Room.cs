@@ -42,6 +42,7 @@ namespace Hotel
         public int PeopleInside { get; set; }
         public float Weight { get; set; }
         public RoomState State { get; set; }
+        public float EmergencyDuration { get; set; }
 
         private Texture2D _emergencyTexture;
         private float _emergencyTime;

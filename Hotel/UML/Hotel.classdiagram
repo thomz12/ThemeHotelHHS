@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="c336cf98-c95c-4a4b-93e5-88c57cd10a56" name="Hotel" linkedPackageId="dcd36c7c-ee69-4234-8b0d-a3b8dc3f548d" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
+<logicalClassDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="c336cf98-c95c-4a4b-93e5-88c57cd10a56" name="Hotel" linkedPackageId="dcd36c7c-ee69-4234-8b0d-a3b8dc3f548d" xmlns="http://schemas.microsoft.com/dsltools/LogicalClassDesigner">
   <ownedCommentsInternal>
     <comment Id="e9330e3b-3675-4b6e-862b-4eec85fe053e">
       <elementDefinition Id="6aaa30ed-457b-4a34-b31a-8123c2fcaf80" />
@@ -379,9 +379,9 @@
       <class Id="14ad0a4d-3ab4-4daf-ba44-aa95bf888d01" name="GuestRoom" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="a3dbeddd-4052-4396-a274-84337f0b01bd" />
         <generalsInternal>
-          <generalization Id="20d6ae0a-3d89-426b-8a6a-5510f023503a" isSubstitutable="false">
+          <generalization Id="5ca6e557-6d77-4b9c-ab20-e60a765c2066" isSubstitutable="false">
             <classMoniker Id="3d8329bc-5f4f-4b16-93d3-9e3707528c76" LastKnownName="Room" />
-            <elementDefinition Id="546884c2-9b18-4bbd-9e95-fe2d82c6f207" />
+            <elementDefinition Id="2d263efd-8897-4ddd-8088-4c197d8f49f9" />
           </generalization>
         </generalsInternal>
         <ownedAttributesInternal>
@@ -474,9 +474,9 @@
       <class Id="25604916-6b0a-4abb-9479-f109891e392d" name="Cinema" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="a24c3b6b-f2c5-4614-8756-441ed9135fe8" />
         <generalsInternal>
-          <generalization Id="554c9c19-d0de-400f-9842-9065590decb9" isSubstitutable="false">
+          <generalization Id="1cb4382c-10da-4411-bad9-fa0effbe8835" isSubstitutable="false">
             <classMoniker Id="3d8329bc-5f4f-4b16-93d3-9e3707528c76" LastKnownName="Room" />
-            <elementDefinition Id="ab4236d8-b238-4f97-a04e-d28e9c7e221d" />
+            <elementDefinition Id="e06301c2-d0bd-4996-b281-10b504683ca1" />
           </generalization>
         </generalsInternal>
         <ownedAttributesInternal>
@@ -524,9 +524,9 @@
       <class Id="126f6427-a251-4cc3-9487-7fed4fbe2cf8" name="Cafe" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="274af4b1-29ed-46c7-9a87-70a2e350c16d" />
         <generalsInternal>
-          <generalization Id="12df1bc0-3f4e-4ab5-8378-29e6a7a695e1" isSubstitutable="false">
+          <generalization Id="622de97e-a2e6-4f35-bf88-730d3024ef56" isSubstitutable="false">
             <classMoniker Id="3d8329bc-5f4f-4b16-93d3-9e3707528c76" LastKnownName="Room" />
-            <elementDefinition Id="a27ce76d-d615-4be7-a534-c1f5674a6ec0" />
+            <elementDefinition Id="6c161cb4-4124-4750-b067-739495c703fb" />
           </generalization>
         </generalsInternal>
         <ownedAttributesInternal>
@@ -582,9 +582,9 @@
       <class Id="0a66144a-3370-484d-97dc-5c05e6f55b29" name="Fitness" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="bda488dc-f1f5-4777-bf1a-1dd61fc6498d" />
         <generalsInternal>
-          <generalization Id="b9352f52-5dc5-4ee3-85b1-f202eb26fbad" isSubstitutable="false">
+          <generalization Id="7400d9ab-6b57-4fb4-b740-f3d9398c97d8" isSubstitutable="false">
             <classMoniker Id="3d8329bc-5f4f-4b16-93d3-9e3707528c76" LastKnownName="Room" />
-            <elementDefinition Id="b900467a-dc6c-4d5e-82c6-a8ad962e97bc" />
+            <elementDefinition Id="9131887e-3241-42f1-bd70-7577b91af58b" />
           </generalization>
         </generalsInternal>
         <ownedOperationsInternal>
@@ -632,9 +632,9 @@
       <class Id="5090b148-6bd4-4366-a58c-ae410d45232a" name="Lobby" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="7c6a1ee9-6b76-4d90-ae7e-c4f843e349b3" />
         <generalsInternal>
-          <generalization Id="1b922d41-ec10-4d06-a4e7-3c1f7d36345d" isSubstitutable="false">
+          <generalization Id="f3e2d59d-4c1b-4428-aacf-bb7d517b79cf" isSubstitutable="false">
             <classMoniker Id="3d8329bc-5f4f-4b16-93d3-9e3707528c76" LastKnownName="Room" />
-            <elementDefinition Id="ea5e0182-3c06-413a-ac73-4a0b82b83853" />
+            <elementDefinition Id="d5f9473c-7a1d-4f01-8209-31e67fe60284" />
           </generalization>
         </generalsInternal>
         <ownedOperationsInternal>
@@ -1986,9 +1986,9 @@
       <class Id="8710608f-292a-4773-b766-89a4862fa608" name="Staircase" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="34d08649-2e2f-4fbf-a06b-34b114cc393b" />
         <generalsInternal>
-          <generalization Id="36badbe7-f6ba-4bc2-8fcc-7c571e3b83c7" isSubstitutable="false">
+          <generalization Id="62d4f0e9-9eca-4998-a811-ce7965671273" isSubstitutable="false">
             <classMoniker Id="3d8329bc-5f4f-4b16-93d3-9e3707528c76" LastKnownName="Room" />
-            <elementDefinition Id="4f16585f-7581-4c0a-b1ba-f818f7c0d023" />
+            <elementDefinition Id="68f1bcc4-57de-4e7a-8afb-84f3752d617b" />
           </generalization>
         </generalsInternal>
         <ownedOperationsInternal>
@@ -2712,9 +2712,9 @@
       <class Id="4f6f1137-13c0-4b6c-bab1-4b45a57c62bc" name="EmptyRoom" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="6c0edbad-f660-4f27-b0d5-ed993aea8bbf" />
         <generalsInternal>
-          <generalization Id="afba8837-6eaa-405e-a2b2-83a653734c01" isSubstitutable="false">
+          <generalization Id="8210c3be-fd87-45a3-a44e-05362716a3a7" isSubstitutable="false">
             <classMoniker Id="3d8329bc-5f4f-4b16-93d3-9e3707528c76" LastKnownName="Room" />
-            <elementDefinition Id="dec21dfa-89eb-4d44-aa8b-1b05cfb83a0f" />
+            <elementDefinition Id="5a34e7f2-8908-49a2-a6e4-dabfca91c0e3" />
           </generalization>
         </generalsInternal>
         <ownedOperationsInternal>

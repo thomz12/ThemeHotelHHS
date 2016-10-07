@@ -56,8 +56,6 @@ namespace Hotel.Persons
                 {
                     // Stop cleaning
                     _isCleaning = false;
-                    // Reset the timer
-                    _cleaningTimer = _cleaningDuration;
                     // Set the room that has been cleaned as clean
                     CurrentRoom.State = RoomState.Vacant;
                     // This cleaner is not busy anymore.
@@ -74,25 +72,50 @@ namespace Hotel.Persons
             if (!_isBusy)
             {
                 bool thereIsADirtyRoom = false;
+                bool thereIsAEmergency = false;
 
-                // Check first if there is a dirty room.
+                // Check first if there is a dirty room or a room with an emergency.
                 foreach (Room room in _allRoomsInHotel)
                 {
+                    if(room.State == RoomState.Emergency)
+                    {
+                        thereIsAEmergency = true;
+                    }
+
                     if (room.State == RoomState.Dirty)
                     {
                         thereIsADirtyRoom = true;
                     }
                 }
 
-                // There are no dirty rooms so we quit this function before calling Dijkstra's
-                if (!thereIsADirtyRoom)
-                    return;
+                // Check if a room with a emergency was found.
+                if (thereIsAEmergency)
+                {
+                    // Call dijkstra's because there is an emergency.
+                    Path = _pathFinder.FindPathToRoomWithState(CurrentRoom, RoomState.Emergency);
+                    // Set the target room.
+                    TargetRoom = Path.Last();
+                    // Set the time it takes to clean the room.
+                    _cleaningTimer = TargetRoom.EmergencyDuration;
+                }
+                else
+                {
+                    // Check if a room with a dirty state was found.
+                    if (thereIsADirtyRoom)
+                    {
+                        // Call dijkstra's because there is a dirty room.
+                        Path = _pathFinder.FindPathToRoomWithState(CurrentRoom, RoomState.Dirty);
+                        // Set the target room.
+                        TargetRoom = Path.Last();
+                        // Set teh time it takes to clean the room.
+                        _cleaningTimer = _cleaningDuration;
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
 
-                // Call dijkstra's because there is a dirty room.
-                PathFinder pathFinder = new PathFinder();
-                Path = pathFinder.FindPathToDirtyRoom(CurrentRoom);
-                // Set the target room.
-                TargetRoom = Path.Last();
                 // Set the Target room to InCleaning to claim it.
                 TargetRoom.State = RoomState.InCleaning;
                 // Set busy to true because this cleaner is busy with walking or cleaning.

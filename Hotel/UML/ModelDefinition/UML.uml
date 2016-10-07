@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
   dslVersion="1.0.0.0"
   Id="90d7b128-f1fc-462a-8421-ac1bd25777ae"
   name="UML" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -900,7 +900,7 @@
         </suppliersInternal>
         <generalsInternal>
           <generalization
-            Id="546884c2-9b18-4bbd-9e95-fe2d82c6f207"
+            Id="2d263efd-8897-4ddd-8088-4c197d8f49f9"
             isSubstitutable="false">
             <classMoniker
               Id="55ac072c-29df-4bb4-98c1-40272054cc7d"
@@ -1088,7 +1088,7 @@
         </suppliersInternal>
         <generalsInternal>
           <generalization
-            Id="ab4236d8-b238-4f97-a04e-d28e9c7e221d"
+            Id="e06301c2-d0bd-4996-b281-10b504683ca1"
             isSubstitutable="false">
             <classMoniker
               Id="55ac072c-29df-4bb4-98c1-40272054cc7d"
@@ -1191,7 +1191,7 @@
         </suppliersInternal>
         <generalsInternal>
           <generalization
-            Id="a27ce76d-d615-4be7-a534-c1f5674a6ec0"
+            Id="6c161cb4-4124-4750-b067-739495c703fb"
             isSubstitutable="false">
             <classMoniker
               Id="55ac072c-29df-4bb4-98c1-40272054cc7d"
@@ -1308,7 +1308,7 @@
         </suppliersInternal>
         <generalsInternal>
           <generalization
-            Id="b900467a-dc6c-4d5e-82c6-a8ad962e97bc"
+            Id="9131887e-3241-42f1-bd70-7577b91af58b"
             isSubstitutable="false">
             <classMoniker
               Id="55ac072c-29df-4bb4-98c1-40272054cc7d"
@@ -1405,7 +1405,7 @@
         </suppliersInternal>
         <generalsInternal>
           <generalization
-            Id="ea5e0182-3c06-413a-ac73-4a0b82b83853"
+            Id="d5f9473c-7a1d-4f01-8209-31e67fe60284"
             isSubstitutable="false">
             <classMoniker
               Id="55ac072c-29df-4bb4-98c1-40272054cc7d"
@@ -4290,7 +4290,7 @@
         isActiveClass="false">
         <generalsInternal>
           <generalization
-            Id="4f16585f-7581-4c0a-b1ba-f818f7c0d023"
+            Id="68f1bcc4-57de-4e7a-8afb-84f3752d617b"
             isSubstitutable="false">
             <classMoniker
               Id="55ac072c-29df-4bb4-98c1-40272054cc7d"
@@ -6548,7 +6548,7 @@
         isActiveClass="false">
         <generalsInternal>
           <generalization
-            Id="dec21dfa-89eb-4d44-aa8b-1b05cfb83a0f"
+            Id="5a34e7f2-8908-49a2-a6e4-dabfca91c0e3"
             isSubstitutable="false">
             <classMoniker
               Id="55ac072c-29df-4bb4-98c1-40272054cc7d"

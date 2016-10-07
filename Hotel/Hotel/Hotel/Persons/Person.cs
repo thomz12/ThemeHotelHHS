@@ -39,8 +39,7 @@ namespace Hotel.Persons
                 {
                     if(Path == null || Path.Count == 0 || _targetRoom != Path.Last())
                     {
-                        PathFinder pathfinder = new PathFinder();
-                        Path = pathfinder.FindPath(CurrentRoom, _targetRoom);
+                        Path = _pathFinder.FindPath(CurrentRoom, _targetRoom);
                     }
                     CurrentTask = PersonTask.MovingCenter;
                 }
@@ -49,6 +48,8 @@ namespace Hotel.Persons
 
         public List<Room> Path { get; protected set; }
         public float JumpHeight { get; set; }
+
+        protected PathFinder _pathFinder;
 
         // The Elevator to enter.
         private Elevator _elevator;
@@ -75,6 +76,8 @@ namespace Hotel.Persons
             JumpHeight = 4;
             CurrentRoom = room;
             _calledElevator = false;
+
+            _pathFinder = new PathFinder();
 
             Path = new List<Room>();
             room.PeopleCount++;

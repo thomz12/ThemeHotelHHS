@@ -30,6 +30,12 @@ namespace Hotel
                     (_hotel.Persons[evt.Data.Keys.ElementAt(0) + evt.Data.Values.ElementAt(0)] as Guest).CheckOut(_hotel.Receptionist.CurrentRoom as Lobby);
                     break;
                 case HotelEvents.HotelEventType.CLEANING_EMERGENCY:
+                    Room roomWithEmergency = _hotel.Rooms.Where(x => x.ID == Int32.Parse(evt.Data.Values.ElementAt(0))).FirstOrDefault();
+                    if (roomWithEmergency != null)
+                    {
+                        roomWithEmergency.State = RoomState.Emergency;
+                        roomWithEmergency.EmergencyDuration = float.Parse(evt.Data.Values.ElementAt(1));
+                    }
                     break;
                 case HotelEvents.HotelEventType.EVACUATE:
                     break;
