@@ -12,7 +12,6 @@ namespace Hotel
     {
         public int Classification { get; private set; }
 
-        public bool Dirty { get; set; }
         public Guest Guest { get; set; } 
 
         public GuestRoom(ContentManager content, int id, Point position, Point size, int classification) : base(content, id, position, size)
