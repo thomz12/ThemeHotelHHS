@@ -127,14 +127,14 @@ namespace Hotel
         /// <param name="deltaTime">The delta time.</param>
         public void Update(float deltaTime)
         {
-            foreach (Room room in Rooms)
+            for (int i = 0; i < Rooms.Count; i++)
             {
-                room.Update(deltaTime);
+                Rooms[i].Update(deltaTime);
             }
 
-            foreach (Person person in Persons.Values)
+            for (int i = 0; i < Persons.Count; i++)
             {
-                person.Update(deltaTime);
+                Persons.Values.ElementAt(i).Update(deltaTime);
             }
         }
 
@@ -145,14 +145,14 @@ namespace Hotel
         /// <param name="gameTime">the game time.</param>
         public void Draw(SpriteBatch batch, GameTime gameTime)
         {
-            foreach (Person person in Persons.Values)
+            for (int i = 0; i < Rooms.Count; i++)
             {
-                person.Draw(batch, gameTime);
+                Rooms[i].Draw(batch, gameTime);
             }
 
-            foreach (Room room in Rooms)
+            for (int i = 0; i < Persons.Count; i++)
             {
-                room.Draw(batch, gameTime);
+                Persons.Values.ElementAt(i).Draw(batch, gameTime);
             }
         }
     }
