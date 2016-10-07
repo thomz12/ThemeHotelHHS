@@ -62,9 +62,6 @@ namespace Hotel.Persons
                     CurrentRoom.State = RoomState.Vacant;
                     // This cleaner is not busy anymore.
                     _isBusy = false;
-
-                    // Check again if there are dirty rooms
-                    GoClean();
                 }
             }
 
