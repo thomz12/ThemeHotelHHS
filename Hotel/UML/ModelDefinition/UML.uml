@@ -2096,13 +2096,6 @@
               LastKnownName="Direction"
               LastKnownLocation="UML.uml" />
           </dependency>
-          <dependency
-            Id="d0bd8cbc-e58c-485d-937e-dde9df5168ad">
-            <enumerationMoniker
-              Id="2436b42d-ffe1-453c-a0c9-3f64d26adc38"
-              LastKnownName="RoomState"
-              LastKnownLocation="UML.uml" />
-          </dependency>
         </suppliersInternal>
         <generalsInternal>
           <generalization
@@ -2114,6 +2107,47 @@
               LastKnownLocation="UML.uml" />
           </generalization>
         </generalsInternal>
+        <targetEnds>
+          <association
+            Id="90a91fa2-3041-4c57-a82c-ea965fdcd683"
+            isDerived="false"
+            sourceEndRoleName="Room"
+            targetEndRoleName="RoomState"
+            isLeaf="false"
+            isAbstract="false">
+            <enumerationMoniker
+              Id="2436b42d-ffe1-453c-a0c9-3f64d26adc38"
+              LastKnownName="RoomState"
+              LastKnownLocation="UML.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="39998971-8c56-4b10-ac8f-c8861f33d49a"
+                  name="Room"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="aa230f34-581e-4be1-8a82-3d3071013fd1"
+                  name="RoomState"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
         <ownedAttributesInternal>
           <property
             Id="c56c58d4-110e-4ef1-b8b5-74a425a6943f"
@@ -2227,7 +2261,7 @@
             Id="bde9f6d6-bc68-4ac6-b1ea-836b179daf3c"
             name="ROOMHEIGHT"
             isLeaf="false"
-            isStatic="false"
+            isStatic="true"
             isReadOnly="false"
             isUnique="false"
             isDerived="false"
@@ -2251,7 +2285,7 @@
             Id="45322fb4-9c51-4d07-82c3-63e1f98e77f2"
             name="ROOMWIDTH"
             isLeaf="false"
-            isStatic="false"
+            isStatic="true"
             isReadOnly="false"
             isUnique="false"
             isDerived="false"

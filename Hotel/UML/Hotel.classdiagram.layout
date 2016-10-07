@@ -509,14 +509,14 @@
         <LiteralElementListCompartment Id="6f7175ac-b888-4456-8502-d5fd54c8c87e" absoluteBounds="6.015, 5.5150000000000006, 1.4700000000000002, 0.84179684768120444" name="LiteralsCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </enumerationShape>
-    <dependencyConnector edgePoints="[(6.75 : 7); (6.75 : 6.4567968476812)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black">
-      <dependencyMoniker Id="f5fe6d25-b676-49e1-bc91-8672f6195169" />
+    <associationConnector edgePoints="[(6.75 : 7); (6.75 : 6.4567968476812)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110" sourceMultiplicity="1" targetMultiplicity="1">
+      <associationMoniker Id="5488e2ec-7aa5-41ca-9f6e-bd9c899bfcb2" />
       <relativeChildShapes />
       <nodes>
         <classShapeMoniker Id="edd859a3-4e2b-40c7-a836-cdc55f745b1f" />
         <enumerationShapeMoniker Id="697def62-7064-4083-8457-cd1078125925" />
       </nodes>
-    </dependencyConnector>
+    </associationConnector>
     <enumerationShape Id="3d71b292-d911-459a-bb87-64d7d2bd4b5a" absoluteBounds="21.875, 15.375, 1.5, 1.6521093377470972" hideQualifiedName="false" increaseHeight="0" customColor="161, 150, 103">
       <enumerationMoniker Id="f32b47e5-7e0d-4715-b978-bb4403e12688" LastKnownName="PersonTask" />
       <nestedChildShapes>
