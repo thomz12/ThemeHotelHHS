@@ -940,10 +940,6 @@
             <enumerationMoniker Id="1ec2e4ad-252c-40f8-91e5-c145ee51e5be" LastKnownName="Direction" />
             <elementDefinition Id="80efd41f-b082-494b-bb06-fd62cd5c934f" />
           </dependency>
-          <dependency Id="f5fe6d25-b676-49e1-bc91-8672f6195169">
-            <enumerationMoniker Id="83884e17-ed3a-44aa-b521-d5aca931e4c2" LastKnownName="RoomState" />
-            <elementDefinition Id="d0bd8cbc-e58c-485d-937e-dde9df5168ad" />
-          </dependency>
         </suppliersInternal>
         <generalsInternal>
           <generalization Id="0b48e113-47d2-456f-981f-bd45c2470ee6" isSubstitutable="false">
@@ -951,6 +947,24 @@
             <elementDefinition Id="b1e1e673-1646-4acb-ba8b-e4a71107f27c" />
           </generalization>
         </generalsInternal>
+        <targetEnds>
+          <association Id="5488e2ec-7aa5-41ca-9f6e-bd9c899bfcb2" isDerived="false" sourceEndRoleName="Room" targetEndRoleName="RoomState" isLeaf="false" isAbstract="false">
+            <enumerationMoniker Id="83884e17-ed3a-44aa-b521-d5aca931e4c2" LastKnownName="RoomState" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="967a6903-a030-43a2-8875-da71220dc617" name="Room" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="39998971-8c56-4b10-ac8f-c8861f33d49a" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="faf530c3-280e-4583-b5c0-f53ce7a2e528" name="RoomState" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="aa230f34-581e-4be1-8a82-3d3071013fd1" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="90a91fa2-3041-4c57-a82c-ea965fdcd683" />
+          </association>
+        </targetEnds>
         <ownedAttributesInternal>
           <property Id="441bfec5-83f9-43c4-bb89-dc18806d34d9" name="Weight" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="c56c58d4-110e-4ef1-b8b5-74a425a6943f" />
@@ -988,7 +1002,7 @@
               <referencedTypeMoniker Id="90963567-d52d-406a-ad33-b7cb17aac0ce" LastKnownName="Dictionary&lt;Direction, Room&gt;" />
             </type_NamedElement>
           </property>
-          <property Id="f2a40d3e-4bbf-49d4-af13-94bdd191ce8b" name="ROOMHEIGHT" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+          <property Id="f2a40d3e-4bbf-49d4-af13-94bdd191ce8b" name="ROOMHEIGHT" isLeaf="false" isStatic="true" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="bde9f6d6-bc68-4ac6-b1ea-836b179daf3c" />
             <type_NamedElement>
               <referencedTypeMoniker Id="fdf7999c-b852-4111-ac85-a8351ec2b670" LastKnownName="int" />
@@ -999,7 +1013,7 @@
               </literalString>
             </defaultValue>
           </property>
-          <property Id="82337df2-48ed-4e31-8aa9-ef5307471569" name="ROOMWIDTH" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+          <property Id="82337df2-48ed-4e31-8aa9-ef5307471569" name="ROOMWIDTH" isLeaf="false" isStatic="true" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
             <elementDefinition Id="45322fb4-9c51-4d07-82c3-63e1f98e77f2" />
             <type_NamedElement>
               <referencedTypeMoniker Id="fdf7999c-b852-4111-ac85-a8351ec2b670" LastKnownName="int" />
