@@ -30,17 +30,17 @@ namespace Hotel
                     (_hotel.Persons[evt.Data.Keys.ElementAt(0) + evt.Data.Values.ElementAt(0)] as Guest).CheckOut(_hotel.Receptionist.CurrentRoom as Lobby);
                     break;
                 case HotelEvents.HotelEventType.CLEANING_EMERGENCY:
+                    // Get the specific room that has an emergency
                     Room roomWithEmergency = _hotel.Rooms.Where(x => x.ID == Int32.Parse(evt.Data.Values.ElementAt(0))).FirstOrDefault();
+                    // Check if the room exists.
                     if (roomWithEmergency != null)
-                    {
-                        roomWithEmergency.State = RoomState.Emergency;
-                        roomWithEmergency.EmergencyDuration = float.Parse(evt.Data.Values.ElementAt(1));
-                    }
+                        roomWithEmergency.SetEmergency(float.Parse(evt.Data.Values.ElementAt(1)));
                     break;
                 case HotelEvents.HotelEventType.EVACUATE:
                     break;
                 case HotelEvents.HotelEventType.GODZILLA: 
                     Console.WriteLine("AAAAAAAHHHHHHHH!");
+                    // Call evacuate function?
                     break;
                 case HotelEvents.HotelEventType.NEED_FOOD:
                     break;

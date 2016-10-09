@@ -96,7 +96,7 @@ namespace Hotel.Persons
                     // Set the target room.
                     TargetRoom = Path.Last();
                     // Set the time it takes to clean the room.
-                    _cleaningTimer = TargetRoom.EmergencyDuration;
+                    _cleaningTimer = TargetRoom.GetTimeToCleanEmergency();
                 }
                 else
                 {

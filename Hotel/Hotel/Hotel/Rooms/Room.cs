@@ -42,10 +42,10 @@ namespace Hotel
         public int PeopleInside { get; set; }
         public float Weight { get; set; }
         public RoomState State { get; set; }
-        public float EmergencyDuration { get; set; }
 
         private Texture2D _emergencyTexture;
         private float _emergencyTime;
+        private float _emergencyCleanLength;
 
         public Dictionary<Direction, Room> Neighbors { get; set; }
 
@@ -136,6 +136,25 @@ namespace Hotel
             }
 
             return Direction.None;
+        }
+
+        /// <summary>
+        /// Sets a cleaning emergency in this room.
+        /// </summary>
+        /// <param name="duration">The time it takes for the emergency to be cleaned.</param>
+        public void SetEmergency(float duration)
+        {
+            _emergencyCleanLength = duration;
+            State = RoomState.Emergency;
+        }
+
+        /// <summary>
+        /// Gets the time it takes for the emergency to be cleaned.
+        /// </summary>
+        /// <returns>Timefactor.</returns>
+        public float GetTimeToCleanEmergency()
+        {
+            return _emergencyCleanLength;
         }
 
         /// <summary>
