@@ -27,64 +27,64 @@
           </generalization>
         </generalsInternal>
         <targetEnds>
-          <association Id="a99d2a21-0fe9-48da-ac3c-661ecc9b5dae" isDerived="false" sourceEndRoleName="MainGame" targetEndRoleName="Hotel" isLeaf="false" isAbstract="false">
+          <association Id="a99d2a21-0fe9-48da-ac3c-661ecc9b5dae" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
             <classMoniker Id="39ce8318-5aac-4436-a166-ae139c8e768b" LastKnownName="Hotel" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
-                <memberEnd Id="228ae829-f911-46f9-af1f-7cc408afbab1" name="MainGame" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                <memberEnd Id="228ae829-f911-46f9-af1f-7cc408afbab1" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
                   <elementDefinition Id="57ec49e5-929b-4fa9-a106-a761578f8cfb" />
                 </memberEnd>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
-                <memberEnd Id="d749b5fd-650d-474d-9e62-1e0f1839ecca" name="Hotel" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                <memberEnd Id="d749b5fd-650d-474d-9e62-1e0f1839ecca" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
                   <elementDefinition Id="37c33756-0bad-4cad-8c37-74790c0e87e7" />
                 </memberEnd>
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="c77389af-9efe-4b7b-b85f-f74ddb47e872" />
           </association>
-          <association Id="45ff723a-6148-418c-919e-690cff47b6d5" isDerived="false" sourceEndRoleName="MainGame" targetEndRoleName="Camera2D" isLeaf="false" isAbstract="false">
+          <association Id="45ff723a-6148-418c-919e-690cff47b6d5" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
             <classMoniker Id="261aec39-3b9c-44f9-9df7-f14c560e40b5" LastKnownName="Camera" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
-                <memberEnd Id="4c687b7e-a3a3-4e14-be8e-377577f0d8f9" name="MainGame" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                <memberEnd Id="4c687b7e-a3a3-4e14-be8e-377577f0d8f9" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
                   <elementDefinition Id="c81c7a50-6cf2-4052-ab93-7e0994a7e836" />
                 </memberEnd>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
-                <memberEnd Id="04d9fb75-d57a-4627-b113-9e203dd78e04" name="Camera2D" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                <memberEnd Id="04d9fb75-d57a-4627-b113-9e203dd78e04" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
                   <elementDefinition Id="90de9065-32ed-4769-8f34-d3d9832a12cb" />
                 </memberEnd>
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="0b0a2862-b7cc-4160-bc30-e557f133362f" />
           </association>
-          <association Id="7cf64a03-2c26-4595-bf92-6c524aa4e680" isDerived="false" sourceEndRoleName="MainGame" targetEndRoleName="DetailedInformationOfAHotelObject" isLeaf="false" isAbstract="false">
+          <association Id="7cf64a03-2c26-4595-bf92-6c524aa4e680" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
             <classMoniker Id="a6c1c452-6c61-4a93-8913-ee10ab6459ec" LastKnownName="InformationWindow" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
-                <memberEnd Id="713bf013-7c74-410a-9c84-398c3597601f" name="MainGame" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                <memberEnd Id="713bf013-7c74-410a-9c84-398c3597601f" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
                   <elementDefinition Id="122defd0-f115-4318-b092-38aadda3e696" />
                 </memberEnd>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
-                <memberEnd Id="a101529a-e91c-46ca-b1fa-20317aa02527" name="DetailedInformationOfAHotelObject" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                <memberEnd Id="a101529a-e91c-46ca-b1fa-20317aa02527" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
                   <elementDefinition Id="7ccb50d1-13cc-4b04-b69b-b7bd313932f0" />
                 </memberEnd>
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="2987a68c-036f-462a-887b-59af161d8767" />
           </association>
-          <association Id="aa193474-f308-4d6a-aa2f-e50126e079c3" isDerived="false" sourceEndRoleName="MainGame" targetEndRoleName="EventListener" isLeaf="false" isAbstract="false">
+          <association Id="aa193474-f308-4d6a-aa2f-e50126e079c3" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
             <classMoniker Id="dc85becf-bc6d-4434-8d3f-f8df291b1664" LastKnownName="EventListener" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
-                <memberEnd Id="18d39ff3-2652-40e0-8bab-3eb3e61b3362" name="MainGame" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                <memberEnd Id="18d39ff3-2652-40e0-8bab-3eb3e61b3362" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
                   <elementDefinition Id="4c4d2723-3326-4435-be47-cbe1cd8adf06" />
                 </memberEnd>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
-                <memberEnd Id="472bc061-397b-4185-8cd0-1f47dcb24d41" name="EventListener" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                <memberEnd Id="472bc061-397b-4185-8cd0-1f47dcb24d41" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
                   <elementDefinition Id="62841a2c-133b-49f4-b807-a9fab17cb616" />
                 </memberEnd>
               </associationHasOwnedEnds>
@@ -107,16 +107,16 @@
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="59d5167a-a2fa-4baa-9847-0a7edc354d24" />
           </association>
-          <association Id="848eeed9-7522-46e3-992b-891da682b5a7" isDerived="false" sourceEndRoleName="MainGame" targetEndRoleName="Background" isLeaf="false" isAbstract="false">
+          <association Id="848eeed9-7522-46e3-992b-891da682b5a7" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
             <classMoniker Id="6b258918-95ad-4a53-ae3c-1b6d8a749513" LastKnownName="Background" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
-                <memberEnd Id="efe38182-6f2a-4dac-96e2-5fd558987692" name="MainGame" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                <memberEnd Id="efe38182-6f2a-4dac-96e2-5fd558987692" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
                   <elementDefinition Id="55e0968f-f42a-451f-a9a0-28c3796342fd" />
                 </memberEnd>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
-                <memberEnd Id="1b5ed95e-c8ab-43c3-b0f4-60e8a247298e" name="Background" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                <memberEnd Id="1b5ed95e-c8ab-43c3-b0f4-60e8a247298e" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
                   <elementDefinition Id="4d653544-1f83-4c0e-b050-a937cdbe8fca" />
                 </memberEnd>
               </associationHasOwnedEnds>
@@ -214,16 +214,16 @@
       <class Id="b6be924c-1209-4225-8824-4c8dbd1dc94b" name="Program" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="a823660c-5cac-4923-ba97-219a3a1ca9a8" />
         <targetEnds>
-          <association Id="1b7a655e-9875-4008-8161-676f0e306a99" isDerived="false" sourceEndRoleName="Program" targetEndRoleName="MainGame" isLeaf="false" isAbstract="false">
+          <association Id="1b7a655e-9875-4008-8161-676f0e306a99" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
             <classMoniker Id="e9a6e7c1-18f4-4c29-9e26-553b21385ff9" LastKnownName="MainGame" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
-                <memberEnd Id="8311dcae-7549-49c1-8d08-1736ba5e06a9" name="Program" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                <memberEnd Id="8311dcae-7549-49c1-8d08-1736ba5e06a9" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
                   <elementDefinition Id="5d2eefcc-39c3-43de-a76d-a5e56be7ed48" />
                 </memberEnd>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
-                <memberEnd Id="00a1d795-b273-4397-aec5-2ef3e686ae45" name="MainGame" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                <memberEnd Id="00a1d795-b273-4397-aec5-2ef3e686ae45" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
                   <elementDefinition Id="923fc6c5-e9cd-48aa-9445-12edaf2fc047" />
                 </memberEnd>
               </associationHasOwnedEnds>
@@ -948,16 +948,16 @@
           </generalization>
         </generalsInternal>
         <targetEnds>
-          <association Id="5488e2ec-7aa5-41ca-9f6e-bd9c899bfcb2" isDerived="false" sourceEndRoleName="Room" targetEndRoleName="RoomState" isLeaf="false" isAbstract="false">
+          <association Id="5488e2ec-7aa5-41ca-9f6e-bd9c899bfcb2" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
             <enumerationMoniker Id="83884e17-ed3a-44aa-b521-d5aca931e4c2" LastKnownName="RoomState" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
-                <memberEnd Id="967a6903-a030-43a2-8875-da71220dc617" name="Room" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                <memberEnd Id="967a6903-a030-43a2-8875-da71220dc617" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
                   <elementDefinition Id="39998971-8c56-4b10-ac8f-c8861f33d49a" />
                 </memberEnd>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
-                <memberEnd Id="faf530c3-280e-4583-b5c0-f53ce7a2e528" name="RoomState" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                <memberEnd Id="faf530c3-280e-4583-b5c0-f53ce7a2e528" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
                   <elementDefinition Id="aa230f34-581e-4be1-8a82-3d3071013fd1" />
                 </memberEnd>
               </associationHasOwnedEnds>
@@ -1269,16 +1269,16 @@
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="9f222e09-227f-4125-b4e2-1d8dd0166b12" />
           </association>
-          <association Id="1c748573-acfb-4e1c-abf6-3d79182cfa6a" isDerived="false" sourceEndRoleName="Person" targetEndRoleName="PathFinder" isLeaf="false" isAbstract="false">
+          <association Id="1c748573-acfb-4e1c-abf6-3d79182cfa6a" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
             <classMoniker Id="13662b74-0a80-4b57-8195-64bd59b1a4b5" LastKnownName="PathFinder" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
-                <memberEnd Id="391c9c17-13ed-4649-8422-631d8c67562f" name="Person" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                <memberEnd Id="391c9c17-13ed-4649-8422-631d8c67562f" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
                   <elementDefinition Id="37338ec0-11c6-4dc0-a0cd-8047a0605952" />
                 </memberEnd>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
-                <memberEnd Id="a1d89aec-7aff-4a89-8252-95b6f8dab517" name="PathFinder" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                <memberEnd Id="a1d89aec-7aff-4a89-8252-95b6f8dab517" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
                   <elementDefinition Id="c76814d1-4cca-4b1c-b8e1-ffaf6d92ec9c" />
                 </memberEnd>
               </associationHasOwnedEnds>
@@ -2574,16 +2574,16 @@
           </dependency>
         </suppliersInternal>
         <targetEnds>
-          <association Id="0f3ddc5e-496c-4762-a0b4-9e3e7d494f23" isDerived="false" sourceEndRoleName="DetailedInformationOfAHotelObject" targetEndRoleName="Sprite" isLeaf="false" isAbstract="false">
+          <association Id="0f3ddc5e-496c-4762-a0b4-9e3e7d494f23" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
             <classMoniker Id="b9859f48-922a-45b0-b0e0-c6cce0b3bcb3" LastKnownName="Sprite" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
-                <memberEnd Id="0cbcfae4-3ee0-40e5-92ed-71e918a23bd9" name="DetailedInformationOfAHotelObject" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                <memberEnd Id="0cbcfae4-3ee0-40e5-92ed-71e918a23bd9" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
                   <elementDefinition Id="4da0c5cb-98fb-422b-b984-9a8c86b64a72" />
                 </memberEnd>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
-                <memberEnd Id="db9ea535-a8bf-4f01-bd44-0a0051aabd54" name="Sprite" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                <memberEnd Id="db9ea535-a8bf-4f01-bd44-0a0051aabd54" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
                   <elementDefinition Id="b2712ccd-3041-4ab4-98d4-584fd45a3a94" />
                 </memberEnd>
               </associationHasOwnedEnds>
@@ -2785,13 +2785,13 @@
       <class Id="bcb2ce9f-ff05-49d7-bec2-4388c25c3e87" name="HotelBuilder" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="b337e73a-0456-4dfc-bf44-76d1d28cb98c" />
         <suppliersInternal>
-          <dependency Id="6d855017-8055-4abb-9386-2960435f95a4">
-            <classMoniker Id="3d8329bc-5f4f-4b16-93d3-9e3707528c76" LastKnownName="Room" />
-            <elementDefinition Id="3ffda97c-c2f9-4ee5-87b6-50d5b208dccf" />
-          </dependency>
           <dependency Id="dc447624-73c1-4fee-aa9f-1b97c65e7347">
             <classMoniker Id="814d07fb-1ff1-43a5-8504-8aceb98a8308" LastKnownName="ConfigModel" />
             <elementDefinition Id="a4aa20c7-f85e-488d-b1c3-a8e9d148baef" />
+          </dependency>
+          <dependency Id="bbd08478-b8da-4ab3-9bef-cae432ebff0b">
+            <classMoniker Id="3d8329bc-5f4f-4b16-93d3-9e3707528c76" LastKnownName="Room" />
+            <elementDefinition Id="f527d365-4544-446e-ad81-5841af9584bd" />
           </dependency>
         </suppliersInternal>
         <ownedAttributesInternal>
@@ -3156,16 +3156,16 @@
       <class Id="dc85becf-bc6d-4434-8d3f-f8df291b1664" name="EventListener" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="b15195b5-f178-4fc3-8acb-0d9e86a48cad" />
         <targetEnds>
-          <association Id="22843502-5779-4580-b47b-d529a04ef1bc" isDerived="false" sourceEndRoleName="EventListener" targetEndRoleName="HotelEventHandler" isLeaf="false" isAbstract="false">
+          <association Id="22843502-5779-4580-b47b-d529a04ef1bc" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
             <classMoniker Id="b01c4830-da61-470c-a2f1-2de872ebf96e" LastKnownName="HotelEventHandler" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
-                <memberEnd Id="a5b3c2c0-8e90-4ed0-9b5d-0980ea236e73" name="EventListener" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                <memberEnd Id="a5b3c2c0-8e90-4ed0-9b5d-0980ea236e73" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
                   <elementDefinition Id="29889f37-ff3f-4cae-b418-0d202df19e60" />
                 </memberEnd>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
-                <memberEnd Id="9a2b58cd-15f6-4d73-9f7b-3e22cb7ae3fd" name="HotelEventHandler" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                <memberEnd Id="9a2b58cd-15f6-4d73-9f7b-3e22cb7ae3fd" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
                   <elementDefinition Id="09031fe8-e2d7-44f9-9e87-7470fa4704b7" />
                 </memberEnd>
               </associationHasOwnedEnds>
