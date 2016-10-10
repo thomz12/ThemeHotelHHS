@@ -26,22 +26,20 @@ namespace Hotel
         public void Notify(HotelEvent evt)
         {
             _hotelEventManager.HandleEvent(evt);
-            /*try
-            {
-                _writer.WriteLine(evt.Time.ToString() + " HTE(s) in");
-                _writer.WriteLine("Type: " + evt.EventType.ToString());
+            /*
+            _writer.WriteLine(evt.Time.ToString() + " HTE(s) in");
+            _writer.WriteLine("Type: " + evt.EventType.ToString());
 
-                foreach(KeyValuePair<string, string> kvp in evt.Data)
+            if (evt.Data != null)
+            {
+                foreach (KeyValuePair<string, string> kvp in evt.Data)
                 {
                     _writer.WriteLine(kvp.Key + " : " + kvp.Value);
                 }
-
-                _writer.WriteLine();
             }
-            catch
-            {
-                _writer.WriteLine("test...?");
-            }*/
+
+            _writer.WriteLine();
+            */
         }
     }
 }
