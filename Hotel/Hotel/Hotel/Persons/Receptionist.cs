@@ -22,7 +22,7 @@ namespace Hotel.Persons
         /// Constructor.
         /// </summary>
         /// <param name="content">The content manager used to load in images.</param>
-        public Receptionist(ContentManager content, Room room, List<Room> rooms, float walkingSpeed, float workDuration) : base(content, room, walkingSpeed)
+        public Receptionist(ContentManager content, Room room, List<Room> rooms, float survivability, float walkingSpeed, float workDuration) : base(content, room, -1, walkingSpeed)
         {
             Name = "Receptionist";
             Sprite.LoadSprite("Receptionist");
@@ -47,13 +47,22 @@ namespace Hotel.Persons
         {
             base.Update(deltaTime);
 
+            if (CheckinQueue.Count > 0)
+                CheckinQueue[0].CurrentTask = PersonTask.Waiting;
+
+            if (CheckOutQueue.Count > 0)
+                CheckOutQueue[0].CurrentTask = PersonTask.Waiting;
+
             if(CheckinQueue.Count > 0)
                 _checkInTimer -= deltaTime;
 
             if(_checkInTimer <= 0 && CheckinQueue.Count > 0)
             {
                 _checkInTimer = _workSpeed;
-                CheckIn(CheckinQueue.First());
+
+                Guest CheckThisGuyIn = CheckinQueue.First();
+                CheckIn(CheckThisGuyIn);
+
                 CheckinQueue.RemoveAt(0);
             }
 
@@ -73,12 +82,15 @@ namespace Hotel.Persons
         {
             List<GuestRoom> potentialRooms = _rooms.OfType<GuestRoom>().Where(x => x.Classification == guest.Classification && x.Guest == null).ToList();
 
+            // Check first if there is a room available.
             if (potentialRooms.Count == 0)
             {
+                // There is no room available so send the person back outside.
                 guest.TargetRoom = _rooms[0];
             }
             else
             {
+                // Check this person in.
                 guest.Room = potentialRooms.First();
                 potentialRooms.First().Guest = guest;
                 potentialRooms.First().State = RoomState.Occupied;

@@ -23,7 +23,6 @@ namespace Hotel.Persons
         CheckIn,
         CheckOut,
         Staying,
-        Dead
     }
 
     public class Guest : Person
@@ -54,7 +53,7 @@ namespace Hotel.Persons
         /// Constructor.
         /// </summary>
         /// <param name="content">The content manager used to load in images.</param>
-        public Guest(ContentManager content, Room room, float walkingSpeed) : base(content, room, walkingSpeed)
+        public Guest(ContentManager content, Room room, float survivability, float walkingSpeed) : base(content, room, survivability, walkingSpeed)
         {
             NameGenerator generator = new NameGenerator();
 
@@ -93,16 +92,6 @@ namespace Hotel.Persons
         {
             TargetRoom = lobby;
             StayState = StayState.CheckOut;
-        }
-
-        public override string ToString()
-        {
-            string returnString = $"{Name};Gender: {Gender}{Environment.NewLine}In Room: {CurrentRoom.Name}{Environment.NewLine}";
-
-            if (TargetRoom != null)
-                returnString += $"Target: {TargetRoom.Name}{Environment.NewLine}";
-
-            return returnString;
         }
     }
 }

@@ -21,11 +21,13 @@ namespace Hotel.Rooms
         public void CheckIn(Guest guest)
         {
             Receptionist.CheckinQueue.Add(guest);
+            guest.CurrentTask = PersonTask.InQueue;
         }
 
         public void CheckOut(Guest guest)
         {
             Receptionist.CheckOutQueue.Add(guest);
+            guest.CurrentTask = PersonTask.InQueue;
         }
     }
 }

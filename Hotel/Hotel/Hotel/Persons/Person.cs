@@ -12,6 +12,7 @@ namespace Hotel.Persons
     public enum PersonTask
     {
         Waiting,
+        InQueue,
         MovingLeft,
         MovingRight,
         MovingUp,
@@ -22,7 +23,20 @@ namespace Hotel.Persons
     public abstract class Person : HotelObject
     {
         public float WalkingSpeed { get; set; }
-        public PersonTask CurrentTask { get; set; }
+
+        private PersonTask _currentTask;
+        public PersonTask CurrentTask
+        {
+            get
+            {
+                return _currentTask;
+            }
+            set
+            {
+                _currentTask = value;
+                _deathTimer = 0;
+            }
+        }
         public Room CurrentRoom { get; set; }
 
         private Room _targetRoom;
@@ -37,7 +51,7 @@ namespace Hotel.Persons
                 _targetRoom = value;
                 if (_targetRoom != null)
                 {
-                    if(Path == null || Path.Count == 0 || _targetRoom != Path.Last())
+                    if (Path == null || Path.Count == 0 || _targetRoom != Path.Last())
                     {
                         Path = _pathFinder.FindPath(CurrentRoom, _targetRoom);
                     }
@@ -59,14 +73,23 @@ namespace Hotel.Persons
         private ElevatorShaft _startStaft;
         // If this person already called the elevator on this floor.
         private bool _calledElevator;
+        // Timer to check when to die.
+        private float _deathTimer;
+        // The max time a guy can stay waiting.
+        private float _survivabilityTime;
+        // Is poppetje kill?
+        private bool _isDead;
 
         public event EventHandler Arrival;
 
         /// <summary>
         /// Constructor.
         /// </summary>
-        /// <param name="content">The content manager used to load in images.</param>
-        public Person(ContentManager content, Room room, float walkingSpeed) : base(content)
+        /// <param name="content">The content manager.</param>
+        /// <param name="room">The room to spawn in.</param>
+        /// <param name="survivability">The time it takes for people to die while waiting, people with -1 are invunerable.</param>
+        /// <param name="walkingSpeed">The walking speed of people.</param>
+        public Person(ContentManager content, Room room, float survivability, float walkingSpeed) : base(content)
         {
             Sprite.LoadSprite("Guest");
             Sprite.DrawOrder = 1;
@@ -76,13 +99,16 @@ namespace Hotel.Persons
             JumpHeight = 4;
             CurrentRoom = room;
             _calledElevator = false;
+            _isDead = false;
+
+            _survivabilityTime = survivability;
 
             _pathFinder = new PathFinder();
-
             Path = new List<Room>();
-            room.PeopleCount++;
-            WalkingSpeed = walkingSpeed * Room.ROOMWIDTH;
 
+            room.PeopleCount++;
+
+            WalkingSpeed = walkingSpeed * Room.ROOMWIDTH;
             CurrentTask = PersonTask.MovingCenter;
         }
 
@@ -90,6 +116,24 @@ namespace Hotel.Persons
         {
             if (Arrival != null)
                 Arrival(this, e);
+        }
+
+        /// <summary>
+        /// Kills the person.
+        /// </summary>
+        public void Die()
+        {
+            _isDead = true;
+            CurrentRoom.SetEmergency(8);
+        }
+
+        /// <summary>
+        /// Gets if the person is dead or not.
+        /// </summary>
+        /// <returns>Boolean, if true the person is dead, else false.</returns>
+        public bool GetDead()
+        {
+            return _isDead;
         }
 
         /// <summary>
@@ -109,8 +153,17 @@ namespace Hotel.Persons
         /// <param name="deltaTime">The delta time.</param>
         public override void Update(float deltaTime)
         {
-            // Move around.
-            Move(deltaTime);
+            if (!_isDead)
+            {
+                // While people are waiting, increase the deathtimer.
+                if (CurrentTask == PersonTask.InQueue && _survivabilityTime != -1)
+                {
+                    _deathTimer += deltaTime;
+                }
+
+                // Move around.
+                Move(deltaTime);
+            }
 
             // Get the new bounding box (the exact position on the sprite batch)
             BoundingBox = Sprite.DrawDestination;
@@ -125,7 +178,8 @@ namespace Hotel.Persons
             // If person is in the elevator, set its position to the elevator.
             if (_elevator != null)
             {
-                Position = new Vector2(_elevator.Position.X, _elevator.Position.Y - Room.ROOMHEIGHT + Sprite.Texture.Height);
+                Position = new Vector2(_elevator.Position.X + (_elevator.Sprite.Texture.Width / 2 - Sprite.Texture.Width / 2), _elevator.Position.Y - Room.ROOMHEIGHT + Sprite.Texture.Height);
+                CurrentTask = PersonTask.Waiting;
                 return;
             }
 
@@ -205,7 +259,7 @@ namespace Hotel.Persons
                         }
 
                         // If the elevator is not yet called, and the person is in an elevatorshaft.
-                        if(!_calledElevator && CurrentRoom is ElevatorShaft)
+                        if (!_calledElevator && CurrentRoom is ElevatorShaft)
                         {
                             _startStaft = CurrentRoom as ElevatorShaft;
                             // Get the last elevator in the path (CAN BREAK WITH MULTIPLE ELEVATORS!)
@@ -217,7 +271,7 @@ namespace Hotel.Persons
                                 _calledElevator = true;
                                 (CurrentRoom as ElevatorShaft).CallElevator(_targetShaft.RoomPosition.Y);
                                 (CurrentRoom as ElevatorShaft).ElevatorArrival += Person_ElevatorArrival;
-                                CurrentTask = PersonTask.Waiting;
+                                CurrentTask = PersonTask.InQueue;
                             }
                         }
 
@@ -241,13 +295,13 @@ namespace Hotel.Persons
             MoveToRoom(_targetShaft);
             _targetShaft.ElevatorArrival -= TargetShaft_ElevatorArrival;
 
-            Position = new Vector2(_elevator.Position.X, _elevator.Position.Y - Room.ROOMHEIGHT + Sprite.Texture.Height);
+            Position = new Vector2(Position.X, _elevator.Position.Y - Room.ROOMHEIGHT + Sprite.Texture.Height);
 
             _targetShaft = null;
             _elevator = null;
             _calledElevator = false;
-            
-            while(Path[0] != CurrentRoom)
+
+            while (Path[0] != CurrentRoom)
             {
                 Path.RemoveAt(0);
             }
@@ -334,7 +388,7 @@ namespace Hotel.Persons
         public override void Draw(SpriteBatch batch, GameTime gameTime)
         {
             // Make the person jump while moving.
-            Sprite.SetPosition(new Point((int)Position.X, (int)(Position.Y + (JumpHeight / 2))+ (int)(Math.Sin(Position.X / 5) * JumpHeight)));
+            Sprite.SetPosition(new Point((int)Position.X, (int)(Position.Y + (JumpHeight / 2)) + (int)(Math.Sin(Position.X / 5) * JumpHeight)));
 
             base.Draw(batch, gameTime);
         }
@@ -343,7 +397,7 @@ namespace Hotel.Persons
         {
             string returnString = $"{Name};In Room: {CurrentRoom.Name}{Environment.NewLine}";
 
-            if(TargetRoom != null)
+            if (TargetRoom != null)
                 returnString += $"Target: {TargetRoom.Name}{Environment.NewLine}";
 
             return returnString;
