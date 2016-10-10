@@ -29,5 +29,17 @@ namespace Hotel.Rooms
             Receptionist.CheckOutQueue.Add(guest);
             guest.CurrentTask = PersonTask.InQueue;
         }
+
+        /// <summary>
+        /// Removes the guest from checkin and checkout queues.
+        /// </summary>
+        /// <param name="guest">The guest that needs to be removed.</param>
+        public void RemoveFromQueues(Guest guest)
+        {
+            if(Receptionist.CheckinQueue.Contains(guest))
+                Receptionist.CheckinQueue.Remove(guest);
+            if (Receptionist.CheckOutQueue.Contains(guest))
+                Receptionist.CheckOutQueue.Remove(guest);
+        }
     }
 }

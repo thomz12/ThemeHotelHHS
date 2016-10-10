@@ -27,7 +27,14 @@ namespace Hotel
                     _hotel.AddGuest(evt.Data.Keys.ElementAt(0), Int32.Parse(Regex.Replace(evt.Data.Values.ElementAt(0), "[^0-9]+", string.Empty)));
                     break;
                 case HotelEvents.HotelEventType.CHECK_OUT:
-                    (_hotel.Persons[evt.Data.Keys.ElementAt(0) + evt.Data.Values.ElementAt(0)] as Guest).CheckOut(_hotel.Receptionist.CurrentRoom as Lobby);
+                    // Get the guest that needs to be checked out.
+                    string objectName = evt.Data.Keys.ElementAt(0) + evt.Data.Values.ElementAt(0);
+                    Guest guest = null;
+                    if (_hotel.Persons.Keys.Contains(objectName))
+                        guest = (Guest)_hotel.Persons[objectName];
+                    // Check the guest out if it is still in the hotel.
+                    if (guest != null)
+                        guest.CheckOut(_hotel.Receptionist.CurrentRoom as Lobby);
                     break;
                 case HotelEvents.HotelEventType.CLEANING_EMERGENCY:
                     // Get the specific room that has an emergency

@@ -18,6 +18,7 @@ namespace Hotel
         private ContentManager _content;
 
         public event EventHandler Click;
+        public event EventHandler RemoveObject;
 
         /// <summary>
         /// Constructor
@@ -36,6 +37,16 @@ namespace Hotel
         {
             if(Click != null)
                 Click(this, e);
+        }
+
+        /// <summary>
+        /// Call this to remove this object from the game.
+        /// </summary>
+        /// <param name="e"></param>
+        public void RemoveMe(EventArgs e)
+        {
+            if (RemoveObject != null)
+                RemoveObject(this, e);
         }
 
         /// <summary>

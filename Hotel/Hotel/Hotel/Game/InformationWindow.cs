@@ -85,6 +85,8 @@ namespace Hotel
             }
 
             IsShowingInfo = false;
+
+            _objectToDisplay = null;
         }
 
         public void Update(float deltaTime)

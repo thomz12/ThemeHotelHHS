@@ -114,11 +114,6 @@ namespace Hotel.Persons
             Inside = false;
         }
 
-        private void Person_Death(object sender, EventArgs e)
-        {
-            throw new NotImplementedException();
-        }
-
         /// <summary>
         /// Called when person is arrives on his location.
         /// </summary>
@@ -139,9 +134,12 @@ namespace Hotel.Persons
             // Set this person to be dead.
             _isDead = true;
             // Set an emergency in this room.
-            CurrentRoom.SetEmergency(8);
+            if (CurrentRoom.State != RoomState.Emergency && CurrentRoom.State != RoomState.InCleaning)
+                CurrentRoom.SetEmergency(8);
             // Change the sprite.
+            //Sprite.LoadSprite("Grave");
 
+            RemoveMe(new EventArgs());
         }
 
         /// <summary>
@@ -161,7 +159,7 @@ namespace Hotel.Persons
         {
             if (!_isDead)
             {
-                if (_deathTimer > _survivabilityTime)
+                if (_deathTimer > _survivabilityTime && _survivabilityTime != -1)
                     OnDeath(new EventArgs());
 
                 // While people are waiting, increase the deathtimer.
@@ -411,6 +409,8 @@ namespace Hotel.Persons
 
             if (TargetRoom != null)
                 returnString += $"Target: {TargetRoom.Name}{Environment.NewLine}";
+
+            returnString += $"Task: {CurrentTask}{Environment.NewLine}Life: {_deathTimer}/{_survivabilityTime}";
 
             return returnString;
         }

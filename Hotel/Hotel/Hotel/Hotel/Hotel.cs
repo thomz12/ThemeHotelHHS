@@ -64,31 +64,41 @@ namespace Hotel
 
             for (int i = 0; i < _cleaners; i++)
             {
-                Persons.Add("Cleaner" + i, new Cleaner(_contentManager, firstLobby, _config.Survivability, _config.WalkingSpeed, _config.CleaningDuration, Rooms));
+                Persons.Add("Cleaner" + i, new Cleaner(_contentManager, Rooms[0], _config.Survivability, _config.WalkingSpeed, _config.CleaningDuration, Rooms));
             }
         }
 
         /// <summary>
-        /// Kill a person.
+        /// Remove a object.
         /// </summary>
-        /// <param name="person">The person to kill.</param>
-        public void KillGuest(Person person)
+        /// <param name="object">The object to remove.</param>
+        public void RemoveObject(HotelObject hotelObject)
         {
-            string item = Persons.First(x => x.Value == person).Key;
-
-            // Remove guest's room.
-            if (person is Guest)
+            if (hotelObject is Person)
             {
-                Guest guest = (Guest)person;
+                string item = Persons.First(x => x.Value == hotelObject).Key;
 
-                if (guest.Room != null)
+                // Remove guest's room.
+                if (hotelObject is Guest)
                 {
-                    guest.Room.State = RoomState.Dirty;
-                    guest.Room = null;
-                }
-            }
+                    Guest guest = (Guest)hotelObject;
 
-            Persons.Remove(item);
+                    if (guest.Room != null)
+                    {
+                        if (guest.Room.State != RoomState.Emergency && guest.Room.State != RoomState.InCleaning)
+                            guest.Room.State = RoomState.Dirty;
+                        guest.Room = null;
+                    }
+
+                    //Remove the guest from a checkin/out queue where applicable.
+                    if (guest.CurrentRoom is Lobby)
+                    {
+                        (guest.CurrentRoom as Lobby).RemoveFromQueues(guest);
+                    }
+                }
+                hotelObject.RemoveObject -= Guest_RemoveObject;
+                Persons.Remove(item);
+            }
         }
 
         /// <summary>
@@ -101,6 +111,14 @@ namespace Hotel
             guest.Classification = stars;
             Persons.Add(name, guest);
             guest.TargetRoom = Receptionist.CurrentRoom;
+            
+            // Subscribe to remove event
+            guest.RemoveObject += Guest_RemoveObject;
+        }
+
+        private void Guest_RemoveObject(object sender, EventArgs e)
+        {
+            RemoveObject((HotelObject)sender);
         }
 
         /// <summary>
@@ -119,7 +137,15 @@ namespace Hotel
                 }
             }
 
+            // Subscribe to the remove event
+            room.RemoveObject += Room_RemoveObject;
+
             Rooms.Add(room);
+        }
+
+        private void Room_RemoveObject(object sender, EventArgs e)
+        {
+            RemoveObject((HotelObject)sender);
         }
 
         /// <summary>
