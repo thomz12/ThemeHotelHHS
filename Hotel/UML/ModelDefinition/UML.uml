@@ -2626,6 +2626,55 @@
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
+          <operation
+            Id="d3945723-b163-4714-9040-08f1ca5b0ac6"
+            name="SetEmergency"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="c0088d94-e0f9-4a6b-bfed-7f0f143a5dd3"
+                  name="duration"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="d3244994-074a-42a2-9f22-28d1164fe700"
+                      LastKnownName="int"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="e6734716-4fcb-4cea-ab9e-217c8db70de6"
+            name="GetTimeToCleanEmergency"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="d511fd92-e4de-4e11-beb4-ead02a80d6de"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="0f323a25-acbf-44ab-aa94-ceea63344cfb"
+                      LastKnownName="float"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
         </ownedOperationsInternal>
       </class>
     </packageHasNamedElement>
@@ -8146,6 +8195,9 @@
           <enumerationLiteral
             Id="d959a572-d4b0-4559-855f-ac435f19a9a9"
             name="Staying" />
+          <enumerationLiteral
+            Id="5bb5a29d-ac1b-485f-be45-0d73e041d997"
+            name="Dead" />
         </ownedLiterals>
       </enumeration>
     </packageHasNamedElement>

@@ -1184,6 +1184,32 @@
               </operationHasOwnedParameters>
             </ownedParameters>
           </operation>
+          <operation Id="2adbd28d-b31c-43b7-b0f4-076678120a57" name="SetEmergency" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="d3945723-b163-4714-9040-08f1ca5b0ac6" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="19f40f4b-e260-4acf-9845-d6883e4ac7fc" name="duration" direction="In" isUnique="false">
+                  <elementDefinition Id="c0088d94-e0f9-4a6b-bfed-7f0f143a5dd3" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="fdf7999c-b852-4111-ac85-a8351ec2b670" LastKnownName="int" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="9992cb91-a296-40a9-bd85-3e62028a61c4" name="GetTimeToCleanEmergency" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="e6734716-4fcb-4cea-ab9e-217c8db70de6" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="782dd315-9141-4839-9be6-956bf35853ad" direction="Return" isUnique="false">
+                  <elementDefinition Id="d511fd92-e4de-4e11-beb4-ead02a80d6de" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="bcb3df8d-5b28-44ce-8651-4d7810e67549" LastKnownName="float" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
         </ownedOperationsInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
@@ -3586,6 +3612,9 @@
           </enumerationLiteral>
           <enumerationLiteral Id="2a13602d-fdd5-40d3-840c-2ba99985ce3e" name="Staying">
             <elementDefinition Id="d959a572-d4b0-4559-855f-ac435f19a9a9" />
+          </enumerationLiteral>
+          <enumerationLiteral Id="544ceceb-8394-448f-b3a8-b3c7186afe7c" name="Dead">
+            <elementDefinition Id="5bb5a29d-ac1b-485f-be45-0d73e041d997" />
           </enumerationLiteral>
         </ownedLiterals>
       </enumeration>

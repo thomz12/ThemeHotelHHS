@@ -22,7 +22,8 @@ namespace Hotel.Persons
         None,
         CheckIn,
         CheckOut,
-        Staying
+        Staying,
+        Dead
     }
 
     public class Guest : Person
