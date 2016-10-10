@@ -22,7 +22,7 @@ namespace Hotel.Persons
         /// Constructor.
         /// </summary>
         /// <param name="content">The content manager used to load in images.</param>
-        public Receptionist(ContentManager content, Room room, List<Room> rooms, float walkingSpeed) : base(content, room, walkingSpeed)
+        public Receptionist(ContentManager content, Room room, List<Room> rooms, float walkingSpeed, float workDuration) : base(content, room, walkingSpeed)
         {
             Name = "Receptionist";
             Sprite.LoadSprite("Receptionist");
@@ -32,8 +32,7 @@ namespace Hotel.Persons
             CheckinQueue = new List<Guest>();
             CheckOutQueue = new List<Guest>();
 
-            // TODO: make this adjustable.
-            _workSpeed = 1.0f;
+            _workSpeed = workDuration;
 
             _checkInTimer = _workSpeed;
             _checkOutTimer = _workSpeed;

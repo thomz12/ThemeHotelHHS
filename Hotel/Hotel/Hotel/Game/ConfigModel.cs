@@ -10,6 +10,7 @@
         public int CleaningDuration { get; set; }
         public int Survivability { get; set; }
         public float StaircaseWeight { get; set; }
+        public float ReceptionistWorkLenght { get; set; }
         public bool CreateEmptyRooms { get; set; }
     }
 }

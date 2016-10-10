@@ -58,6 +58,9 @@
             this.btn_Select = new System.Windows.Forms.Button();
             this.btn_Cancel = new System.Windows.Forms.Button();
             this.cb_EmptyRooms = new System.Windows.Forms.CheckBox();
+            this.lbl_ReceptionistWorkLength = new System.Windows.Forms.Label();
+            this.num_ReceptionistWorkSpeed = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.num_HTETimespan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_ElevatorSpeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_WalkingSpeed)).BeginInit();
@@ -65,13 +68,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.num_CleaningDuration)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_Survivability)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_StairsWeight)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_ReceptionistWorkSpeed)).BeginInit();
             this.SuspendLayout();
             // 
             // lbl_HTETimespan
             // 
-            this.lbl_HTETimespan.Location = new System.Drawing.Point(66, 9);
+            this.lbl_HTETimespan.Location = new System.Drawing.Point(9, 9);
             this.lbl_HTETimespan.Name = "lbl_HTETimespan";
-            this.lbl_HTETimespan.Size = new System.Drawing.Size(100, 19);
+            this.lbl_HTETimespan.Size = new System.Drawing.Size(157, 19);
             this.lbl_HTETimespan.TabIndex = 0;
             this.lbl_HTETimespan.Text = "Simulation Speed";
             this.lbl_HTETimespan.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -90,9 +94,9 @@
             // 
             // lbl_WalkingSpeed
             // 
-            this.lbl_WalkingSpeed.Location = new System.Drawing.Point(66, 61);
+            this.lbl_WalkingSpeed.Location = new System.Drawing.Point(9, 61);
             this.lbl_WalkingSpeed.Name = "lbl_WalkingSpeed";
-            this.lbl_WalkingSpeed.Size = new System.Drawing.Size(100, 19);
+            this.lbl_WalkingSpeed.Size = new System.Drawing.Size(157, 19);
             this.lbl_WalkingSpeed.TabIndex = 2;
             this.lbl_WalkingSpeed.Text = "Walking Speed";
             this.lbl_WalkingSpeed.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -233,9 +237,9 @@
             // 
             // lbl_FilmDuration
             // 
-            this.lbl_FilmDuration.Location = new System.Drawing.Point(66, 85);
+            this.lbl_FilmDuration.Location = new System.Drawing.Point(9, 85);
             this.lbl_FilmDuration.Name = "lbl_FilmDuration";
-            this.lbl_FilmDuration.Size = new System.Drawing.Size(100, 19);
+            this.lbl_FilmDuration.Size = new System.Drawing.Size(157, 19);
             this.lbl_FilmDuration.TabIndex = 10;
             this.lbl_FilmDuration.Text = "Film Duration";
             this.lbl_FilmDuration.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -253,9 +257,9 @@
             // 
             // lbl_CleaningDuration
             // 
-            this.lbl_CleaningDuration.Location = new System.Drawing.Point(66, 111);
+            this.lbl_CleaningDuration.Location = new System.Drawing.Point(9, 111);
             this.lbl_CleaningDuration.Name = "lbl_CleaningDuration";
-            this.lbl_CleaningDuration.Size = new System.Drawing.Size(100, 19);
+            this.lbl_CleaningDuration.Size = new System.Drawing.Size(157, 19);
             this.lbl_CleaningDuration.TabIndex = 13;
             this.lbl_CleaningDuration.Text = "Cleaning Duration";
             this.lbl_CleaningDuration.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -310,9 +314,9 @@
             // 
             // lbl_Survivability
             // 
-            this.lbl_Survivability.Location = new System.Drawing.Point(66, 137);
+            this.lbl_Survivability.Location = new System.Drawing.Point(12, 137);
             this.lbl_Survivability.Name = "lbl_Survivability";
-            this.lbl_Survivability.Size = new System.Drawing.Size(100, 19);
+            this.lbl_Survivability.Size = new System.Drawing.Size(154, 19);
             this.lbl_Survivability.TabIndex = 17;
             this.lbl_Survivability.Text = "Survivability";
             this.lbl_Survivability.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -385,9 +389,9 @@
             // 
             // lbl_StaircaseWeight
             // 
-            this.lbl_StaircaseWeight.Location = new System.Drawing.Point(66, 163);
+            this.lbl_StaircaseWeight.Location = new System.Drawing.Point(12, 163);
             this.lbl_StaircaseWeight.Name = "lbl_StaircaseWeight";
-            this.lbl_StaircaseWeight.Size = new System.Drawing.Size(100, 19);
+            this.lbl_StaircaseWeight.Size = new System.Drawing.Size(154, 19);
             this.lbl_StaircaseWeight.TabIndex = 21;
             this.lbl_StaircaseWeight.Text = "Staircase Weight";
             this.lbl_StaircaseWeight.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -456,11 +460,63 @@
             this.cb_EmptyRooms.Text = "People can fly through higher rooms.";
             this.cb_EmptyRooms.UseVisualStyleBackColor = true;
             // 
+            // lbl_ReceptionistWorkLength
+            // 
+            this.lbl_ReceptionistWorkLength.Location = new System.Drawing.Point(12, 189);
+            this.lbl_ReceptionistWorkLength.Name = "lbl_ReceptionistWorkLength";
+            this.lbl_ReceptionistWorkLength.Size = new System.Drawing.Size(154, 19);
+            this.lbl_ReceptionistWorkLength.TabIndex = 23;
+            this.lbl_ReceptionistWorkLength.Text = "Check In/Out Length";
+            this.lbl_ReceptionistWorkLength.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.tt_Settings.SetToolTip(this.lbl_ReceptionistWorkLength, "This sets the time it takes for the receptionist to check people in and out.");
+            // 
+            // num_ReceptionistWorkSpeed
+            // 
+            this.num_ReceptionistWorkSpeed.DecimalPlaces = 1;
+            this.num_ReceptionistWorkSpeed.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            this.num_ReceptionistWorkSpeed.Location = new System.Drawing.Point(171, 190);
+            this.num_ReceptionistWorkSpeed.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.num_ReceptionistWorkSpeed.Minimum = new decimal(new int[] {
+            5,
+            0,
+            0,
+            65536});
+            this.num_ReceptionistWorkSpeed.Name = "num_ReceptionistWorkSpeed";
+            this.num_ReceptionistWorkSpeed.Size = new System.Drawing.Size(70, 20);
+            this.num_ReceptionistWorkSpeed.TabIndex = 24;
+            this.tt_Settings.SetToolTip(this.num_ReceptionistWorkSpeed, "This sets the time it takes for the receptionist to check people in and out.");
+            this.num_ReceptionistWorkSpeed.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(247, 192);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(40, 13);
+            this.label7.TabIndex = 25;
+            this.label7.Text = "HTE(s)";
+            this.tt_Settings.SetToolTip(this.label7, "A HTE (Hotel Tijds Eenheid) is a unit of time that is used in the simulation.");
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(420, 323);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.num_ReceptionistWorkSpeed);
+            this.Controls.Add(this.lbl_ReceptionistWorkLength);
             this.Controls.Add(this.cb_EmptyRooms);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.lbl_StaircaseWeight);
@@ -500,6 +556,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.num_CleaningDuration)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_Survivability)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_StairsWeight)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_ReceptionistWorkSpeed)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -535,5 +592,8 @@
         private System.Windows.Forms.Label lbl_StaircaseWeight;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.CheckBox cb_EmptyRooms;
+        private System.Windows.Forms.Label lbl_ReceptionistWorkLength;
+        private System.Windows.Forms.NumericUpDown num_ReceptionistWorkSpeed;
+        private System.Windows.Forms.Label label7;
     }
 }
