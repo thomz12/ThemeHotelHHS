@@ -54,7 +54,7 @@ namespace Hotel.Persons
                 {
                     if (Path == null || Path.Count == 0 || _targetRoom != Path.Last())
                     {
-                        Path = _pathFinder.FindPath(CurrentRoom, _targetRoom);
+                        Path = _pathFinder.Find(CurrentRoom, x => x == _targetRoom);
                         Inside = false;
                     }
                     CurrentTask = PersonTask.MovingCenter;
