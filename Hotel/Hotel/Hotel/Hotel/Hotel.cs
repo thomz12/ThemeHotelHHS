@@ -69,6 +69,29 @@ namespace Hotel
         }
 
         /// <summary>
+        /// Kill a person.
+        /// </summary>
+        /// <param name="person">The person to kill.</param>
+        public void KillGuest(Person person)
+        {
+            string item = Persons.First(x => x.Value == person).Key;
+
+            // Remove guest's room.
+            if (person is Guest)
+            {
+                Guest guest = (Guest)person;
+
+                if (guest.Room != null)
+                {
+                    guest.Room.State = RoomState.Dirty;
+                    guest.Room = null;
+                }
+            }
+
+            Persons.Remove(item);
+        }
+
+        /// <summary>
         /// Creates a guest outside.
         /// </summary>
         public void AddGuest(string name, int stars)
