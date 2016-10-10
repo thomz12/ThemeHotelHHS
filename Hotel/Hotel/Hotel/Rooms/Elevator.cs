@@ -70,7 +70,7 @@ namespace Hotel
         {
             int? floor = 0;
 
-            CurrentFloor = (int)(Position.Y / (float)Room.ROOMHEIGHT);
+            CurrentFloor = (int)Math.Round((Position.Y / (float)Room.ROOMHEIGHT));
 
             // If the queue is empty
             if(_queue.Count == 0)

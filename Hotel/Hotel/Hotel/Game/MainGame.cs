@@ -25,10 +25,13 @@ namespace Hotel
         private SpriteBatch _spriteBatch;
 
         private Hotel _hotel;
+
         private Camera _camera;
         private Camera _closeUpCamera;
+
         private HotelObject _mouseIsOver;
         private HotelObject _wasSelected;
+
         private HotelEventListener _listener;
         private InformationWindow _informationWindow;
         private ConfigModel _config;
