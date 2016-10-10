@@ -83,6 +83,7 @@ namespace Hotel.Persons
         private bool _isDead;
 
         public event EventHandler Arrival;
+        public event EventHandler Death;
 
         /// <summary>
         /// Constructor.
@@ -113,10 +114,14 @@ namespace Hotel.Persons
             Inside = false;
         }
 
+        private void Person_Death(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
         /// <summary>
         /// Called when person is arrives on his location.
         /// </summary>
-        /// <param name="e"></param>
         private void OnArrival(EventArgs e)
         {
             if (Arrival != null)
@@ -124,21 +129,19 @@ namespace Hotel.Persons
         }
 
         /// <summary>
-        /// Kills the person.
+        /// Called when the person dies.
         /// </summary>
-        public void Die()
+        private void OnDeath(EventArgs e)
         {
-            _isDead = true;
-            CurrentRoom.SetEmergency(8);
-        }
+            if (Death != null)
+                Death(this, e);
 
-        /// <summary>
-        /// Gets if the person is dead or not.
-        /// </summary>
-        /// <returns>Boolean, if true the person is dead, else false.</returns>
-        public bool GetDead()
-        {
-            return _isDead;
+            // Set this person to be dead.
+            _isDead = true;
+            // Set an emergency in this room.
+            CurrentRoom.SetEmergency(8);
+            // Change the sprite.
+
         }
 
         /// <summary>
@@ -158,14 +161,17 @@ namespace Hotel.Persons
         {
             if (!_isDead)
             {
+                if (_deathTimer > _survivabilityTime)
+                    OnDeath(new EventArgs());
+
                 // While people are waiting, increase the deathtimer.
                 if (CurrentTask == PersonTask.InQueue && _survivabilityTime != -1)
                 {
                     _deathTimer += deltaTime;
                 }
 
-            // Move around.
-            Move(deltaTime);
+                // Move around.
+                Move(deltaTime);
             }
 
             // Get the new bounding box (the exact position on the sprite batch)
