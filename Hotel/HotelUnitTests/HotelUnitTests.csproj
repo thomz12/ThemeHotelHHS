@@ -54,6 +54,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="ElevatorTest.cs" />
+    <Compile Include="PathfinderTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
