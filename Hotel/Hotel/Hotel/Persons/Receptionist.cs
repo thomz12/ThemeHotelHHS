@@ -102,7 +102,9 @@ namespace Hotel.Persons
         {
             if (guest.Room != null)
             {
-                guest.Room.State = RoomState.Dirty;
+                if(guest.Room.State != RoomState.Emergency && guest.Room.State != RoomState.InCleaning)
+                    guest.Room.State = RoomState.Dirty;
+
                 guest.Room.Guest = null;
                 guest.Room = null;
                 guest.TargetRoom = _rooms[0];
