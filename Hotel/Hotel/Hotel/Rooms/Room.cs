@@ -186,7 +186,7 @@ namespace Hotel
 
         public override string ToString()
         {
-            return $"{Name};Floor: {RoomPosition.Y}{Environment.NewLine}Size: {RoomSize.X}x{RoomSize.Y}{Environment.NewLine}People: {PeopleCount}";
+            return $"{Name};Floor: {RoomPosition.Y}{Environment.NewLine}Size: {RoomSize.X}x{RoomSize.Y}{Environment.NewLine}People: {PeopleCount}{Environment.NewLine}State: {State}";
         }
     }
 }
