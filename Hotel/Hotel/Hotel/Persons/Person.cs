@@ -108,8 +108,6 @@ namespace Hotel.Persons
             _pathFinder = new PathFinder();
             Path = new List<Room>();
 
-            room.PeopleCount++;
-
             WalkingSpeed = walkingSpeed * Room.ROOMWIDTH;
             CurrentTask = PersonTask.MovingCenter;
             Inside = false;
