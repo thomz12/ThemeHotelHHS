@@ -86,6 +86,8 @@ namespace Hotel
             {
                 // Try to find a floor above the elevator, that wants to go up.
                 floor = _queue.Keys.Where(x => x.Value >= CurrentFloor && _queue[x.Value].HasFlag(ElevatorDirection.Up)).OrderBy(x => x.Value).FirstOrDefault();
+
+                // if no more floor was found that wants to go up, 
                 if(floor == null)
                 { 
                     // We pick the request on the highest floor for going down.

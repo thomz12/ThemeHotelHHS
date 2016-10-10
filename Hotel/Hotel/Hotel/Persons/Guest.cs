@@ -86,6 +86,15 @@ namespace Hotel.Persons
                 else if(StayState == StayState.CheckOut)
                     (CurrentRoom as Lobby).CheckOut(this);
             }
+
+            if(CurrentRoom is GuestRoom)
+            {
+                if (CurrentRoom == Room)
+                {
+                    Room.PeopleCount++;
+                    Inside = true;
+                }
+            }
         }
 
         public void CheckOut(Lobby lobby)

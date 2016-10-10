@@ -38,6 +38,7 @@ namespace Hotel.Persons
             }
         }
         public Room CurrentRoom { get; set; }
+        public bool Inside { get; set; }
 
         private Room _targetRoom;
         public Room TargetRoom
@@ -54,6 +55,7 @@ namespace Hotel.Persons
                     if (Path == null || Path.Count == 0 || _targetRoom != Path.Last())
                     {
                         Path = _pathFinder.FindPath(CurrentRoom, _targetRoom);
+                        Inside = false;
                     }
                     CurrentTask = PersonTask.MovingCenter;
                 }
@@ -110,9 +112,14 @@ namespace Hotel.Persons
 
             WalkingSpeed = walkingSpeed * Room.ROOMWIDTH;
             CurrentTask = PersonTask.MovingCenter;
+            Inside = false;
         }
 
-        public void OnArrival(EventArgs e)
+        /// <summary>
+        /// Called when person is arrives on his location.
+        /// </summary>
+        /// <param name="e"></param>
+        private void OnArrival(EventArgs e)
         {
             if (Arrival != null)
                 Arrival(this, e);
@@ -142,9 +149,7 @@ namespace Hotel.Persons
         /// <param name="room">The room to move to.</param>
         private void MoveToRoom(Room room)
         {
-            CurrentRoom.PeopleCount--;
             CurrentRoom = room;
-            room.PeopleCount++;
         }
 
         /// <summary>
@@ -161,8 +166,8 @@ namespace Hotel.Persons
                     _deathTimer += deltaTime;
                 }
 
-                // Move around.
-                Move(deltaTime);
+            // Move around.
+            Move(deltaTime);
             }
 
             // Get the new bounding box (the exact position on the sprite batch)
@@ -300,7 +305,7 @@ namespace Hotel.Persons
             _targetShaft = null;
             _elevator = null;
             _calledElevator = false;
-
+            
             while (Path[0] != CurrentRoom)
             {
                 Path.RemoveAt(0);
@@ -387,10 +392,13 @@ namespace Hotel.Persons
         /// <param name="gameTime">The game time.</param>
         public override void Draw(SpriteBatch batch, GameTime gameTime)
         {
+            if (!Inside)
+            {
             // Make the person jump while moving.
-            Sprite.SetPosition(new Point((int)Position.X, (int)(Position.Y + (JumpHeight / 2)) + (int)(Math.Sin(Position.X / 5) * JumpHeight)));
+                Sprite.SetPosition(new Point((int)Position.X, (int)(Position.Y + (JumpHeight / 2)) + (int)(Math.Sin(Position.X / 5) * JumpHeight)));
 
             base.Draw(batch, gameTime);
+        }
         }
 
         public override string ToString()

@@ -100,10 +100,13 @@ namespace Hotel.Persons
 
         private void CheckOut(Guest guest)
         {
-            guest.Room.State = RoomState.Dirty;
-            guest.Room.Guest = null;
-            guest.Room = null;
-            guest.TargetRoom = _rooms[0];
+            if (guest.Room != null)
+            {
+                guest.Room.State = RoomState.Dirty;
+                guest.Room.Guest = null;
+                guest.Room = null;
+                guest.TargetRoom = _rooms[0];
+            }
         }
     }
 }
