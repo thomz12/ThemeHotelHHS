@@ -410,7 +410,7 @@ namespace Hotel.Persons
             if (TargetRoom != null)
                 returnString += $"Target: {TargetRoom.Name}{Environment.NewLine}";
 
-            returnString += $"Task: {CurrentTask}{Environment.NewLine}Life: {_deathTimer}/{_survivabilityTime}";
+            //returnString += $"Task: {CurrentTask}{Environment.NewLine}Life: {_deathTimer}/{_survivabilityTime}";
 
             return returnString;
         }

@@ -29,12 +29,8 @@ namespace Hotel
                 case HotelEvents.HotelEventType.CHECK_OUT:
                     // Get the guest that needs to be checked out.
                     string objectName = evt.Data.Keys.ElementAt(0) + evt.Data.Values.ElementAt(0);
-                    Guest guest = null;
                     if (_hotel.Persons.Keys.Contains(objectName))
-                        guest = (Guest)_hotel.Persons[objectName];
-                    // Check the guest out if it is still in the hotel.
-                    if (guest != null)
-                        guest.CheckOut(_hotel.Receptionist.CurrentRoom as Lobby);
+                        (_hotel.Persons[objectName] as Guest).CheckOut(_hotel.Receptionist.CurrentRoom as Lobby);
                     break;
                 case HotelEvents.HotelEventType.CLEANING_EMERGENCY:
                     // Get the specific room that has an emergency
