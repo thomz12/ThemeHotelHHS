@@ -137,7 +137,7 @@ namespace Hotel.Persons
             if (CurrentRoom.State != RoomState.Emergency && CurrentRoom.State != RoomState.InCleaning)
                 CurrentRoom.SetEmergency(8);
             // Change the sprite.
-            //Sprite.LoadSprite("Grave");
+            Sprite.LoadSprite("Grave");
 
             RemoveMe(new EventArgs());
         }

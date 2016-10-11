@@ -74,6 +74,16 @@ namespace Hotel.Persons
             Name = generator.GenerateName(Gender);
 
             Arrival += Guest_Arrival;
+            Death += Guest_Death;
+        }
+
+        private void Guest_Death(object sender, EventArgs e)
+        {
+            if(StayState == StayState.Staying)
+            {
+                Room.Guest = null;
+                StayState = StayState.None;
+            }
         }
 
         // When the guest arrives
