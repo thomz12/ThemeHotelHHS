@@ -393,40 +393,32 @@
             <elementDefinition Id="b718387c-c33e-4342-9f68-71915a92555a" />
             <ownedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="36a26327-3325-47e8-8a04-4427cda76a2f" name="content" direction="In" isUnique="false">
-                  <elementDefinition Id="4fcd8c35-6251-4eaf-974c-b56d26fbc6da" />
-                  <type_NamedElement>
-                    <referencedTypeMoniker Id="0b48e831-6982-4d21-a4a0-dcafba623625" LastKnownName="ContentManager" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter Id="6048bb3e-e0a0-4b7c-ac79-cf7a5641c51a" name="id" direction="In" isUnique="false">
-                  <elementDefinition Id="35c578a7-6e89-444d-bdd3-8eca85954b6e" />
+                <parameter Id="2f639fe4-43a0-4f43-a973-a6bfe0679feb" name="id" direction="In" isUnique="false">
+                  <elementDefinition Id="bcd05b98-929d-4427-bbde-872aa7d9c07c" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="fdf7999c-b852-4111-ac85-a8351ec2b670" LastKnownName="int" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="2d288397-e0df-43ee-b964-0ed8998dc46d" name="position" direction="In" isUnique="false">
-                  <elementDefinition Id="db96c63d-b8d3-45e9-9737-af2a5daecbfb" />
+                <parameter Id="2beddbfa-1893-49ce-b876-05f0a5e4da92" name="position" direction="In" isUnique="false">
+                  <elementDefinition Id="836b76f3-2e61-4f35-bcb9-22f6e9be3d36" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="970176b4-919c-42af-be23-e2119523979c" LastKnownName="Point" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="85871311-f46c-4b5f-8259-e1fbd1df5792" name="size" direction="In" isUnique="false">
-                  <elementDefinition Id="203c41d3-30cf-45f3-9bf5-2952031c76db" />
+                <parameter Id="730b4c9c-1b7e-42e5-97cc-8edecd8acbc0" name="size" direction="In" isUnique="false">
+                  <elementDefinition Id="ad1bf360-fcf8-4a7f-a796-7eaade1318d3" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="970176b4-919c-42af-be23-e2119523979c" LastKnownName="Point" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="d691074b-d648-4379-bd17-425503648bf3" name="classification" direction="In" isUnique="false">
-                  <elementDefinition Id="a1d83365-8dd8-4a72-b665-cf36d3a8a38f" />
+                <parameter Id="46d618b7-09a5-4b05-9bf6-9f7d219967aa" name="classification" direction="In" isUnique="false">
+                  <elementDefinition Id="657502a2-aac0-4fe6-9564-b71f12aefd7c" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="fdf7999c-b852-4111-ac85-a8351ec2b670" LastKnownName="int" />
                   </type_NamedElement>
@@ -488,24 +480,16 @@
             <elementDefinition Id="2ee56d69-ec4a-4b8c-8a59-a16737a46429" />
             <ownedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="c5ddcaef-290f-4f34-b6a4-a58bdd4c674e" name="content" direction="In" isUnique="false">
-                  <elementDefinition Id="7e72f008-bb23-4ba1-b01a-dbc6c47a21db" />
-                  <type_NamedElement>
-                    <referencedTypeMoniker Id="0b48e831-6982-4d21-a4a0-dcafba623625" LastKnownName="ContentManager" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter Id="ce9666fb-8ec9-45da-8107-ca0fa3a02f19" name="position" direction="In" isUnique="false">
-                  <elementDefinition Id="c081a8f7-d3cc-4df1-9228-189789111fe2" />
+                <parameter Id="6ffcd0f2-1d6a-441b-bf7c-68f8d5867de2" name="position" direction="In" isUnique="false">
+                  <elementDefinition Id="ed12ebcd-dd87-40e8-b723-ebc083b90e09" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="970176b4-919c-42af-be23-e2119523979c" LastKnownName="Point" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="ca33afdf-7ff1-428c-9c3a-38796446cb44" name="size" direction="In" isUnique="false">
-                  <elementDefinition Id="4a25e451-a33a-41d1-b7c3-af48db541d75" />
+                <parameter Id="ccab84ee-3788-40f8-b545-dcbcd885ce7d" name="size" direction="In" isUnique="false">
+                  <elementDefinition Id="8d31b35e-d183-483f-a656-2fb8d1749223" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="970176b4-919c-42af-be23-e2119523979c" LastKnownName="Point" />
                   </type_NamedElement>
@@ -538,32 +522,24 @@
             <elementDefinition Id="87edf175-9402-4552-bbc4-cd543f14e87e" />
             <ownedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="3f3f298e-9046-4472-b764-a12c89e70201" name="content" direction="In" isUnique="false">
-                  <elementDefinition Id="923c83f4-2def-4e2d-b3b9-049f289f33e9" />
-                  <type_NamedElement>
-                    <referencedTypeMoniker Id="0b48e831-6982-4d21-a4a0-dcafba623625" LastKnownName="ContentManager" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter Id="000c8bea-18c0-40aa-b257-81b4d2a4ec3f" name="position" direction="In" isUnique="false">
-                  <elementDefinition Id="721eadc3-6c28-4b10-9664-eda0824dd8e3" />
+                <parameter Id="f00453c0-968f-4b1d-91c4-b39bcb2776f1" name="position" direction="In" isUnique="false">
+                  <elementDefinition Id="2bb186e8-45df-4aee-8bff-ee8887891b06" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="970176b4-919c-42af-be23-e2119523979c" LastKnownName="Point" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="2eefdd8a-6275-460c-9ebe-fdea0784dfd2" name="size" direction="In" isUnique="false">
-                  <elementDefinition Id="f68c4d7f-aa40-4720-80a0-64928689963f" />
+                <parameter Id="a7e83767-decf-4c90-8171-329267e16fa3" name="size" direction="In" isUnique="false">
+                  <elementDefinition Id="e1b40ead-0843-455a-a640-40c28afc6276" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="970176b4-919c-42af-be23-e2119523979c" LastKnownName="Point" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="e78c5f25-96da-4bfe-9888-df2ed79ec055" name="capacity" direction="In" isUnique="false">
-                  <elementDefinition Id="996168a6-3e9f-4548-ac9e-3b5ac17b759b" />
+                <parameter Id="95c5022e-1424-45a1-aefa-168bb1484f8f" name="capacity" direction="In" isUnique="false">
+                  <elementDefinition Id="375eaec2-c4ed-4658-9efd-1f931fee2ea3" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="fdf7999c-b852-4111-ac85-a8351ec2b670" LastKnownName="int" />
                   </type_NamedElement>
@@ -588,32 +564,24 @@
             <elementDefinition Id="20c38a74-7284-419d-b99f-7c9adc744ca9" />
             <ownedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="da2b16f9-033e-42f8-8afb-7fe7e41327ce" name="content" direction="In" isUnique="false">
-                  <elementDefinition Id="f79d4d29-69f0-4889-8b91-9d4b15c183b8" />
-                  <type_NamedElement>
-                    <referencedTypeMoniker Id="0b48e831-6982-4d21-a4a0-dcafba623625" LastKnownName="ContentManager" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter Id="e6d6d05d-4866-446e-a56e-47a49de115f5" name="id" direction="In" isUnique="false">
-                  <elementDefinition Id="ec67e74c-8454-4b18-a98f-89e56dfa5023" />
+                <parameter Id="c61e645a-4740-4120-9ef9-30be13525e57" name="id" direction="In" isUnique="false">
+                  <elementDefinition Id="3a6804f6-3577-4884-9dac-f791d184aada" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="fdf7999c-b852-4111-ac85-a8351ec2b670" LastKnownName="int" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="68a4e7f0-c2ec-4774-bbc4-de3649674976" name="position" direction="In" isUnique="false">
-                  <elementDefinition Id="844ad0fe-dc44-41de-b0c2-5c803a467b59" />
+                <parameter Id="2bdd1ed9-3457-474c-9a0c-a501f2fe70f2" name="position" direction="In" isUnique="false">
+                  <elementDefinition Id="f5dcbc1c-37ce-4e3e-8932-c96d69083675" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="970176b4-919c-42af-be23-e2119523979c" LastKnownName="Point" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="5cbfc6fa-1063-43e0-8b38-b16f0ed5ae1a" name="size" direction="In" isUnique="false">
-                  <elementDefinition Id="950eb1a1-a33f-4c28-9cce-2df41fc39d22" />
+                <parameter Id="588f07b4-2998-49f3-8fae-b1e028c84cf6" name="size" direction="In" isUnique="false">
+                  <elementDefinition Id="2234412b-8a7f-4eaf-9d8f-6d72ef9bf507" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="970176b4-919c-42af-be23-e2119523979c" LastKnownName="Point" />
                   </type_NamedElement>
@@ -638,32 +606,24 @@
             <elementDefinition Id="1fb26c93-ffc3-4439-94c4-22227b4ad748" />
             <ownedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="4f479d1b-573c-4c2c-b23c-0f5b12e84b05" name="content" direction="In" isUnique="false">
-                  <elementDefinition Id="8b9c7595-6006-4e14-98a8-c1671ed794d6" />
-                  <type_NamedElement>
-                    <referencedTypeMoniker Id="0b48e831-6982-4d21-a4a0-dcafba623625" LastKnownName="ContentManager" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter Id="e720484b-6224-4c77-ac99-f35288531802" name="id" direction="In" isUnique="false">
-                  <elementDefinition Id="f22c7f19-ab24-4f2f-860e-5b0309cf3995" />
+                <parameter Id="55dcfb5e-30ce-4de7-889c-7c473b334bd0" name="id" direction="In" isUnique="false">
+                  <elementDefinition Id="0fad136b-d032-4272-a225-f7c2a3d2be32" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="fdf7999c-b852-4111-ac85-a8351ec2b670" LastKnownName="int" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="7e8a61ce-eecd-4015-92e2-f8f3ba1cd674" name="position" direction="In" isUnique="false">
-                  <elementDefinition Id="ce02cc10-bff1-48d2-bafd-ba6dddc25898" />
+                <parameter Id="2127afdb-b6e5-4157-8167-da9e1f2cb16c" name="position" direction="In" isUnique="false">
+                  <elementDefinition Id="d25fc080-a0d2-47a0-b272-df8600681b72" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="970176b4-919c-42af-be23-e2119523979c" LastKnownName="Point" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="66d1bb05-9868-4b8d-8ca3-5a984a9b7d0c" name="size" direction="In" isUnique="false">
-                  <elementDefinition Id="e0f2ad60-c8ab-4e55-a062-3e10f215a454" />
+                <parameter Id="b832a7c3-00c2-4eba-91c2-1bd52f3b5711" name="size" direction="In" isUnique="false">
+                  <elementDefinition Id="e8724278-fc91-4acf-94c0-3f4c8f59f521" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="970176b4-919c-42af-be23-e2119523979c" LastKnownName="Point" />
                   </type_NamedElement>
@@ -1134,32 +1094,24 @@
             <elementDefinition Id="a3a888c7-d7f3-432c-9acd-36ee27f69311" />
             <ownedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="8eef947d-5d44-4103-b91a-a37fc962187f" name="content" direction="In" isUnique="false">
-                  <elementDefinition Id="2956bf2a-05a8-4758-9233-3155f7d110d2" />
-                  <type_NamedElement>
-                    <referencedTypeMoniker Id="0b48e831-6982-4d21-a4a0-dcafba623625" LastKnownName="ContentManager" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter Id="06773748-d5b6-4bd0-9abb-590f1c2b7ea3" name="id" direction="In" isUnique="false">
-                  <elementDefinition Id="d2becfa4-9d70-46f0-b431-1c2e7bb375f3" />
+                <parameter Id="f953e4a5-4b38-4c60-a67f-9e21c7c73610" name="id" direction="In" isUnique="false">
+                  <elementDefinition Id="a7a41ee7-3218-4093-82c5-011586a4e6b1" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="fdf7999c-b852-4111-ac85-a8351ec2b670" LastKnownName="int" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="9610eb3e-5eae-47a5-b632-275be916f1f2" name="position" direction="In" isUnique="false">
-                  <elementDefinition Id="859ffdfe-5305-455f-a0d5-df29e1e31a47" />
+                <parameter Id="013c49b1-387e-4e10-9337-d50807bd9076" name="position" direction="In" isUnique="false">
+                  <elementDefinition Id="7f3a4b58-ba13-49ff-9d7b-4af68e6ab8db" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="970176b4-919c-42af-be23-e2119523979c" LastKnownName="Point" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="fdcb05f4-33b8-41b8-8e99-f63d4d7c7984" name="size" direction="In" isUnique="false">
-                  <elementDefinition Id="d10fd1e3-d4f3-4299-8072-cbe4f4165d2f" />
+                <parameter Id="836797cd-2386-4224-a91d-c8fa825a07d2" name="size" direction="In" isUnique="false">
+                  <elementDefinition Id="68434fb9-2526-4a50-8b35-fdb047d95fe2" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="970176b4-919c-42af-be23-e2119523979c" LastKnownName="Point" />
                   </type_NamedElement>
@@ -1353,24 +1305,16 @@
             <elementDefinition Id="285f8ecb-a306-4730-aa78-a5ca75394518" />
             <ownedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="a8e0b350-e1a8-4a88-b4a3-0bc128cafe2d" name="content" direction="In" isUnique="false">
-                  <elementDefinition Id="686013a7-390c-4020-b2c1-2b418cfac386" />
-                  <type_NamedElement>
-                    <referencedTypeMoniker Id="0b48e831-6982-4d21-a4a0-dcafba623625" LastKnownName="ContentManager" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter Id="a6ed3d8e-f239-4e9a-a5bf-9faa9cf19b8c" name="room" direction="In" isUnique="false">
-                  <elementDefinition Id="7dc14c22-35b9-4232-a287-9dd7580ded46" />
+                <parameter Id="2b170d23-2065-43a0-823a-425d0e22377b" name="room" direction="In" isUnique="false">
+                  <elementDefinition Id="e798aa6b-202f-4d68-ae19-0b082b251126" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="2a79b222-95d6-4d11-aff2-7aea0e8c3cb6" LastKnownName="Room" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="9b9646c5-b95f-4e58-9c58-93a58e08ae55" name="walkingSpeed" direction="In" isUnique="false">
-                  <elementDefinition Id="92e1008f-4dd7-49cc-bf38-7ebd9c66cb78" />
+                <parameter Id="8d3bfa7e-7a1b-413b-a127-87458bcd37d4" name="walkingSpeed" direction="In" isUnique="false">
+                  <elementDefinition Id="dad5e009-d75e-4eb1-8763-eb4e86363706" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="bcb3df8d-5b28-44ce-8651-4d7810e67549" LastKnownName="float" />
                   </type_NamedElement>
@@ -1543,24 +1487,16 @@
             <elementDefinition Id="5cad5258-0ec2-444c-9c41-be84bd51f4dd" />
             <ownedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="da4bad3c-1355-4602-b07f-8b0ee2382b27" name="content" direction="In" isUnique="false">
-                  <elementDefinition Id="1843f466-399c-4178-a7ce-4a8a5c5cee80" />
-                  <type_NamedElement>
-                    <referencedTypeMoniker Id="0b48e831-6982-4d21-a4a0-dcafba623625" LastKnownName="ContentManager" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter Id="cb6c2acc-3fe6-47cf-9862-c205afdbaf9f" name="room" direction="In" isUnique="false">
-                  <elementDefinition Id="0e44fdea-f6b9-4f03-b057-4da5c905e05a" />
+                <parameter Id="45dd908c-1610-4011-aa53-57cb7e828bc0" name="room" direction="In" isUnique="false">
+                  <elementDefinition Id="d057661f-30f7-42b7-a614-3484d6049581" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="2a79b222-95d6-4d11-aff2-7aea0e8c3cb6" LastKnownName="Room" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="b6e9ebf7-c671-41ab-919e-9faf739b53ae" name="walkingSpeed" direction="In" isUnique="false">
-                  <elementDefinition Id="fe59a5ee-0eac-4512-ae50-894d32b67551" />
+                <parameter Id="3ae18cfb-2783-4254-a418-bebc4e482577" name="walkingSpeed" direction="In" isUnique="false">
+                  <elementDefinition Id="a3f4dc38-aa78-4735-8f54-80b8a641cb63" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="bcb3df8d-5b28-44ce-8651-4d7810e67549" LastKnownName="float" />
                   </type_NamedElement>
@@ -1632,40 +1568,32 @@
             <elementDefinition Id="1b2b35e9-6696-4061-905b-b7508f90827e" />
             <ownedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="59e9d7cb-020f-4a49-88a7-d3c93d0fbf4c" name="content" direction="In" isUnique="false">
-                  <elementDefinition Id="d9e06a22-e6a0-42d5-b899-21f2bc351b59" />
-                  <type_NamedElement>
-                    <referencedTypeMoniker Id="0b48e831-6982-4d21-a4a0-dcafba623625" LastKnownName="ContentManager" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter Id="bbb65061-0b4f-4edf-8cbf-abd52c565c9e" name="room" direction="In" isUnique="false">
-                  <elementDefinition Id="bf61dcf4-1b29-4f8d-841a-9d3bfbe9e5b9" />
+                <parameter Id="c5d066f5-e9b8-4d26-8f1a-0f26fa709f37" name="room" direction="In" isUnique="false">
+                  <elementDefinition Id="a645dad5-11b9-498f-8733-fd3a1108f077" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="2a79b222-95d6-4d11-aff2-7aea0e8c3cb6" LastKnownName="Room" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="c6470579-acef-43e0-ab26-a4fe1d81754c" name="walkingSpeed" direction="In" isUnique="false">
-                  <elementDefinition Id="066bcc6a-c1d7-4014-9f89-e5dd4ba0c77c" />
+                <parameter Id="97bcd429-25f4-47e2-81de-ec18392ffea9" name="walkingSpeed" direction="In" isUnique="false">
+                  <elementDefinition Id="7747944d-d0b3-4adf-a0e4-2836121be64f" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="bcb3df8d-5b28-44ce-8651-4d7810e67549" LastKnownName="float" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="0fae7ba7-5397-4867-b4fa-9a8487abef60" name="cleaningDuration" direction="In" isUnique="false">
-                  <elementDefinition Id="6d30f243-ae8b-4264-8cb1-68295bac949d" />
+                <parameter Id="d01192bd-18e0-454a-b840-3bc853db0567" name="cleaningDuration" direction="In" isUnique="false">
+                  <elementDefinition Id="1bf28f9c-6692-431f-a55e-a335e6369302" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="fdf7999c-b852-4111-ac85-a8351ec2b670" LastKnownName="int" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="29fea3da-7afa-4082-8c40-37652f6f7d52" name="allRooms" direction="In" isUnique="false">
-                  <elementDefinition Id="19c96cdd-4e5b-4c36-9c38-a89df866402e" />
+                <parameter Id="c7d975e4-b662-41ea-b3a1-1d779a700079" name="allRooms" direction="In" isUnique="false">
+                  <elementDefinition Id="31153f8d-248b-412a-9acf-2c2f8d8cf152" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="af9807d8-0a49-4917-b6ff-4cdf24408906" LastKnownName="List&lt;Room&gt;" />
                   </type_NamedElement>
@@ -1759,32 +1687,24 @@
             <elementDefinition Id="87829944-0b68-480c-a52e-23db696d891f" />
             <ownedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="7be5259b-cdc5-45b9-aacb-14e6c27dfa69" name="content" direction="In" isUnique="false">
-                  <elementDefinition Id="6aec86ec-5091-46c1-a06f-d484e636bea9" />
-                  <type_NamedElement>
-                    <referencedTypeMoniker Id="0b48e831-6982-4d21-a4a0-dcafba623625" LastKnownName="ContentManager" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter Id="25b89248-54ac-4a13-81bc-0a75221a41f5" name="room" direction="In" isUnique="false">
-                  <elementDefinition Id="ec489dc3-7a4a-4a69-8ef4-703c1ec832bc" />
+                <parameter Id="0a59d774-8466-4a71-a351-651a60731dd9" name="room" direction="In" isUnique="false">
+                  <elementDefinition Id="dda8dd53-ab0f-40d3-ae3c-cf2e02b800a5" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="2a79b222-95d6-4d11-aff2-7aea0e8c3cb6" LastKnownName="Room" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="3119a767-4af0-4dff-ba6b-67757915c94f" name="rooms" direction="In" isUnique="false">
-                  <elementDefinition Id="03c84a6f-5221-4e04-9462-6f2c5c304df2" />
+                <parameter Id="5b2ec3a8-3d78-44c8-9606-749081158777" name="rooms" direction="In" isUnique="false">
+                  <elementDefinition Id="ac5fae5f-d809-4f60-9742-b1d97fb7b730" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="af9807d8-0a49-4917-b6ff-4cdf24408906" LastKnownName="List&lt;Room&gt;" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="7001cd9e-0cce-4a56-8374-2a746eeeb9d4" name="walkingSpeed" direction="In" isUnique="false">
-                  <elementDefinition Id="9e28242d-337c-4417-b947-28d9910dc5b2" />
+                <parameter Id="74f0b5f0-674e-4277-8ae6-f45d9e1d96cd" name="walkingSpeed" direction="In" isUnique="false">
+                  <elementDefinition Id="81806315-d29d-4903-b9b3-e58e0d4b5ce0" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="bcb3df8d-5b28-44ce-8651-4d7810e67549" LastKnownName="float" />
                   </type_NamedElement>
@@ -2018,16 +1938,8 @@
             <elementDefinition Id="7f0827aa-f780-4676-a673-f139eea83c66" />
             <ownedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="fc438fef-e5d4-41be-8561-705403245f10" name="content" direction="In" isUnique="false">
-                  <elementDefinition Id="42e5f127-ad3f-4440-9ace-df36ebe8cd3a" />
-                  <type_NamedElement>
-                    <referencedTypeMoniker Id="0b48e831-6982-4d21-a4a0-dcafba623625" LastKnownName="ContentManager" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter Id="1f43db51-9f4f-4479-b3e3-dbb915a6217f" name="position" direction="In" isUnique="false">
-                  <elementDefinition Id="880c5700-f66c-4182-b525-e8e5f78056b5" />
+                <parameter Id="01e9cfad-6756-4872-941a-07b8764250f9" name="position" direction="In" isUnique="false">
+                  <elementDefinition Id="f702f141-d27f-4cb3-b1bc-ba2d54fcf15c" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="970176b4-919c-42af-be23-e2119523979c" LastKnownName="Point" />
                   </type_NamedElement>
@@ -2088,16 +2000,8 @@
             <elementDefinition Id="b2328d86-3cf1-4cf9-9b63-e0df2466e819" />
             <ownedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="7ab217ea-cda0-4208-a8b9-a2d299d8bec9" name="content" direction="In" isUnique="false">
-                  <elementDefinition Id="844b47ef-593c-4161-a2bb-7804f5e3b463" />
-                  <type_NamedElement>
-                    <referencedTypeMoniker Id="0b48e831-6982-4d21-a4a0-dcafba623625" LastKnownName="ContentManager" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter Id="dba5cb7c-aad4-42d8-9c7b-773908e6e8ff" name="floor" direction="In" isUnique="false">
-                  <elementDefinition Id="9c1b4ba6-9711-4c56-9b3c-26f3f72ec3d7" />
+                <parameter Id="71654f85-4333-46b4-ada2-868a2f96cdc6" name="floor" direction="In" isUnique="false">
+                  <elementDefinition Id="5494ca8b-b9f6-4ecc-96bc-c33f287ca32e" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="fdf7999c-b852-4111-ac85-a8351ec2b670" LastKnownName="int" />
                   </type_NamedElement>
@@ -2740,20 +2644,12 @@
           </generalization>
         </generalsInternal>
         <ownedOperationsInternal>
-          <operation Id="77c6176f-553a-4e50-a3ed-f46a0da065c4" name="Outside" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+          <operation Id="77c6176f-553a-4e50-a3ed-f46a0da065c4" name="EmptyRoom" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="7ef5415a-6535-440e-b8cc-fe82a2c70974" />
             <ownedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="cb8b9dca-5370-4d31-a2bb-f5eae7e3117a" name="content" direction="In" isUnique="false">
-                  <elementDefinition Id="2aa1c505-e686-4fa9-8750-afcbe3d7bea3" />
-                  <type_NamedElement>
-                    <referencedTypeMoniker Id="0b48e831-6982-4d21-a4a0-dcafba623625" LastKnownName="ContentManager" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter Id="ab3b7afb-cc34-4c43-a300-8a2ba1f244bf" name="position" direction="In" isUnique="false">
-                  <elementDefinition Id="1bbd3654-573d-4887-91d2-223c98ed82d8" />
+                <parameter Id="885d0969-8f02-4c60-9c09-7ff4d46087df" name="position" direction="In" isUnique="false">
+                  <elementDefinition Id="9d0976cb-328b-4fcd-81b9-6192cd828711" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="970176b4-919c-42af-be23-e2119523979c" LastKnownName="Point" />
                   </type_NamedElement>
@@ -2830,16 +2726,8 @@
             <elementDefinition Id="09282d93-d93c-44f9-8848-94ff1d22748c" />
             <ownedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="92bba3e2-0a7f-4c2c-9e91-e2820f5111d7" name="content" direction="In" isUnique="false">
-                  <elementDefinition Id="8b750d76-8472-4074-9b2d-fa99bc3ae36a" />
-                  <type_NamedElement>
-                    <referencedTypeMoniker Id="0b48e831-6982-4d21-a4a0-dcafba623625" LastKnownName="ContentManager" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter Id="cb233e62-48bd-4c21-bb37-176a3c727c65" name="config" direction="In" isUnique="false">
-                  <elementDefinition Id="501ab78a-b04b-4506-9ee5-eb39fb0c495d" />
+                <parameter Id="3a7f10fc-e4c8-4ff3-90c6-4b09e9a76522" name="config" direction="In" isUnique="false">
+                  <elementDefinition Id="c720d0bf-7db2-49cb-b18d-e84dac368a16" />
                   <type_NamedElement>
                     <referencedTypeMoniker Id="55666e13-04b8-41be-aa63-f5224628b6e4" LastKnownName="ConfigModel" />
                   </type_NamedElement>
@@ -3416,16 +3304,16 @@
           </dependency>
         </suppliersInternal>
         <targetEnds>
-          <association Id="68feaf04-514a-4367-8d58-38bb6689d076" isDerived="false" sourceEndRoleName="Background" targetEndRoleName="Sprite" isLeaf="false" isAbstract="false">
+          <association Id="68feaf04-514a-4367-8d58-38bb6689d076" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
             <classMoniker Id="b9859f48-922a-45b0-b0e0-c6cce0b3bcb3" LastKnownName="Sprite" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
-                <memberEnd Id="56a27d3c-e6b9-41eb-8c12-6131edc49e98" name="Background" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                <memberEnd Id="56a27d3c-e6b9-41eb-8c12-6131edc49e98" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
                   <elementDefinition Id="4e3fdfe5-1907-44a2-9974-d4095229840a" />
                 </memberEnd>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
-                <memberEnd Id="8c10f77e-a2e6-4887-bf4c-ff0ee41b59e6" name="Sprite" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                <memberEnd Id="8c10f77e-a2e6-4887-bf4c-ff0ee41b59e6" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
                   <elementDefinition Id="70c66df1-4d26-402c-967d-8ddfec0f6004" />
                 </memberEnd>
               </associationHasOwnedEnds>
