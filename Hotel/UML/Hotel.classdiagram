@@ -3304,16 +3304,16 @@
           </dependency>
         </suppliersInternal>
         <targetEnds>
-          <association Id="68feaf04-514a-4367-8d58-38bb6689d076" isDerived="false" sourceEndRoleName="Background" targetEndRoleName="Sprite" isLeaf="false" isAbstract="false">
+          <association Id="68feaf04-514a-4367-8d58-38bb6689d076" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
             <classMoniker Id="b9859f48-922a-45b0-b0e0-c6cce0b3bcb3" LastKnownName="Sprite" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
-                <memberEnd Id="56a27d3c-e6b9-41eb-8c12-6131edc49e98" name="Background" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                <memberEnd Id="56a27d3c-e6b9-41eb-8c12-6131edc49e98" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
                   <elementDefinition Id="4e3fdfe5-1907-44a2-9974-d4095229840a" />
                 </memberEnd>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
-                <memberEnd Id="8c10f77e-a2e6-4887-bf4c-ff0ee41b59e6" name="Sprite" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                <memberEnd Id="8c10f77e-a2e6-4887-bf4c-ff0ee41b59e6" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
                   <elementDefinition Id="70c66df1-4d26-402c-967d-8ddfec0f6004" />
                 </memberEnd>
               </associationHasOwnedEnds>

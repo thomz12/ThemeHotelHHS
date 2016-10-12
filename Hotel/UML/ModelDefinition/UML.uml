@@ -7725,8 +7725,8 @@
           <association
             Id="4ffe8f69-36dc-4d0b-9f32-666e264b279b"
             isDerived="false"
-            sourceEndRoleName="Background"
-            targetEndRoleName="Sprite"
+            sourceEndRoleName=""
+            targetEndRoleName=""
             isLeaf="false"
             isAbstract="false">
             <classMoniker
@@ -7737,7 +7737,6 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="4e3fdfe5-1907-44a2-9974-d4095229840a"
-                  name="Background"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -7750,7 +7749,6 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="70c66df1-4d26-402c-967d-8ddfec0f6004"
-                  name="Sprite"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
