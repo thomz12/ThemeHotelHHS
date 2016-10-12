@@ -48,9 +48,6 @@ namespace Hotel
             ServiceLocator.Add<GraphicsDeviceManager>(graphicsDeviceManager);
             ServiceLocator.Add<ContentManager>(Content);
 
-            // Testing
-            GameServiceContainer c = ServiceLocator.GetContainerForTesting();
-
             Window.Title = "Hotel Simulation";
             IsMouseVisible = true;
 
