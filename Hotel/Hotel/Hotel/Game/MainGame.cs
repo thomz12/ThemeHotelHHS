@@ -47,10 +47,9 @@ namespace Hotel
             // Add the services to the static class.
             ServiceLocator.Add<ContentManager>(Content);
             ServiceLocator.Add<ConfigLoader>(new ConfigLoader(@"Config.cfg"));
+            // Service Locator is OFF LIMITS.
 
             Window.Title = "Hotel Simulation";
-
-            GameServiceContainer g = ServiceLocator.GetContainerForTesting();
 
             IsMouseVisible = true;
 
