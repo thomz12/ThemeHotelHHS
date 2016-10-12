@@ -15,6 +15,7 @@ namespace HotelLauncher
 {
     public partial class HotelLauncherForm : Form
     {
+
         private Process _process;
         private Settings _settings;
 
@@ -30,6 +31,16 @@ namespace HotelLauncher
 
             // Configure variables
             _configFilePath = @"Config.cfg";
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == Keys.Escape)
+            {
+                Close();
+                return true;
+            }
+            return base.ProcessCmdKey(ref msg, keyData);
         }
 
         private void StartSimulationButton_Click(object sender, EventArgs e)
