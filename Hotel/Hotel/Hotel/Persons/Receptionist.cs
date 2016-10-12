@@ -25,7 +25,7 @@ namespace Hotel.Persons
         /// <param name="survivability">The time the guest can stand in a queue without dieing.</param>
         /// <param name="walkingSpeed">The speed at which the guest walks.</param>
         /// <param name="workDuration">The speed at which the receptionist checks in/out.</param>
-        public Receptionist(Room room, List<Room> rooms, float survivability, float walkingSpeed, float workDuration) : base(room, -1, walkingSpeed)
+        public Receptionist(Room room, List<Room> rooms) : base(room)
         {
             Name = "Receptionist";
             Sprite.LoadSprite("Receptionist");
@@ -35,7 +35,9 @@ namespace Hotel.Persons
             CheckinQueue = new List<Guest>();
             CheckOutQueue = new List<Guest>();
 
-            _workSpeed = workDuration;
+            // Load settings from the config.
+            ConfigModel config = ServiceLocator.Get<ConfigLoader>().GetConfig();
+            _workSpeed = config.ReceptionistWorkLenght;
 
             _checkInTimer = _workSpeed;
             _checkOutTimer = _workSpeed;

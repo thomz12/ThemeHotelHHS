@@ -81,7 +81,7 @@ namespace Hotel.Persons
         /// <param name="room">The room to spawn in.</param>
         /// <param name="survivability">The time it takes for people to die while waiting, people with -1 are invunerable.</param>
         /// <param name="walkingSpeed">The walking speed of people.</param>
-        public Person(Room room, float survivability, float walkingSpeed) : base()
+        public Person(Room room) : base()
         {
             Sprite.LoadSprite("Guest");
             Sprite.DrawOrder = 1;
@@ -93,12 +93,14 @@ namespace Hotel.Persons
             _calledElevator = false;
             _isDead = false;
 
-            _survivabilityTime = survivability;
+            // Load settings from the config.
+            ConfigModel config = ServiceLocator.Get<ConfigLoader>().GetConfig();
+            _survivabilityTime = config.Survivability;
+            WalkingSpeed = config.WalkingSpeed * Room.ROOMWIDTH;
 
             _pathFinder = new PathFinder();
             Path = new List<Room>();
 
-            WalkingSpeed = walkingSpeed * Room.ROOMWIDTH;
             CurrentTask = PersonTask.MovingCenter;
             Inside = false;
         }

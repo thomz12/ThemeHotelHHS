@@ -14,11 +14,14 @@ namespace Hotel.Rooms
 
         public event EventHandler Finished;
 
-        public Cinema(int id, Point position, Point size, int duration) : base(id, position, size)
+        public Cinema(int id, Point position, Point size) : base(id, position, size)
         {
             Sprite.LoadSprite("2x2Cinema");
             Name = "Cinema";
-            Duration = duration;
+
+            // Load settings from the config.
+            ConfigModel config = ServiceLocator.Get<ConfigLoader>().GetConfig();
+            Duration = config.FilmDuration;
 
             Finished += Cinema_Finished;
         }

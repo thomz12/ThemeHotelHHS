@@ -748,21 +748,37 @@
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="2bf391e7-3705-4ee1-9dd5-0ba1e23ae777" />
           </association>
-          <association Id="b3dd72d4-d7e9-41a8-ac2d-a4929441463b" isDerived="false" sourceEndRoleName="Hotel" targetEndRoleName="HotelBuilder" isLeaf="false" isAbstract="false">
+          <association Id="b3dd72d4-d7e9-41a8-ac2d-a4929441463b" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
             <classMoniker Id="bcb2ce9f-ff05-49d7-bec2-4388c25c3e87" LastKnownName="HotelBuilder" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
-                <memberEnd Id="9194529f-b265-45eb-b293-336f98b1834d" name="Hotel" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                <memberEnd Id="9194529f-b265-45eb-b293-336f98b1834d" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
                   <elementDefinition Id="9a766717-6e4f-4b08-b26e-547f1b825595" />
                 </memberEnd>
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
-                <memberEnd Id="63768d2e-de8d-498e-95e1-b3036accb1ce" name="HotelBuilder" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                <memberEnd Id="63768d2e-de8d-498e-95e1-b3036accb1ce" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
                   <elementDefinition Id="9609c740-f837-4f0a-893f-1acc2afeefc1" />
                 </memberEnd>
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="c7e62964-1d5c-43f6-8f2c-59a5e6738571" />
+          </association>
+          <association Id="9bdde9b9-2c32-49c4-9111-fc41ccc91367" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="95c4bd2a-75d3-42d1-b493-6ad0eedee626" LastKnownName="ConfigLoader" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="a97d306b-569b-400e-86e4-0bfa772de4b9" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="22e376b2-adc2-421b-ae13-fce14f8ac714" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="badf77b8-0a13-4282-846a-327050ccd412" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="2dc588c8-cccd-455f-a3a4-b530478c2318" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="295be422-f01f-4a6a-8938-51d4f6a66c6b" />
           </association>
         </targetEnds>
         <ownedAttributesInternal>
@@ -3669,6 +3685,104 @@
     <packageHasNamedElement>
       <referencedType Id="509d767d-2896-4e85-9395-dc67a6a97368" name="Camera" isAbstract="false" isLeaf="false" cachedFullName="UML::Camera">
         <elementDefinition Id="65d3e827-9aed-4ed2-8dc6-bbd258afe779" />
+      </referencedType>
+    </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="95c4bd2a-75d3-42d1-b493-6ad0eedee626" name="ConfigLoader" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="beae6a39-e88f-47ff-b5c4-7e88536c037e" />
+        <targetEnds>
+          <association Id="dbb540b0-21c2-473f-8048-ca27caf2d4ba" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
+            <classMoniker Id="814d07fb-1ff1-43a5-8504-8aceb98a8308" LastKnownName="ConfigModel" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="06258f95-b190-49ca-8d0b-5cdc091a11ab" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="3a0e114a-90ac-4826-bc4d-0488fb12f31c" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="fb5eeb0f-4d8e-42d8-81e9-fb1aabbb7624" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="4fdfc31f-70e5-40b5-8773-b3bc4bed6491" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="f087a60a-5b0b-4e53-aa07-50653a105d33" />
+          </association>
+        </targetEnds>
+        <ownedAttributesInternal>
+          <property Id="6c5cc13b-7821-4fd1-bc52-255637b3e4ab" name="_fileName" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="df68ebbd-06ee-454c-9931-71b4d637b9ba" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="6318edcc-dd69-477c-9de7-492f83a353f2" LastKnownName="string" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation Id="57115c26-96ea-4d53-b9ec-64f5dde719dc" name="GetConfig" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="e8a11409-7043-4305-a518-ab6aee456dc3" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="30e91369-c18f-4bf4-84a7-d706aa24ca67" direction="Return" isUnique="false">
+                  <elementDefinition Id="876b5c32-6b33-4612-b18f-42709588cd5a" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="55666e13-04b8-41be-aa63-f5224628b6e4" LastKnownName="ConfigModel" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="4e38bcfa-1de4-48c9-8411-053ce43a6ab5" name="ServiceLocator" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="c0993fa0-a96a-4e1e-90fc-3e997e86f9a7" />
+        <ownedAttributesInternal>
+          <property Id="be5ce14d-d3a6-4ea3-82ab-5ba6c728ebba" name="_container" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="c380b74f-fa47-47ff-8531-ad5dfa2eaa2e" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="82f40600-d8b6-4a8a-9552-aba05b582824" LastKnownName="GameServiceContainer" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation Id="d819870b-a115-466a-af58-95226cbf0697" name="Get&lt;T&gt;" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="a1b3c84a-df48-470e-8cfd-19e4e5aa9895" />
+          </operation>
+          <operation Id="72adc2c1-a998-475e-ba58-d01163685856" name="Add&lt;T&gt;" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="9b293b49-d2b2-4c31-89f3-bcf233ed3fbe" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="3d741c4f-251a-4b23-9e48-b3dd0ad98d4f" name="service" direction="In" isUnique="false">
+                  <elementDefinition Id="a6cac24e-c29b-485d-84d9-69b3926c25ef" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="a2f10d11-51dc-4b6d-8d8d-806cb6727041" LastKnownName="T" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="29122dc7-1707-425b-96c0-5e125a7b7737" direction="Return" isUnique="false">
+                  <elementDefinition Id="39609308-d06a-4e28-994e-1264b1cbfe2d" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="a2f10d11-51dc-4b6d-8d8d-806cb6727041" LastKnownName="T" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="8acc4a89-9b1e-4c60-9c2e-fc03f7b9b0c3" name="Remove&lt;T&gt;" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="387a9fdd-86df-4958-8f25-3909f9fed9f7" />
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
+    <packageHasNamedElement>
+      <referencedType Id="82f40600-d8b6-4a8a-9552-aba05b582824" name="GameServiceContainer" isAbstract="false" isLeaf="false" cachedFullName="GameServiceContainer">
+        <elementDefinition Id="d5daed11-d1e5-412c-ac13-ccb0469c95d8" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="a2f10d11-51dc-4b6d-8d8d-806cb6727041" name="T" isAbstract="false" isLeaf="false" cachedFullName="T">
+        <elementDefinition Id="86cd0119-096d-4adb-b41a-e2a02821bfad" />
       </referencedType>
     </packageHasNamedElement>
   </packagedElements>

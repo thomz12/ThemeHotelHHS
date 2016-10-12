@@ -45,14 +45,17 @@ namespace Hotel
         /// Default constructor.
         /// </summary>
         /// <param name="content">The content manager used to load in images.</param>
-        public Elevator(float speed) : base()
+        public Elevator() : base()
         {
             Sprite.LoadSprite("Elevator");
             Name = "Elevator";
             Sprite.DrawOrder = 0.5f;
             WaitTime = 1.0f;
-            Speed = 90f * speed;
             State = ElevatorState.Idle;
+
+            // Load settings from the config.
+            ConfigModel config = ServiceLocator.Get<ConfigLoader>().GetConfig();
+            Speed = 90f * config.ElevatorSpeed;
 
             Sprite.SetSize(new Point(Sprite.Texture.Width, Sprite.Texture.Height));
 

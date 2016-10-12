@@ -53,7 +53,7 @@ namespace Hotel.Persons
         /// <param name="room">The room to spawn the guest in.</param>
         /// <param name="survivability">The time the guest can stand in a queue without dieing.</param>
         /// <param name="walkingSpeed">The speed at which the guest walks.</param>
-        public Guest(Room room, float survivability, float walkingSpeed) : base(room, survivability, walkingSpeed)
+        public Guest(Room room) : base(room)
         {
             NameGenerator generator = new NameGenerator();
 
@@ -73,6 +73,7 @@ namespace Hotel.Persons
             // Give this person a name.
             Name = generator.GenerateName(Gender);
 
+            // Subscribe to some events
             Arrival += Guest_Arrival;
             Death += Guest_Death;
         }

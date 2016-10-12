@@ -18,7 +18,7 @@ namespace Hotel
         /// </summary>
         /// <param name="content">The content manager used to load in images.</param>
         /// <param name="position">The position of the room.</param>
-        public ElevatorShaft(int id, Point position, float elevatorSpeed) : base(id, position, new Point(1, 1))
+        public ElevatorShaft(int id, Point position) : base(id, position, new Point(1, 1))
         {
             Sprite.LoadSprite("1x1ElevatorShaft");
             Name = "Elevator Shaft";
@@ -27,7 +27,7 @@ namespace Hotel
 
             if (RoomPosition.Y == 0)
             {
-                Elevator = new Elevator(elevatorSpeed);
+                Elevator = new Elevator();
                 Elevator.Arrival += Elevator_Arrival;
             }
         }

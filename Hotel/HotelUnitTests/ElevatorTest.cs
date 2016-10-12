@@ -61,7 +61,8 @@ namespace HotelUnitTests
         [TestMethod]
         public void ElevatorConstructor()
         {
-            Elevator elevator = new Elevator(90);
+            Elevator elevator = new Elevator();
+            Assert.IsNotNull(elevator);
         }
     }
 }
