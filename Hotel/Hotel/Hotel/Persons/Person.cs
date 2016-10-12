@@ -124,15 +124,17 @@ namespace Hotel.Persons
             // Find the rooms, and its path
             Path = _pathFinder.Find(CurrentRoom, rule);
 
-            TargetRoom = Path.Last();
+            if (Path != null)
+            {
+                TargetRoom = Path.Last();
 
-            if (Inside)
-                CurrentRoom.PeopleCount--;
+                if (Inside)
+                    CurrentRoom.PeopleCount--;
 
-            Inside = false;
-            
+                Inside = false;
 
-            CurrentTask = PersonTask.MovingCenter;
+                CurrentTask = PersonTask.MovingCenter;
+            }
         }
 
         /// <summary>

@@ -47,7 +47,6 @@ namespace Hotel
             // Add the services to the static class.
             ServiceLocator.Add<GraphicsDeviceManager>(graphicsDeviceManager);
             ServiceLocator.Add<ContentManager>(Content);
-            ServiceLocator.Add<GraphicsDevice>(GraphicsDevice);
 
             // Testing
             GameServiceContainer c = ServiceLocator.GetContainerForTesting();
