@@ -86,15 +86,16 @@ namespace Hotel.Persons
             if (potentialRooms.Count == 0)
             {
                 // There is no room available so send the person back outside.
-                guest.TargetRoom = _rooms[0];
+                guest.FindAndTargetRoom(x => x.Name.Equals("Outside"));
             }
             else
             {
                 // Check this person in.
                 guest.Room = potentialRooms.First();
+                guest.StayState = StayState.Staying;
                 potentialRooms.First().Guest = guest;
                 potentialRooms.First().State = RoomState.Occupied;
-                guest.TargetRoom = guest.Room;
+                guest.FindAndTargetRoom(x => x == guest.Room);
             }
         }
 
@@ -107,7 +108,7 @@ namespace Hotel.Persons
 
                 guest.Room.Guest = null;
                 guest.Room = null;
-                guest.TargetRoom = _rooms[0];
+                guest.FindAndTargetRoom(x => x.Name.Equals("Outside"));
             }
         }
     }

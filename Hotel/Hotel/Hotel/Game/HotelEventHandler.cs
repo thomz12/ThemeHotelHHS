@@ -21,17 +21,24 @@ namespace Hotel
         {
             switch (evt.EventType)
             {
+                // The 'NONE' event.
                 case HotelEvents.HotelEventType.NONE:
                     break;
+
+                // Check-in event.
                 case HotelEvents.HotelEventType.CHECK_IN:
                     _hotel.AddGuest(evt.Data.Keys.ElementAt(0), Int32.Parse(Regex.Replace(evt.Data.Values.ElementAt(0), "[^0-9]+", string.Empty)));
                     break;
+
+                // Check-out event.
                 case HotelEvents.HotelEventType.CHECK_OUT:
                     // Get the guest that needs to be checked out.
                     string objectName = evt.Data.Keys.ElementAt(0) + evt.Data.Values.ElementAt(0);
                     if (_hotel.Persons.Keys.Contains(objectName))
                         (_hotel.Persons[objectName] as Guest).CheckOut(_hotel.Receptionist.CurrentRoom as Lobby);
                     break;
+
+                // Cleaning Emergency event.
                 case HotelEvents.HotelEventType.CLEANING_EMERGENCY:
                     // Get the specific room that has an emergency
                     Room roomWithEmergency = _hotel.Rooms.Where(x => x.ID == Int32.Parse(evt.Data.Values.ElementAt(0))).FirstOrDefault();
@@ -39,22 +46,56 @@ namespace Hotel
                     if (roomWithEmergency != null)
                         roomWithEmergency.SetEmergency(float.Parse(evt.Data.Values.ElementAt(1)));
                     break;
+
+                // Evecuation event.
                 case HotelEvents.HotelEventType.EVACUATE:
                     break;
+
+                // Godzilla event.
                 case HotelEvents.HotelEventType.GODZILLA: 
                     Console.WriteLine("AAAAAAAHHHHHHHH!");
                     // Call evacuate function?
                     break;
+
+                // Guest needs food event.
                 case HotelEvents.HotelEventType.NEED_FOOD:
+
+                    string guestName = evt.Data.Keys.ElementAt(0) + evt.Data.Values.ElementAt(0);
+                    if (_hotel.Persons.Keys.Contains(guestName))
+                    {
+                        Guest hotelGuest = _hotel.Persons[guestName] as Guest;
+
+                        if(hotelGuest.StayState == StayState.Staying)
+                            hotelGuest.FindAndTargetRoom(x => x is Cafe);
+                    }
+                        
                     break;
+
+                // Guest goes to cinema event.
                 case HotelEvents.HotelEventType.GOTO_CINEMA:
+
+                    string guest = evt.Data.Keys.ElementAt(0) + evt.Data.Values.ElementAt(0);
+                    if (_hotel.Persons.Keys.Contains(guest))
+                    {
+                        Guest hotelGuest = _hotel.Persons[guest] as Guest;
+
+                        if (hotelGuest.StayState == StayState.Staying)
+                            hotelGuest.FindAndTargetRoom(x => x is Cinema);
+                    }
+
                     break;
+
+                // Guest goes to fitness event.
                 case HotelEvents.HotelEventType.GOTO_FITNESS:
                     break;
+
+                // Start the cinema event.
                 case HotelEvents.HotelEventType.START_CINEMA:
                     Cinema cinema = (Cinema)_hotel.Rooms.Where(x => x.ID == Int32.Parse(evt.Data.Values.ElementAt(0))).FirstOrDefault();
                     cinema?.StartMovie();
                     break;
+
+                // default. 
                 default:
                     break;
             }

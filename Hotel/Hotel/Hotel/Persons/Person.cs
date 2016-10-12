@@ -37,7 +37,7 @@ namespace Hotel.Persons
                 _deathTimer = 0;
             }
         }
-        public Room CurrentRoom { get; set; }
+        public Room CurrentRoom { get; protected set; }
         public bool Inside { get; set; }
 
         private Room _targetRoom;
@@ -47,18 +47,9 @@ namespace Hotel.Persons
             {
                 return _targetRoom;
             }
-            set
+            private set
             {
                 _targetRoom = value;
-                if (_targetRoom != null)
-                {
-                    if (Path == null || Path.Count == 0 || _targetRoom != Path.Last())
-                    {
-                        Path = _pathFinder.Find(CurrentRoom, x => x == _targetRoom);
-                        Inside = false;
-                    }
-                    CurrentTask = PersonTask.MovingCenter;
-                }
             }
         }
 
@@ -79,7 +70,7 @@ namespace Hotel.Persons
         private float _deathTimer;
         // The max time a guy can stay waiting.
         private float _survivabilityTime;
-        // Is poppetje kill?
+        // When where you when poppetje was kill?
         private bool _isDead;
 
         public event EventHandler Arrival;
@@ -121,6 +112,29 @@ namespace Hotel.Persons
         {
             if (Arrival != null)
                 Arrival(this, e);
+        }
+
+        public void FindAndTargetRoom(FindPath rule)
+        {
+            // If the person is currently in the elevator, its current room is the targeted shaft.
+            if(_targetShaft != null)
+            {
+                if(_startStaft != CurrentRoom)
+                    CurrentRoom = _targetShaft;
+            }
+
+            // Find the rooms, and its path
+            Path = _pathFinder.Find(CurrentRoom, rule);
+
+            TargetRoom = Path.Last();
+
+            if (Inside)
+                CurrentRoom.PeopleCount--;
+
+            Inside = false;
+            
+
+            CurrentTask = PersonTask.MovingCenter;
         }
 
         /// <summary>
