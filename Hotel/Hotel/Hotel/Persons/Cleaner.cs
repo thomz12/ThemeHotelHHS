@@ -20,9 +20,9 @@ namespace Hotel.Persons
         /// Constructor.
         /// </summary>
         /// <param name="content">The content manager used to load in images.</param>
-        public Cleaner(ContentManager content, Room room, float survivability, float walkingSpeed, int cleaningDuration, List<Room> allRooms) : base(content, room, survivability, walkingSpeed)
+        public Cleaner(Room room, float survivability, float walkingSpeed, int cleaningDuration, List<Room> allRooms) : base(room, survivability, walkingSpeed)
         {
-            Name = "Cleaner";
+            Name = "Tim";
             Sprite.LoadSprite("Cleaner");
             _isCleaning = false;
             _cleaningDuration = (float)cleaningDuration;

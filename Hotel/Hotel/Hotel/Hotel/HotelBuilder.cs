@@ -81,16 +81,16 @@ namespace Hotel
                         switch (data["AreaType"])
                         {
                             case "Restaurant":
-                                rooms.Add(new Cafe(_content, id, position, dimensions, Int32.Parse(data["Capacity"])));
+                                rooms.Add(new Cafe(id, position, dimensions, Int32.Parse(data["Capacity"])));
                                 break;
                             case "Room":
-                                rooms.Add(new GuestRoom(_content, id, position, dimensions, Int32.Parse(data["Classification"][0].ToString())));
+                                rooms.Add(new GuestRoom(id, position, dimensions, Int32.Parse(data["Classification"][0].ToString())));
                                 break;
                             case "Cinema":
-                                rooms.Add(new Cinema(_content, id, position, dimensions, _config.FilmDuration));
+                                rooms.Add(new Cinema(id, position, dimensions, _config.FilmDuration));
                                 break;
                             case "Fitness":
-                                rooms.Add(new Fitness(_content, id, position, dimensions));
+                                rooms.Add(new Fitness(id, position, dimensions));
                                 break;
                             default:
                                 break;
@@ -102,7 +102,7 @@ namespace Hotel
                             for (int i = 0; i < dimensions.Y - 1; i++)
                             {
                                 Room roomToAddTo = rooms.Last();
-                                rooms.Add(new EmptyRoom(_content, -1, new Point(position.X, position.Y + i), new Point(dimensions.X, 1)));
+                                rooms.Add(new EmptyRoom(-1, new Point(position.X, position.Y + i), new Point(dimensions.X, 1)));
                                 rooms.Last().Name = roomToAddTo.Name;
                             }
                         }
@@ -115,21 +115,21 @@ namespace Hotel
             for(int i = 0; i <= extremeY; i++)
             {
                 extremeID++;
-                rooms.Add(new ElevatorShaft(_content, extremeID, new Point(0, i), _config.ElevatorSpeed));
+                rooms.Add(new ElevatorShaft(extremeID, new Point(0, i), _config.ElevatorSpeed));
             }
 
             // Add Stairs to the hotel.
             for (int i = 0; i <= extremeY; i++)
             {
                 extremeID++;
-                rooms.Add(new Staircase(_content, extremeID, new Point(extremeX + 1, i), _config.StaircaseWeight));
+                rooms.Add(new Staircase(extremeID, new Point(extremeX + 1, i), _config.StaircaseWeight));
             }
 
             // Add lobbies.
             for(int i = 1; i <= extremeX; i++)
             {
                 extremeID++;
-                rooms.Add(new Lobby(_content, extremeID, new Point(i, 0), new Point(1,1)));
+                rooms.Add(new Lobby(extremeID, new Point(i, 0), new Point(1,1)));
             }
 
             return rooms;

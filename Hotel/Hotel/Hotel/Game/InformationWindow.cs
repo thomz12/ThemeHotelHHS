@@ -46,7 +46,7 @@ namespace Hotel
             TextColor = Color.DarkSlateBlue;
 
             // Load the asset for the window's background
-            _windowSprite = new Sprite(content);
+            _windowSprite = new Sprite();
             _windowSprite.LoadSprite("PaperClean");
             _windowSprite.DrawOrder = 0.0f;
 

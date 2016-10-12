@@ -86,6 +86,7 @@
     <Compile Include="Game\HotelEventHandler.cs" />
     <Compile Include="Game\InformationWindow.cs" />
     <Compile Include="Game\EventListener.cs" />
+    <Compile Include="Game\ServiceLocator.cs" />
     <Compile Include="Hotel\HotelObject.cs" />
     <Compile Include="Game\Input.cs" />
     <Compile Include="Game\NameGenerator.cs" />

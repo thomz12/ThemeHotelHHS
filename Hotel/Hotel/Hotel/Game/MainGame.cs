@@ -21,7 +21,6 @@ namespace Hotel
     {
         public float HTE_Modifier { get; private set; }
 
-        private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
         private Hotel _hotel;
@@ -41,17 +40,27 @@ namespace Hotel
 
         public MainGame()
         {
-            _graphics = new GraphicsDeviceManager(this);
+            GraphicsDeviceManager graphicsDeviceManager = new GraphicsDeviceManager(this);
             Content.RootDirectory = "Content";
+
+            // We are using the ServiceLocator pattern here!
+            // Add the services to the static class.
+            ServiceLocator.Add<GraphicsDeviceManager>(graphicsDeviceManager);
+            ServiceLocator.Add<ContentManager>(Content);
+            ServiceLocator.Add<GraphicsDevice>(GraphicsDevice);
+
+            // Testing
+            GameServiceContainer c = ServiceLocator.GetContainerForTesting();
+
             Window.Title = "Hotel Simulation";
             IsMouseVisible = true;
 
             // Enable v-sync
-            _graphics.SynchronizeWithVerticalRetrace = true;
-            _graphics.PreferredBackBufferHeight = 720;
-            _graphics.PreferredBackBufferWidth = 1280;
+            graphicsDeviceManager.SynchronizeWithVerticalRetrace = true;
+            graphicsDeviceManager.PreferredBackBufferHeight = 720;
+            graphicsDeviceManager.PreferredBackBufferWidth = 1280;
 
-            _graphics.IsFullScreen = false;
+            graphicsDeviceManager.IsFullScreen = false;
 
             // Subscribe to the exiting event
             Exiting += MainGame_Exiting;
@@ -59,6 +68,56 @@ namespace Hotel
             // Disable the fixed time step, causes low frame rates on some computers.
             IsFixedTimeStep = false;
 
+            LoadConfig();
+        }
+
+        private void MainGame_Exiting(object sender, EventArgs e)
+        {
+            (_listener as EventListener).Exit();
+            HotelEventManager.Stop();
+        }
+
+        /// <summary>
+        /// Allows the game to perform any initialization it needs to before starting to run.
+        /// This is where it can query for any required services and load any non-graphic
+        /// related content.  Calling base.Initialize will enumerate through any components
+        /// and initialize them as well.
+        /// </summary>
+        protected override void Initialize()
+        {
+            // TODO: Add your initialization logic here
+            base.Initialize();
+
+            _renderTexture = new RenderTarget2D(GraphicsDevice, 200, 200, false, SurfaceFormat.Color, DepthFormat.None);
+        }
+
+        /// <summary>
+        /// LoadContent will be called once per game and is the place to load
+        /// all of your content.
+        /// </summary>
+        protected override void LoadContent()
+        {
+            // Create a new SpriteBatch, which can be used to draw textures.
+            _spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            _informationWindow = new InformationWindow(Content);
+
+            _hotel = new Hotel(Content, _config);
+            _camera = new Camera(GraphicsDevice.PresentationParameters.BackBufferWidth, GraphicsDevice.PresentationParameters.BackBufferHeight);
+            _camera.Controlable = true;
+            _closeUpCamera = new Camera(200, 200);
+            _background = new Background(_camera);
+
+            HotelEventManager.Start();
+
+            HotelEventHandler hem = new HotelEventHandler(_hotel);
+
+            _listener = new EventListener(hem);
+            HotelEventManager.Register(_listener);
+        }
+
+        private void LoadConfig()
+        {
             // Load in the settings, and boy a lot can go wrong here.
             // First up is the check if there is actually a config file present.
             if (File.Exists(@"Config.cfg"))
@@ -108,51 +167,6 @@ namespace Hotel
                 // Quit the simulation
                 this.Exit();
             }
-        }
-
-        private void MainGame_Exiting(object sender, EventArgs e)
-        {
-            (_listener as EventListener).Exit();
-            HotelEventManager.Stop();
-        }
-
-        /// <summary>
-        /// Allows the game to perform any initialization it needs to before starting to run.
-        /// This is where it can query for any required services and load any non-graphic
-        /// related content.  Calling base.Initialize will enumerate through any components
-        /// and initialize them as well.
-        /// </summary>
-        protected override void Initialize()
-        {
-            // TODO: Add your initialization logic here
-            base.Initialize();
-
-            _renderTexture = new RenderTarget2D(GraphicsDevice, 200, 200, false, SurfaceFormat.Color, DepthFormat.None);
-        }
-
-        /// <summary>
-        /// LoadContent will be called once per game and is the place to load
-        /// all of your content.
-        /// </summary>
-        protected override void LoadContent()
-        {
-            // Create a new SpriteBatch, which can be used to draw textures.
-            _spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            _informationWindow = new InformationWindow(Content);
-
-            _hotel = new Hotel(Content, _config);
-            _camera = new Camera(GraphicsDevice.PresentationParameters.BackBufferWidth, GraphicsDevice.PresentationParameters.BackBufferHeight);
-            _camera.Controlable = true;
-            _closeUpCamera = new Camera(200, 200);
-            _background = new Background(Content, _camera);
-
-            HotelEventManager.Start();
-
-            HotelEventHandler hem = new HotelEventHandler(_hotel);
-
-            _listener = new EventListener(hem);
-            HotelEventManager.Register(_listener);
         }
 
         /// <summary>

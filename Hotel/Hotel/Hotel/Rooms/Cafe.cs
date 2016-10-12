@@ -12,7 +12,7 @@ namespace Hotel.Rooms
     {
         public int Capacity { get; private set; }
 
-        public Cafe(ContentManager content, int id, Point position, Point size, int capacity) : base(content, id, position, size)
+        public Cafe(int id, Point position, Point size, int capacity) : base(id, position, size)
         {
             Sprite.LoadSprite("2x1Cafe");
             Capacity = capacity;

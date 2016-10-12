@@ -22,9 +22,14 @@ namespace Hotel
         /// </summary>
         /// <param name="filePath">The path to the file to load</param>
         /// <param name="content">The content manager used to load in images</param>
-        public Sprite(ContentManager content)
+        public Sprite()
         {
-            _content = content;
+            //Gameservicecontainer
+            
+            //_content = (ContentManager)serviceContainer.GetService(typeof(ContentManager));
+            
+            _content = ServiceLocator.Get<ContentManager>();
+
             DrawOrder = 0;
             Color = Color.White;
 

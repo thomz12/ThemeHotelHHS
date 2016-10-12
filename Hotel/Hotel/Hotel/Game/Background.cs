@@ -16,10 +16,10 @@ namespace Hotel
         private Sprite _sprite;
         private Camera _cam;
 
-        public Background(ContentManager content, Camera cam)
+        public Background(Camera cam)
         {
             _cam = cam;
-            _sprite = new Sprite(content);
+            _sprite = new Sprite();
             _sprite.LoadSprite("BluePrint");
         }
 

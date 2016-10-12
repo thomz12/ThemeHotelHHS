@@ -46,7 +46,7 @@ namespace Hotel
         /// Default constructor.
         /// </summary>
         /// <param name="content">The content manager used to load in images.</param>
-        public Elevator(ContentManager content, float speed) : base(content)
+        public Elevator(float speed) : base()
         {
             Sprite.LoadSprite("Elevator");
             Name = "Elevator";

@@ -13,7 +13,7 @@ namespace Hotel.Rooms
         public bool Open { get; private set; }
         private float _timeLeft;
 
-        public Cinema(ContentManager content, int id, Point position, Point size, int duration) : base(content, id, position, size)
+        public Cinema(int id, Point position, Point size, int duration) : base(id, position, size)
         {
             Sprite.LoadSprite("2x2Cinema");
             Name = "Cinema";

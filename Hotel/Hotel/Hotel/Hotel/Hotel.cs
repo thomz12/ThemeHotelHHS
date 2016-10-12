@@ -17,7 +17,6 @@ namespace Hotel
         public Dictionary<string, Person> Persons { get; set; }
         public Receptionist Receptionist { get; set; }
 
-        private ContentManager _contentManager;
         private ConfigModel _config;
         private int _cleaners;
 
@@ -31,7 +30,6 @@ namespace Hotel
             Persons = new Dictionary<string, Person>();
 
             _config = config;
-            _contentManager = content;
 
             // Set the path to the file of the hotel that needs to be loaded.
             HotelLayoutFilePath = config.LayoutPath;
@@ -41,7 +39,7 @@ namespace Hotel
             List<Room> buildedRooms = builder.BuildHotel(HotelLayoutFilePath);
 
             // Add the rooms, and connect them, starts with an empty room outside with ID 0.
-            Room outside = new EmptyRoom(content, 0, new Point(-1, 0), new Point(1, 1));
+            Room outside = new EmptyRoom(0, new Point(-1, 0), new Point(1, 1));
             Rooms.Add(outside);
             for (int i = 0; i < buildedRooms.Count; i++)
             {
@@ -59,13 +57,13 @@ namespace Hotel
         public void CreateStaff()
         {
             Room firstLobby = Rooms.OfType<Lobby>().OrderBy(x => x.RoomPosition.X).First();
-            Receptionist = new Receptionist(_contentManager, firstLobby, Rooms, -1, _config.WalkingSpeed, _config.ReceptionistWorkLenght);
+            Receptionist = new Receptionist(firstLobby, Rooms, -1, _config.WalkingSpeed, _config.ReceptionistWorkLenght);
             Persons.Add("Receptionist", Receptionist);
 
             Random r = new Random();
             for (int i = 0; i < _cleaners; i++)
             {
-                Persons.Add("Cleaner" + i, new Cleaner(_contentManager, Rooms[r.Next(1, Rooms.Count())], _config.Survivability, _config.WalkingSpeed, _config.CleaningDuration, Rooms));
+                Persons.Add("Cleaner" + i, new Cleaner(Rooms[r.Next(1, Rooms.Count())], _config.Survivability, _config.WalkingSpeed, _config.CleaningDuration, Rooms));
             }
         }
 
@@ -107,7 +105,7 @@ namespace Hotel
         /// </summary>
         public void AddGuest(string name, int stars)
         {
-            Guest guest = new Guest(_contentManager, Rooms[0], _config.Survivability, _config.WalkingSpeed);
+            Guest guest = new Guest(Rooms[0], _config.Survivability, _config.WalkingSpeed);
             guest.StayState = StayState.CheckIn;
             guest.Classification = stars;
             Persons.Add(name, guest);

@@ -92,7 +92,7 @@ namespace Hotel.Persons
         /// <param name="room">The room to spawn in.</param>
         /// <param name="survivability">The time it takes for people to die while waiting, people with -1 are invunerable.</param>
         /// <param name="walkingSpeed">The walking speed of people.</param>
-        public Person(ContentManager content, Room room, float survivability, float walkingSpeed) : base(content)
+        public Person(Room room, float survivability, float walkingSpeed) : base()
         {
             Sprite.LoadSprite("Guest");
             Sprite.DrawOrder = 1;

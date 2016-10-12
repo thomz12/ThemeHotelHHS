@@ -53,7 +53,7 @@ namespace Hotel.Persons
         /// Constructor.
         /// </summary>
         /// <param name="content">The content manager used to load in images.</param>
-        public Guest(ContentManager content, Room room, float survivability, float walkingSpeed) : base(content, room, survivability, walkingSpeed)
+        public Guest(Room room, float survivability, float walkingSpeed) : base(room, survivability, walkingSpeed)
         {
             NameGenerator generator = new NameGenerator();
 

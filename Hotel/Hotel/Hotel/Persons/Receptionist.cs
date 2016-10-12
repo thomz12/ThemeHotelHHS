@@ -22,7 +22,7 @@ namespace Hotel.Persons
         /// Constructor.
         /// </summary>
         /// <param name="content">The content manager used to load in images.</param>
-        public Receptionist(ContentManager content, Room room, List<Room> rooms, float survivability, float walkingSpeed, float workDuration) : base(content, room, -1, walkingSpeed)
+        public Receptionist(Room room, List<Room> rooms, float survivability, float walkingSpeed, float workDuration) : base(room, -1, walkingSpeed)
         {
             Name = "Receptionist";
             Sprite.LoadSprite("Receptionist");
