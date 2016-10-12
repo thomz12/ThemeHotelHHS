@@ -74,43 +74,22 @@ namespace Hotel.Persons
             // Check if this cleaner is busy with cleaning or walking
             if (!_isBusy)
             {
-                bool thereIsADirtyRoom = false;
-                bool thereIsAEmergency = false;
+                // Call dijkstra's because there is an emergency.
+                FindAndTargetRoom(x => x.State == RoomState.Emergency);
 
-                // Check first if there is a dirty room or a room with an emergency.
-                foreach (Room room in _allRoomsInHotel)
+                if (Path != null)
                 {
-                    if(room.State == RoomState.Emergency)
-                    {
-                        thereIsAEmergency = true;
-                    }
-
-                    if (room.State == RoomState.Dirty)
-                    {
-                        thereIsADirtyRoom = true;
-                    }
-                }
-
-                // Check if a room with a emergency was found.
-                if (thereIsAEmergency)
-                {
-                    // Call dijkstra's because there is an emergency.
-                    //Path = _pathFinder.FindPathToRoomWithState(CurrentRoom, RoomState.Emergency);
-                    FindAndTargetRoom(x => x.State == RoomState.Emergency);
                     // Set the time it takes to clean the room.
                     _cleaningTimer = TargetRoom.GetTimeToCleanEmergency();
                 }
                 else
                 {
-                    // Check if a room with a dirty state was found.
-                    if (thereIsADirtyRoom)
+                    FindAndTargetRoom(x => x.State == RoomState.Dirty);
+                    
+                    if(Path != null)
                     {
-                        // Call dijkstra's because there is a dirty room.
-                        //Path = _pathFinder.FindPathToRoomWithState(CurrentRoom, RoomState.Dirty);
-                        FindAndTargetRoom(x => x.State == RoomState.Dirty);
-
-                        // Set teh time it takes to clean the room.
-                        _cleaningTimer = _cleaningDuration;
+                        // Set the time it takes to clean the room.
+                        _cleaningTimer = TargetRoom.GetTimeToCleanEmergency();
                     }
                     else
                     {
