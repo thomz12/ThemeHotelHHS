@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Hotel;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework;
 
 namespace Hotel.Persons
@@ -21,8 +20,12 @@ namespace Hotel.Persons
         /// <summary>
         /// Constructor.
         /// </summary>
-        /// <param name="content">The content manager used to load in images.</param>
-        public Receptionist(ContentManager content, Room room, List<Room> rooms, float survivability, float walkingSpeed, float workDuration) : base(content, room, -1, walkingSpeed)
+        /// <param name="room">The room to spawn the guest in.</param>
+        /// <param name="rooms">All the rooms in the hotel.</param>
+        /// <param name="survivability">The time the guest can stand in a queue without dieing.</param>
+        /// <param name="walkingSpeed">The speed at which the guest walks.</param>
+        /// <param name="workDuration">The speed at which the receptionist checks in/out.</param>
+        public Receptionist(Room room, List<Room> rooms, float survivability, float walkingSpeed, float workDuration) : base(room, -1, walkingSpeed)
         {
             Name = "Receptionist";
             Sprite.LoadSprite("Receptionist");

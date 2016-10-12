@@ -27,7 +27,7 @@ namespace Hotel
         private Point _titleOffset;
         private Point _infoOffset;
 
-        public InformationWindow(ContentManager content)
+        public InformationWindow()
         {
             // Set some default values for properties
             TitleTextSize = 0.7f;
@@ -40,13 +40,13 @@ namespace Hotel
             _infoOffset = new Point(45, 310);
 
             // Load the font
-            _spriteFont = content.Load<SpriteFont>("InformationWindowFont");
+            _spriteFont = ServiceLocator.Get<ContentManager>().Load<SpriteFont>("InformationWindowFont");
 
             // Set the text color
             TextColor = Color.DarkSlateBlue;
 
             // Load the asset for the window's background
-            _windowSprite = new Sprite(content);
+            _windowSprite = new Sprite();
             _windowSprite.LoadSprite("PaperClean");
             _windowSprite.DrawOrder = 0.0f;
 

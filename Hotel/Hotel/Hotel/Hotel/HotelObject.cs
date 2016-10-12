@@ -15,8 +15,6 @@ namespace Hotel
         public string Name { get; set; }
         public Rectangle BoundingBox { get; set; }
 
-        private ContentManager _content;
-
         public event EventHandler Click;
         public event EventHandler RemoveObject;
 
@@ -24,11 +22,10 @@ namespace Hotel
         /// Constructor
         /// </summary>
         /// <param name="content">The content manager</param>
-        public HotelObject(ContentManager content)
+        public HotelObject()
         {
-            _content = content;
             BoundingBox = new Rectangle();
-            Sprite = new Sprite(content);
+            Sprite = new Sprite();
 
             Name = "HotelObject";
         }

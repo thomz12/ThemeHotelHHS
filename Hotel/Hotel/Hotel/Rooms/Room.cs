@@ -1,6 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Content;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -55,9 +55,8 @@ namespace Hotel
         /// <param name="ID">The id given to the room.</param>
         /// <param name="position">The position of the room.</param>
         /// <param name="size">The size of the room.</param>
-        public Room(ContentManager content, int id, Point position, Point size) : base(content)
+        public Room(int id, Point position, Point size) : base()
         {
-            Sprite = new Sprite(content);
             ID = id;
             RoomPosition = position;
             RoomSize = size;
@@ -69,7 +68,7 @@ namespace Hotel
             // Set the 'real' position of the room.
             Position = new Vector2(position.X * ROOMWIDTH, position.Y * ROOMHEIGHT);
 
-            _emergencyTexture = content.Load<Texture2D>("CleaningEmergency");
+            _emergencyTexture = ServiceLocator.Get<ContentManager>().Load<Texture2D>("CleaningEmergency");
 
             Sprite.SetPosition(new Point((int)Position.X, (int)Position.Y));
             Sprite.SetSize(new Point(size.X * ROOMWIDTH, size.Y * ROOMHEIGHT));

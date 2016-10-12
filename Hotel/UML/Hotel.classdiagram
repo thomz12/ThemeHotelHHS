@@ -279,6 +279,12 @@
               <referencedTypeMoniker Id="8de7e95a-f95d-400d-9c92-a70854b56fea" LastKnownName="float" />
             </type_NamedElement>
           </property>
+          <property Id="fb830221-6213-4b71-a294-5c53593faa02" name="_content" visibility="Private" isLeaf="false" isStatic="false" isReadOnly="false" isUnique="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+            <elementDefinition Id="38e4177b-d8e7-41cc-8b1c-d3196986cf71" />
+            <type_NamedElement>
+              <referencedTypeMoniker Id="0b48e831-6982-4d21-a4a0-dcafba623625" LastKnownName="ContentManager" />
+            </type_NamedElement>
+          </property>
         </ownedAttributesInternal>
         <ownedOperationsInternal>
           <operation Id="542d30d2-768b-4d38-ae28-3318bc24c9be" name="Draw" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
@@ -317,16 +323,6 @@
           </operation>
           <operation Id="a9cfaa70-05c4-413e-b5a2-c6953d12d8d1" name="Sprite" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="30855fc9-96c2-4b4c-ba43-85a10872fabd" />
-            <ownedParameters>
-              <operationHasOwnedParameters>
-                <parameter Id="66410133-e317-41f3-ad3c-ba36a32e8edf" name="content" direction="In" isUnique="false">
-                  <elementDefinition Id="dcb5ab0d-3ace-494e-a0e6-d85d2168cde1" />
-                  <type_NamedElement>
-                    <referencedTypeMoniker Id="0b48e831-6982-4d21-a4a0-dcafba623625" LastKnownName="ContentManager" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-            </ownedParameters>
           </operation>
           <operation Id="e9318b00-a5bb-4b93-8b39-a10c36f76f13" name="LoadSprite" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
             <elementDefinition Id="bd21c498-85e6-41bd-a31b-e7dc6984a38f" />
@@ -3442,18 +3438,10 @@
             <elementDefinition Id="99d83a1e-55c5-4111-a7d7-ffa09302763a" />
             <ownedParameters>
               <operationHasOwnedParameters>
-                <parameter Id="85584dc5-edfb-4dc4-949b-45e3b3178c15" name="content" direction="In" isUnique="false">
-                  <elementDefinition Id="055a79e1-2c85-443c-bb32-580ef3c459e1" />
+                <parameter Id="7365e6f6-6ea1-4217-874a-6c061a287348" name="cam" direction="In" isUnique="false">
+                  <elementDefinition Id="14f752fe-9b81-40a8-abe6-3c6b10dbc1c9" />
                   <type_NamedElement>
-                    <referencedTypeMoniker Id="0b48e831-6982-4d21-a4a0-dcafba623625" LastKnownName="ContentManager" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter Id="feb89c90-3c2e-4b05-814e-09bf1ce3fc4b" name="cam" direction="In" isUnique="false">
-                  <elementDefinition Id="cc3cb478-013b-470d-8466-37b0832ef276" />
-                  <type_NamedElement>
-                    <referencedTypeMoniker Id="fb78e01d-7f49-4526-b587-5a4df91e9985" LastKnownName="Camera" />
+                    <referencedTypeMoniker Id="509d767d-2896-4e85-9395-dc67a6a97368" LastKnownName="Camera" />
                   </type_NamedElement>
                 </parameter>
               </operationHasOwnedParameters>
@@ -3496,11 +3484,6 @@
         </ownedOperationsInternal>
       </class>
     </logicalClassDesignerModelHasTypes>
-    <packageHasNamedElement>
-      <referencedType Id="fb78e01d-7f49-4526-b587-5a4df91e9985" name="Camera" isAbstract="false" isLeaf="false" cachedFullName="Camera">
-        <elementDefinition Id="52e015e9-f37b-4051-b1f2-72d1d94635bc" />
-      </referencedType>
-    </packageHasNamedElement>
     <packageHasNamedElement>
       <referencedType Id="4cb38c0e-1b16-4cae-a4bf-c9592a2f65de" name="GameTIme" isAbstract="false" isLeaf="false" cachedFullName="GameTIme">
         <elementDefinition Id="fa8aa03d-31cf-464c-ba35-3223d24f7b95" />
@@ -3793,6 +3776,11 @@
     <packageHasNamedElement>
       <referencedType Id="045fb848-0613-487f-b7e8-cfa4d9bf426c" name="objec" isAbstract="false" isLeaf="false" cachedFullName="objec">
         <elementDefinition Id="127eeae7-cd5c-4131-9859-5d4d42cb70e2" />
+      </referencedType>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <referencedType Id="509d767d-2896-4e85-9395-dc67a6a97368" name="Camera" isAbstract="false" isLeaf="false" cachedFullName="UML::Camera">
+        <elementDefinition Id="65d3e827-9aed-4ed2-8dc6-bbd258afe779" />
       </referencedType>
     </packageHasNamedElement>
   </packagedElements>

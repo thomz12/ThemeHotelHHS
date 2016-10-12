@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +14,7 @@ namespace Hotel.Rooms
 
         public event EventHandler Finished;
 
-        public Cinema(ContentManager content, int id, Point position, Point size, int duration) : base(content, id, position, size)
+        public Cinema(int id, Point position, Point size, int duration) : base(id, position, size)
         {
             Sprite.LoadSprite("2x2Cinema");
             Name = "Cinema";

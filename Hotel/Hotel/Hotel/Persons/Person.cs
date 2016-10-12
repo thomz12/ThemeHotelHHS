@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -79,11 +78,10 @@ namespace Hotel.Persons
         /// <summary>
         /// Constructor.
         /// </summary>
-        /// <param name="content">The content manager.</param>
         /// <param name="room">The room to spawn in.</param>
         /// <param name="survivability">The time it takes for people to die while waiting, people with -1 are invunerable.</param>
         /// <param name="walkingSpeed">The walking speed of people.</param>
-        public Person(ContentManager content, Room room, float survivability, float walkingSpeed) : base(content)
+        public Person(Room room, float survivability, float walkingSpeed) : base()
         {
             Sprite.LoadSprite("Guest");
             Sprite.DrawOrder = 1;
@@ -126,15 +124,17 @@ namespace Hotel.Persons
             // Find the rooms, and its path
             Path = _pathFinder.Find(CurrentRoom, rule);
 
-            TargetRoom = Path.Last();
+            if (Path != null)
+            {
+                TargetRoom = Path.Last();
 
-            if (Inside)
-                CurrentRoom.PeopleCount--;
+                if (Inside)
+                    CurrentRoom.PeopleCount--;
 
-            Inside = false;
-            
+                Inside = false;
 
-            CurrentTask = PersonTask.MovingCenter;
+                CurrentTask = PersonTask.MovingCenter;
+            }
         }
 
         /// <summary>

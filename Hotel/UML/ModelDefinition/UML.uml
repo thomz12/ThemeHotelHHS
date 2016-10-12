@@ -696,6 +696,25 @@
                 LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
+          <property
+            Id="38e4177b-d8e7-41cc-8b1c-d3196986cf71"
+            name="_content"
+            visibility="Private"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="01ba2594-8b9a-4c2f-b7aa-2a19ad25c763"
+                LastKnownName="ContentManager"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
         </ownedAttributesInternal>
         <ownedOperationsInternal>
           <operation
@@ -769,24 +788,7 @@
             isStatic="false"
             isAbstract="false"
             concurrency="Sequential"
-            isQuery="false">
-            <ownedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="dcb5ab0d-3ace-494e-a0e6-d85d2168cde1"
-                  name="content"
-                  direction="In"
-                  isUnique="false">
-                  <type_NamedElement>
-                    <undefinedTypeMoniker
-                      Id="01ba2594-8b9a-4c2f-b7aa-2a19ad25c763"
-                      LastKnownName="ContentManager"
-                      LastKnownLocation="UML.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-            </ownedParameters>
-          </operation>
+            isQuery="false" />
           <operation
             Id="bd21c498-85e6-41bd-a31b-e7dc6984a38f"
             name="LoadSprite"
@@ -7968,27 +7970,13 @@
             <ownedParameters>
               <operationHasOwnedParameters>
                 <parameter
-                  Id="055a79e1-2c85-443c-bb32-580ef3c459e1"
-                  name="content"
-                  direction="In"
-                  isUnique="false">
-                  <type_NamedElement>
-                    <undefinedTypeMoniker
-                      Id="01ba2594-8b9a-4c2f-b7aa-2a19ad25c763"
-                      LastKnownName="ContentManager"
-                      LastKnownLocation="UML.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="cc3cb478-013b-470d-8466-37b0832ef276"
+                  Id="14f752fe-9b81-40a8-abe6-3c6b10dbc1c9"
                   name="cam"
                   direction="In"
                   isUnique="false">
                   <type_NamedElement>
-                    <undefinedTypeMoniker
-                      Id="52e015e9-f37b-4051-b1f2-72d1d94635bc"
+                    <classMoniker
+                      Id="65d3e827-9aed-4ed2-8dc6-bbd258afe779"
                       LastKnownName="Camera"
                       LastKnownLocation="UML.uml" />
                   </type_NamedElement>

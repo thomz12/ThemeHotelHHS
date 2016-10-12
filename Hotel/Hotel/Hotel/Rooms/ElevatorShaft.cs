@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 
 namespace Hotel
@@ -19,7 +18,7 @@ namespace Hotel
         /// </summary>
         /// <param name="content">The content manager used to load in images.</param>
         /// <param name="position">The position of the room.</param>
-        public ElevatorShaft(ContentManager content, int id, Point position, float elevatorSpeed) : base(content, id, position, new Point(1, 1))
+        public ElevatorShaft(int id, Point position, float elevatorSpeed) : base(id, position, new Point(1, 1))
         {
             Sprite.LoadSprite("1x1ElevatorShaft");
             Name = "Elevator Shaft";
@@ -28,7 +27,7 @@ namespace Hotel
 
             if (RoomPosition.Y == 0)
             {
-                Elevator = new Elevator(content, elevatorSpeed);
+                Elevator = new Elevator(elevatorSpeed);
                 Elevator.Arrival += Elevator_Arrival;
             }
         }

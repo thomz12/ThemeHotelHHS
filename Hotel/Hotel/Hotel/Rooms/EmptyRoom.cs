@@ -9,7 +9,7 @@ namespace Hotel.Rooms
 {
     class EmptyRoom : Room
     {
-        public EmptyRoom(ContentManager content, int id, Point position, Point size) : base(content, id, position, size)
+        public EmptyRoom(int id, Point position, Point size) : base(id, position, size)
         {
             BoundingBox = new Rectangle();
             Name = "Outside";

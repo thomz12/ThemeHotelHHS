@@ -61,7 +61,7 @@ namespace HotelUnitTests
         [TestMethod]
         public void ElevatorConstructor()
         {
-            Elevator elevator = new Elevator(null, 90);
+            Elevator elevator = new Elevator(90);
         }
     }
 }

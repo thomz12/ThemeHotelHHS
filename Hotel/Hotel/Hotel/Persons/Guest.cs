@@ -1,5 +1,4 @@
-﻿using Microsoft.Xna.Framework.Content;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -51,8 +50,10 @@ namespace Hotel.Persons
         /// <summary>
         /// Constructor.
         /// </summary>
-        /// <param name="content">The content manager used to load in images.</param>
-        public Guest(ContentManager content, Room room, float survivability, float walkingSpeed) : base(content, room, survivability, walkingSpeed)
+        /// <param name="room">The room to spawn the guest in.</param>
+        /// <param name="survivability">The time the guest can stand in a queue without dieing.</param>
+        /// <param name="walkingSpeed">The speed at which the guest walks.</param>
+        public Guest(Room room, float survivability, float walkingSpeed) : base(room, survivability, walkingSpeed)
         {
             NameGenerator generator = new NameGenerator();
 

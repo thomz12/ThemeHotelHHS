@@ -1,6 +1,5 @@
 ﻿using Hotel.Persons;
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +13,7 @@ namespace Hotel
 
         public Guest Guest { get; set; } 
 
-        public GuestRoom(ContentManager content, int id, Point position, Point size, int classification) : base(content, id, position, size)
+        public GuestRoom(int id, Point position, Point size, int classification) : base(id, position, size)
         {
             // Check for the room size and load in specified sprites.
             if(size.X == 2 && size.Y == 1)

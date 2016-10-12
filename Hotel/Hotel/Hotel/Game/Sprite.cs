@@ -18,13 +18,14 @@ namespace Hotel
         private ContentManager _content;
 
         /// <summary>
-        /// Constructor
+        /// Constructor.
         /// </summary>
-        /// <param name="filePath">The path to the file to load</param>
-        /// <param name="content">The content manager used to load in images</param>
-        public Sprite(ContentManager content)
+        /// <param name="filePath">The path to the file to load.</param>
+        /// <param name="content">The content manager used to load in images.</param>
+        public Sprite()
         {
-            _content = content;
+            _content = ServiceLocator.Get<ContentManager>();
+
             DrawOrder = 0;
             Color = Color.White;
 

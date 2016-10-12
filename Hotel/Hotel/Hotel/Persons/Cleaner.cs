@@ -1,5 +1,4 @@
-﻿using Microsoft.Xna.Framework.Content;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,10 +18,14 @@ namespace Hotel.Persons
         /// <summary>
         /// Constructor.
         /// </summary>
-        /// <param name="content">The content manager used to load in images.</param>
-        public Cleaner(ContentManager content, Room room, float survivability, float walkingSpeed, int cleaningDuration, List<Room> allRooms) : base(content, room, survivability, walkingSpeed)
+        /// <param name="room">The room to spawn the guest in.</param>
+        /// <param name="survivability">The time the guest can stand in a queue without dieing.</param>
+        /// <param name="walkingSpeed">The speed at which the guest walks.</param>
+        /// <param name="cleaningDuration">The time it takes to clean a normal dirty room.</param>
+        /// <param name="allRooms">All the rooms in the hotel.</param>
+        public Cleaner(Room room, float survivability, float walkingSpeed, int cleaningDuration, List<Room> allRooms) : base(room, survivability, walkingSpeed)
         {
-            Name = "Cleaner";
+            Name = "Tim";
             Sprite.LoadSprite("Cleaner");
             _isCleaning = false;
             _cleaningDuration = (float)cleaningDuration;
@@ -71,43 +74,22 @@ namespace Hotel.Persons
             // Check if this cleaner is busy with cleaning or walking
             if (!_isBusy)
             {
-                bool thereIsADirtyRoom = false;
-                bool thereIsAEmergency = false;
+                // Call dijkstra's because there is an emergency.
+                FindAndTargetRoom(x => x.State == RoomState.Emergency);
 
-                // Check first if there is a dirty room or a room with an emergency.
-                foreach (Room room in _allRoomsInHotel)
+                if (Path != null)
                 {
-                    if(room.State == RoomState.Emergency)
-                    {
-                        thereIsAEmergency = true;
-                    }
-
-                    if (room.State == RoomState.Dirty)
-                    {
-                        thereIsADirtyRoom = true;
-                    }
-                }
-
-                // Check if a room with a emergency was found.
-                if (thereIsAEmergency)
-                {
-                    // Call dijkstra's because there is an emergency.
-                    //Path = _pathFinder.FindPathToRoomWithState(CurrentRoom, RoomState.Emergency);
-                    FindAndTargetRoom(x => x.State == RoomState.Emergency);
                     // Set the time it takes to clean the room.
                     _cleaningTimer = TargetRoom.GetTimeToCleanEmergency();
                 }
                 else
                 {
-                    // Check if a room with a dirty state was found.
-                    if (thereIsADirtyRoom)
+                    FindAndTargetRoom(x => x.State == RoomState.Dirty);
+                    
+                    if(Path != null)
                     {
-                        // Call dijkstra's because there is a dirty room.
-                        //Path = _pathFinder.FindPathToRoomWithState(CurrentRoom, RoomState.Dirty);
-                        FindAndTargetRoom(x => x.State == RoomState.Dirty);
-
-                        // Set teh time it takes to clean the room.
-                        _cleaningTimer = _cleaningDuration;
+                        // Set the time it takes to clean the room.
+                        _cleaningTimer = TargetRoom.GetTimeToCleanEmergency();
                     }
                     else
                     {
