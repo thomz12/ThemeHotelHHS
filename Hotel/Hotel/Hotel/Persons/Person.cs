@@ -273,6 +273,10 @@ namespace Hotel.Persons
                         // Get a new task.
                         UpdateCurrentTask();
 
+                        // When the task is still moving to the center, we wait.
+                        if (CurrentTask == PersonTask.MovingCenter)
+                            CurrentTask = PersonTask.Waiting;
+
                         if (TargetRoom == CurrentRoom)
                         {
                             OnArrival(new EventArgs());
@@ -280,7 +284,7 @@ namespace Hotel.Persons
                         }
 
                         // If the elevator is not yet called, and the person is in an elevatorshaft.
-                        if (!_calledElevator && CurrentRoom is ElevatorShaft)
+                        if (!_calledElevator && CurrentRoom is ElevatorShaft && Path != null)
                         {
                             _startStaft = CurrentRoom as ElevatorShaft;
                             // Get the last elevator in the path (CAN BREAK WITH MULTIPLE ELEVATORS!)
@@ -295,10 +299,6 @@ namespace Hotel.Persons
                                 CurrentTask = PersonTask.InQueue;
                             }
                         }
-
-                        // When the task is still moving to the center, we wait.
-                        if (CurrentTask == PersonTask.MovingCenter)
-                            CurrentTask = PersonTask.Waiting;
                     }
                     break;
                 default:
