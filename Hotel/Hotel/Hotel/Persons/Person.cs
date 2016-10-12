@@ -112,6 +112,10 @@ namespace Hotel.Persons
                 Arrival(this, e);
         }
 
+        /// <summary>
+        /// Find a path to a room, using a rule. If a room has been found a path is saved and the target room is set.
+        /// </summary>
+        /// <param name="rule">The rule that is used for searching a room.</param>
         public void FindAndTargetRoom(FindPath rule)
         {
             // If the person is currently in the elevator, its current room is the targeted shaft.
