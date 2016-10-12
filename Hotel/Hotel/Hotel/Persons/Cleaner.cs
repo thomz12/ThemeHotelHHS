@@ -1,5 +1,4 @@
-﻿using Microsoft.Xna.Framework.Content;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +18,11 @@ namespace Hotel.Persons
         /// <summary>
         /// Constructor.
         /// </summary>
-        /// <param name="content">The content manager used to load in images.</param>
+        /// <param name="room">The room to spawn the guest in.</param>
+        /// <param name="survivability">The time the guest can stand in a queue without dieing.</param>
+        /// <param name="walkingSpeed">The speed at which the guest walks.</param>
+        /// <param name="cleaningDuration">The time it takes to clean a normal dirty room.</param>
+        /// <param name="allRooms">All the rooms in the hotel.</param>
         public Cleaner(Room room, float survivability, float walkingSpeed, int cleaningDuration, List<Room> allRooms) : base(room, survivability, walkingSpeed)
         {
             Name = "Tim";

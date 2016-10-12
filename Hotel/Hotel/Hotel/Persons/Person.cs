@@ -1,5 +1,4 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
@@ -88,7 +87,6 @@ namespace Hotel.Persons
         /// <summary>
         /// Constructor.
         /// </summary>
-        /// <param name="content">The content manager.</param>
         /// <param name="room">The room to spawn in.</param>
         /// <param name="survivability">The time it takes for people to die while waiting, people with -1 are invunerable.</param>
         /// <param name="walkingSpeed">The walking speed of people.</param>

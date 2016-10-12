@@ -15,8 +15,6 @@ namespace Hotel
         public string Name { get; set; }
         public Rectangle BoundingBox { get; set; }
 
-        private ContentManager _content;
-
         public event EventHandler Click;
         public event EventHandler RemoveObject;
 

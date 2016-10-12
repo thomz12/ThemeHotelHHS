@@ -12,14 +12,12 @@ namespace Hotel
 {
     public class HotelBuilder
     {
-        private ContentManager _content;
         private ConfigModel _config;
 
         private bool _createEmptyRooms;
 
         public HotelBuilder(ContentManager content, ConfigModel config)
         {
-            _content = content;
             _config = config;
             _createEmptyRooms = _config.CreateEmptyRooms;
         }

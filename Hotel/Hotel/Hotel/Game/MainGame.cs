@@ -100,7 +100,7 @@ namespace Hotel
             // Create a new SpriteBatch, which can be used to draw textures.
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            _informationWindow = new InformationWindow(Content);
+            _informationWindow = new InformationWindow();
 
             _hotel = new Hotel(Content, _config);
             _camera = new Camera(GraphicsDevice.PresentationParameters.BackBufferWidth, GraphicsDevice.PresentationParameters.BackBufferHeight);
