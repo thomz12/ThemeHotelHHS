@@ -105,6 +105,28 @@ namespace Hotel.Persons
                     Inside = true;
                 }
             }
+
+            if(CurrentRoom is Cinema)
+            {
+                Cinema cinema = CurrentRoom as Cinema;
+
+                if(cinema.Open)
+                {
+                    cinema.PeopleCount++;
+                    cinema.Finished += Cinema_Finished;
+                    Inside = true;
+                }
+                else
+                {
+                    FindAndTargetRoom(x => x == Room);
+                }
+            }
+        }
+
+        private void Cinema_Finished(object sender, EventArgs e)
+        {
+            (CurrentRoom as Cinema).Finished -= Cinema_Finished;
+            FindAndTargetRoom(x => x == Room);
         }
 
         public void CheckOut(Lobby lobby)
