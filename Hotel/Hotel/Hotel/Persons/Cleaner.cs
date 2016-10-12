@@ -96,9 +96,7 @@ namespace Hotel.Persons
                 {
                     // Call dijkstra's because there is an emergency.
                     //Path = _pathFinder.FindPathToRoomWithState(CurrentRoom, RoomState.Emergency);
-                    Path = _pathFinder.Find(CurrentRoom, x => x.State == RoomState.Emergency);
-                    // Set the target room.
-                    TargetRoom = Path.Last();
+                    FindAndTargetRoom(x => x.State == RoomState.Emergency);
                     // Set the time it takes to clean the room.
                     _cleaningTimer = TargetRoom.GetTimeToCleanEmergency();
                 }
@@ -109,9 +107,8 @@ namespace Hotel.Persons
                     {
                         // Call dijkstra's because there is a dirty room.
                         //Path = _pathFinder.FindPathToRoomWithState(CurrentRoom, RoomState.Dirty);
-                        Path = _pathFinder.Find(CurrentRoom, x => x.State == RoomState.Dirty);
-                        // Set the target room.
-                        TargetRoom = Path.Last();
+                        FindAndTargetRoom(x => x.State == RoomState.Dirty);
+
                         // Set teh time it takes to clean the room.
                         _cleaningTimer = _cleaningDuration;
                     }

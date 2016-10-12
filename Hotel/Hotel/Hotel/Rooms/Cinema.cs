@@ -12,11 +12,26 @@ namespace Hotel.Rooms
         public bool Open { get; private set; }
         private float _timeLeft;
 
+        public event EventHandler Finished;
+
         public Cinema(int id, Point position, Point size, int duration) : base(id, position, size)
         {
             Sprite.LoadSprite("2x2Cinema");
             Name = "Cinema";
             Duration = duration;
+
+            Finished += Cinema_Finished;
+        }
+
+        private void Cinema_Finished(object sender, EventArgs e)
+        {
+            Open = true;
+        }
+
+        private void OnFinish(EventArgs args)
+        {
+            if (Finished != null)
+                Finished(this, args);
         }
 
         /// <summary>
@@ -41,10 +56,10 @@ namespace Hotel.Rooms
             {
                 _timeLeft -= deltaTime;
             }
-            else
+            else if(Open == false)
             {
                 Sprite.LoadSprite("2x2Cinema");
-                Open = true;
+                OnFinish(new EventArgs());
             }
         }
     }

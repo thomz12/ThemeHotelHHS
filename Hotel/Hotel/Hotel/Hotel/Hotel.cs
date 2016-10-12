@@ -56,8 +56,9 @@ namespace Hotel
         /// </summary>
         public void CreateStaff()
         {
-            Room firstLobby = Rooms.OfType<Lobby>().OrderBy(x => x.RoomPosition.X).First();
-            Receptionist = new Receptionist(firstLobby, Rooms, -1, _config.WalkingSpeed, _config.ReceptionistWorkLenght);
+            IOrderedEnumerable<Lobby> lobbies = Rooms.OfType<Lobby>().OrderBy(x => x.RoomPosition.X);
+            Lobby centerLobby = lobbies.ElementAt(lobbies.Count() / 2);
+            Receptionist = new Receptionist(centerLobby, Rooms, -1, _config.WalkingSpeed, _config.ReceptionistWorkLenght);
             Persons.Add("Receptionist", Receptionist);
 
             Random r = new Random();
@@ -109,7 +110,7 @@ namespace Hotel
             guest.StayState = StayState.CheckIn;
             guest.Classification = stars;
             Persons.Add(name, guest);
-            guest.TargetRoom = Receptionist.CurrentRoom;
+            guest.FindAndTargetRoom(x => (x is Lobby && (x as Lobby).Receptionist != null));
             
             // Subscribe to remove event
             guest.RemoveObject += Guest_RemoveObject;

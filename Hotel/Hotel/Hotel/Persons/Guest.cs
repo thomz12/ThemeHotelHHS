@@ -38,7 +38,6 @@ namespace Hotel.Persons
             set
             {
                 _room = value;
-                TargetRoom = _room;
             }
         }
 
@@ -110,7 +109,7 @@ namespace Hotel.Persons
 
         public void CheckOut(Lobby lobby)
         {
-            TargetRoom = lobby;
+            FindAndTargetRoom(x => x is Lobby && (x as Lobby).Receptionist != null);
             StayState = StayState.CheckOut;
         }
     }
