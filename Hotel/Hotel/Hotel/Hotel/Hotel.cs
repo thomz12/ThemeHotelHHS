@@ -66,7 +66,7 @@ namespace Hotel
             {
                 Cleaner c = new Cleaner(Rooms[r.Next(1, Rooms.Count())]);
                 Staff.Add(c);
-                c.RemoveObject += Remove_Cleaner;
+                c.RemoveObject += RemoveObj;
             }
         }
 
@@ -82,20 +82,10 @@ namespace Hotel
             guest.FindAndTargetRoom(x => (x is Lobby && (x as Lobby).Receptionist != null));
             
             // Subscribe to remove event
-            guest.RemoveObject += Guest_RemoveObject;
+            guest.RemoveObject += RemoveObj;
         }
 
-        private void Guest_RemoveObject(object sender, EventArgs e)
-        {
-            RemoveObject((HotelObject)sender);
-        }
-
-        private void CGhost_RemoveObject(object sender, EventArgs e)
-        {
-            RemoveObject((HotelObject)sender);
-        }
-
-        private void Remove_Cleaner(object sender, EventArgs e)
+        private void RemoveObj(object sender, EventArgs e)
         {
             RemoveObject((HotelObject)sender);
         }
@@ -137,7 +127,7 @@ namespace Hotel
 
                     // Spawn a ghost
                     CleanerGhost cGhost = new CleanerGhost(cleaner.CurrentRoom);
-                    cGhost.RemoveObject += CGhost_RemoveObject;
+                    cGhost.RemoveObject += RemoveObj;
                     Staff.Add(cGhost);
                 }
                 else if (hotelObject is CleanerGhost)
@@ -146,7 +136,7 @@ namespace Hotel
 
                     // Spawn a new cleaner
                     Cleaner cleaner = new Cleaner(Rooms[0]);
-                    cleaner.RemoveObject += Remove_Cleaner;
+                    cleaner.RemoveObject += RemoveObj;
                     Staff.Add(cleaner);
                     // Make it walk indoors
                     cleaner.FindAndTargetRoom(x => (x is Lobby && (x as Lobby).Receptionist != null));
@@ -154,7 +144,7 @@ namespace Hotel
                     Staff.Remove(cleanerGhost);
                 }
 
-                hotelObject.RemoveObject -= Guest_RemoveObject;
+                hotelObject.RemoveObject -= RemoveObj;
             }
             if (hotelObject is Room)
             {

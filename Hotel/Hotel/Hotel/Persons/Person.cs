@@ -340,7 +340,7 @@ namespace Hotel.Persons
 
                         // TODO: DO THIS IN ROOM BEHAVIOUR!!!!
                         // If the elevator is not yet called, and the person is in an elevatorshaft.
-                        if (!_calledElevator && CurrentRoom is ElevatorShaft && Path != null)
+                        if (!_calledElevator && CurrentRoom is ElevatorShaft && Path != null && Path.Count > 1 && Path.ElementAt(0) is ElevatorShaft)
                         {
                             _startStaft = CurrentRoom as ElevatorShaft;
                             // Get the last elevator in the path (CAN BREAK WITH MULTIPLE ELEVATORS!)
@@ -369,7 +369,7 @@ namespace Hotel.Persons
         /// <param name="e"></param>
         private void TargetShaft_ElevatorArrival(object sender, EventArgs e)
         {
-            if (!_isDead || this is CleanerGhost)
+            if (!_isDead)
             {
                 MoveToRoom(_targetShaft);
                 _targetShaft.ElevatorArrival -= TargetShaft_ElevatorArrival;
@@ -394,7 +394,7 @@ namespace Hotel.Persons
         /// <param name="e"></param>
         private void Person_ElevatorArrival(object sender, EventArgs e)
         {
-            if(!_isDead || this is CleanerGhost)
+            if(!_isDead)
             {
                 _elevator = sender as Elevator;
                 _startStaft.ElevatorArrival -= Person_ElevatorArrival;

@@ -9,9 +9,9 @@ namespace Hotel.Persons
     {
         public CleanerGhost(Room room) : base(room)
         {
-            _pathFinder.UseElevator = false;
-
             Sprite.LoadSprite("Ghost");
+
+            _pathFinder.UseElevator = false;
             FindAndTargetRoom(x => x.Name.Equals("Outside"));
 
             Arrival += Arrival_AtRoom;
