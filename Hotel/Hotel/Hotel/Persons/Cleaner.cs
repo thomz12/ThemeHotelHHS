@@ -73,9 +73,16 @@ namespace Hotel.Persons
                     _isCleaning = false;
                     // Set the room that has been cleaned as clean
                     if (CurrentRoom is GuestRoom)
-                        CurrentRoom.State = RoomState.Vacant;
+                    {
+                        if ((CurrentRoom as GuestRoom).Guest == null)
+                            CurrentRoom.State = RoomState.Vacant;
+                        else
+                            CurrentRoom.State = RoomState.Occupied;
+                    }
                     else
+                    {
                         CurrentRoom.State = RoomState.None;
+                    }
                     // This cleaner is not busy anymore.
                     _isBusy = false;
                 }

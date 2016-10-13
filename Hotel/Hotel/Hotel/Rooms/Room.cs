@@ -51,7 +51,7 @@ namespace Hotel
             }
             set
             {
-                PrevRoomState = State;
+                PrevRoomState = _state;
                 _state = value; 
             }
         }
