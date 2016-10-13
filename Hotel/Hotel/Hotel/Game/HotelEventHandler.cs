@@ -90,9 +90,9 @@ namespace Hotel
                 // Guest goes to fitness event.
                 case HotelEvents.HotelEventType.GOTO_FITNESS:
                     string fitnessGuest = evt.Data.Keys.ElementAt(0) + evt.Data.Values.ElementAt(0);
-                    if (_hotel.Persons.Keys.Contains(fitnessGuest))
+                    if (_hotel.Guests.Keys.Contains(fitnessGuest))
                     {
-                        Guest hotelGuest = _hotel.Persons[fitnessGuest] as Guest;
+                        Guest hotelGuest = _hotel.Guests[fitnessGuest] as Guest;
 
                         if (hotelGuest.StayState == StayState.Staying)
                         {
@@ -107,7 +107,7 @@ namespace Hotel
                     Cinema cinema = (Cinema)_hotel.Rooms.Where(x => x.ID == Int32.Parse(evt.Data.Values.ElementAt(0))).FirstOrDefault();
                     cinema?.StartMovie();
 
-                    foreach(Person person in _hotel.Persons.Values)
+                    foreach(Person person in _hotel.Guests.Values)
                     {
                         if(person.CurrentRoom is Cinema && person.Inside)
                         {
