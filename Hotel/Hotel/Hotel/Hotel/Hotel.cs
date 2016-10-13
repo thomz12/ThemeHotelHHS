@@ -14,7 +14,8 @@ namespace Hotel
     {
         public string HotelLayoutFilePath { get; private set; }
         public List<Room> Rooms { get; set; }
-        public Dictionary<string, Person> Persons { get; set; }
+        public List<Person> Staff { get; set; }
+        public Dictionary<string, Person> Guests { get; set; }
         public Receptionist Receptionist { get; set; }
 
         private int _cleaners;
@@ -26,7 +27,8 @@ namespace Hotel
         public Hotel()
         {
             Rooms = new List<Room>();
-            Persons = new Dictionary<string, Person>();
+            Staff = new List<Person>();
+            Guests = new Dictionary<string, Person>();
 
             // Set the path to the file of the hotel that needs to be loaded.
             ConfigModel config = ServiceLocator.Get<ConfigLoader>().GetConfig();
@@ -57,13 +59,45 @@ namespace Hotel
             IOrderedEnumerable<Lobby> lobbies = Rooms.OfType<Lobby>().OrderBy(x => x.RoomPosition.X);
             Lobby aLobby = lobbies.ElementAt(lobbies.Count() / 2);
             Receptionist = new Receptionist(aLobby, Rooms);
-            Persons.Add("Receptionist", Receptionist);
+            Staff.Add(Receptionist);
 
             Random r = new Random();
             for (int i = 0; i < _cleaners; i++)
             {
-                Persons.Add("Cleaner" + i, new Cleaner(Rooms[r.Next(1, Rooms.Count())]));
+                Cleaner c = new Cleaner(Rooms[r.Next(1, Rooms.Count())]);
+                Staff.Add(c);
+                c.RemoveObject += Remove_Cleaner;
             }
+        }
+
+        /// <summary>
+        /// Creates a guest outside.
+        /// </summary>
+        public void AddGuest(string name, int stars)
+        {
+            Guest guest = new Guest(Rooms[0]);
+            guest.StayState = StayState.CheckIn;
+            guest.Classification = stars;
+            Guests.Add(name, guest);
+            guest.FindAndTargetRoom(x => (x is Lobby && (x as Lobby).Receptionist != null));
+            
+            // Subscribe to remove event
+            guest.RemoveObject += Guest_RemoveObject;
+        }
+
+        private void Guest_RemoveObject(object sender, EventArgs e)
+        {
+            RemoveObject((HotelObject)sender);
+        }
+
+        private void CGhost_RemoveObject(object sender, EventArgs e)
+        {
+            RemoveObject((HotelObject)sender);
+        }
+
+        private void Remove_Cleaner(object sender, EventArgs e)
+        {
+            RemoveObject((HotelObject)sender);
         }
 
         /// <summary>
@@ -74,11 +108,10 @@ namespace Hotel
         {
             if (hotelObject is Person)
             {
-                string item = Persons.First(x => x.Value == hotelObject).Key;
-
-                // Remove guest's room.
+                // Remove guest from the hotel.
                 if (hotelObject is Guest)
                 {
+                    string item = Guests.First(x => x.Value == hotelObject).Key;
                     Guest guest = (Guest)hotelObject;
 
                     if (guest.Room != null)
@@ -93,45 +126,40 @@ namespace Hotel
                     {
                         (guest.CurrentRoom as Lobby).RemoveFromQueues(guest);
                     }
+
+                    Guests.Remove(item);
                 }
-                else if(hotelObject is Cleaner)
+                // Remove cleaner from the hotel.
+                else if (hotelObject is Cleaner)
                 {
+                    Cleaner cleaner = (Cleaner)hotelObject;
+                    Staff.Remove(cleaner);
+
                     // Spawn a ghost
-                    // TODO
+                    CleanerGhost cGhost = new CleanerGhost(cleaner.CurrentRoom);
+                    cGhost.RemoveObject += CGhost_RemoveObject;
+                    Staff.Add(cGhost);
                 }
-                else if(hotelObject is Ghost)
+                else if (hotelObject is CleanerGhost)
                 {
+                    CleanerGhost cleanerGhost = (CleanerGhost)hotelObject;
+
                     // Spawn a new cleaner
-                    // TODO
+                    Cleaner cleaner = new Cleaner(Rooms[0]);
+                    cleaner.RemoveObject += Remove_Cleaner;
+                    Staff.Add(cleaner);
+                    // Make it walk indoors
+                    cleaner.FindAndTargetRoom(x => (x is Lobby && (x as Lobby).Receptionist != null));
+
+                    Staff.Remove(cleanerGhost);
                 }
 
                 hotelObject.RemoveObject -= Guest_RemoveObject;
-                Persons.Remove(item);
             }
-            if(hotelObject is Room)
+            if (hotelObject is Room)
             {
                 throw new NotImplementedException();
             }
-        }
-
-        /// <summary>
-        /// Creates a guest outside.
-        /// </summary>
-        public void AddGuest(string name, int stars)
-        {
-            Guest guest = new Guest(Rooms[0]);
-            guest.StayState = StayState.CheckIn;
-            guest.Classification = stars;
-            Persons.Add(name, guest);
-            guest.FindAndTargetRoom(x => (x is Lobby && (x as Lobby).Receptionist != null));
-            
-            // Subscribe to remove event
-            guest.RemoveObject += Guest_RemoveObject;
-        }
-
-        private void Guest_RemoveObject(object sender, EventArgs e)
-        {
-            RemoveObject((HotelObject)sender);
         }
 
         /// <summary>
@@ -168,7 +196,7 @@ namespace Hotel
         /// <returns>Null if nothing was found, if something was found, return that object.</returns>
         public HotelObject GetObject(Point position)
         {
-            foreach (Person person in Persons.Values)
+            foreach (Person person in Guests.Values)
             {
                 if (person.BoundingBox.Contains(position))
                     return person;
@@ -194,9 +222,14 @@ namespace Hotel
                 Rooms[i].Update(deltaTime);
             }
 
-            for (int i = 0; i < Persons.Count; i++)
+            for (int i = 0; i < Staff.Count; i++)
             {
-                Persons.Values.ElementAt(i).Update(deltaTime);
+                Staff[i].Update(deltaTime);
+            }
+
+            for (int i = 0; i < Guests.Count; i++)
+            {
+                Guests.Values.ElementAt(i).Update(deltaTime);
             }
         }
 
@@ -212,9 +245,14 @@ namespace Hotel
                 Rooms[i].Draw(batch, gameTime);
             }
 
-            for (int i = 0; i < Persons.Count; i++)
+            for (int i = 0; i < Staff.Count; i++)
             {
-                Persons.Values.ElementAt(i).Draw(batch, gameTime);
+                Staff[i].Draw(batch, gameTime);
+            }
+
+            for (int i = 0; i < Guests.Count; i++)
+            {
+                Guests.Values.ElementAt(i).Draw(batch, gameTime);
             }
         }
     }

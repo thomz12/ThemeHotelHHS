@@ -34,10 +34,10 @@ namespace Hotel
                 case HotelEvents.HotelEventType.CHECK_OUT:
                     // Get the guest that needs to be checked out.
                     string objectName = evt.Data.Keys.ElementAt(0) + evt.Data.Values.ElementAt(0);
-                    if (_hotel.Persons.Keys.Contains(objectName))
+                    if (_hotel.Guests.Keys.Contains(objectName))
                     {
-                        (_hotel.Persons[objectName] as Guest).FindAndTargetRoom(x => x is Lobby && (x as Lobby).Receptionist != null);
-                        (_hotel.Persons[objectName] as Guest).StayState = StayState.CheckOut;
+                        (_hotel.Guests[objectName] as Guest).FindAndTargetRoom(x => x is Lobby && (x as Lobby).Receptionist != null);
+                        (_hotel.Guests[objectName] as Guest).StayState = StayState.CheckOut;
                     }
                     break;
 
@@ -64,9 +64,9 @@ namespace Hotel
                 case HotelEvents.HotelEventType.NEED_FOOD:
 
                     string guestName = evt.Data.Keys.ElementAt(0) + evt.Data.Values.ElementAt(0);
-                    if (_hotel.Persons.Keys.Contains(guestName))
+                    if (_hotel.Guests.Keys.Contains(guestName))
                     {
-                        Guest hotelGuest = _hotel.Persons[guestName] as Guest;
+                        Guest hotelGuest = _hotel.Guests[guestName] as Guest;
 
                         if(hotelGuest.StayState == StayState.Staying)
                             hotelGuest.FindAndTargetRoom(x => x is Cafe);
@@ -77,9 +77,9 @@ namespace Hotel
                 // Guest goes to cinema event.
                 case HotelEvents.HotelEventType.GOTO_CINEMA:
                     string guest = evt.Data.Keys.ElementAt(0) + evt.Data.Values.ElementAt(0);
-                    if (_hotel.Persons.Keys.Contains(guest))
+                    if (_hotel.Guests.Keys.Contains(guest))
                     {
-                        Guest hotelGuest = _hotel.Persons[guest] as Guest;
+                        Guest hotelGuest = _hotel.Guests[guest] as Guest;
 
                         if (hotelGuest.StayState == StayState.Staying)
                             hotelGuest.FindAndTargetRoom(x => x is Cinema);
@@ -90,9 +90,9 @@ namespace Hotel
                 // Guest goes to fitness event.
                 case HotelEvents.HotelEventType.GOTO_FITNESS:
                     string fitnessGuest = evt.Data.Keys.ElementAt(0) + evt.Data.Values.ElementAt(0);
-                    if (_hotel.Persons.Keys.Contains(fitnessGuest))
+                    if (_hotel.Guests.Keys.Contains(fitnessGuest))
                     {
-                        Guest hotelGuest = _hotel.Persons[fitnessGuest] as Guest;
+                        Guest hotelGuest = _hotel.Guests[fitnessGuest] as Guest;
 
                         if (hotelGuest.StayState == StayState.Staying)
                         {
@@ -107,7 +107,7 @@ namespace Hotel
                     Cinema cinema = (Cinema)_hotel.Rooms.Where(x => x.ID == Int32.Parse(evt.Data.Values.ElementAt(0))).FirstOrDefault();
                     cinema?.StartMovie();
 
-                    foreach(Person person in _hotel.Persons.Values)
+                    foreach(Person person in _hotel.Guests.Values)
                     {
                         if(person.CurrentRoom is Cinema && person.Inside)
                         {

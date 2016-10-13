@@ -182,6 +182,9 @@ namespace Hotel.Persons
             if (Death != null)
                 Death(this, e);
 
+            // Set mode to dead
+            _isDead = true;
+
             RemoveMe(new EventArgs());
         }
 

@@ -13,7 +13,6 @@ namespace Hotel.Persons
         private float _cleaningDuration;
         private bool _isCleaning;
         private bool _isBusy;
-        private List<Room> _allRoomsInHotel;
 
         /// <summary>
         /// Constructor.
@@ -31,14 +30,29 @@ namespace Hotel.Persons
             _cleaningTimer = _cleaningDuration;
 
             Arrival += Cleaner_Arrival;
+            Death += Cleaner_Death;
+        }
+
+        private void Cleaner_Death(object sender, EventArgs e)
+        {
+            // Unclaim the room which the cleaner was supposed to clean.
+            if (TargetRoom != null && TargetRoom.State == RoomState.InCleaning)
+                TargetRoom.State = RoomState.Dirty;
+
+            // Set an emergency in this room.
+            if (CurrentRoom.State != RoomState.Emergency && CurrentRoom.State != RoomState.InCleaning)
+                CurrentRoom.SetEmergency(8);
         }
 
         private void Cleaner_Arrival(object sender, EventArgs e)
         {
             // Cleaner has arrived at the dirty room.
             // If the room where the cleaner has arrived at is dirty set _isCleaning to true.
-            if(TargetRoom.State == RoomState.InCleaning)
+            if(TargetRoom.State == RoomState.InCleaning || TargetRoom.State == RoomState.Dirty || TargetRoom.State == RoomState.Emergency)
+            {
                 _isCleaning = true;
+                TargetRoom.State = RoomState.InCleaning;
+            }
         }
 
         public override void Update(float deltaTime)
