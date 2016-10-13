@@ -40,8 +40,23 @@ namespace Hotel
         public bool Vertical { get; set; }
         public int PeopleCount { get; set; }
         public float Weight { get; set; }
-        public RoomState State { get; set; }
         public IRoomBehaviour roomBehaviour { get; set; }
+
+        private RoomState _state;
+        public RoomState State
+        {
+            get
+            {
+                return _state;
+            }
+            set
+            {
+                PrevRoomState = State;
+                _state = value; 
+            }
+        }
+        public RoomState PrevRoomState { get; private set; }
+
 
         private Texture2D _emergencyTexture;
         private float _emergencyTime;
@@ -164,7 +179,7 @@ namespace Hotel
         {
             base.Update(deltaTime);
 
-            if (State == RoomState.Emergency)
+            if (State == RoomState.Emergency || State == RoomState.InCleaning && PrevRoomState == RoomState.Emergency)
             {
                 _emergencyTime += deltaTime;
             }
@@ -177,7 +192,7 @@ namespace Hotel
             base.Draw(batch, gameTime);
 
             // if cleaning emergency, show emergency sprite
-            if (_emergencyTime > 0)
+            if (_emergencyTime > 0 || State == RoomState.Emergency || State == RoomState.InCleaning && PrevRoomState == RoomState.Emergency)
             {
                 if ((int)_emergencyTime % 2 == 0)
                     batch.Draw(_emergencyTexture, Sprite.DrawDestination, null, Color.White, 0, Vector2.Zero, SpriteEffects.None, 1.0f);

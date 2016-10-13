@@ -197,8 +197,6 @@ namespace Hotel.Persons
 
             // Set mode to dead
             _isDead = true;
-
-            RemoveMe(new EventArgs());
         }
 
         /// <summary>
@@ -229,6 +227,11 @@ namespace Hotel.Persons
 
                 // Move around.
                 Move(deltaTime); 
+            }
+            else
+            {
+                if(CurrentRoom.State != RoomState.Emergency || CurrentRoom.State != RoomState.InCleaning)
+                    RemoveMe(new EventArgs());
             }
 
             // Get the new bounding box (the exact position on the sprite batch)
@@ -366,19 +369,22 @@ namespace Hotel.Persons
         /// <param name="e"></param>
         private void TargetShaft_ElevatorArrival(object sender, EventArgs e)
         {
-            MoveToRoom(_targetShaft);
-            _targetShaft.ElevatorArrival -= TargetShaft_ElevatorArrival;
+            if (!_isDead || this is CleanerGhost)
+            {
+                MoveToRoom(_targetShaft);
+                _targetShaft.ElevatorArrival -= TargetShaft_ElevatorArrival;
 
-            Position = new Vector2(Position.X, _elevator.Position.Y - Room.ROOMHEIGHT + Sprite.Texture.Height);
+                Position = new Vector2(Position.X, _elevator.Position.Y - Room.ROOMHEIGHT + Sprite.Texture.Height);
 
-            _targetShaft = null;
-            _elevator = null;
-            _calledElevator = false;
+                _targetShaft = null;
+                _elevator = null;
+                _calledElevator = false;
 
-            FindAndTargetRoom(x => x == TargetRoom);
+                FindAndTargetRoom(x => x == TargetRoom);
 
-            // Move out from the elevator.
-            CurrentTask = PersonTask.MovingCenter;
+                // Move out from the elevator.
+                CurrentTask = PersonTask.MovingCenter;
+            }
         }
 
         /// <summary>
@@ -388,9 +394,12 @@ namespace Hotel.Persons
         /// <param name="e"></param>
         private void Person_ElevatorArrival(object sender, EventArgs e)
         {
-            _elevator = sender as Elevator;
-            _startStaft.ElevatorArrival -= Person_ElevatorArrival;
-            _targetShaft.ElevatorArrival += TargetShaft_ElevatorArrival;
+            if(!_isDead || this is CleanerGhost)
+            {
+                _elevator = sender as Elevator;
+                _startStaft.ElevatorArrival -= Person_ElevatorArrival;
+                _targetShaft.ElevatorArrival += TargetShaft_ElevatorArrival;
+            }
         }
 
         /// <summary>
