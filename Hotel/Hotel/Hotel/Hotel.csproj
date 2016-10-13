@@ -94,6 +94,7 @@
     <Compile Include="Hotel\HotelBuilder.cs" />
     <Compile Include="Hotel\Hotel.cs" />
     <Compile Include="Persons\Cleaner.cs" />
+    <Compile Include="Persons\Ghost.cs" />
     <Compile Include="Persons\Guest.cs" />
     <Compile Include="Persons\PathFinder.cs" />
     <Compile Include="Persons\Person.cs" />

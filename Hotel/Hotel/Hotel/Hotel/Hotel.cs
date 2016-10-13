@@ -94,8 +94,23 @@ namespace Hotel
                         (guest.CurrentRoom as Lobby).RemoveFromQueues(guest);
                     }
                 }
+                else if(hotelObject is Cleaner)
+                {
+                    // Spawn a ghost
+                    // TODO
+                }
+                else if(hotelObject is Ghost)
+                {
+                    // Spawn a new cleaner
+                    // TODO
+                }
+
                 hotelObject.RemoveObject -= Guest_RemoveObject;
                 Persons.Remove(item);
+            }
+            if(hotelObject is Room)
+            {
+                throw new NotImplementedException();
             }
         }
 

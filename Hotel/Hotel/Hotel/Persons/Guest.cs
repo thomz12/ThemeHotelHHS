@@ -80,7 +80,13 @@ namespace Hotel.Persons
 
         private void Guest_Death(object sender, EventArgs e)
         {
-            if(StayState == StayState.Staying)
+            // Set an emergency in this room.
+            if (CurrentRoom.State != RoomState.Emergency && CurrentRoom.State != RoomState.InCleaning)
+                CurrentRoom.SetEmergency(8);
+            // Change the sprite.
+            Sprite.LoadSprite("Grave");
+
+            if (StayState == StayState.Staying)
             {
                 Room.Guest = null;
                 StayState = StayState.None;

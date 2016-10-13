@@ -146,18 +146,10 @@ namespace Hotel.Persons
         /// <summary>
         /// Called when the person dies.
         /// </summary>
-        private void OnDeath(EventArgs e)
+        protected virtual void OnDeath(EventArgs e)
         {
             if (Death != null)
                 Death(this, e);
-
-            // Set this person to be dead.
-            _isDead = true;
-            // Set an emergency in this room.
-            if (CurrentRoom.State != RoomState.Emergency && CurrentRoom.State != RoomState.InCleaning)
-                CurrentRoom.SetEmergency(8);
-            // Change the sprite.
-            Sprite.LoadSprite("Grave");
 
             RemoveMe(new EventArgs());
         }
