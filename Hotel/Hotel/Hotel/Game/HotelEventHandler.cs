@@ -109,7 +109,7 @@ namespace Hotel
 
                     foreach(Person person in _hotel.Guests.Values)
                     {
-                        if(person.CurrentRoom is Cinema && person.Inside)
+                        if(person.CurrentRoom == cinema && person.Inside)
                         {
                             if(person is Guest)
                             {
