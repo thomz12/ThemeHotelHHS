@@ -27,20 +27,7 @@ namespace Hotel.Persons
     public class Guest : Person
     {
         public Gender Gender { get; private set; }
-
-        private GuestRoom _room;
-        public GuestRoom Room
-        {
-            get
-            {
-                return _room;
-            }
-            set
-            {
-                _room = value;
-            }
-        }
-
+        public GuestRoom Room { get; set; }
         public int Classification { get; set; }
         public StayState StayState { get; set; }
 
@@ -93,6 +80,6 @@ namespace Hotel.Persons
                 Room.Guest = null;
                 StayState = StayState.None;
             }
-            }
         }
+    }
 }

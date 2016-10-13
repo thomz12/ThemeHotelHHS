@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Hotel.Persons
 {
-    public class Ghost : Person
+    public class CleanerGhost : Person
     {
-        public Ghost(Room room) : base(room)
+        public CleanerGhost(Room room) : base(room)
         {
             Sprite.LoadSprite("Ghost");
             FindAndTargetRoom(x => x.Name.Equals("Outside"));
