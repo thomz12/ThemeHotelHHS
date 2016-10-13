@@ -87,13 +87,13 @@ namespace Hotel
             if (State == ElevatorState.GoingUp)
             {
                 // Try to find a floor above the elevator, that wants to go up.
-                floor = _queue.Keys.Where(x => x.Value >= CurrentFloor && _queue[x.Value].HasFlag(ElevatorDirection.Up)).OrderBy(x => x.Value).FirstOrDefault();
+                floor = _queue.Keys.Where(x => x.Value > CurrentFloor && _queue[x.Value].HasFlag(ElevatorDirection.Up)).OrderBy(x => x.Value).FirstOrDefault();
 
                 // if no more floor was found that wants to go up, 
                 if(floor == null)
                 { 
                     // We pick the request on the highest floor for going down.
-                    floor = _queue.Keys.Where(x => x > CurrentFloor && _queue[x].HasFlag(ElevatorDirection.Down)).OrderByDescending(x => x).FirstOrDefault();
+                    floor = _queue.Keys.Where(x => x >= CurrentFloor && _queue[x].HasFlag(ElevatorDirection.Down)).OrderByDescending(x => x).FirstOrDefault();
 
                     if (floor == null)
                     {
@@ -107,13 +107,13 @@ namespace Hotel
             else if(State == ElevatorState.GoingDown)
             {
                 // Try to find a floor below the elevator, that wants to go down.
-                floor = _queue.Keys.Where(x => x <= CurrentFloor && _queue[x].HasFlag(ElevatorDirection.Down)).OrderByDescending(x => x).FirstOrDefault();
+                floor = _queue.Keys.Where(x => x < CurrentFloor && _queue[x].HasFlag(ElevatorDirection.Down)).OrderByDescending(x => x).FirstOrDefault();
 
                 if(floor == null)
                 {
                     // Nobody needs to go down anymore, but we sitll need to pick up people who are lower in the building and want to go up.
                     // We go to the person who is on the lowest floor and wants to go up.
-                    floor = _queue.Keys.Where(x => x < CurrentFloor && _queue[x].HasFlag(ElevatorDirection.Up)).OrderBy(x => x).FirstOrDefault();
+                    floor = _queue.Keys.Where(x => x <= CurrentFloor && _queue[x].HasFlag(ElevatorDirection.Up)).OrderBy(x => x).FirstOrDefault();
 
                     if(floor == null)
                     {

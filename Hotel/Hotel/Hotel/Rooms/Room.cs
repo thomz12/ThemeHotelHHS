@@ -192,7 +192,7 @@ namespace Hotel
             base.Draw(batch, gameTime);
 
             // if cleaning emergency, show emergency sprite
-            if (State == RoomState.Emergency || State == RoomState.InCleaning && PrevRoomState == RoomState.Emergency)
+            if (_emergencyTime > 0 || State == RoomState.Emergency || State == RoomState.InCleaning && PrevRoomState == RoomState.Emergency)
             {
                 if ((int)_emergencyTime % 2 == 0)
                     batch.Draw(_emergencyTexture, Sprite.DrawDestination, null, Color.White, 0, Vector2.Zero, SpriteEffects.None, 1.0f);
