@@ -44,6 +44,9 @@ namespace Hotel.Persons
         public int Classification { get; set; }
         public StayState StayState { get; set; }
 
+        private float _roomTime;
+        private bool _toLeave;
+
         private static Random _random = new Random();
 
         /// <summary>
@@ -75,6 +78,30 @@ namespace Hotel.Persons
             Death += Guest_Death;
         }
 
+        public void LeaveRoomInTime(float seconds)
+        {
+            _roomTime = seconds;
+            _toLeave = true;
+        }
+
+        public override void Update(float deltaTime)
+        {
+            base.Update(deltaTime);
+
+            // If person has to leave in time.
+            if(_toLeave && Inside)
+            {
+                _roomTime -= deltaTime;
+                // if the guest has no time left.
+                if (_roomTime <= 0)
+                {
+                    Inside = false;
+                    _toLeave = false;
+                    OnDeparture(new EventArgs());
+                }
+            }
+        }
+
         /// <summary>
         /// Called on guest death.
         /// </summary>
@@ -93,6 +120,6 @@ namespace Hotel.Persons
                 Room.Guest = null;
                 StayState = StayState.None;
             }
-            }
         }
+    }
 }

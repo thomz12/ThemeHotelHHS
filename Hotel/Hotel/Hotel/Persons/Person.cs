@@ -91,10 +91,16 @@ namespace Hotel.Persons
             Sprite.LoadSprite("Guest");
             Sprite.DrawOrder = 1;
             Sprite.SetSize(new Point(Sprite.Texture.Width, Sprite.Texture.Height));
+
             // Set the position in the center of the starting room.
             Position = new Vector2(room.Position.X + (room.RoomSize.X * (Room.ROOMWIDTH / 2)), room.Position.Y - (Room.ROOMHEIGHT - Sprite.Texture.Height) - (Room.ROOMHEIGHT * (room.RoomSize.Y - 1)));
+
+            // Set jump height (for walking)
             JumpHeight = 4;
+
+            // Set the current room.
             CurrentRoom = room;
+
             _calledElevator = false;
             _isDead = false;
 
@@ -106,6 +112,7 @@ namespace Hotel.Persons
             _pathFinder = new PathFinder();
             Path = new List<Room>();
 
+            // Start by moving to the center.
             CurrentTask = PersonTask.MovingCenter;
             Inside = false;
         }
@@ -122,7 +129,11 @@ namespace Hotel.Persons
                 Arrival(this, e);
         }
 
-        private void OnDeparture(EventArgs e)
+        /// <summary>
+        /// Called when person leaves his location.
+        /// </summary>
+        /// <param name="e"></param>
+        public void OnDeparture(EventArgs e)
         {
             if(_roomBehaviour != null)
                 _roomBehaviour.OnDeparture(CurrentRoom, this);
@@ -152,11 +163,10 @@ namespace Hotel.Persons
                 TargetRoom = Path.Last();
 
                 if (Inside)
-                    CurrentRoom.PeopleCount--;
-
-                if (Inside)
                 {
                     OnDeparture(new EventArgs());
+
+                    CurrentRoom.PeopleCount--;
                     Inside = false;
                 }
 
@@ -223,6 +233,8 @@ namespace Hotel.Persons
                 return;
             }
 
+            // TODO: do this outside person
+            // TODO: make person 'snap' to their desination so that low framerates not break everything.
             // Do moving in the room.
             switch (CurrentTask)
             {
@@ -307,7 +319,7 @@ namespace Hotel.Persons
                             TargetRoom = null;
                         }
 
-                        // DO THIS IN ROOM BEHAVIOUR!!!!
+                        // TODO: DO THIS IN ROOM BEHAVIOUR!!!!
                         // If the elevator is not yet called, and the person is in an elevatorshaft.
                         if (!_calledElevator && CurrentRoom is ElevatorShaft && Path != null)
                         {

@@ -16,26 +16,20 @@ namespace Hotel
             if (person is Guest && cafe.PeopleCount < cafe.Capacity)
             {
                 person.Inside = true;
+                (person as Guest).LeaveRoomInTime(5);
                 cafe.PeopleCount++;
             }
         }
 
         public void OnDeparture(Room room, Person person)
         {
-            if (person is Guest && person.Inside)
+            if (person is Guest)
             {
-                room.PeopleCount--;
-                person.Inside = false;
                 person.FindAndTargetRoom(x => x == (person as Guest).Room);
             }
         }
 
         public void OnPassRoom(Room room, Person person)
-        {
-            return;
-        }
-
-        public void RoomUpdate(Room room, Person person)
         {
             return;
         }

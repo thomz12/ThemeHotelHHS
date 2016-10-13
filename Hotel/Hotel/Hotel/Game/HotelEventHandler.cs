@@ -76,7 +76,6 @@ namespace Hotel
 
                 // Guest goes to cinema event.
                 case HotelEvents.HotelEventType.GOTO_CINEMA:
-
                     string guest = evt.Data.Keys.ElementAt(0) + evt.Data.Values.ElementAt(0);
                     if (_hotel.Persons.Keys.Contains(guest))
                     {
@@ -90,12 +89,35 @@ namespace Hotel
 
                 // Guest goes to fitness event.
                 case HotelEvents.HotelEventType.GOTO_FITNESS:
+                    string fitnessGuest = evt.Data.Keys.ElementAt(0) + evt.Data.Values.ElementAt(0);
+                    if (_hotel.Persons.Keys.Contains(fitnessGuest))
+                    {
+                        Guest hotelGuest = _hotel.Persons[fitnessGuest] as Guest;
+
+                        if (hotelGuest.StayState == StayState.Staying)
+                        {
+                            hotelGuest.FindAndTargetRoom(x => x is Fitness);
+                            hotelGuest.LeaveRoomInTime(float.Parse(evt.Data.Values.ElementAt(1)));
+                        }
+                    }
                     break;
 
                 // Start the cinema event.
                 case HotelEvents.HotelEventType.START_CINEMA:
                     Cinema cinema = (Cinema)_hotel.Rooms.Where(x => x.ID == Int32.Parse(evt.Data.Values.ElementAt(0))).FirstOrDefault();
                     cinema?.StartMovie();
+
+                    foreach(Person person in _hotel.Persons.Values)
+                    {
+                        if(person.CurrentRoom is Cinema && person.Inside)
+                        {
+                            if(person is Guest)
+                            {
+                                (person as Guest).LeaveRoomInTime(ServiceLocator.Get<ConfigLoader>().GetConfig().FilmDuration);
+                            }
+                        }
+                    }
+
                     break;
 
                 // default. 

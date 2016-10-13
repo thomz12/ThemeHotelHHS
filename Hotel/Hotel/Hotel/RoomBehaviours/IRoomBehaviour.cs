@@ -12,7 +12,6 @@ namespace Hotel
     {
         void OnArrival(Room room, Persons.Person person);
         void OnDeparture(Room room, Persons.Person person);
-        void RoomUpdate(Room room, Persons.Person person);
         void OnPassRoom(Room room, Persons.Person person);
     }
 }
