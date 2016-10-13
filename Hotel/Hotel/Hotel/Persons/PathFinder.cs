@@ -24,6 +24,13 @@ namespace Hotel.Persons
 
     public class PathFinder
     {
+        public bool UseElevator { get; set; }
+
+        public PathFinder()
+        {
+            UseElevator = true;
+        }
+
         /// <summary>
         /// Find the closest room with the given argument
         /// </summary>
@@ -55,6 +62,9 @@ namespace Hotel.Persons
                 // For every neighbor in the room.
                 foreach (Room room in current.Room.Neighbors.Values)
                 {
+                    if (!UseElevator && room is ElevatorShaft && current.Room is ElevatorShaft)
+                        continue;
+
                     // Returns this room from the queue or null when it is not yet in the queue.
                     RoomNode nodeToCheck = visited.Where(x => x.Room == room).FirstOrDefault();
 

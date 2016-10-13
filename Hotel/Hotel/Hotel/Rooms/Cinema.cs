@@ -12,8 +12,12 @@ namespace Hotel.Rooms
         public bool Open { get; private set; }
         private float _timeLeft;
 
-        public event EventHandler Finished;
-
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="id">Room ID</param>
+        /// <param name="position">Room position</param>
+        /// <param name="size">Room size</param>
         public Cinema(int id, Point position, Point size) : base(id, position, size)
         {
             Sprite.LoadSprite("2x2Cinema");
@@ -24,19 +28,6 @@ namespace Hotel.Rooms
             Duration = config.FilmDuration;
 
             roomBehaviour = new CinemaBehaviour();
-
-            Finished += Cinema_Finished;
-        }
-
-        private void Cinema_Finished(object sender, EventArgs e)
-        {
-            Open = true;
-        }
-
-        private void OnFinish(EventArgs args)
-        {
-            if (Finished != null)
-                Finished(this, args);
         }
 
         /// <summary>
@@ -64,7 +55,7 @@ namespace Hotel.Rooms
             else if(Open == false)
             {
                 Sprite.LoadSprite("2x2Cinema");
-                OnFinish(new EventArgs());
+                Open = true;
             }
         }
     }

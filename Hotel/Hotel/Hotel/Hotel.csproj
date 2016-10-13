@@ -98,6 +98,7 @@
     <Compile Include="Persons\CleanerGhost.cs" />
     <Compile Include="Persons\Guest.cs" />
     <Compile Include="RoomBehaviours\CinemaBehaviour.cs" />
+    <Compile Include="RoomBehaviours\FitnessBehaviour.cs" />
     <Compile Include="RoomBehaviours\GuestRoomBehaviour.cs" />
     <Compile Include="RoomBehaviours\IRoomBehaviour.cs" />
     <Compile Include="Persons\PathFinder.cs" />

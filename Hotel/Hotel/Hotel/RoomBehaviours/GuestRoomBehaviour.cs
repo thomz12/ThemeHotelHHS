@@ -26,19 +26,10 @@ namespace Hotel
 
         public void OnDeparture(Room room, Person person)
         {
-            if (person is Guest)
-            {
-                room.PeopleCount--;
-                person.Inside = false;
-            }
-        }
-
-        public void OnPassRoom(Room room, Person person)
-        {
             return;
         }
 
-        public void RoomUpdate(Room room, Person person)
+        public void OnPassRoom(Room room, Person person)
         {
             return;
         }
