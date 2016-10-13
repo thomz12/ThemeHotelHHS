@@ -15,7 +15,9 @@ namespace Hotel.Rooms
         {
             Sprite.LoadSprite("2x1Cafe");
             Capacity = capacity;
-            Name = "Cafe";
+            Name = "Restaurant";
+
+            roomBehaviour = new CafeBehaviour();
         }
     }
 }

@@ -36,7 +36,10 @@ namespace Hotel.Persons
                 _deathTimer = 0;
             }
         }
+
         public Room CurrentRoom { get; protected set; }
+        protected IRoomBehaviour _roomBehaviour;
+
         public bool Inside { get; set; }
 
         private Room _targetRoom;
@@ -73,6 +76,8 @@ namespace Hotel.Persons
         private bool _isDead;
 
         public event EventHandler Arrival;
+        public event EventHandler Departure;
+
         public event EventHandler Death;
 
         /// <summary>
@@ -108,8 +113,20 @@ namespace Hotel.Persons
         /// </summary>
         private void OnArrival(EventArgs e)
         {
+            if(_roomBehaviour != null)
+                _roomBehaviour.OnArrival(CurrentRoom, this);
+
             if (Arrival != null)
                 Arrival(this, e);
+        }
+
+        private void OnDeparture(EventArgs e)
+        {
+            if(_roomBehaviour != null)
+                _roomBehaviour.OnDeparture(CurrentRoom, this);
+
+            if (Departure != null)
+                Departure(this, e);
         }
 
         /// <summary>
@@ -135,7 +152,11 @@ namespace Hotel.Persons
                 if (Inside)
                     CurrentRoom.PeopleCount--;
 
-                Inside = false;
+                if (Inside)
+                {
+                    OnDeparture(new EventArgs());
+                    Inside = false;
+                }
 
                 CurrentTask = PersonTask.MovingCenter;
             }
@@ -187,7 +208,7 @@ namespace Hotel.Persons
                 }
 
                 // Move around.
-                Move(deltaTime);
+                Move(deltaTime); 
             }
 
             // Get the new bounding box (the exact position on the sprite batch)
@@ -274,6 +295,11 @@ namespace Hotel.Persons
                     // If the person reached the center of the room.
                     if (Math.Abs(Position.X - CurrentRoom.Position.X - (CurrentRoom.RoomSize.X * Room.ROOMWIDTH / 2)) < WalkingSpeed * deltaTime)
                     {
+                        _roomBehaviour = CurrentRoom.roomBehaviour;
+
+                        if(_roomBehaviour != null)
+                            _roomBehaviour.OnPassRoom(CurrentRoom, this);
+
                         // Get a new task.
                         UpdateCurrentTask();
 
@@ -287,6 +313,7 @@ namespace Hotel.Persons
                             TargetRoom = null;
                         }
 
+                        // DO THIS IN ROOM BEHAVIOUR!!!!
                         // If the elevator is not yet called, and the person is in an elevatorshaft.
                         if (!_calledElevator && CurrentRoom is ElevatorShaft && Path != null)
                         {
@@ -325,11 +352,8 @@ namespace Hotel.Persons
             _targetShaft = null;
             _elevator = null;
             _calledElevator = false;
-            
-            while (Path[0] != CurrentRoom)
-            {
-                Path.RemoveAt(0);
-            }
+
+            FindAndTargetRoom(x => x == TargetRoom);
 
             // Move out from the elevator.
             CurrentTask = PersonTask.MovingCenter;

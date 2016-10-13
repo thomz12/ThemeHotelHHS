@@ -41,9 +41,8 @@ namespace Hotel.Persons
             }
         }
 
-        public StayState StayState { get; set; }
-
         public int Classification { get; set; }
+        public StayState StayState { get; set; }
 
         private static Random _random = new Random();
 
@@ -73,66 +72,21 @@ namespace Hotel.Persons
             // Give this person a name.
             Name = generator.GenerateName(Gender);
 
-            Arrival += Guest_Arrival;
             Death += Guest_Death;
         }
 
+        /// <summary>
+        /// Called on guest death.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Guest_Death(object sender, EventArgs e)
         {
-            if(StayState == StayState.Staying)
+            if (StayState == StayState.Staying)
             {
                 Room.Guest = null;
                 StayState = StayState.None;
             }
-        }
-
-        // When the guest arrives
-        private void Guest_Arrival(object sender, EventArgs e)
-        {
-            if(CurrentRoom is Lobby)
-            {
-                if(StayState == StayState.CheckIn)
-                    (CurrentRoom as Lobby).CheckIn(this);
-                else if(StayState == StayState.CheckOut)
-                    (CurrentRoom as Lobby).CheckOut(this);
-            }
-
-            if(CurrentRoom is GuestRoom)
-            {
-                if (CurrentRoom == Room)
-                {
-                    Room.PeopleCount++;
-                    Inside = true;
-                }
-            }
-
-            if(CurrentRoom is Cinema)
-            {
-                Cinema cinema = CurrentRoom as Cinema;
-
-                if(cinema.Open)
-                {
-                    cinema.PeopleCount++;
-                    cinema.Finished += Cinema_Finished;
-                    Inside = true;
-                }
-                else
-                {
-                    FindAndTargetRoom(x => x == Room);
-                }
-            }
-        }
-
-        private void Cinema_Finished(object sender, EventArgs e)
-        {
-            (CurrentRoom as Cinema).Finished -= Cinema_Finished;
-            FindAndTargetRoom(x => x == Room);
-        }
-
-        public void CheckOut(Lobby lobby)
-        {
-            FindAndTargetRoom(x => x is Lobby && (x as Lobby).Receptionist != null);
-            StayState = StayState.CheckOut;
         }
     }
 }

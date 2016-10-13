@@ -20,6 +20,8 @@ namespace Hotel.Rooms
             Name = "Cinema";
             Duration = duration;
 
+            roomBehaviour = new CinemaBehaviour();
+
             Finished += Cinema_Finished;
         }
 

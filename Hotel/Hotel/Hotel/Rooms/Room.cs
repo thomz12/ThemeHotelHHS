@@ -41,6 +41,7 @@ namespace Hotel
         public int PeopleCount { get; set; }
         public float Weight { get; set; }
         public RoomState State { get; set; }
+        public IRoomBehaviour roomBehaviour { get; set; }
 
         private Texture2D _emergencyTexture;
         private float _emergencyTime;

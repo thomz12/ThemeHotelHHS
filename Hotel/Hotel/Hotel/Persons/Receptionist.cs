@@ -81,6 +81,10 @@ namespace Hotel.Persons
 
         }
 
+        /// <summary>
+        /// Assigns a room to a guest, and checks him in. 
+        /// </summary>
+        /// <param name="guest"></param>
         private void CheckIn(Guest guest)
         {
             List<GuestRoom> potentialRooms = _rooms.OfType<GuestRoom>().Where(x => x.Classification == guest.Classification && x.Guest == null).ToList();
@@ -93,6 +97,7 @@ namespace Hotel.Persons
             }
             else
             {
+                // TODO: Let guest 'upgrade' in rooms if a room of their classification is not available.
                 // Check this person in.
                 guest.Room = potentialRooms.First();
                 guest.StayState = StayState.Staying;
@@ -102,6 +107,10 @@ namespace Hotel.Persons
             }
         }
 
+        /// <summary>
+        /// Checks out the guest
+        /// </summary>
+        /// <param name="guest">The guest to check out.</param>
         private void CheckOut(Guest guest)
         {
             if (guest.Room != null)

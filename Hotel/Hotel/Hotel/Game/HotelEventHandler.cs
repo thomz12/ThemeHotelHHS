@@ -35,7 +35,10 @@ namespace Hotel
                     // Get the guest that needs to be checked out.
                     string objectName = evt.Data.Keys.ElementAt(0) + evt.Data.Values.ElementAt(0);
                     if (_hotel.Persons.Keys.Contains(objectName))
-                        (_hotel.Persons[objectName] as Guest).CheckOut(_hotel.Receptionist.CurrentRoom as Lobby);
+                    {
+                        (_hotel.Persons[objectName] as Guest).FindAndTargetRoom(x => x is Lobby && (x as Lobby).Receptionist != null);
+                        (_hotel.Persons[objectName] as Guest).StayState = StayState.CheckOut;
+                    }
                     break;
 
                 // Cleaning Emergency event.
