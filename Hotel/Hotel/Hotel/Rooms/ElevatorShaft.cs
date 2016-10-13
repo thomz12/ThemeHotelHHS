@@ -76,18 +76,20 @@ namespace Hotel
                 Elevator = es.Elevator;
                 Elevator.Arrival += Elevator_Arrival;
             }
+
+            base.Update(deltaTime);
         }
 
         
 
         public override void Draw(SpriteBatch batch, GameTime gameTime)
         {
-            Sprite.Draw(batch, gameTime);
-
             if (RoomPosition.Y == 0)
             {
                 Elevator.Draw(batch, gameTime);
             }
+
+            base.Draw(batch, gameTime);
         }
     }
 }

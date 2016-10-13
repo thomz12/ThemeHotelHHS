@@ -37,7 +37,7 @@ namespace Hotel.Persons
         {
             // Unclaim the room which the cleaner was supposed to clean.
             if (TargetRoom != null && TargetRoom.State == RoomState.InCleaning)
-                TargetRoom.State = RoomState.Dirty;
+                TargetRoom.State = TargetRoom.PrevRoomState;
 
             // Set an emergency in this room.
             if (CurrentRoom.State != RoomState.Emergency && CurrentRoom.State != RoomState.InCleaning)
@@ -72,7 +72,10 @@ namespace Hotel.Persons
                     // Stop cleaning
                     _isCleaning = false;
                     // Set the room that has been cleaned as clean
-                    CurrentRoom.State = RoomState.Vacant;
+                    if (CurrentRoom is GuestRoom)
+                        CurrentRoom.State = RoomState.Vacant;
+                    else
+                        CurrentRoom.State = RoomState.None;
                     // This cleaner is not busy anymore.
                     _isBusy = false;
                 }
