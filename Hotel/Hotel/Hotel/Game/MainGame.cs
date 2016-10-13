@@ -45,10 +45,12 @@ namespace Hotel
 
             // We are using the ServiceLocator pattern here!
             // Add the services to the static class.
-            ServiceLocator.Add<GraphicsDeviceManager>(graphicsDeviceManager);
             ServiceLocator.Add<ContentManager>(Content);
+            ServiceLocator.Add<ConfigLoader>(new ConfigLoader(@"Config.cfg"));
+            // Service Locator is OFF LIMITS.
 
             Window.Title = "Hotel Simulation";
+
             IsMouseVisible = true;
 
             // Enable v-sync
@@ -64,7 +66,15 @@ namespace Hotel
             // Disable the fixed time step, causes low frame rates on some computers.
             IsFixedTimeStep = false;
 
-            LoadConfig();
+            // Load config file.
+            _config = ServiceLocator.Get<ConfigLoader>().GetConfig();
+
+            if (_config == null)
+                this.Exit();
+
+            // Change settings related to HTE timespan.
+            HotelEventManager.HTE_Factor = _config.HTELength;
+            HTE_Modifier = _config.HTELength;
         }
 
         private void MainGame_Exiting(object sender, EventArgs e)
@@ -98,7 +108,7 @@ namespace Hotel
 
             _informationWindow = new InformationWindow();
 
-            _hotel = new Hotel(Content, _config);
+            _hotel = new Hotel();
             _camera = new Camera(GraphicsDevice.PresentationParameters.BackBufferWidth, GraphicsDevice.PresentationParameters.BackBufferHeight);
             _camera.Controlable = true;
             _closeUpCamera = new Camera(200, 200);
@@ -110,59 +120,6 @@ namespace Hotel
 
             _listener = new EventListener(hem);
             HotelEventManager.Register(_listener);
-        }
-
-        private void LoadConfig()
-        {
-            // Load in the settings, and boy a lot can go wrong here.
-            // First up is the check if there is actually a config file present.
-            if (File.Exists(@"Config.cfg"))
-            {
-                // Ok its present so now we can TRY to read it (geddit?)
-                try
-                {
-                    // Poke the garbage collector to wake up, all the readers and stuff are not needed after this anymore.
-                    using (StreamReader sr = new StreamReader(@"Config.cfg"))
-                    using (JsonReader jsonReader = new JsonTextReader(sr))
-                    {
-                        // It seems like someone neglected to make the serializer inherit from the IDisposable interface, so we will just have to instantiate it here.
-                        JsonSerializer jsonSerializer = new JsonSerializer();
-                        // Now its time for the one line magic!
-                        // Deserialize the config file into a config object.
-                        _config = jsonSerializer.Deserialize<ConfigModel>(jsonReader);
-
-                        // We now have some data, but someone may have screwed with our files.
-                        // Check again if there is a layout file on the end of the filepath that was in the config file.
-                        if (!File.Exists(_config.LayoutPath))
-                        {
-                            // Throw some more error messages at the user.
-                            Console.WriteLine($"There is no layout file on the end of this path: {_config.LayoutPath}!");
-                            // Quit the simulation
-                            this.Exit();
-                        }
-                        // Now its time to change all the settings (if they were not different in the first place)
-
-                        // Change settings related to HTE timespan.
-                        HotelEventManager.HTE_Factor = _config.HTELength;
-                        HTE_Modifier = _config.HTELength;
-                    }
-                }
-                catch
-                {
-                    // AYY LMAO something went wrong and I have no idea what.
-                    // Queue generic error message.
-                    Console.WriteLine("Could not read the file 'Config.cfg'.");
-                    // Better try again from the launcher.
-                    this.Exit();
-                }
-            }
-            else
-            {
-                // Y U REMOVE FILE BETWEEN OK AND LOAD?
-                Console.WriteLine("The config file does not exist, please exit the simulator and make one in the 'settings' screen of the launcher.");
-                // Quit the simulation
-                this.Exit();
-            }
         }
 
         /// <summary>

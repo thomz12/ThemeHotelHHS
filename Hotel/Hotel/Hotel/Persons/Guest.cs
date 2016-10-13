@@ -52,7 +52,7 @@ namespace Hotel.Persons
         /// <param name="room">The room to spawn the guest in.</param>
         /// <param name="survivability">The time the guest can stand in a queue without dieing.</param>
         /// <param name="walkingSpeed">The speed at which the guest walks.</param>
-        public Guest(Room room, float survivability, float walkingSpeed) : base(room, survivability, walkingSpeed)
+        public Guest(Room room) : base(room)
         {
             NameGenerator generator = new NameGenerator();
 
@@ -82,11 +82,17 @@ namespace Hotel.Persons
         /// <param name="e"></param>
         private void Guest_Death(object sender, EventArgs e)
         {
+            // Set an emergency in this room.
+            if (CurrentRoom.State != RoomState.Emergency && CurrentRoom.State != RoomState.InCleaning)
+                CurrentRoom.SetEmergency(8);
+            // Change the sprite.
+            Sprite.LoadSprite("Grave");
+
             if (StayState == StayState.Staying)
             {
                 Room.Guest = null;
                 StayState = StayState.None;
             }
+            }
         }
-    }
 }

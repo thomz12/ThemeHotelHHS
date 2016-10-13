@@ -82,6 +82,7 @@
   <ItemGroup>
     <Compile Include="Game\Background.cs" />
     <Compile Include="Game\Camera.cs" />
+    <Compile Include="Game\ConfigLoader.cs" />
     <Compile Include="Game\ConfigModel.cs" />
     <Compile Include="Game\HotelEventHandler.cs" />
     <Compile Include="Game\InformationWindow.cs" />
@@ -94,6 +95,7 @@
     <Compile Include="Hotel\Hotel.cs" />
     <Compile Include="RoomBehaviours\CafeBehaviour.cs" />
     <Compile Include="Persons\Cleaner.cs" />
+    <Compile Include="Persons\Ghost.cs" />
     <Compile Include="Persons\Guest.cs" />
     <Compile Include="RoomBehaviours\CinemaBehaviour.cs" />
     <Compile Include="RoomBehaviours\GuestRoomBehaviour.cs" />

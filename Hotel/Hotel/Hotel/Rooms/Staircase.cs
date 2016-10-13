@@ -14,12 +14,15 @@ namespace Hotel.Rooms
         /// <param name="content">The content manager.</param>
         /// <param name="position">The position of the room.</param>
         /// <param name="size">the size of the room.</param>
-        public Staircase(int id, Point position, float weight) : base(id, position, new Point(1,1))
+        public Staircase(int id, Point position) : base(id, position, new Point(1,1))
         {
             Sprite.LoadSprite("Stairs");
             Name = "Staircase";
             Vertical = true;
-            Weight = weight;
+
+            // Load settings from the config.
+            ConfigModel config = ServiceLocator.Get<ConfigLoader>().GetConfig();
+            Weight = config.StaircaseWeight;
         }
     }
 }

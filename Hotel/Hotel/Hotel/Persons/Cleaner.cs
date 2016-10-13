@@ -19,17 +19,15 @@ namespace Hotel.Persons
         /// Constructor.
         /// </summary>
         /// <param name="room">The room to spawn the guest in.</param>
-        /// <param name="survivability">The time the guest can stand in a queue without dieing.</param>
-        /// <param name="walkingSpeed">The speed at which the guest walks.</param>
-        /// <param name="cleaningDuration">The time it takes to clean a normal dirty room.</param>
-        /// <param name="allRooms">All the rooms in the hotel.</param>
-        public Cleaner(Room room, float survivability, float walkingSpeed, int cleaningDuration, List<Room> allRooms) : base(room, survivability, walkingSpeed)
+        public Cleaner(Room room) : base(room)
         {
             Name = "Tim";
             Sprite.LoadSprite("Cleaner");
             _isCleaning = false;
-            _cleaningDuration = (float)cleaningDuration;
-            _allRoomsInHotel = allRooms;
+
+            // Load settings from the config.
+            ConfigModel config = ServiceLocator.Get<ConfigLoader>().GetConfig();
+            _cleaningDuration = (float)config.CleaningDuration;
             _cleaningTimer = _cleaningDuration;
 
             Arrival += Cleaner_Arrival;

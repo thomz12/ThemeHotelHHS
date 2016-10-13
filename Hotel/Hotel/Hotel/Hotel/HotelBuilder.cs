@@ -12,14 +12,11 @@ namespace Hotel
 {
     public class HotelBuilder
     {
-        private ConfigModel _config;
-
         private bool _createEmptyRooms;
 
-        public HotelBuilder(ContentManager content, ConfigModel config)
+        public HotelBuilder()
         {
-            _config = config;
-            _createEmptyRooms = _config.CreateEmptyRooms;
+            _createEmptyRooms = ServiceLocator.Get<ConfigLoader>().GetConfig().CreateEmptyRooms;
         }
 
         public List<Room> BuildHotel(string path)
@@ -85,7 +82,7 @@ namespace Hotel
                                 rooms.Add(new GuestRoom(id, position, dimensions, Int32.Parse(data["Classification"][0].ToString())));
                                 break;
                             case "Cinema":
-                                rooms.Add(new Cinema(id, position, dimensions, _config.FilmDuration));
+                                rooms.Add(new Cinema(id, position, dimensions));
                                 break;
                             case "Fitness":
                                 rooms.Add(new Fitness(id, position, dimensions));
@@ -113,14 +110,14 @@ namespace Hotel
             for(int i = 0; i <= extremeY; i++)
             {
                 extremeID++;
-                rooms.Add(new ElevatorShaft(extremeID, new Point(0, i), _config.ElevatorSpeed));
+                rooms.Add(new ElevatorShaft(extremeID, new Point(0, i)));
             }
 
             // Add Stairs to the hotel.
             for (int i = 0; i <= extremeY; i++)
             {
                 extremeID++;
-                rooms.Add(new Staircase(extremeID, new Point(extremeX + 1, i), _config.StaircaseWeight));
+                rooms.Add(new Staircase(extremeID, new Point(extremeX + 1, i)));
             }
 
             // Add lobbies.

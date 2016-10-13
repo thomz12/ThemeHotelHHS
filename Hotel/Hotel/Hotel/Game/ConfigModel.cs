@@ -1,4 +1,6 @@
-﻿namespace Hotel
+﻿using Microsoft.Xna.Framework;
+
+namespace Hotel
 {
     public class ConfigModel
     {

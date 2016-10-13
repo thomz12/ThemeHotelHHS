@@ -17,25 +17,23 @@ namespace Hotel
         public Dictionary<string, Person> Persons { get; set; }
         public Receptionist Receptionist { get; set; }
 
-        private ConfigModel _config;
         private int _cleaners;
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="content">The content manager used to load in room images.</param>
-        public Hotel(ContentManager content, ConfigModel config)
+        public Hotel()
         {
             Rooms = new List<Room>();
             Persons = new Dictionary<string, Person>();
 
-            _config = config;
-
             // Set the path to the file of the hotel that needs to be loaded.
+            ConfigModel config = ServiceLocator.Get<ConfigLoader>().GetConfig();
             HotelLayoutFilePath = config.LayoutPath;
 
             // read the hotel from a layout file.
-            HotelBuilder builder = new HotelBuilder(content, config);
+            HotelBuilder builder = new HotelBuilder();
             List<Room> buildedRooms = builder.BuildHotel(HotelLayoutFilePath);
 
             // Add the rooms, and connect them, starts with an empty room outside with ID 0.
@@ -57,14 +55,14 @@ namespace Hotel
         public void CreateStaff()
         {
             IOrderedEnumerable<Lobby> lobbies = Rooms.OfType<Lobby>().OrderBy(x => x.RoomPosition.X);
-            Lobby centerLobby = lobbies.ElementAt(lobbies.Count() / 2);
-            Receptionist = new Receptionist(centerLobby, Rooms, -1, _config.WalkingSpeed, _config.ReceptionistWorkLenght);
+            Lobby aLobby = lobbies.ElementAt(lobbies.Count() / 2);
+            Receptionist = new Receptionist(aLobby, Rooms);
             Persons.Add("Receptionist", Receptionist);
 
             Random r = new Random();
             for (int i = 0; i < _cleaners; i++)
             {
-                Persons.Add("Cleaner" + i, new Cleaner(Rooms[r.Next(1, Rooms.Count())], _config.Survivability, _config.WalkingSpeed, _config.CleaningDuration, Rooms));
+                Persons.Add("Cleaner" + i, new Cleaner(Rooms[r.Next(1, Rooms.Count())]));
             }
         }
 
@@ -96,8 +94,23 @@ namespace Hotel
                         (guest.CurrentRoom as Lobby).RemoveFromQueues(guest);
                     }
                 }
+                else if(hotelObject is Cleaner)
+                {
+                    // Spawn a ghost
+                    // TODO
+                }
+                else if(hotelObject is Ghost)
+                {
+                    // Spawn a new cleaner
+                    // TODO
+                }
+
                 hotelObject.RemoveObject -= Guest_RemoveObject;
                 Persons.Remove(item);
+            }
+            if(hotelObject is Room)
+            {
+                throw new NotImplementedException();
             }
         }
 
@@ -106,7 +119,7 @@ namespace Hotel
         /// </summary>
         public void AddGuest(string name, int stars)
         {
-            Guest guest = new Guest(Rooms[0], _config.Survivability, _config.WalkingSpeed);
+            Guest guest = new Guest(Rooms[0]);
             guest.StayState = StayState.CheckIn;
             guest.Classification = stars;
             Persons.Add(name, guest);
