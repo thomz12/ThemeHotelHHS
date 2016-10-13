@@ -158,6 +158,19 @@ namespace Hotel.Persons
             // Find the rooms, and its path
             Path = _pathFinder.Find(CurrentRoom, rule);
 
+            if (_calledElevator)
+            {
+                if (_targetShaft != null)
+                {
+                    _targetShaft.ElevatorArrival -= TargetShaft_ElevatorArrival;
+                    _elevator = null;
+                    _targetShaft = null;
+                    _startStaft.ElevatorArrival -= Person_ElevatorArrival;
+                    _startStaft = null;
+                }
+                _calledElevator = false;
+            }
+
             if (Path != null)
             {
                 TargetRoom = Path.Last();
