@@ -13,6 +13,6 @@ namespace Hotel
         public int Survivability { get; set; }
         public float StaircaseWeight { get; set; }
         public float ReceptionistWorkLenght { get; set; }
-        public bool CreateEmptyRooms { get; set; }
+        public int NumberOfCleaners { get; set; }
     }
 }

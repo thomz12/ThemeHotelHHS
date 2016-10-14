@@ -9,10 +9,11 @@ namespace Hotel.Persons
 {
     public class Cleaner : Person
     {
+        public bool IsBusy { get; private set; }
+
         private float _cleaningTimer;
         private float _cleaningDuration;
         private bool _isCleaning;
-        private bool _isBusy;
 
         /// <summary>
         /// Constructor.
@@ -59,7 +60,7 @@ namespace Hotel.Persons
         public void GoClean()
         {
             // Check if this cleaner is busy with cleaning or walking
-            if (!_isBusy)
+            if (!IsBusy)
             {
                 // Call dijkstra's because there is an emergency.
                 FindAndTargetRoom(x => x.State == RoomState.Emergency);
@@ -87,14 +88,12 @@ namespace Hotel.Persons
                 // Set the Target room to InCleaning to claim it.
                 TargetRoom.State = RoomState.InCleaning;
                 // Set busy to true because this cleaner is busy with walking or cleaning.
-                _isBusy = true;
+                IsBusy = true;
             }
         }
 
         public override void Update(float deltaTime)
         {
-            GoClean();
-
             // Check to see if the cleaner is currently cleaning, will be set to true when arriving at a dirty room.
             if (_isCleaning)
             {
@@ -120,7 +119,7 @@ namespace Hotel.Persons
                         CurrentRoom.State = RoomState.None;
                     }
                     // This cleaner is not busy anymore.
-                    _isBusy = false;
+                    IsBusy = false;
                 }
             }
 

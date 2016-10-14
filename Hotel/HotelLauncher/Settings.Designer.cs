@@ -54,13 +54,14 @@
             this.lbl_StaircaseWeight = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.lbl_01 = new System.Windows.Forms.Label();
-            this.btn_Save = new System.Windows.Forms.Button();
-            this.btn_Select = new System.Windows.Forms.Button();
-            this.btn_Cancel = new System.Windows.Forms.Button();
-            this.cb_EmptyRooms = new System.Windows.Forms.CheckBox();
             this.lbl_ReceptionistWorkLength = new System.Windows.Forms.Label();
             this.num_ReceptionistWorkSpeed = new System.Windows.Forms.NumericUpDown();
             this.label7 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.num_NumberOfCleaners = new System.Windows.Forms.NumericUpDown();
+            this.btn_Save = new System.Windows.Forms.Button();
+            this.btn_Select = new System.Windows.Forms.Button();
+            this.btn_Cancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.num_HTETimespan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_ElevatorSpeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_WalkingSpeed)).BeginInit();
@@ -69,6 +70,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.num_Survivability)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_StairsWeight)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_ReceptionistWorkSpeed)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_NumberOfCleaners)).BeginInit();
             this.SuspendLayout();
             // 
             // lbl_HTETimespan
@@ -295,7 +297,7 @@
             // 
             // label6
             // 
-            this.label6.Location = new System.Drawing.Point(-48, 253);
+            this.label6.Location = new System.Drawing.Point(-49, 291);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(100, 19);
             this.label6.TabIndex = 16;
@@ -305,7 +307,7 @@
             // 
             // tb_Layout
             // 
-            this.tb_Layout.Location = new System.Drawing.Point(58, 253);
+            this.tb_Layout.Location = new System.Drawing.Point(57, 291);
             this.tb_Layout.Name = "tb_Layout";
             this.tb_Layout.ReadOnly = true;
             this.tb_Layout.Size = new System.Drawing.Size(318, 20);
@@ -418,48 +420,6 @@
             this.lbl_01.Text = "HTE / seconds";
             this.tt_Settings.SetToolTip(this.lbl_01, "A HTE (Hotel Tijds Eenheid) is a unit of time that is used in the simulation.");
             // 
-            // btn_Save
-            // 
-            this.btn_Save.Location = new System.Drawing.Point(108, 279);
-            this.btn_Save.Name = "btn_Save";
-            this.btn_Save.Size = new System.Drawing.Size(90, 32);
-            this.btn_Save.TabIndex = 11;
-            this.btn_Save.Text = "Save";
-            this.btn_Save.UseVisualStyleBackColor = true;
-            this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
-            // 
-            // btn_Select
-            // 
-            this.btn_Select.Location = new System.Drawing.Point(382, 253);
-            this.btn_Select.Name = "btn_Select";
-            this.btn_Select.Size = new System.Drawing.Size(26, 20);
-            this.btn_Select.TabIndex = 8;
-            this.btn_Select.Text = "...";
-            this.btn_Select.UseVisualStyleBackColor = true;
-            this.btn_Select.Click += new System.EventHandler(this.btn_Select_Click);
-            // 
-            // btn_Cancel
-            // 
-            this.btn_Cancel.Location = new System.Drawing.Point(204, 279);
-            this.btn_Cancel.Name = "btn_Cancel";
-            this.btn_Cancel.Size = new System.Drawing.Size(90, 32);
-            this.btn_Cancel.TabIndex = 10;
-            this.btn_Cancel.Text = "Cancel";
-            this.btn_Cancel.UseVisualStyleBackColor = true;
-            this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
-            // 
-            // cb_EmptyRooms
-            // 
-            this.cb_EmptyRooms.AutoSize = true;
-            this.cb_EmptyRooms.Checked = true;
-            this.cb_EmptyRooms.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cb_EmptyRooms.Location = new System.Drawing.Point(108, 230);
-            this.cb_EmptyRooms.Name = "cb_EmptyRooms";
-            this.cb_EmptyRooms.Size = new System.Drawing.Size(198, 17);
-            this.cb_EmptyRooms.TabIndex = 7;
-            this.cb_EmptyRooms.Text = "People can fly through higher rooms.";
-            this.cb_EmptyRooms.UseVisualStyleBackColor = true;
-            // 
             // lbl_ReceptionistWorkLength
             // 
             this.lbl_ReceptionistWorkLength.Location = new System.Drawing.Point(12, 189);
@@ -509,15 +469,79 @@
             this.label7.Text = "HTE(s)";
             this.tt_Settings.SetToolTip(this.label7, "A HTE (Hotel Tijds Eenheid) is a unit of time that is used in the simulation.");
             // 
+            // label4
+            // 
+            this.label4.Location = new System.Drawing.Point(12, 214);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(154, 20);
+            this.label4.TabIndex = 26;
+            this.label4.Text = "Number of Cleaners";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.tt_Settings.SetToolTip(this.label4, "This sets the amount of cleaners that are in the hotel.");
+            // 
+            // num_NumberOfCleaners
+            // 
+            this.num_NumberOfCleaners.Location = new System.Drawing.Point(171, 216);
+            this.num_NumberOfCleaners.Maximum = new decimal(new int[] {
+            25,
+            0,
+            0,
+            0});
+            this.num_NumberOfCleaners.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.num_NumberOfCleaners.Name = "num_NumberOfCleaners";
+            this.num_NumberOfCleaners.Size = new System.Drawing.Size(70, 20);
+            this.num_NumberOfCleaners.TabIndex = 27;
+            this.tt_Settings.SetToolTip(this.num_NumberOfCleaners, "This sets the amount of cleaners that are in the hotel.");
+            this.num_NumberOfCleaners.Value = new decimal(new int[] {
+            2,
+            0,
+            0,
+            0});
+            // 
+            // btn_Save
+            // 
+            this.btn_Save.Location = new System.Drawing.Point(107, 317);
+            this.btn_Save.Name = "btn_Save";
+            this.btn_Save.Size = new System.Drawing.Size(90, 32);
+            this.btn_Save.TabIndex = 11;
+            this.btn_Save.Text = "Save";
+            this.btn_Save.UseVisualStyleBackColor = true;
+            this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
+            // 
+            // btn_Select
+            // 
+            this.btn_Select.Location = new System.Drawing.Point(381, 291);
+            this.btn_Select.Name = "btn_Select";
+            this.btn_Select.Size = new System.Drawing.Size(26, 20);
+            this.btn_Select.TabIndex = 8;
+            this.btn_Select.Text = "...";
+            this.btn_Select.UseVisualStyleBackColor = true;
+            this.btn_Select.Click += new System.EventHandler(this.btn_Select_Click);
+            // 
+            // btn_Cancel
+            // 
+            this.btn_Cancel.Location = new System.Drawing.Point(203, 317);
+            this.btn_Cancel.Name = "btn_Cancel";
+            this.btn_Cancel.Size = new System.Drawing.Size(90, 32);
+            this.btn_Cancel.TabIndex = 10;
+            this.btn_Cancel.Text = "Cancel";
+            this.btn_Cancel.UseVisualStyleBackColor = true;
+            this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
+            // 
             // Settings
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(420, 323);
+            this.ClientSize = new System.Drawing.Size(420, 359);
+            this.Controls.Add(this.num_NumberOfCleaners);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.num_ReceptionistWorkSpeed);
             this.Controls.Add(this.lbl_ReceptionistWorkLength);
-            this.Controls.Add(this.cb_EmptyRooms);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.lbl_StaircaseWeight);
             this.Controls.Add(this.num_StairsWeight);
@@ -557,6 +581,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.num_Survivability)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_StairsWeight)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_ReceptionistWorkSpeed)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.num_NumberOfCleaners)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -591,9 +616,10 @@
         private System.Windows.Forms.NumericUpDown num_StairsWeight;
         private System.Windows.Forms.Label lbl_StaircaseWeight;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.CheckBox cb_EmptyRooms;
         private System.Windows.Forms.Label lbl_ReceptionistWorkLength;
         private System.Windows.Forms.NumericUpDown num_ReceptionistWorkSpeed;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.NumericUpDown num_NumberOfCleaners;
     }
 }

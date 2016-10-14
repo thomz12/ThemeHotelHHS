@@ -46,7 +46,7 @@ namespace Hotel
                 PlaceRoom(buildedRooms[i]);
             }
 
-            _cleaners = 2;
+            _cleaners = ServiceLocator.Get<ConfigLoader>().GetConfig().NumberOfCleaners;
 
             CreateStaff();
         }
@@ -201,14 +201,33 @@ namespace Hotel
         /// <param name="deltaTime">The delta time.</param>
         public void Update(float deltaTime)
         {
+            int dirtyRooms = 0;
+
             for (int i = 0; i < Rooms.Count; i++)
             {
                 Rooms[i].Update(deltaTime);
+
+                if (Rooms[i].State == RoomState.Emergency || Rooms[i].State == RoomState.Dirty)
+                    dirtyRooms++;
             }
 
             for (int i = 0; i < Staff.Count; i++)
             {
                 Staff[i].Update(deltaTime);
+
+                if (Staff[i] is Cleaner && dirtyRooms > 0)
+                {
+                    // TODO
+                    // Logic here to choose cleaner that is the closest to the dirty room.
+
+                    Cleaner cleaner = (Cleaner)Staff[i];
+                    if(!cleaner.IsBusy)
+                    {
+                        cleaner.GoClean();
+                        dirtyRooms--;
+                    }
+
+                }
             }
 
             for (int i = 0; i < Guests.Count; i++)

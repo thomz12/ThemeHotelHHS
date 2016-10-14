@@ -16,7 +16,7 @@ namespace Hotel
 
         public HotelBuilder()
         {
-            _createEmptyRooms = ServiceLocator.Get<ConfigLoader>().GetConfig().CreateEmptyRooms;
+            _createEmptyRooms = true;
         }
 
         public List<Room> BuildHotel(string path)

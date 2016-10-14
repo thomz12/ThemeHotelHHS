@@ -47,7 +47,7 @@ namespace Hotel
                 RemoveObjectEvent(this, e);
         }
 
-        /// <summary> 
+        /// <summary>
         /// Called every frame.
         /// </summary>
         /// <param name="deltaTime">Time since last frame.</param>

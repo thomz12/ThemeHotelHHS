@@ -46,8 +46,8 @@ namespace HotelLauncher
                     num_Survivability.Value = (int)_model.Survivability;
                     num_StairsWeight.Value = (decimal)_model.StaircaseWeight;
                     num_ReceptionistWorkSpeed.Value = (decimal)_model.ReceptionistWorkLenght;
+                    num_NumberOfCleaners.Value = (decimal)_model.NumberOfCleaners;
                     tb_Layout.Text = _model.LayoutPath;
-                    cb_EmptyRooms.Checked = _model.CreateEmptyRooms;
                 }
             }
             catch
@@ -73,7 +73,7 @@ namespace HotelLauncher
             _model.Survivability = (int)num_Survivability.Value;
             _model.StaircaseWeight = (float)num_StairsWeight.Value;
             _model.ReceptionistWorkLenght = (float)num_ReceptionistWorkSpeed.Value;
-            _model.CreateEmptyRooms = cb_EmptyRooms.Checked;
+            _model.NumberOfCleaners = (int)num_NumberOfCleaners.Value;
 
             if (_model.LayoutPath == null)
             {
