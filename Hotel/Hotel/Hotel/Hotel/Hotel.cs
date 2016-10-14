@@ -12,7 +12,6 @@ namespace Hotel
 {
     public class Hotel
     {
-        public string HotelLayoutFilePath { get; private set; }
         public List<Room> Rooms { get; set; }
         public List<Person> Staff { get; set; }
         public Dictionary<string, Person> Guests { get; set; }
@@ -30,13 +29,9 @@ namespace Hotel
             Staff = new List<Person>();
             Guests = new Dictionary<string, Person>();
 
-            // Set the path to the file of the hotel that needs to be loaded.
-            ConfigModel config = ServiceLocator.Get<ConfigLoader>().GetConfig();
-            HotelLayoutFilePath = config.LayoutPath;
-
             // read the hotel from a layout file.
             HotelBuilder builder = new HotelBuilder();
-            List<Room> buildedRooms = builder.BuildHotel(HotelLayoutFilePath);
+            List<Room> buildedRooms = builder.BuildHotel(ServiceLocator.Get<ConfigLoader>().GetConfig().LayoutPath);
 
             // Add the rooms, and connect them, starts with an empty room outside with ID 0.
             Room outside = new EmptyRoom(0, new Point(-1, 0), new Point(1, 1));
