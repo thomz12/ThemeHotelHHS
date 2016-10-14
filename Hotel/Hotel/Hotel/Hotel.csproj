@@ -80,14 +80,14 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Game\Background.cs" />
-    <Compile Include="Game\Camera.cs" />
-    <Compile Include="Game\ConfigLoader.cs" />
-    <Compile Include="Game\ConfigModel.cs" />
-    <Compile Include="Game\HotelEventHandler.cs" />
-    <Compile Include="Game\InformationWindow.cs" />
-    <Compile Include="Game\EventListener.cs" />
-    <Compile Include="Game\ServiceLocator.cs" />
+    <Compile Include="Visual\Background.cs" />
+    <Compile Include="Visual\Camera.cs" />
+    <Compile Include="Services\ConfigLoader.cs" />
+    <Compile Include="Services\ConfigModel.cs" />
+    <Compile Include="HotelEvents\HotelEventHandler.cs" />
+    <Compile Include="Visual\InformationWindow.cs" />
+    <Compile Include="HotelEvents\EventListener.cs" />
+    <Compile Include="Services\ServiceLocator.cs" />
     <Compile Include="Hotel\HotelObject.cs" />
     <Compile Include="Game\Input.cs" />
     <Compile Include="Game\NameGenerator.cs" />
@@ -117,7 +117,7 @@
     <Compile Include="Rooms\Lobby.cs" />
     <Compile Include="Rooms\EmptyRoom.cs" />
     <Compile Include="Rooms\Room.cs" />
-    <Compile Include="Game\Sprite.cs" />
+    <Compile Include="Visual\Sprite.cs" />
     <Compile Include="Rooms\Staircase.cs" />
   </ItemGroup>
   <ItemGroup>
