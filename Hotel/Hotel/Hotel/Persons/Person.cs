@@ -78,8 +78,6 @@ namespace Hotel.Persons
         public event EventHandler Arrival;
         public event EventHandler Departure;
 
-        public event EventHandler Death;
-
         /// <summary>
         /// Constructor.
         /// </summary>
@@ -142,6 +140,18 @@ namespace Hotel.Persons
                 Departure(this, e);
         }
 
+        public override void Remove(EventArgs e)
+        {
+            // Set an emergency in this room.
+            if (CurrentRoom.State != RoomState.Emergency && CurrentRoom.State != RoomState.InCleaning)
+                CurrentRoom.SetEmergency(8);
+
+            // Set mode to dead
+            _isDead = true;
+
+            base.Remove(e);
+        }
+
         /// <summary>
         /// Find a path to a room, using a rule. If a room has been found a path is saved and the target room is set.
         /// </summary>
@@ -188,18 +198,6 @@ namespace Hotel.Persons
         }
 
         /// <summary>
-        /// Called when the person dies.
-        /// </summary>
-        protected virtual void OnDeath(EventArgs e)
-        {
-            if (Death != null)
-                Death(this, e);
-
-            // Set mode to dead
-            _isDead = true;
-        }
-
-        /// <summary>
         /// Sets the current room of the person.
         /// </summary>
         /// <param name="room">The room to move to.</param>
@@ -217,7 +215,7 @@ namespace Hotel.Persons
             if (!_isDead)
             {
                 if (_deathTimer > _survivabilityTime && _survivabilityTime != -1)
-                    OnDeath(new EventArgs());
+                    Remove(new EventArgs());
 
                 // While people are waiting, increase the deathtimer.
                 if (CurrentTask == PersonTask.InQueue && _survivabilityTime != -1)
@@ -231,7 +229,7 @@ namespace Hotel.Persons
             else
             {
                 if(CurrentRoom.State != RoomState.Emergency || CurrentRoom.State != RoomState.InCleaning)
-                    RemoveMe(new EventArgs());
+                    Remove(new EventArgs());
             }
 
             // Get the new bounding box (the exact position on the sprite batch)

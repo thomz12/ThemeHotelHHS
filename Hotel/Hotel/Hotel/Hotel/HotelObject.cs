@@ -16,7 +16,7 @@ namespace Hotel
         public Rectangle BoundingBox { get; set; }
 
         public event EventHandler Click;
-        public event EventHandler RemoveObject;
+        public event EventHandler RemoveObjectEvent;
 
         /// <summary>
         /// Constructor
@@ -39,14 +39,15 @@ namespace Hotel
         /// <summary>
         /// Call this to remove this object from the game.
         /// </summary>
-        /// <param name="e"></param>
-        public void RemoveMe(EventArgs e)
+        /// <param name="e">EventArgs.</param>
+        public virtual void Remove(EventArgs e)
         {
-            if (RemoveObject != null)
-                RemoveObject(this, e);
+            // Call the event so the hotel can use it.
+            if (RemoveObjectEvent != null)
+                RemoveObjectEvent(this, e);
         }
 
-        /// <summary>
+        /// <summary> 
         /// Called every frame.
         /// </summary>
         /// <param name="deltaTime">Time since last frame.</param>
