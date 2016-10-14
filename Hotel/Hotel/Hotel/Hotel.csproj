@@ -80,12 +80,12 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Everything that has to do with cameras and drawing\Background.cs" />
-    <Compile Include="Everything that has to do with cameras and drawing\Camera.cs" />
+    <Compile Include="Drawing\Background.cs" />
+    <Compile Include="Drawing\Camera.cs" />
     <Compile Include="Services\ConfigLoader.cs" />
     <Compile Include="Services\ConfigModel.cs" />
     <Compile Include="HotelEvents\HotelEventHandler.cs" />
-    <Compile Include="Everything that has to do with cameras and drawing\InformationWindow.cs" />
+    <Compile Include="Drawing\InformationWindow.cs" />
     <Compile Include="HotelEvents\EventListener.cs" />
     <Compile Include="Services\ServiceLocator.cs" />
     <Compile Include="Hotel\HotelObject.cs" />
@@ -117,7 +117,7 @@
     <Compile Include="Rooms\Lobby.cs" />
     <Compile Include="Rooms\EmptyRoom.cs" />
     <Compile Include="Rooms\Room.cs" />
-    <Compile Include="Everything that has to do with cameras and drawing\Sprite.cs" />
+    <Compile Include="Drawing\Sprite.cs" />
     <Compile Include="Rooms\Staircase.cs" />
   </ItemGroup>
   <ItemGroup>
