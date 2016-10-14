@@ -52,7 +52,7 @@ namespace Hotel
         }
 
         /// <summary>
-        ///  Creates the staff for the hotel.
+        /// Creates the staff for the hotel.
         /// </summary>
         public void CreateStaff()
         {
@@ -66,7 +66,7 @@ namespace Hotel
             {
                 Cleaner c = new Cleaner(Rooms[r.Next(1, Rooms.Count())]);
                 Staff.Add(c);
-                c.RemoveObject += RemoveObj;
+                c.RemoveObjectEvent += RemoveObject;
             }
         }
 
@@ -82,20 +82,17 @@ namespace Hotel
             guest.FindAndTargetRoom(x => (x is Lobby && (x as Lobby).Receptionist != null));
             
             // Subscribe to remove event
-            guest.RemoveObject += RemoveObj;
-        }
-
-        private void RemoveObj(object sender, EventArgs e)
-        {
-            RemoveObject((HotelObject)sender);
+            guest.RemoveObjectEvent += RemoveObject;
         }
 
         /// <summary>
         /// Remove a object.
         /// </summary>
         /// <param name="object">The object to remove.</param>
-        public void RemoveObject(HotelObject hotelObject)
+        public void RemoveObject(object sender, EventArgs e)
         {
+            HotelObject hotelObject = (HotelObject)sender;
+
             if (hotelObject is Person)
             {
                 // Remove guest from the hotel.
@@ -127,7 +124,7 @@ namespace Hotel
 
                     // Spawn a ghost
                     CleanerGhost cGhost = new CleanerGhost(cleaner.CurrentRoom);
-                    cGhost.RemoveObject += RemoveObj;
+                    cGhost.RemoveObjectEvent += RemoveObject;
                     Staff.Add(cGhost);
                 }
                 else if (hotelObject is CleanerGhost)
@@ -136,7 +133,7 @@ namespace Hotel
 
                     // Spawn a new cleaner
                     Cleaner cleaner = new Cleaner(Rooms[0]);
-                    cleaner.RemoveObject += RemoveObj;
+                    cleaner.RemoveObjectEvent += RemoveObject;
                     Staff.Add(cleaner);
                     // Make it walk indoors
                     cleaner.FindAndTargetRoom(x => (x is Lobby && (x as Lobby).Receptionist != null));
@@ -144,10 +141,12 @@ namespace Hotel
                     Staff.Remove(cleanerGhost);
                 }
 
-                hotelObject.RemoveObject -= RemoveObj;
+                hotelObject.RemoveObjectEvent -= RemoveObject;
             }
             if (hotelObject is Room)
             {
+                // RIP in pepperonis.
+                // TODO
                 throw new NotImplementedException();
             }
         }
@@ -169,14 +168,9 @@ namespace Hotel
             }
 
             // Subscribe to the remove event
-            room.RemoveObject += Room_RemoveObject;
+            room.RemoveObjectEvent += RemoveObject;
 
             Rooms.Add(room);
-        }
-
-        private void Room_RemoveObject(object sender, EventArgs e)
-        {
-            RemoveObject((HotelObject)sender);
         }
 
         /// <summary>

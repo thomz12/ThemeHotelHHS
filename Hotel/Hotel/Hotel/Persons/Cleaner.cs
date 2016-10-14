@@ -30,18 +30,19 @@ namespace Hotel.Persons
             _cleaningTimer = _cleaningDuration;
 
             Arrival += Cleaner_Arrival;
-            Death += Cleaner_Death;
         }
 
-        private void Cleaner_Death(object sender, EventArgs e)
+        /// <summary>
+        /// Call this to remove this cleaner from the game.
+        /// </summary>
+        /// <param name="e"></param>
+        public override void Remove(EventArgs e)
         {
             // Unclaim the room which the cleaner was supposed to clean.
             if (TargetRoom != null && TargetRoom.State == RoomState.InCleaning)
                 TargetRoom.State = TargetRoom.PrevRoomState;
 
-            // Set an emergency in this room.
-            if (CurrentRoom.State != RoomState.Emergency && CurrentRoom.State != RoomState.InCleaning)
-                CurrentRoom.SetEmergency(8);
+            base.Remove(e);
         }
 
         private void Cleaner_Arrival(object sender, EventArgs e)
@@ -52,6 +53,41 @@ namespace Hotel.Persons
             {
                 _isCleaning = true;
                 TargetRoom.State = RoomState.InCleaning;
+            }
+        }
+
+        public void GoClean()
+        {
+            // Check if this cleaner is busy with cleaning or walking
+            if (!_isBusy)
+            {
+                // Call dijkstra's because there is an emergency.
+                FindAndTargetRoom(x => x.State == RoomState.Emergency);
+
+                if (Path != null)
+                {
+                    // Set the time it takes to clean the room.
+                    _cleaningTimer = TargetRoom.GetTimeToCleanEmergency();
+                }
+                else
+                {
+                    FindAndTargetRoom(x => x.State == RoomState.Dirty);
+                    
+                    if(Path != null)
+                    {
+                        // Set the time it takes to clean the room.
+                        _cleaningTimer = TargetRoom.GetTimeToCleanEmergency();
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+
+                // Set the Target room to InCleaning to claim it.
+                TargetRoom.State = RoomState.InCleaning;
+                // Set busy to true because this cleaner is busy with walking or cleaning.
+                _isBusy = true;
             }
         }
 
@@ -89,41 +125,6 @@ namespace Hotel.Persons
             }
 
             base.Update(deltaTime);
-        }
-
-        public void GoClean()
-        {
-            // Check if this cleaner is busy with cleaning or walking
-            if (!_isBusy)
-            {
-                // Call dijkstra's because there is an emergency.
-                FindAndTargetRoom(x => x.State == RoomState.Emergency);
-
-                if (Path != null)
-                {
-                    // Set the time it takes to clean the room.
-                    _cleaningTimer = TargetRoom.GetTimeToCleanEmergency();
-                }
-                else
-                {
-                    FindAndTargetRoom(x => x.State == RoomState.Dirty);
-                    
-                    if(Path != null)
-                    {
-                        // Set the time it takes to clean the room.
-                        _cleaningTimer = TargetRoom.GetTimeToCleanEmergency();
-                    }
-                    else
-                    {
-                        return;
-                    }
-                }
-
-                // Set the Target room to InCleaning to claim it.
-                TargetRoom.State = RoomState.InCleaning;
-                // Set busy to true because this cleaner is busy with walking or cleaning.
-                _isBusy = true;
-            }
         }
     }
 }

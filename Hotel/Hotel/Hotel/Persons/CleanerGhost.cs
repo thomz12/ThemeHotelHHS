@@ -11,17 +11,12 @@ namespace Hotel.Persons
         {
             Sprite.LoadSprite("Ghost");
 
+            _survivabilityTime = -1;
+
             _pathFinder.UseElevator = false;
             FindAndTargetRoom(x => x.Name.Equals("Outside"));
 
             Arrival += Arrival_AtRoom;
-            Death += Ghost_Remove;
-        }
-
-        private void Ghost_Remove(object sender, EventArgs e)
-        {
-            // Do Something when the ghost dies (gets removed)
-            RemoveMe(new EventArgs());
         }
 
         private void Arrival_AtRoom(object sender, EventArgs e)
@@ -29,7 +24,7 @@ namespace Hotel.Persons
             // KILL YOURSELF
             if(CurrentRoom.Name.Equals("Outside"))
             {
-                OnDeath(new EventArgs());
+                Remove(new EventArgs());
             }
         }
     }
