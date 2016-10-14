@@ -271,7 +271,7 @@
             // 
             this.num_CleaningDuration.Location = new System.Drawing.Point(172, 112);
             this.num_CleaningDuration.Maximum = new decimal(new int[] {
-            20,
+            69,
             0,
             0,
             0});
@@ -329,7 +329,7 @@
             // 
             this.num_Survivability.Location = new System.Drawing.Point(171, 138);
             this.num_Survivability.Maximum = new decimal(new int[] {
-            50,
+            69,
             0,
             0,
             0});
@@ -483,7 +483,7 @@
             // 
             this.num_NumberOfCleaners.Location = new System.Drawing.Point(171, 216);
             this.num_NumberOfCleaners.Maximum = new decimal(new int[] {
-            25,
+            42,
             0,
             0,
             0});
