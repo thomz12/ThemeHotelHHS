@@ -11,6 +11,8 @@ namespace Hotel.Persons
         {
             Sprite.LoadSprite("Ghost");
 
+            _survivabilityTime = -1;
+
             _pathFinder.UseElevator = false;
             FindAndTargetRoom(x => x.Name.Equals("Outside"));
 

@@ -3785,6 +3785,53 @@
         <elementDefinition Id="86cd0119-096d-4adb-b41a-e2a02821bfad" />
       </referencedType>
     </packageHasNamedElement>
+    <logicalClassDesignerModelHasTypes>
+      <class Id="f5d38c47-f2f7-4955-9be4-5c2cdc0f0533" name="CleanerGhost" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="b097b52a-4e29-4609-9053-753b5040eaa6" />
+        <generalsInternal>
+          <generalization Id="506df9d5-c63a-4f7c-a070-e4c8d4fd0f3d" isSubstitutable="false">
+            <classMoniker Id="9ce80bcf-b86e-4d9a-9f37-c3a20387b15b" LastKnownName="Person" />
+            <elementDefinition Id="c70582eb-7584-4cbd-ad21-4dc7e9597039" />
+          </generalization>
+        </generalsInternal>
+        <ownedOperationsInternal>
+          <operation Id="ef26ce4d-8c96-42b6-b537-b9b5d61db5b9" name="Arrival_AtRoom" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="2ad90d98-8096-4d0a-b9b1-eca760cf51e6" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="d38b815d-f0dd-43d7-923f-75eeae039fa1" name="sender" direction="In" isUnique="false">
+                  <elementDefinition Id="95fb5cae-07e4-4f4b-93ba-1e57741c6408" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="58e9324d-c352-4ab4-a63f-aefe42020a08" LastKnownName="object" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="847f6421-f9cb-4867-be17-1ae7dcacb480" name="e" direction="In" isUnique="false">
+                  <elementDefinition Id="3b0a0a12-711c-4fa5-8476-0d3f2d9e2fd7" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="98d64842-db26-4f19-a54a-57298c54362a" LastKnownName="EventArgs" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation Id="547c75ae-3a94-4408-b01e-35ce29a8be1a" name="CleanerGhost" isLeaf="false" isStatic="false" isAbstract="false" concurrency="Sequential" isQuery="false">
+            <elementDefinition Id="d4a4bf50-b2a0-4721-9f55-538ab455fb6e" />
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter Id="367526b6-f3dd-45e4-92a5-4771cc056a68" name="room" direction="In" isUnique="false">
+                  <elementDefinition Id="39eebcbe-f1f9-412d-a938-7dc35078d151" />
+                  <type_NamedElement>
+                    <referencedTypeMoniker Id="2a79b222-95d6-4d11-aff2-7aea0e8c3cb6" LastKnownName="Room" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </logicalClassDesignerModelHasTypes>
   </packagedElements>
   <package Id="dcd36c7c-ee69-4234-8b0d-a3b8dc3f548d" name="UML">
     <elementDefinition Id="90d7b128-f1fc-462a-8421-ac1bd25777ae" />

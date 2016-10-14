@@ -59,6 +59,8 @@ namespace Hotel.Persons
         public float JumpHeight { get; set; }
 
         protected PathFinder _pathFinder;
+        // The max time a guy can stay waiting.
+        protected float _survivabilityTime;
 
         // The Elevator to enter.
         private Elevator _elevator;
@@ -70,8 +72,6 @@ namespace Hotel.Persons
         private bool _calledElevator;
         // Timer to check when to die.
         private float _deathTimer;
-        // The max time a guy can stay waiting.
-        private float _survivabilityTime;
         // When where you when poppetje was kill?
         private bool _isDead;
 

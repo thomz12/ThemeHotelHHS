@@ -146,6 +146,7 @@ namespace Hotel
             if (hotelObject is Room)
             {
                 // RIP in pepperonis.
+                // TODO
                 throw new NotImplementedException();
             }
         }
