@@ -52,12 +52,27 @@ namespace Hotel
 
                 // Evecuation event.
                 case HotelEvents.HotelEventType.EVACUATE:
+                    /*
+                    foreach (Room room in _hotel.Rooms)
+                    if (room is ElevatorShaft)
+                    room.Weight = 99999;
+
+                    foreach(Person person in _hotel.Guests.Values)
+                    {
+                    person.FindAndTargetRoom(x => x.Name == "Outside");
+                    }
+
+                    foreach(Person person in _hotel.Staff)
+                    {
+                    person.FindAndTargetRoom(x => x.Name == "Outside");
+                    }
+                    */
                     break;
 
                 // Godzilla event.
-                case HotelEvents.HotelEventType.GODZILLA: 
+                case HotelEvents.HotelEventType.GODZILLA:
                     Console.WriteLine("AAAAAAAHHHHHHHH!");
-                    // Call evacuate function?
+                    // Evacuate all the people?
                     break;
 
                 // Guest needs food event.
@@ -68,19 +83,22 @@ namespace Hotel
                     {
                         Guest hotelGuest = _hotel.Guests[guestName] as Guest;
 
-                        if(hotelGuest.StayState == StayState.Staying)
+                        if (hotelGuest.StayState == StayState.Staying)
                             hotelGuest.FindAndTargetRoom(x => x is Cafe);
                     }
-                        
+
                     break;
 
                 // Guest goes to cinema event.
                 case HotelEvents.HotelEventType.GOTO_CINEMA:
                     string guest = evt.Data.Keys.ElementAt(0) + evt.Data.Values.ElementAt(0);
+
+                    // if the guest exists.
                     if (_hotel.Guests.Keys.Contains(guest))
                     {
                         Guest hotelGuest = _hotel.Guests[guest] as Guest;
 
+                        // if the guest is not checking in or out
                         if (hotelGuest.StayState == StayState.Staying)
                             hotelGuest.FindAndTargetRoom(x => x is Cinema);
                     }
@@ -107,11 +125,11 @@ namespace Hotel
                     Cinema cinema = (Cinema)_hotel.Rooms.Where(x => x.ID == Int32.Parse(evt.Data.Values.ElementAt(0))).FirstOrDefault();
                     cinema?.StartMovie();
 
-                    foreach(Person person in _hotel.Guests.Values)
+                    foreach (Person person in _hotel.Guests.Values)
                     {
-                        if(person.CurrentRoom == cinema && person.Inside)
+                        if (person.CurrentRoom == cinema && person.Inside)
                         {
-                            if(person is Guest)
+                            if (person is Guest)
                             {
                                 (person as Guest).LeaveRoomInTime(ServiceLocator.Get<ConfigLoader>().GetConfig().FilmDuration);
                             }
