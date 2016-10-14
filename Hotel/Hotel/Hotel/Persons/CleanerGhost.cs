@@ -15,11 +15,9 @@ namespace Hotel.Persons
 
             _pathFinder.UseElevator = false;
             FindAndTargetRoom(x => x.Name.Equals("Outside"));
-
-            Arrival += Arrival_AtRoom;
         }
 
-        private void Arrival_AtRoom(object sender, EventArgs e)
+        public override void OnArrival()
         {
             // KILL YOURSELF
             if(CurrentRoom.Name.Equals("Outside"))

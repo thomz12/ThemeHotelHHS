@@ -75,9 +75,6 @@ namespace Hotel.Persons
         // When where you when poppetje was kill?
         private bool _isDead;
 
-        public event EventHandler Arrival;
-        public event EventHandler Departure;
-
         /// <summary>
         /// Constructor.
         /// </summary>
@@ -118,26 +115,20 @@ namespace Hotel.Persons
         /// <summary>
         /// Called when person is arrives on his location.
         /// </summary>
-        private void OnArrival(EventArgs e)
+        public virtual void OnArrival()
         {
             if(_roomBehaviour != null)
                 _roomBehaviour.OnArrival(CurrentRoom, this);
-
-            if (Arrival != null)
-                Arrival(this, e);
         }
 
         /// <summary>
         /// Called when person leaves his location.
         /// </summary>
         /// <param name="e"></param>
-        public void OnDeparture(EventArgs e)
+        public virtual void OnDeparture()
         {
             if(_roomBehaviour != null)
                 _roomBehaviour.OnDeparture(CurrentRoom, this);
-
-            if (Departure != null)
-                Departure(this, e);
         }
 
         public override void Remove(EventArgs e)
@@ -187,7 +178,7 @@ namespace Hotel.Persons
 
                 if (Inside)
                 {
-                    OnDeparture(new EventArgs());
+                    OnDeparture();
 
                     CurrentRoom.PeopleCount--;
                     Inside = false;
@@ -332,7 +323,7 @@ namespace Hotel.Persons
 
                         if (TargetRoom == CurrentRoom)
                         {
-                            OnArrival(new EventArgs());
+                            OnArrival();
                             TargetRoom = null;
                         }
 
