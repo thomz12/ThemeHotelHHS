@@ -15,7 +15,6 @@ namespace Hotel
         public string Name { get; set; }
         public Rectangle BoundingBox { get; set; }
 
-        public event EventHandler Click;
         public event EventHandler RemoveObjectEvent;
 
         /// <summary>
@@ -28,12 +27,6 @@ namespace Hotel
             Sprite = new Sprite();
 
             Name = "HotelObject";
-        }
-
-        public void OnClick(EventArgs e)
-        {
-            if(Click != null)
-                Click(this, e);
         }
 
         /// <summary>

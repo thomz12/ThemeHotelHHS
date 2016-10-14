@@ -21,7 +21,7 @@ namespace Hotel.Persons
         /// <param name="room">The room to spawn the guest in.</param>
         public Cleaner(Room room) : base(room)
         {
-            Name = "Tim";
+            Name = "Cleaner";
             Sprite.LoadSprite("Cleaner");
             _isCleaning = false;
 
@@ -29,8 +29,6 @@ namespace Hotel.Persons
             ConfigModel config = ServiceLocator.Get<ConfigLoader>().GetConfig();
             _cleaningDuration = (float)config.CleaningDuration;
             _cleaningTimer = _cleaningDuration;
-
-            Arrival += Cleaner_Arrival;
         }
 
         /// <summary>
@@ -46,8 +44,10 @@ namespace Hotel.Persons
             base.Remove(e);
         }
 
-        private void Cleaner_Arrival(object sender, EventArgs e)
+        public override void OnArrival()
         {
+            base.OnArrival();
+  
             // Cleaner has arrived at the dirty room.
             // If the room where the cleaner has arrived at is dirty set _isCleaning to true.
             if(TargetRoom.State == RoomState.InCleaning || TargetRoom.State == RoomState.Dirty || TargetRoom.State == RoomState.Emergency)

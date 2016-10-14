@@ -82,7 +82,7 @@ namespace Hotel.Persons
                 {
                     Inside = false;
                     _toLeave = false;
-                    OnDeparture(new EventArgs());
+                    OnDeparture();
                 }
             }
         }
