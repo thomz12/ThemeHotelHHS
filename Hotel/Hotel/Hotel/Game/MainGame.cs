@@ -159,6 +159,9 @@ namespace Hotel
             base.Update(gameTime);
         }
 
+        /// <summary>
+        /// TODO move dis?
+        /// </summary>
         private void MouseOver()
         {
             // Reset the color of the object that was being hovered over
