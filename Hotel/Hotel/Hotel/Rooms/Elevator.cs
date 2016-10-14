@@ -57,7 +57,7 @@ namespace Hotel
             ConfigModel config = ServiceLocator.Get<ConfigLoader>().GetConfig();
             Speed = 90f * config.ElevatorSpeed;
 
-            Sprite.SetSize(new Point(Sprite.Texture.Width, Sprite.Texture.Height));
+            Sprite.SetSize(new Point(Sprite.Texture.Width, Room.ROOMHEIGHT));
 
             CurrentFloor = 0;
             _queue = new Dictionary<int?, ElevatorDirection>();
@@ -210,10 +210,10 @@ namespace Hotel
         private void MoveToFloor(int floor, float deltaTime)
         {
             // When the elevator has reached its destination
-            if (Math.Abs(Position.Y - floor * Sprite.Texture.Height) < Speed * deltaTime)
+            if (Math.Abs(Position.Y - floor * Room.ROOMHEIGHT) < Speed * deltaTime)
             {
                 // Set the position on the exact floor position.
-                Position = new Vector2(Position.X, floor * Sprite.Texture.Height);
+                Position = new Vector2(Position.X, floor * Room.ROOMHEIGHT);
                 _queue.Remove(_targetFloor);
 
                 // The current floor is now the target.
@@ -247,7 +247,7 @@ namespace Hotel
             }
 
             // Going up
-            if (Position.Y > floor * Sprite.Texture.Height)
+            if (Position.Y > floor * Room.ROOMHEIGHT)
                 Position = new Vector2(Position.X, Position.Y - Speed * deltaTime);
             // Going down
             else
