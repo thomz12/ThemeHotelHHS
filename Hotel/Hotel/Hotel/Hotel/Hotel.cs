@@ -52,7 +52,7 @@ namespace Hotel
         }
 
         /// <summary>
-        ///  Creates the staff for the hotel.
+        /// Creates the staff for the hotel.
         /// </summary>
         public void CreateStaff()
         {
@@ -145,6 +145,7 @@ namespace Hotel
             }
             if (hotelObject is Room)
             {
+                // RIP in pepperonis.
                 throw new NotImplementedException();
             }
         }
