@@ -133,10 +133,6 @@ namespace Hotel.Persons
 
         public override void Remove(EventArgs e)
         {
-            // Set an emergency in this room.
-            if (CurrentRoom.State != RoomState.Emergency && CurrentRoom.State != RoomState.InCleaning)
-                CurrentRoom.SetEmergency(8);
-
             // Set mode to dead
             _isDead = true;
 

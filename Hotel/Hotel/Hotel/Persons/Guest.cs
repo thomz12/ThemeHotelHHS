@@ -93,11 +93,16 @@ namespace Hotel.Persons
         /// <param name="e">EventArgs.</param>
         public override void Remove(EventArgs e)
         {
+            // Set the staying state to none and empty the occupied room
             if (StayState == StayState.Staying)
             {
                 Room.Guest = null;
                 StayState = StayState.None;
             }
+
+            // Set an emergency in this room.
+            if (CurrentRoom.State != RoomState.Emergency && CurrentRoom.State != RoomState.InCleaning)
+                CurrentRoom.SetEmergency(8);
 
             base.Remove(e);
         }
