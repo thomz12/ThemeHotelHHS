@@ -30,239 +30,326 @@
     <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.VideoImporters, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="1x1ElevatorShaft.png">
-      <Name>1x1ElevatorShaft</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Elevator.png">
-      <Name>Elevator</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="2x1Cafe.png">
-      <Name>2x1Cafe</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="1x1Cafe.png">
+    <Compile Include="DefaultTexturePack\1x1Cafe.png">
       <Name>1x1Cafe</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="2x1Lobby.png">
-      <Name>2x1Lobby</Name>
+    <Compile Include="DefaultTexturePack\1x1ElevatorShaft.png">
+      <Name>1x1ElevatorShaft</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="3x1Fitness.png">
-      <Name>3x1Fitness</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="InformationWindowFont.spritefont">
-      <Name>InformationWindowFont</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Guest.png">
-      <Name>Guest</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-    <Compile Include="Stairs.png">
-      <Name>Stairs</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="1x1Lobby.png">
-      <Name>1x1Lobby</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="BluePrint.png">
-      <Name>BluePrint</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="PaperClean.png">
-      <Name>PaperClean</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Receptionist.png">
-      <Name>Receptionist</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="FemaleGuest.png">
-      <Name>FemaleGuest</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Cleaner.png">
-      <Name>Cleaner</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="1x1GuestRoom.png">
+    <Compile Include="DefaultTexturePack\1x1GuestRoom.png">
       <Name>1x1GuestRoom</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="2x1GuestRoom.png">
-      <Name>2x1GuestRoom</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="2x2GuestRoom.png">
-      <Name>2x2GuestRoom</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="2x1GuestRoomOccupied.png">
-      <Name>2x1GuestRoomOccupied</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="1x1GuestRoomOccupied.png">
-      <Name>1x1GuestRoomOccupied</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="2x2GuestRoomOccupied.png">
-      <Name>2x2GuestRoomOccupied</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="2x2Cinema.png">
-      <Name>2x2Cinema</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="1x1GuestRoomCleaning.png">
+    <Compile Include="DefaultTexturePack\1x1GuestRoomCleaning.png">
       <Name>1x1GuestRoomCleaning</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="1x1GuestRoomDirty.png">
+    <Compile Include="DefaultTexturePack\1x1GuestRoomDirty.png">
       <Name>1x1GuestRoomDirty</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="2x1GuestRoomCleaning.png">
+    <Compile Include="DefaultTexturePack\1x1GuestRoomOccupied.png">
+      <Name>1x1GuestRoomOccupied</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DefaultTexturePack\1x1Lobby.png">
+      <Name>1x1Lobby</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DefaultTexturePack\2x1Cafe.png">
+      <Name>2x1Cafe</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DefaultTexturePack\2x1GuestRoom.png">
+      <Name>2x1GuestRoom</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DefaultTexturePack\2x1GuestRoomCleaning.png">
       <Name>2x1GuestRoomCleaning</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="2x1GuestRoomDirty.png">
+    <Compile Include="DefaultTexturePack\2x1GuestRoomDirty.png">
       <Name>2x1GuestRoomDirty</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="2x2GuestRoomCleaning.png">
+    <Compile Include="DefaultTexturePack\2x1GuestRoomOccupied.png">
+      <Name>2x1GuestRoomOccupied</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DefaultTexturePack\2x1Lobby.png">
+      <Name>2x1Lobby</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DefaultTexturePack\2x2Cinema.png">
+      <Name>2x2Cinema</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DefaultTexturePack\2x2CinemaPlaying.png">
+      <Name>2x2CinemaPlaying</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DefaultTexturePack\2x2GuestRoom.png">
+      <Name>2x2GuestRoom</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DefaultTexturePack\2x2GuestRoomCleaning.png">
       <Name>2x2GuestRoomCleaning</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="2x2GuestRoomDirty.png">
+    <Compile Include="DefaultTexturePack\2x2GuestRoomDirty.png">
       <Name>2x2GuestRoomDirty</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="CleaningEmergency.png">
+    <Compile Include="DefaultTexturePack\2x2GuestRoomOccupied.png">
+      <Name>2x2GuestRoomOccupied</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DefaultTexturePack\3x1Fitness.png">
+      <Name>3x1Fitness</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DefaultTexturePack\BluePrint.png">
+      <Name>BluePrint</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DefaultTexturePack\Cleaner.png">
+      <Name>Cleaner</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DefaultTexturePack\CleaningEmergency.png">
       <Name>CleaningEmergency</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Thumbnail.png">
+    <Compile Include="DefaultTexturePack\Elevator.png">
+      <Name>Elevator</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DefaultTexturePack\FemaleGuest.png">
+      <Name>FemaleGuest</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DefaultTexturePack\Ghost.png">
+      <Name>Ghost</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DefaultTexturePack\Guest.png">
+      <Name>Guest</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DefaultTexturePack\PaperClean.png">
+      <Name>PaperClean</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DefaultTexturePack\Receptionist.png">
+      <Name>Receptionist</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DefaultTexturePack\Stairs.png">
+      <Name>Stairs</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DefaultTexturePack\Thumbnail.png">
       <Name>Thumbnail</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="2x2CinemaPlaying.png">
+    <Compile Include="DefaultTexturePack\InformationWindowFont.spritefont">
+      <Name>InformationWindowFont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DankPack\2x1Cafe.png">
+      <Name>2x1Cafe</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankPack\1x1ElevatorShaft.png">
+      <Name>1x1ElevatorShaft</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankPack\1x1GuestRoom.png">
+      <Name>1x1GuestRoom</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankPack\1x1GuestRoomCleaning.png">
+      <Name>1x1GuestRoomCleaning</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankPack\1x1GuestRoomDirty.png">
+      <Name>1x1GuestRoomDirty</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankPack\1x1GuestRoomOccupied.png">
+      <Name>1x1GuestRoomOccupied</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankPack\1x1Lobby.png">
+      <Name>1x1Lobby</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankPack\2x1GuestRoom.png">
+      <Name>2x1GuestRoom</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankPack\2x1GuestRoomCleaning.png">
+      <Name>2x1GuestRoomCleaning</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankPack\2x1GuestRoomDirty.png">
+      <Name>2x1GuestRoomDirty</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankPack\2x1GuestRoomOccupied.png">
+      <Name>2x1GuestRoomOccupied</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankPack\2x1Lobby.png">
+      <Name>2x1Lobby</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankPack\2x2Cinema.png">
+      <Name>2x2Cinema</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankPack\2x2CinemaPlaying.png">
       <Name>2x2CinemaPlaying</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Grave.png">
-      <Name>Grave</Name>
+    <Compile Include="DankPack\2x2GuestRoom.png">
+      <Name>2x2GuestRoom</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="CleanerT.png">
-      <Name>CleanerT</Name>
+    <Compile Include="DankPack\2x2GuestRoomCleaning.png">
+      <Name>2x2GuestRoomCleaning</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Ghost.png">
+    <Compile Include="DankPack\2x2GuestRoomDirty.png">
+      <Name>2x2GuestRoomDirty</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankPack\2x2GuestRoomOccupied.png">
+      <Name>2x2GuestRoomOccupied</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankPack\3x1Fitness.png">
+      <Name>3x1Fitness</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankPack\BluePrint.png">
+      <Name>BluePrint</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankPack\Cleaner.png">
+      <Name>Cleaner</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankPack\CleaningEmergency.png">
+      <Name>CleaningEmergency</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankPack\Elevator.png">
+      <Name>Elevator</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankPack\FemaleGuest.png">
+      <Name>FemaleGuest</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankPack\Ghost.png">
       <Name>Ghost</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankPack\Guest.png">
+      <Name>Guest</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankPack\PaperClean.png">
+      <Name>PaperClean</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankPack\Receptionist.png">
+      <Name>Receptionist</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankPack\Stairs.png">
+      <Name>Stairs</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankPack\Thumbnail.png">
+      <Name>Thumbnail</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DankPack\InformationWindowFont.spritefont">
+      <Name>InformationWindowFont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
     </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />

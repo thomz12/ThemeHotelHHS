@@ -35,10 +35,10 @@ namespace Hotel
         /// <summary>
         /// Loads the texture used for the sprite.
         /// </summary>
-        /// <param name="path">Path to the image</param>
-        public void LoadSprite(string path)
+        /// <param name="fileName">Path to the image</param>
+        public void LoadSprite(string fileName)
         {
-            Texture = _content.Load<Texture2D>(path);
+            Texture = _content.Load<Texture2D>(fileName);
         }
 
         /// <summary>

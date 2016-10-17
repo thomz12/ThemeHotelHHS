@@ -14,5 +14,6 @@ namespace Hotel
         public float StaircaseWeight { get; set; }
         public float ReceptionistWorkLenght { get; set; }
         public int NumberOfCleaners { get; set; }
+        public string TexturePack { get; set; }
     }
 }

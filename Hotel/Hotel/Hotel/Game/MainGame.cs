@@ -40,8 +40,8 @@ namespace Hotel
 
         public MainGame()
         {
+            // General Service settings
             GraphicsDeviceManager graphicsDeviceManager = new GraphicsDeviceManager(this);
-            Content.RootDirectory = "Content";
 
             // We are using the ServiceLocator pattern here!
             // Add the services to the static class.
@@ -49,6 +49,10 @@ namespace Hotel
             ServiceLocator.Add<ConfigLoader>(new ConfigLoader(@"Config.cfg"));
             // Service Locator is OFF LIMITS.
 
+            // Set the directory for the texture pack
+            Content.RootDirectory = ServiceLocator.Get<ConfigLoader>().GetConfig().TexturePack;
+
+            // Window Settings
             Window.Title = "Hotel Simulation";
 
             IsMouseVisible = true;
