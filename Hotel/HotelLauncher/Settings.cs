@@ -126,7 +126,7 @@ namespace HotelLauncher
                 // We can check for everything but that would be inefficient.
                 // Since our program will automatically close when it crashes not checking for every file will not be a problem.
                 // The real problem will be displaying a message when a file could not be found.
-                if (File.Exists($@"{folderBrowserDialog.SelectedPath}\1x1Cafe.xnb"))
+                if (File.Exists($@"{folderBrowserDialog.SelectedPath}\2x1Cafe.xnb"))
                 {
                     tb_TexturePack.Text = folderBrowserDialog.SelectedPath;
                     _model.TexturePack = texturepackRelativePath;

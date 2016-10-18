@@ -39,7 +39,7 @@ namespace Hotel
         public void LoadSprite(string fileName)
         {
             if(_content != null)
-                Texture = _content.Load<Texture2D>(path);
+                Texture = _content.Load<Texture2D>(fileName);
         }
 
         /// <summary>
