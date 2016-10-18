@@ -69,9 +69,22 @@ namespace Hotel
                 else
                 {
                     // Y U REMOVE FILE BETWEEN OK AND LOAD?
+
+                    _config = new ConfigModel();
+                    _config.CleaningDuration = 3;
+                    _config.ElevatorSpeed = 1.0f;
+                    _config.FilmDuration = 10;
+                    _config.HTELength = 1.0f;
+                    _config.LayoutPath = null;
+                    _config.NumberOfCleaners = 2;
+                    _config.ReceptionistWorkLenght = 1.0f;
+                    _config.StaircaseWeight = 3.0f;
+                    _config.Survivability = 10;
+                    _config.WalkingSpeed = 1.0f;
+
                     Console.WriteLine("The config file does not exist, please exit the simulator and make one in the 'settings' screen of the launcher.");
                     // Could not load.
-                    return null;
+                    return _config;
                 }
             }
         }

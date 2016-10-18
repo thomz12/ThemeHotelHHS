@@ -73,9 +73,6 @@ namespace Hotel
             // Load config file.
             _config = ServiceLocator.Get<ConfigLoader>().GetConfig();
 
-            if (_config == null)
-                this.Exit();
-
             // Change settings related to HTE timespan.
             HotelEventManager.HTE_Factor = _config.HTELength;
             HTE_Modifier = _config.HTELength;
@@ -111,6 +108,11 @@ namespace Hotel
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             _informationWindow = new InformationWindow();
+
+            if (_config.LayoutPath == null)
+            {
+                Environment.Exit(0);
+            }
 
             _hotel = new Hotel();
             _camera = new Camera(GraphicsDevice.PresentationParameters.BackBufferWidth, GraphicsDevice.PresentationParameters.BackBufferHeight);
