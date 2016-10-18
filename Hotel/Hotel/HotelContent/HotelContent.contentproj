@@ -180,11 +180,12 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="DefaultTexturePack\Thumbnail.png">
+    <Content Include="DefaultTexturePack\Thumbnail.png">
       <Name>Thumbnail</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-    </Compile>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DefaultTexturePack\InformationWindowFont.spritefont">
@@ -339,11 +340,12 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="DankPack\Thumbnail.png">
+    <Content Include="DankPack\Thumbnail.png">
       <Name>Thumbnail</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
-    </Compile>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DankPack\InformationWindowFont.spritefont">

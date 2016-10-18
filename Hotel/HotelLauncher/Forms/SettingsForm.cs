@@ -11,10 +11,13 @@ namespace HotelLauncher
         private OpenFileDialog _fileDialog;
         private ConfigModel _model;
         private JsonSerializer _jsonSerializer;
+        private SelectTexturePackForm _texturePackForm;
 
         public Settings()
         {
             InitializeComponent();
+
+            _texturePackForm = new SelectTexturePackForm();
 
             _jsonSerializer = new JsonSerializer();
 
@@ -42,13 +45,11 @@ namespace HotelLauncher
                     num_ReceptionistWorkSpeed.Value = (decimal)_model.ReceptionistWorkLenght;
                     num_NumberOfCleaners.Value = (decimal)_model.NumberOfCleaners;
                     tb_Layout.Text = _model.LayoutPath;
-                    tb_TexturePack.Text = _model.TexturePack;
                 }
             }
             catch
             {
                 _model = new ConfigModel();
-                tb_TexturePack.Text = $@"{Path.GetDirectoryName(Application.ExecutablePath)}\DefaultTexturePack";
             }
         }
 
@@ -82,7 +83,7 @@ namespace HotelLauncher
                 return;
             }
             else
-            { 
+            {
                 // Save the entered data in a settings file.
                 StreamWriter sw = new StreamWriter(@"Config.cfg");
                 JsonWriter jsonWriter = new JsonTextWriter(sw);
@@ -96,7 +97,7 @@ namespace HotelLauncher
 
         private void btn_SelectLayout_Click(object sender, EventArgs e)
         {
-            if(_fileDialog.ShowDialog() == DialogResult.OK)
+            if (_fileDialog.ShowDialog() == DialogResult.OK)
             {
                 // This is the path of the file that needs to be opened.
                 tb_Layout.Text = _fileDialog.FileName;
@@ -106,32 +107,10 @@ namespace HotelLauncher
 
         private void btn_SelectTexturepack_Click(object sender, EventArgs e)
         {
-            string @executablePath = Path.GetDirectoryName(Application.ExecutablePath);
-            string @contentFolderPath = @executablePath + @"\Content";
-
-            FolderBrowserDialog folderBrowserDialog = new FolderBrowserDialog();
-            folderBrowserDialog.ShowNewFolderButton = false;
-            folderBrowserDialog.SelectedPath = @contentFolderPath;
-
-            if (folderBrowserDialog.ShowDialog() == DialogResult.OK)
+            // Open the texturepack dialog form
+            if(_texturePackForm.ShowDialog() == DialogResult.OK)
             {
-                // Get the path of the texture pack folder relative to the executable's file path. 
-                Uri contentUri = new Uri(@contentFolderPath);
-                Uri packUri = new Uri(folderBrowserDialog.SelectedPath);
-                Uri result = contentUri.MakeRelativeUri(packUri);
-                // yes this works
-                string texturepackRelativePath = result.OriginalString;
-                
-                // Check if the selected folder contains the right objects
-                // We can check for everything but that would be inefficient.
-                // Since our program will automatically close when it crashes not checking for every file will not be a problem.
-                // The real problem will be displaying a message when a file could not be found.
-                if (File.Exists($@"{folderBrowserDialog.SelectedPath}\2x1Cafe.xnb"))
-                {
-                    tb_TexturePack.Text = folderBrowserDialog.SelectedPath;
-                    _model.TexturePack = texturepackRelativePath;
-                }
-                
+                _model.TexturePack = _texturePackForm.SelectedPack;
             }
         }
     }
