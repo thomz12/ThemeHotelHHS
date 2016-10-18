@@ -38,7 +38,8 @@ namespace Hotel
         /// <param name="path">Path to the image</param>
         public void LoadSprite(string path)
         {
-            Texture = _content.Load<Texture2D>(path);
+            if(_content != null)
+                Texture = _content.Load<Texture2D>(path);
         }
 
         /// <summary>
