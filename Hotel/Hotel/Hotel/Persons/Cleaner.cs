@@ -37,6 +37,10 @@ namespace Hotel.Persons
         /// <param name="e"></param>
         public override void Remove(EventArgs e)
         {
+            // Set an emergency in this room.
+            if (CurrentRoom.State != RoomState.Emergency && CurrentRoom.State != RoomState.InCleaning)
+                CurrentRoom.SetEmergency(8);
+
             // Unclaim the room which the cleaner was supposed to clean.
             if (TargetRoom != null && TargetRoom.State == RoomState.InCleaning)
                 TargetRoom.State = TargetRoom.PrevRoomState;
