@@ -66,7 +66,7 @@ namespace HotelLauncher
             btnSelectPack.Size = new Size(240, 80);
             btnSelectPack.TabIndex = 2 + index;
             btnSelectPack.UseVisualStyleBackColor = true;
-            btnSelectPack.Click += BtnSelectPack_Click;
+            btnSelectPack.Click += PackButtonClick;
             Controls.Add(btnSelectPack);
             Controls.SetChildIndex(btnSelectPack, 1);
             
@@ -80,6 +80,7 @@ namespace HotelLauncher
             pbThumbnail.TabStop = false;
             pbThumbnail.ImageLocation = _subFolders[index] + @"\Thumbnail.png";
             pbThumbnail.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbThumbnail.Click += PackButtonClick;
             Controls.Add(pbThumbnail);
             Controls.SetChildIndex(pbThumbnail, 0);
 
@@ -95,6 +96,7 @@ namespace HotelLauncher
             lblName.Text = packName;
             lblName.TextAlign = ContentAlignment.MiddleLeft;
             lblName.Visible = true;
+            lblName.Click += PackButtonClick;
             Controls.Add(lblName);
             Controls.SetChildIndex(lblName, 0);
 
@@ -107,14 +109,15 @@ namespace HotelLauncher
             lblLocation.Tag = "lbl_PackLocation" + index;
             lblLocation.Size = new Size(152, 36);
             lblLocation.Text = packPath;
+            lblLocation.Click += PackButtonClick;
             Controls.Add(lblLocation);
             Controls.SetChildIndex(lblLocation, 0);
         }
 
-        private void BtnSelectPack_Click(object sender, EventArgs e)
+        private void PackButtonClick(object sender, EventArgs e)
         {
-            Button button = (Button)sender;
-            _selectedPackIndex = Int32.Parse(Regex.Split(button.Tag.ToString(), "btn_SelectPack")[1]);
+            Control control = (Control)sender;
+            _selectedPackIndex = Int32.Parse(Regex.Split(control.Tag.ToString(), @"(?<=[a-zA-Z])(?=\d)")[1]);
         }
 
         private void btn_Save_Click(object sender, EventArgs e)
