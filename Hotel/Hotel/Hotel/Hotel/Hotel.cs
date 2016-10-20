@@ -186,6 +186,12 @@ namespace Hotel
                     return person;
             }
 
+            foreach(Person person in Staff)
+            {
+                if (person.BoundingBox.Contains(position))
+                    return person;
+            }
+
             foreach (Room room in Rooms)
             {
                 if (room.BoundingBox.Contains(position))

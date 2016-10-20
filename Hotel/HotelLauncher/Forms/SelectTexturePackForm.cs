@@ -34,16 +34,7 @@ namespace HotelLauncher
         {
             InitializeComponent();
 
-            string @executablePath = Path.GetDirectoryName(Application.ExecutablePath);
-            _contentFolderPath = executablePath + @"\Content";
-
-            _subFolders = Directory.GetDirectories(_contentFolderPath, "*", SearchOption.AllDirectories);
-
-            // Add buttons for each texturepack
-            for (int i = 0; i < _subFolders.Length; i++)
-            {
-                AddButton(i, new Point(i % 2, i / 2));
-            }
+            LoadPacks();
         }
 
         private void AddButton(int index, Point position)
@@ -114,6 +105,20 @@ namespace HotelLauncher
             Controls.SetChildIndex(lblLocation, 0);
         }
 
+        public void LoadPacks()
+        {
+            string @executablePath = Path.GetDirectoryName(Application.ExecutablePath);
+            _contentFolderPath = executablePath + @"\Content";
+
+            _subFolders = Directory.GetDirectories(_contentFolderPath, "*", SearchOption.AllDirectories);
+
+            // Add buttons for each texturepack
+            for (int i = 0; i < _subFolders.Length; i++)
+            {
+                AddButton(i, new Point(i % 2, i / 2));
+            }
+        }
+
         private void PackButtonClick(object sender, EventArgs e)
         {
             Control control = (Control)sender;
@@ -129,6 +134,11 @@ namespace HotelLauncher
         private void btn_Cancel_Click(object sender, EventArgs e)
         {
             this.DialogResult = DialogResult.Cancel;
+        }
+
+        private void Form_Scroll(object sender, EventArgs e)
+        {
+            Point scroll = AutoScrollPosition;
         }
     }
 }
