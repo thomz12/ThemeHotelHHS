@@ -31,6 +31,10 @@ namespace HotelLauncher
 
             // Configure variables
             _configFilePath = @"Config.cfg";
+
+            // Set the spash image
+           if (_settings.Model.TexturePack != null)
+                pb_Splash.ImageLocation = _settings.Model.TexturePack + @"/Splash.png";
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
