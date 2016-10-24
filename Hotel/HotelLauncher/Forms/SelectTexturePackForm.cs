@@ -123,6 +123,8 @@ namespace HotelLauncher
         {
             Control control = (Control)sender;
             _selectedPackIndex = Int32.Parse(Regex.Split(control.Tag.ToString(), @"(?<=[a-zA-Z])(?=\d)")[1]);
+            SelectedPack = _subFolders[_selectedPackIndex];
+            this.DialogResult = DialogResult.OK;
         }
 
         private void btn_Save_Click(object sender, EventArgs e)

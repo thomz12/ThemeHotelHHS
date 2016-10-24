@@ -20,7 +20,7 @@ namespace Hotel
         {
             _cam = cam;
             _sprite = new Sprite();
-            _sprite.LoadSprite("BluePrint");
+            _sprite.LoadSprite("Background");
         }
 
         public void Update(float deltaTime)
