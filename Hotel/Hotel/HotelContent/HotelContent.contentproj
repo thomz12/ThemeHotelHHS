@@ -180,6 +180,168 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
+    <Compile Include="DankerPack\1x1Cafe.png">
+      <Name>1x1Cafe</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankerPack\1x1ElevatorShaft.png">
+      <Name>1x1ElevatorShaft</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankerPack\1x1GuestRoom.png">
+      <Name>1x1GuestRoom</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankerPack\1x1GuestRoomCleaning.png">
+      <Name>1x1GuestRoomCleaning</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankerPack\1x1GuestRoomDirty.png">
+      <Name>1x1GuestRoomDirty</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankerPack\1x1GuestRoomOccupied.png">
+      <Name>1x1GuestRoomOccupied</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankerPack\1x1Lobby.png">
+      <Name>1x1Lobby</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankerPack\2x1Cafe.png">
+      <Name>2x1Cafe</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankerPack\2x1GuestRoom.png">
+      <Name>2x1GuestRoom</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankerPack\2x1GuestRoomCleaning.png">
+      <Name>2x1GuestRoomCleaning</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankerPack\2x1GuestRoomDirty.png">
+      <Name>2x1GuestRoomDirty</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankerPack\2x1GuestRoomOccupied.png">
+      <Name>2x1GuestRoomOccupied</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankerPack\2x1Lobby.png">
+      <Name>2x1Lobby</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankerPack\2x2Cinema.png">
+      <Name>2x2Cinema</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankerPack\2x2CinemaPlaying.png">
+      <Name>2x2CinemaPlaying</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankerPack\2x2GuestRoom.png">
+      <Name>2x2GuestRoom</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankerPack\2x2GuestRoomCleaning.png">
+      <Name>2x2GuestRoomCleaning</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankerPack\2x2GuestRoomDirty.png">
+      <Name>2x2GuestRoomDirty</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankerPack\2x2GuestRoomOccupied.png">
+      <Name>2x2GuestRoomOccupied</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankerPack\3x1Fitness.png">
+      <Name>3x1Fitness</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankerPack\BluePrint.png">
+      <Name>BluePrint</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankerPack\Cleaner.png">
+      <Name>Cleaner</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankerPack\CleaningEmergency.png">
+      <Name>CleaningEmergency</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankerPack\Elevator.png">
+      <Name>Elevator</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankerPack\FemaleGuest.png">
+      <Name>FemaleGuest</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankerPack\Ghost.png">
+      <Name>Ghost</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankerPack\Guest.png">
+      <Name>Guest</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankerPack\PaperClean.png">
+      <Name>PaperClean</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="DankerPack\Receptionist.png">
+      <Name>Receptionist</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Content Include="DankerPack\Splash.png">
+      <Name>Splash</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Compile Include="DankerPack\Stairs.png">
+      <Name>Stairs</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Content Include="DankerPack\Thumbnail.png">
+      <Name>Thumbnail</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="DankPack\Splash.png">
       <Name>Splash</Name>
       <Importer>TextureImporter</Importer>
@@ -530,6 +692,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="OutlinePack\InformationWindowFont.spritefont">
+      <Name>InformationWindowFont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DankerPack\InformationWindowFont.spritefont">
       <Name>InformationWindowFont</Name>
       <Importer>FontDescriptionImporter</Importer>
       <Processor>FontDescriptionProcessor</Processor>
