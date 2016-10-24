@@ -135,10 +135,5 @@ namespace HotelLauncher
         {
             this.DialogResult = DialogResult.Cancel;
         }
-
-        private void Form_Scroll(object sender, EventArgs e)
-        {
-            Point scroll = AutoScrollPosition;
-        }
     }
 }

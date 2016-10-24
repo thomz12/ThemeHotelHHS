@@ -47,6 +47,7 @@ namespace Hotel
             // Add the services to the static class.
             ServiceLocator.Add<ContentManager>(Content);
             ServiceLocator.Add<ConfigLoader>(new ConfigLoader(@"Config.cfg"));
+            ServiceLocator.Add<ConfigLoader>(new ConfigLoader(@"Config.cfg"));
             // Service Locator is OFF LIMITS.
 
             // Set the directory for the texture pack

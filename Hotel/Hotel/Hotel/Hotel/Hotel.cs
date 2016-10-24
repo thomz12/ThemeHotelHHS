@@ -138,12 +138,13 @@ namespace Hotel
 
                 hotelObject.RemoveObjectEvent -= RemoveObject;
             }
+            /* TODO
             if (hotelObject is Room)
             {
                 // RIP in pepperonis.
-                // TODO
                 throw new NotImplementedException();
             }
+            */
         }
 
         /// <summary>

@@ -345,7 +345,7 @@
             this.tt_Settings.SetToolTip(this.num_Survivability, "This sets the amount of time guests can wait for the elevator. Guests die when th" +
         "ey wait longer for the elevator.");
             this.num_Survivability.Value = new decimal(new int[] {
-            3,
+            20,
             0,
             0,
             0});
