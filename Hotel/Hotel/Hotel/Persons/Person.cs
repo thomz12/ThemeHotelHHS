@@ -104,7 +104,7 @@ namespace Hotel.Persons
         /// </summary>
         public virtual void OnArrival()
         {
-            if(_roomBehaviour != null)
+            if (_roomBehaviour != null)
                 _roomBehaviour.OnArrival(CurrentRoom, this);
         }
 
@@ -114,7 +114,7 @@ namespace Hotel.Persons
         /// <param name="e"></param>
         public virtual void OnDeparture()
         {
-            if(_roomBehaviour != null)
+            if (_roomBehaviour != null)
                 _roomBehaviour.OnDeparture(CurrentRoom, this);
         }
 
@@ -133,9 +133,9 @@ namespace Hotel.Persons
         public void FindAndTargetRoom(FindPath rule)
         {
             // If the person is currently in the elevator, its current room is the targeted shaft.
-            if(_targetShaft != null)
+            if (_targetShaft != null)
             {
-                if(_startStaft != CurrentRoom)
+                if (_startStaft != CurrentRoom)
                     CurrentRoom = _targetShaft;
             }
 
@@ -172,15 +172,6 @@ namespace Hotel.Persons
         }
 
         /// <summary>
-        /// Sets the current room of the person.
-        /// </summary>
-        /// <param name="room">The room to move to.</param>
-        private void MoveToRoom(Room room)
-        {
-            CurrentRoom = room;
-        }
-
-        /// <summary>
         /// Called every frame.
         /// </summary>
         /// <param name="deltaTime">The delta time.</param>
@@ -198,11 +189,11 @@ namespace Hotel.Persons
                 }
 
                 // Move around.
-                Move(deltaTime); 
+                Move(deltaTime);
             }
             else
             {
-                if(CurrentRoom.State != RoomState.Emergency || CurrentRoom.State != RoomState.InCleaning)
+                if (CurrentRoom.State != RoomState.Emergency || CurrentRoom.State != RoomState.InCleaning)
                     Remove(new EventArgs());
             }
 
@@ -239,7 +230,7 @@ namespace Hotel.Persons
 
                     if (Position.X < CurrentRoom.Position.X - Sprite.Texture.Width)
                     {
-                        MoveToRoom(CurrentRoom.Neighbors[Direction.West]);
+                        CurrentRoom =  CurrentRoom.Neighbors[Direction.West];
                         CurrentTask = PersonTask.MovingCenter;
                     }
 
@@ -251,7 +242,7 @@ namespace Hotel.Persons
 
                     if (Position.X > CurrentRoom.Position.X + CurrentRoom.RoomSize.Y * Room.ROOMWIDTH)
                     {
-                        MoveToRoom(CurrentRoom.Neighbors[Direction.East]);
+                        CurrentRoom = CurrentRoom.Neighbors[Direction.East];
                         CurrentTask = PersonTask.MovingCenter;
                     }
 
@@ -263,7 +254,7 @@ namespace Hotel.Persons
 
                     if (Position.Y > CurrentRoom.Position.Y + Sprite.Texture.Height)
                     {
-                        MoveToRoom(CurrentRoom.Neighbors[Direction.North]);
+                        CurrentRoom = CurrentRoom.Neighbors[Direction.North];
                         CurrentTask = PersonTask.MovingCenter;
                     }
 
@@ -275,7 +266,7 @@ namespace Hotel.Persons
 
                     if (Position.Y < CurrentRoom.Position.Y - Room.ROOMHEIGHT - (Room.ROOMHEIGHT - Sprite.Texture.Height))
                     {
-                        MoveToRoom(CurrentRoom.Neighbors[Direction.South]);
+                        CurrentRoom = CurrentRoom.Neighbors[Direction.South];
                         CurrentTask = PersonTask.MovingCenter;
                     }
 
@@ -294,7 +285,7 @@ namespace Hotel.Persons
                     {
                         _roomBehaviour = CurrentRoom.roomBehaviour;
 
-                        if(_roomBehaviour != null)
+                        if (_roomBehaviour != null)
                             _roomBehaviour.OnPassRoom(CurrentRoom, this);
 
                         // Get a new task.
@@ -343,7 +334,7 @@ namespace Hotel.Persons
         {
             if (!_isDead)
             {
-                MoveToRoom(_targetShaft);
+                CurrentRoom = _targetShaft;
                 _targetShaft.ElevatorArrival -= TargetShaft_ElevatorArrival;
 
                 Position = new Vector2(Position.X, _elevator.Position.Y - Room.ROOMHEIGHT + Sprite.Texture.Height);
@@ -366,7 +357,7 @@ namespace Hotel.Persons
         /// <param name="e"></param>
         private void Person_ElevatorArrival(object sender, EventArgs e)
         {
-            if(!_isDead)
+            if (!_isDead)
             {
                 _elevator = sender as Elevator;
                 _startStaft.ElevatorArrival -= Person_ElevatorArrival;
@@ -441,11 +432,11 @@ namespace Hotel.Persons
         {
             if (!Inside)
             {
-            // Make the person jump while moving.
-                Sprite.SetPosition(new Point((int)Position.X, (int)(Position.Y + (JumpHeight / 2)) + (int)(Math.Sin(Position.X / 5) * JumpHeight)));
+                // Make the person jump while moving.
+                Sprite.SetPosition(new Point((int)Position.X, (int)(Position.Y + (JumpHeight / 2)) + (int)(Math.Sin(Position.X / 5 + Position.Y / 5) * JumpHeight)));
 
-            base.Draw(batch, gameTime);
-        }
+                base.Draw(batch, gameTime);
+            }
         }
 
         public override string ToString()

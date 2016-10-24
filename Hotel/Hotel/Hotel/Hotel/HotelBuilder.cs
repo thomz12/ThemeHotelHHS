@@ -14,12 +14,15 @@ namespace Hotel
     {
         private bool _createEmptyRooms;
 
+        public List<Room> Rooms { get; private set; }
+
         public HotelBuilder()
         {
             _createEmptyRooms = true;
+            Rooms = new List<Room>();
         }
 
-        public List<Room> BuildHotel(string path)
+        public void BuildHotel(string path)
         {
             // List of all rooms.
             List<Room> rooms = new List<Room>();
@@ -127,7 +130,26 @@ namespace Hotel
                 rooms.Add(new Lobby(extremeID, new Point(i, 0), new Point(1,1)));
             }
 
-            return rooms;
+            foreach (Room r in rooms)
+                PlaceRoom(r);
+        }
+
+        /// <summary>
+        /// Places a room in the hotel. 
+        /// </summary>
+        /// <param name="room">The room to add to the hotel.</param>
+        public void PlaceRoom(Room room)
+        {
+            foreach (Room r in Rooms)
+            {
+                Direction dir = room.IsNeighbor(r);
+                if (dir != Direction.None)
+                {
+                    room.Neighbors[dir] = r;
+                    r.Neighbors[r.ReverseDirection(dir)] = room;
+                }
+            }
+            Rooms.Add(room);
         }
     }
 }
