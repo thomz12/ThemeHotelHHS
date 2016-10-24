@@ -15,11 +15,12 @@ namespace HotelUnitTests
     [TestClass]
     public class PathfinderTest
     {
-        public List<Room> Rooms;
+        public static List<Room> rooms;
 
         public PathfinderTest()
         {
-            Rooms = new List<Room>();
+            if (ServiceLocator.Get<ConfigLoader>() == null)
+                ServiceLocator.Add<ConfigLoader>(new ConfigLoader(""));
         }
 
         private TestContext testContextInstance;
@@ -44,10 +45,31 @@ namespace HotelUnitTests
         //
         // You can use the following additional attributes as you write your tests:
         //
+
         // Use ClassInitialize to run code before running the first test in the class
-        // [ClassInitialize()]
-        // public static void MyClassInitialize(TestContext testContext) { }
-        //
+        [ClassInitialize()]
+        public static void MyClassInitialize(TestContext testContext)
+        {
+            rooms = new List<Room>();
+            rooms.Add(new ElevatorShaft(0, new Point(0, 0)));
+            rooms.Add(new ElevatorShaft(1, new Point(0, 1)));
+            rooms.Add(new ElevatorShaft(2, new Point(0, 2)));
+            rooms.Add(new Lobby(3, new Point(1, 0), new Point(1, 1)));
+            rooms.Add(new Lobby(4, new Point(2, 0), new Point(1, 1)));
+            rooms.Add(new Lobby(5, new Point(3, 0), new Point(1, 1)));
+            rooms.Add(new Lobby(6, new Point(4, 0), new Point(1, 1)));
+            rooms.Add(new Staircase(7, new Point(5, 0)));
+            rooms.Add(new Staircase(8, new Point(5, 1)));
+            rooms.Add(new Staircase(9, new Point(5, 2)));
+            for (int i = 1; i < 5; i++)
+                for (int j = 1; j < 3; j++)
+                    rooms.Add(new GuestRoom(j * i + 9, new Point(i, j), new Point(1, 1), 1));
+
+            HotelBuilder builder = new HotelBuilder();
+            foreach (Room r in rooms)
+                builder.PlaceRoom(r);
+        }
+
         // Use ClassCleanup to run code after all tests in a class have run
         // [ClassCleanup()]
         // public static void MyClassCleanup() { }
@@ -72,22 +94,29 @@ namespace HotelUnitTests
         [TestMethod]
         public void PathFinderPathFinding()
         {
-            List<Room> rooms = new List<Room>();
-            rooms.Add(new ElevatorShaft(0, new Point(0, 0)));
-            rooms.Add(new ElevatorShaft(1, new Point(0, 1)));
-            rooms.Add(new ElevatorShaft(2, new Point(0, 2)));
-            rooms.Add(new Lobby(3, new Point(1, 0), new Point(1, 1)));
-            rooms.Add(new Lobby(4, new Point(2, 0), new Point(1, 1)));
-            rooms.Add(new Lobby(5, new Point(3, 0), new Point(1, 1)));
-            rooms.Add(new Lobby(6, new Point(4, 0), new Point(1, 1)));
-            rooms.Add(new Staircase(7, new Point(5, 0)));
-            rooms.Add(new Staircase(8, new Point(5, 1)));
-            rooms.Add(new Staircase(9, new Point(5, 2)));
-            for (int i = 1; i < 5; i++)
-                for (int j = 1; j < 3; j++)
-                    rooms.Add(new GuestRoom(j * i + 9, new Point(i, j), new Point(1, 1), 1));
+            PathFinder pathFinder = new PathFinder();
+            List<Room> path = pathFinder.Find(rooms[0], x => x.ID == 9);
 
+            Assert.IsTrue(path.Count == 8);
+        }
 
+        [TestMethod]
+        public void PathFinderToFindNonExistingRoom()
+        {
+            PathFinder pathFinder = new PathFinder();
+            List<Room> path = pathFinder.Find(rooms[0], x => x.ID == -1337);
+
+            Assert.IsTrue(path == null);
+        }
+        [TestMethod]
+        public void PathFinderFindRoomWithoutElevator()
+        {
+            PathFinder pathFinder = new PathFinder();
+            pathFinder.UseElevator = false;
+            List<Room> path = pathFinder.Find(rooms[0], x => x.ID == 9);
+
+            Assert.IsTrue(path.Count == 8);
         }
     }
 }
+

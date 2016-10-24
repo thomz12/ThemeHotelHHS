@@ -58,7 +58,7 @@ namespace Hotel
         public RoomState PrevRoomState { get; private set; }
 
 
-        private Texture2D _emergencyTexture;
+        private Sprite _emergencyTexture;
         private float _emergencyTime;
         private float _emergencyCleanLength;
 
@@ -84,7 +84,8 @@ namespace Hotel
             // Set the 'real' position of the room.
             Position = new Vector2(position.X * ROOMWIDTH, position.Y * ROOMHEIGHT);
 
-            _emergencyTexture = ServiceLocator.Get<ContentManager>().Load<Texture2D>("CleaningEmergency");
+            _emergencyTexture = new Sprite();
+            _emergencyTexture.LoadSprite("CleaningEmergency");
 
             Sprite.SetPosition(new Point((int)Position.X, (int)Position.Y));
             Sprite.SetSize(new Point(size.X * ROOMWIDTH, size.Y * ROOMHEIGHT));
@@ -195,7 +196,7 @@ namespace Hotel
             if (_emergencyTime > 0 || State == RoomState.Emergency || State == RoomState.InCleaning && PrevRoomState == RoomState.Emergency)
             {
                 if ((int)_emergencyTime % 2 == 0)
-                    batch.Draw(_emergencyTexture, Sprite.DrawDestination, null, Color.White, 0, Vector2.Zero, SpriteEffects.None, 1.0f);
+                    batch.Draw(_emergencyTexture.Texture, Sprite.DrawDestination, null, Color.White, 0, Vector2.Zero, SpriteEffects.None, 1.0f);
             }
         }
 

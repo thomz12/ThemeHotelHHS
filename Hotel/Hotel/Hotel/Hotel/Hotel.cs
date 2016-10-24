@@ -30,7 +30,7 @@ namespace Hotel
 
             // read the hotel from a layout file.
             HotelBuilder builder = new HotelBuilder();
-            builder.BuildHotel(HotelLayoutFilePath);
+            builder.BuildHotel(ServiceLocator.Get<ConfigLoader>().GetConfig().LayoutPath);
 
             Rooms = builder.Rooms;
 

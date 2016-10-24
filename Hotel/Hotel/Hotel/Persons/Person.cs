@@ -185,15 +185,6 @@ namespace Hotel.Persons
         }
 
         /// <summary>
-        /// Sets the current room of the person.
-        /// </summary>
-        /// <param name="room">The room to move to.</param>
-        private void MoveToRoom(Room room)
-        {
-            CurrentRoom = room;
-        }
-
-        /// <summary>
         /// Called every frame.
         /// </summary>
         /// <param name="deltaTime">The delta time.</param>
@@ -252,7 +243,7 @@ namespace Hotel.Persons
 
                     if (Position.X < CurrentRoom.Position.X - Sprite.Texture.Width)
                     {
-                        MoveToRoom(CurrentRoom.Neighbors[Direction.West]);
+                        CurrentRoom =  CurrentRoom.Neighbors[Direction.West];
                         CurrentTask = PersonTask.MovingCenter;
                     }
 
@@ -264,7 +255,7 @@ namespace Hotel.Persons
 
                     if (Position.X > CurrentRoom.Position.X + CurrentRoom.RoomSize.Y * Room.ROOMWIDTH)
                     {
-                        MoveToRoom(CurrentRoom.Neighbors[Direction.East]);
+                        CurrentRoom = CurrentRoom.Neighbors[Direction.East];
                         CurrentTask = PersonTask.MovingCenter;
                     }
 
@@ -276,7 +267,7 @@ namespace Hotel.Persons
 
                     if (Position.Y > CurrentRoom.Position.Y + Sprite.Texture.Height)
                     {
-                        MoveToRoom(CurrentRoom.Neighbors[Direction.North]);
+                        CurrentRoom = CurrentRoom.Neighbors[Direction.North];
                         CurrentTask = PersonTask.MovingCenter;
                     }
 
@@ -288,7 +279,7 @@ namespace Hotel.Persons
 
                     if (Position.Y < CurrentRoom.Position.Y - Room.ROOMHEIGHT - (Room.ROOMHEIGHT - Sprite.Texture.Height))
                     {
-                        MoveToRoom(CurrentRoom.Neighbors[Direction.South]);
+                        CurrentRoom = CurrentRoom.Neighbors[Direction.South];
                         CurrentTask = PersonTask.MovingCenter;
                     }
 
@@ -356,7 +347,7 @@ namespace Hotel.Persons
         {
             if (!_isDead)
             {
-                MoveToRoom(_targetShaft);
+                CurrentRoom = _targetShaft;
                 _targetShaft.ElevatorArrival -= TargetShaft_ElevatorArrival;
 
                 Position = new Vector2(Position.X, _elevator.Position.Y - Room.ROOMHEIGHT + Sprite.Texture.Height);
