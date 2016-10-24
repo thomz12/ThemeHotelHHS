@@ -68,8 +68,10 @@ namespace Hotel
                         int id = Int32.Parse(idData[0]);
 
                         // Set the extreme values (hotel size)
-                        if (extremeX < position.X)
-                            extremeX = position.X;
+                        int maxX = position.X + (dimensions.X - 1);
+
+                        if (extremeX < maxX)
+                            extremeX = maxX;
                         if (extremeY < position.Y)
                             extremeY = position.Y;
                         if (extremeID < id)
