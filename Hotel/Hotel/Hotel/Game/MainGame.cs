@@ -40,8 +40,8 @@ namespace Hotel
 
         public MainGame()
         {
+            // General Service settings
             GraphicsDeviceManager graphicsDeviceManager = new GraphicsDeviceManager(this);
-            Content.RootDirectory = "Content";
 
             // We are using the ServiceLocator pattern here!
             // Add the services to the static class.
@@ -49,6 +49,10 @@ namespace Hotel
             ServiceLocator.Add<ConfigLoader>(new ConfigLoader(@"Config.cfg"));
             // Service Locator is OFF LIMITS.
 
+            // Set the directory for the texture pack
+            Content.RootDirectory = ServiceLocator.Get<ConfigLoader>().GetConfig().TexturePack;
+
+            // Window Settings
             Window.Title = "Hotel Simulation";
 
             IsMouseVisible = true;
@@ -68,9 +72,6 @@ namespace Hotel
 
             // Load config file.
             _config = ServiceLocator.Get<ConfigLoader>().GetConfig();
-
-            if (_config == null)
-                this.Exit();
 
             // Change settings related to HTE timespan.
             HotelEventManager.HTE_Factor = _config.HTELength;
@@ -107,6 +108,11 @@ namespace Hotel
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             _informationWindow = new InformationWindow();
+
+            if (_config.LayoutPath == null)
+            {
+                Environment.Exit(0);
+            }
 
             _hotel = new Hotel();
             _camera = new Camera(GraphicsDevice.PresentationParameters.BackBufferWidth, GraphicsDevice.PresentationParameters.BackBufferHeight);

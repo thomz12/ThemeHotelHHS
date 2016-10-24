@@ -1,6 +1,6 @@
 ﻿namespace HotelLauncher
 {
-    partial class Settings
+    public partial class Settings
     {
         /// <summary>
         /// Required designer variable.
@@ -60,8 +60,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.num_NumberOfCleaners = new System.Windows.Forms.NumericUpDown();
             this.btn_Save = new System.Windows.Forms.Button();
-            this.btn_Select = new System.Windows.Forms.Button();
+            this.btn_SelectLayout = new System.Windows.Forms.Button();
             this.btn_Cancel = new System.Windows.Forms.Button();
+            this.btn_SelectTexturepack = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.num_HTETimespan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_ElevatorSpeed)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_WalkingSpeed)).BeginInit();
@@ -297,9 +298,9 @@
             // 
             // label6
             // 
-            this.label6.Location = new System.Drawing.Point(-49, 291);
+            this.label6.Location = new System.Drawing.Point(2, 291);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(100, 19);
+            this.label6.Size = new System.Drawing.Size(76, 19);
             this.label6.TabIndex = 16;
             this.label6.Text = "Layout";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -307,10 +308,10 @@
             // 
             // tb_Layout
             // 
-            this.tb_Layout.Location = new System.Drawing.Point(57, 291);
+            this.tb_Layout.Location = new System.Drawing.Point(84, 291);
             this.tb_Layout.Name = "tb_Layout";
             this.tb_Layout.ReadOnly = true;
-            this.tb_Layout.Size = new System.Drawing.Size(318, 20);
+            this.tb_Layout.Size = new System.Drawing.Size(291, 20);
             this.tb_Layout.TabIndex = 9;
             this.tt_Settings.SetToolTip(this.tb_Layout, "Choose a layout file for the simulator to display.");
             // 
@@ -512,18 +513,19 @@
             this.btn_Save.UseVisualStyleBackColor = true;
             this.btn_Save.Click += new System.EventHandler(this.btn_Save_Click);
             // 
-            // btn_Select
+            // btn_SelectLayout
             // 
-            this.btn_Select.Location = new System.Drawing.Point(381, 291);
-            this.btn_Select.Name = "btn_Select";
-            this.btn_Select.Size = new System.Drawing.Size(26, 20);
-            this.btn_Select.TabIndex = 8;
-            this.btn_Select.Text = "...";
-            this.btn_Select.UseVisualStyleBackColor = true;
-            this.btn_Select.Click += new System.EventHandler(this.btn_Select_Click);
+            this.btn_SelectLayout.Location = new System.Drawing.Point(381, 291);
+            this.btn_SelectLayout.Name = "btn_SelectLayout";
+            this.btn_SelectLayout.Size = new System.Drawing.Size(26, 20);
+            this.btn_SelectLayout.TabIndex = 8;
+            this.btn_SelectLayout.Text = "...";
+            this.btn_SelectLayout.UseVisualStyleBackColor = true;
+            this.btn_SelectLayout.Click += new System.EventHandler(this.btn_SelectLayout_Click);
             // 
             // btn_Cancel
             // 
+            this.btn_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btn_Cancel.Location = new System.Drawing.Point(203, 317);
             this.btn_Cancel.Name = "btn_Cancel";
             this.btn_Cancel.Size = new System.Drawing.Size(90, 32);
@@ -532,11 +534,24 @@
             this.btn_Cancel.UseVisualStyleBackColor = true;
             this.btn_Cancel.Click += new System.EventHandler(this.btn_Cancel_Click);
             // 
+            // btn_SelectTexturepack
+            // 
+            this.btn_SelectTexturepack.Location = new System.Drawing.Point(148, 265);
+            this.btn_SelectTexturepack.Name = "btn_SelectTexturepack";
+            this.btn_SelectTexturepack.Size = new System.Drawing.Size(115, 20);
+            this.btn_SelectTexturepack.TabIndex = 30;
+            this.btn_SelectTexturepack.Text = "Select Texture Pack";
+            this.btn_SelectTexturepack.UseVisualStyleBackColor = true;
+            this.btn_SelectTexturepack.Click += new System.EventHandler(this.btn_SelectTexturepack_Click);
+            // 
             // Settings
             // 
+            this.AcceptButton = this.btn_Save;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btn_Cancel;
             this.ClientSize = new System.Drawing.Size(420, 359);
+            this.Controls.Add(this.btn_SelectTexturepack);
             this.Controls.Add(this.num_NumberOfCleaners);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label7);
@@ -550,7 +565,7 @@
             this.Controls.Add(this.lbl_Survivability);
             this.Controls.Add(this.tb_Layout);
             this.Controls.Add(this.btn_Cancel);
-            this.Controls.Add(this.btn_Select);
+            this.Controls.Add(this.btn_SelectLayout);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.num_CleaningDuration);
@@ -607,7 +622,7 @@
         private System.Windows.Forms.NumericUpDown num_CleaningDuration;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button btn_Select;
+        private System.Windows.Forms.Button btn_SelectLayout;
         private System.Windows.Forms.Button btn_Cancel;
         private System.Windows.Forms.TextBox tb_Layout;
         private System.Windows.Forms.Label lbl_Survivability;
@@ -621,5 +636,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.NumericUpDown num_NumberOfCleaners;
+        private System.Windows.Forms.Button btn_SelectTexturepack;
     }
 }

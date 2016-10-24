@@ -50,23 +50,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConfigModel.cs" />
-    <Compile Include="HotelLauncherForm.cs">
+    <Compile Include="Forms\SelectTexturePackForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="HotelLauncherForm.Designer.cs">
+    <Compile Include="Forms\SelectTexturePackForm.Designer.cs">
+      <DependentUpon>SelectTexturePackForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ConfigModel.cs" />
+    <Compile Include="Forms\HotelLauncherForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\HotelLauncherForm.Designer.cs">
       <DependentUpon>HotelLauncherForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Settings.cs">
+    <Compile Include="Forms\SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Settings.Designer.cs">
-      <DependentUpon>Settings.cs</DependentUpon>
+    <Compile Include="Forms\SettingsForm.Designer.cs">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="HotelLauncherForm.resx">
+    <EmbeddedResource Include="Forms\HotelLauncherForm.resx">
       <DependentUpon>HotelLauncherForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SelectTexturePackForm.resx">
+      <DependentUpon>SelectTexturePackForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -77,8 +86,8 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Settings.resx">
-      <DependentUpon>Settings.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\SettingsForm.resx">
+      <DependentUpon>SettingsForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

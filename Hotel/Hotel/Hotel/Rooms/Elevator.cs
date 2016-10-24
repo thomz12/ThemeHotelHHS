@@ -55,9 +55,11 @@ namespace Hotel
 
             // Load settings from the config.
             ConfigModel config = ServiceLocator.Get<ConfigLoader>().GetConfig();
-            Speed = 90f * config.ElevatorSpeed;
 
-            Sprite.SetSize(new Point(Sprite.Texture.Width, Room.ROOMHEIGHT));
+            Speed = Room.ROOMHEIGHT * config.ElevatorSpeed;
+
+            if(Sprite.Texture != null)
+                Sprite.SetSize(new Point(Sprite.Texture.Width, Room.ROOMHEIGHT));
 
             CurrentFloor = 0;
             _queue = new Dictionary<int?, ElevatorDirection>();

@@ -40,7 +40,7 @@ namespace Hotel
             _infoOffset = new Point(45, 310);
 
             // Load the font
-            _spriteFont = ServiceLocator.Get<ContentManager>().Load<SpriteFont>("InformationWindowFont");
+            _spriteFont = ServiceLocator.Get<ContentManager>().Load<SpriteFont>(@"InformationWindowFont");
 
             // Set the text color
             TextColor = Color.DarkSlateBlue;

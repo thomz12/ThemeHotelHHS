@@ -93,7 +93,10 @@ namespace HotelLauncher
         private void SettingsButton_Click(object sender, EventArgs e)
         {
             // Open the settings dialog.
-            _settings.ShowDialog();
+            if(_settings.ShowDialog() == DialogResult.OK)
+            {
+                pb_Splash.ImageLocation = _settings.Model.TexturePack + @"/Splash.png";
+            }
         }
     }
 }
