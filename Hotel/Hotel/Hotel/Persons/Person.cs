@@ -117,7 +117,7 @@ namespace Hotel.Persons
         /// </summary>
         public virtual void OnArrival()
         {
-            if(_roomBehaviour != null)
+            if (_roomBehaviour != null)
                 _roomBehaviour.OnArrival(CurrentRoom, this);
         }
 
@@ -127,7 +127,7 @@ namespace Hotel.Persons
         /// <param name="e"></param>
         public virtual void OnDeparture()
         {
-            if(_roomBehaviour != null)
+            if (_roomBehaviour != null)
                 _roomBehaviour.OnDeparture(CurrentRoom, this);
         }
 
@@ -146,9 +146,9 @@ namespace Hotel.Persons
         public void FindAndTargetRoom(FindPath rule)
         {
             // If the person is currently in the elevator, its current room is the targeted shaft.
-            if(_targetShaft != null)
+            if (_targetShaft != null)
             {
-                if(_startStaft != CurrentRoom)
+                if (_startStaft != CurrentRoom)
                     CurrentRoom = _targetShaft;
             }
 
@@ -211,11 +211,11 @@ namespace Hotel.Persons
                 }
 
                 // Move around.
-                Move(deltaTime); 
+                Move(deltaTime);
             }
             else
             {
-                if(CurrentRoom.State != RoomState.Emergency || CurrentRoom.State != RoomState.InCleaning)
+                if (CurrentRoom.State != RoomState.Emergency || CurrentRoom.State != RoomState.InCleaning)
                     Remove(new EventArgs());
             }
 
@@ -307,7 +307,7 @@ namespace Hotel.Persons
                     {
                         _roomBehaviour = CurrentRoom.roomBehaviour;
 
-                        if(_roomBehaviour != null)
+                        if (_roomBehaviour != null)
                             _roomBehaviour.OnPassRoom(CurrentRoom, this);
 
                         // Get a new task.
@@ -379,7 +379,7 @@ namespace Hotel.Persons
         /// <param name="e"></param>
         private void Person_ElevatorArrival(object sender, EventArgs e)
         {
-            if(!_isDead)
+            if (!_isDead)
             {
                 _elevator = sender as Elevator;
                 _startStaft.ElevatorArrival -= Person_ElevatorArrival;
@@ -454,11 +454,11 @@ namespace Hotel.Persons
         {
             if (!Inside)
             {
-            // Make the person jump while moving.
-                Sprite.SetPosition(new Point((int)Position.X, (int)(Position.Y + (JumpHeight / 2)) + (int)(Math.Sin(Position.X / 5) * JumpHeight)));
+                // Make the person jump while moving.
+                Sprite.SetPosition(new Point((int)Position.X, (int)(Position.Y + (JumpHeight / 2)) + (int)(Math.Sin(Position.X / 5 + Position.Y / 5) * JumpHeight)));
 
-            base.Draw(batch, gameTime);
-        }
+                base.Draw(batch, gameTime);
+            }
         }
 
         public override string ToString()

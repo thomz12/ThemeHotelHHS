@@ -3,6 +3,9 @@ using System.Text;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Hotel;
+using Hotel.Persons;
+using Hotel.Rooms;
+using Microsoft.Xna.Framework;
 
 namespace HotelUnitTests
 {
@@ -60,11 +63,31 @@ namespace HotelUnitTests
         #endregion
 
         [TestMethod]
-        public void TestMethod1()
+        public void PathFinderConstructor()
         {
-            //
-            // TODO: Add test logic here
-            //
+            PathFinder pathFinder = new PathFinder();
+            Assert.IsNotNull(pathFinder);
+        }
+
+        [TestMethod]
+        public void PathFinderPathFinding()
+        {
+            List<Room> rooms = new List<Room>();
+            rooms.Add(new ElevatorShaft(0, new Point(0, 0)));
+            rooms.Add(new ElevatorShaft(1, new Point(0, 1)));
+            rooms.Add(new ElevatorShaft(2, new Point(0, 2)));
+            rooms.Add(new Lobby(3, new Point(1, 0), new Point(1, 1)));
+            rooms.Add(new Lobby(4, new Point(2, 0), new Point(1, 1)));
+            rooms.Add(new Lobby(5, new Point(3, 0), new Point(1, 1)));
+            rooms.Add(new Lobby(6, new Point(4, 0), new Point(1, 1)));
+            rooms.Add(new Staircase(7, new Point(5, 0)));
+            rooms.Add(new Staircase(8, new Point(5, 1)));
+            rooms.Add(new Staircase(9, new Point(5, 2)));
+            for (int i = 1; i < 5; i++)
+                for (int j = 1; j < 3; j++)
+                    rooms.Add(new GuestRoom(j * i + 9, new Point(i, j), new Point(1, 1), 1));
+
+
         }
     }
 }

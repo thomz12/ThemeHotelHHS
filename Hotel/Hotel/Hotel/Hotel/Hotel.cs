@@ -26,7 +26,6 @@ namespace Hotel
         /// <param name="content">The content manager used to load in room images.</param>
         public Hotel()
         {
-            Rooms = new List<Room>();
             Staff = new List<Person>();
             Guests = new Dictionary<string, Person>();
 
@@ -36,15 +35,13 @@ namespace Hotel
 
             // read the hotel from a layout file.
             HotelBuilder builder = new HotelBuilder();
-            List<Room> buildedRooms = builder.BuildHotel(HotelLayoutFilePath);
+            builder.BuildHotel(HotelLayoutFilePath);
+
+            Rooms = builder.Rooms;
 
             // Add the rooms, and connect them, starts with an empty room outside with ID 0.
             Room outside = new EmptyRoom(0, new Point(-1, 0), new Point(1, 1));
-            Rooms.Add(outside);
-            for (int i = 0; i < buildedRooms.Count; i++)
-            {
-                PlaceRoom(buildedRooms[i]);
-            }
+            builder.PlaceRoom(outside);
 
             _cleaners = ServiceLocator.Get<ConfigLoader>().GetConfig().NumberOfCleaners;
 
@@ -75,7 +72,7 @@ namespace Hotel
         /// </summary>
         public void AddGuest(string name, int stars)
         {
-            Guest guest = new Guest(Rooms[0]);
+            Guest guest = new Guest(Rooms.Where(x => x.Name.Equals("Outside")).FirstOrDefault());
             guest.StayState = StayState.CheckIn;
             guest.Classification = stars;
             Guests.Add(name, guest);
@@ -149,28 +146,6 @@ namespace Hotel
                 // TODO
                 throw new NotImplementedException();
             }
-        }
-
-        /// <summary>
-        /// Places a room in the hotel. 
-        /// </summary>
-        /// <param name="room">The room to add to the hotel.</param>
-        public void PlaceRoom(Room room)
-        {
-            foreach (Room r in Rooms)
-            {
-                Direction dir = room.IsNeighbor(r);
-                if (dir != Direction.None)
-                {
-                    room.Neighbors[dir] = r;
-                    r.Neighbors[r.ReverseDirection(dir)] = room;
-                }
-            }
-
-            // Subscribe to the remove event
-            room.RemoveObjectEvent += RemoveObject;
-
-            Rooms.Add(room);
         }
 
         /// <summary>

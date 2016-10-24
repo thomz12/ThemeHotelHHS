@@ -15,7 +15,8 @@ namespace HotelUnitTests
     {
         public ElevatorTest()
         {
-            
+            if(ServiceLocator.Get<ConfigLoader>() == null)
+                ServiceLocator.Add<ConfigLoader>(new ConfigLoader(""));
         }
 
         private TestContext testContextInstance;
@@ -61,7 +62,6 @@ namespace HotelUnitTests
         [TestInitialize]
         public void InitTest()
         {
-            ServiceLocator.Add<ConfigLoader>(new ConfigLoader(""));
         }
 
         [TestMethod]
@@ -76,10 +76,24 @@ namespace HotelUnitTests
         {
             Elevator elevator = new Elevator();
             elevator.CallElevator(0, 1);
-            elevator.Update(1);
-            elevator.Update(1);
-            elevator.Update(10000000);
+            elevator.Update(10);
+            elevator.Update(10);
+            elevator.Update(10);
             Assert.IsTrue(elevator.CurrentFloor == 1);
-       } 
+       }
+
+        [TestMethod]
+        public void CallElevatorFrom1To0()
+        {
+            Elevator elevator = new Elevator();
+            elevator.CallElevator(1, 0);
+            elevator.Update(10);
+            elevator.Update(10);
+            elevator.Update(10);
+            elevator.Update(10);
+            elevator.Update(10);
+            elevator.Update(10);
+            Assert.IsTrue(elevator.CurrentFloor == 0);
+        }
     }
 }

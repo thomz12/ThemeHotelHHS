@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Hotel.Rooms
 {
-    class Staircase : Room
+    public class Staircase : Room
     {
         /// <summary>
         /// Constructor.
