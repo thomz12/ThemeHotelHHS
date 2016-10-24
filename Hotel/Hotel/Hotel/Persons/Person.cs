@@ -54,7 +54,7 @@ namespace Hotel.Persons
         // The target elevator shaft (when in elevator)
         private ElevatorShaft _targetShaft;
         // The start elevator shaft (when in elevator)
-        private ElevatorShaft _startStaft;
+        private ElevatorShaft _startShaft;
         // If this person already called the elevator on this floor.
         private bool _calledElevator;
         // Timer to check when to die.
@@ -135,7 +135,7 @@ namespace Hotel.Persons
             // If the person is currently in the elevator, its current room is the targeted shaft.
             if (_targetShaft != null)
             {
-                if (_startStaft != CurrentRoom)
+                if (_startShaft != CurrentRoom)
                     CurrentRoom = _targetShaft;
             }
 
@@ -149,8 +149,8 @@ namespace Hotel.Persons
                     _targetShaft.ElevatorArrival -= TargetShaft_ElevatorArrival;
                     _elevator = null;
                     _targetShaft = null;
-                    _startStaft.ElevatorArrival -= Person_ElevatorArrival;
-                    _startStaft = null;
+                    _startShaft.ElevatorArrival -= Person_ElevatorArrival;
+                    _startShaft = null;
                 }
                 _calledElevator = false;
             }
@@ -305,11 +305,18 @@ namespace Hotel.Persons
                         // If the elevator is not yet called, and the person is in an elevatorshaft.
                         if (!_calledElevator && CurrentRoom is ElevatorShaft && Path != null && Path.Count > 1 && Path.ElementAt(0) is ElevatorShaft)
                         {
-                            _startStaft = CurrentRoom as ElevatorShaft;
-                            // Get the last elevator in the path (CAN BREAK WITH MULTIPLE ELEVATORS!)
-                            _targetShaft = Path.OfType<ElevatorShaft>().LastOrDefault();
+                            _startShaft = CurrentRoom as ElevatorShaft;
 
-                            if (_targetShaft != null)
+                            _targetShaft = _startShaft;
+
+                            for(int i = 0; i < i + 1; i++)
+                            {
+                                if (!(Path.ElementAt(i) is ElevatorShaft))
+                                    break;
+                                _targetShaft = Path.ElementAt(i) as ElevatorShaft;
+                            }
+
+                            if (_targetShaft != null && _targetShaft != _startShaft)
                             {
                                 // Call the elevator
                                 _calledElevator = true;
@@ -360,7 +367,7 @@ namespace Hotel.Persons
             if (!_isDead)
             {
                 _elevator = sender as Elevator;
-                _startStaft.ElevatorArrival -= Person_ElevatorArrival;
+                _startShaft.ElevatorArrival -= Person_ElevatorArrival;
                 _targetShaft.ElevatorArrival += TargetShaft_ElevatorArrival;
             }
         }
