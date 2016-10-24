@@ -446,7 +446,7 @@ namespace Hotel.Persons
             if (!Inside)
             {
                 // Make the person jump while moving.
-                Sprite.SetPosition(new Point((int)Position.X, (int)(Position.Y + (JumpHeight / 2)) + (int)(Math.Sin(Position.X / 5 + Position.Y / 5) * JumpHeight)));
+                Sprite.SetPosition(new Point((int)Position.X, (int)(Position.Y + (JumpHeight / 2)) + (int)(Math.Sin(Position.X / 5) * JumpHeight)));
 
                 base.Draw(batch, gameTime);
             }
