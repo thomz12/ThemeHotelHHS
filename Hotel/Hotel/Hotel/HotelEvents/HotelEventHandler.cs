@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using HotelEvents;
 
 namespace Hotel
 {
@@ -17,21 +18,21 @@ namespace Hotel
             _hotel = hotel;
         }
 
-        public void HandleEvent(HotelEvents.HotelEvent evt)
+        public void HandleEvent(HotelEvent evt)
         {
             switch (evt.EventType)
             {
                 // The 'NONE' event.
-                case HotelEvents.HotelEventType.NONE:
+                case HotelEventType.NONE:
                     break;
 
                 // Check-in event.
-                case HotelEvents.HotelEventType.CHECK_IN:
+                case HotelEventType.CHECK_IN:
                     _hotel.AddGuest(evt.Data.Keys.ElementAt(0), Int32.Parse(Regex.Replace(evt.Data.Values.ElementAt(0), "[^0-9]+", string.Empty)));
                     break;
 
                 // Check-out event.
-                case HotelEvents.HotelEventType.CHECK_OUT:
+                case HotelEventType.CHECK_OUT:
                     // Get the guest that needs to be checked out.
                     string objectName = evt.Data.Keys.ElementAt(0) + evt.Data.Values.ElementAt(0);
                     if (_hotel.Guests.Keys.Contains(objectName))
@@ -42,7 +43,7 @@ namespace Hotel
                     break;
 
                 // Cleaning Emergency event.
-                case HotelEvents.HotelEventType.CLEANING_EMERGENCY:
+                case HotelEventType.CLEANING_EMERGENCY:
                     // Get the specific room that has an emergency
                     Room roomWithEmergency = _hotel.Rooms.Where(x => x.ID == Int32.Parse(evt.Data.Values.ElementAt(0))).FirstOrDefault();
                     // Check if the room exists.
@@ -51,7 +52,7 @@ namespace Hotel
                     break;
 
                 // Evecuation event.
-                case HotelEvents.HotelEventType.EVACUATE:
+                case HotelEventType.EVACUATE:
                     /*
                     foreach (Room room in _hotel.Rooms)
                     if (room is ElevatorShaft)
@@ -70,13 +71,13 @@ namespace Hotel
                     break;
 
                 // Godzilla event.
-                case HotelEvents.HotelEventType.GODZILLA:
+                case HotelEventType.GODZILLA:
                     Console.WriteLine("AAAAAAAHHHHHHHH!");
                     // Evacuate all the people?
                     break;
 
                 // Guest needs food event.
-                case HotelEvents.HotelEventType.NEED_FOOD:
+                case HotelEventType.NEED_FOOD:
 
                     string guestName = evt.Data.Keys.ElementAt(0) + evt.Data.Values.ElementAt(0);
                     if (_hotel.Guests.Keys.Contains(guestName))
@@ -90,7 +91,7 @@ namespace Hotel
                     break;
 
                 // Guest goes to cinema event.
-                case HotelEvents.HotelEventType.GOTO_CINEMA:
+                case HotelEventType.GOTO_CINEMA:
                     string guest = evt.Data.Keys.ElementAt(0) + evt.Data.Values.ElementAt(0);
 
                     // if the guest exists.
@@ -106,7 +107,7 @@ namespace Hotel
                     break;
 
                 // Guest goes to fitness event.
-                case HotelEvents.HotelEventType.GOTO_FITNESS:
+                case HotelEventType.GOTO_FITNESS:
                     string fitnessGuest = evt.Data.Keys.ElementAt(0) + evt.Data.Values.ElementAt(0);
                     if (_hotel.Guests.Keys.Contains(fitnessGuest))
                     {
@@ -121,7 +122,7 @@ namespace Hotel
                     break;
 
                 // Start the cinema event.
-                case HotelEvents.HotelEventType.START_CINEMA:
+                case HotelEventType.START_CINEMA:
                     Cinema cinema = (Cinema)_hotel.Rooms.Where(x => x.ID == Int32.Parse(evt.Data.Values.ElementAt(0))).FirstOrDefault();
                     cinema?.StartMovie();
 

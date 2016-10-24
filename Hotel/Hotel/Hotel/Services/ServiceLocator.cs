@@ -36,7 +36,8 @@ namespace Hotel
         /// <param name="service">The object to add.</param>
         public static void Add<T>(T service)
         {
-            _container.AddService(typeof(T), service);
+            if(_container.GetService(typeof(T)) == null)
+                _container.AddService(typeof(T), service);
         }
 
         /// <summary>
@@ -46,15 +47,6 @@ namespace Hotel
         public static void Remove<T>()
         {
             _container.RemoveService(typeof(T));
-        }
-
-        /// <summary>
-        /// This method is only for testing!
-        /// </summary>
-        /// <returns>Returns all the objects that are currently in the container.</returns>
-        public static GameServiceContainer GetContainerForTesting()
-        {
-            return _container;
         }
     }
 }

@@ -18,7 +18,7 @@ namespace Hotel.Persons
         /// <summary>
         /// Constructor.
         /// </summary>
-        /// <param name="room">The room to spawn the guest in.</param>
+        /// <param name="room">The room to spawn the cleaner in.</param>
         public Cleaner(Room room) : base(room)
         {
             Name = "Cleaner";

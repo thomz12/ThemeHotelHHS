@@ -41,20 +41,7 @@ namespace Hotel.Persons
         protected IRoomBehaviour _roomBehaviour;
 
         public bool Inside { get; set; }
-
-        private Room _targetRoom;
-        public Room TargetRoom
-        {
-            get
-            {
-                return _targetRoom;
-            }
-            private set
-            {
-                _targetRoom = value;
-            }
-        }
-
+        public Room TargetRoom { get; set; }
         public List<Room> Path { get; protected set; }
         public float JumpHeight { get; set; }
 
