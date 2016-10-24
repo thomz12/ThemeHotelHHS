@@ -89,23 +89,30 @@ namespace Hotel.Persons
         /// <param name="guest"></param>
         private void CheckIn(Guest guest)
         {
-            List<GuestRoom> potentialRooms = _rooms.OfType<GuestRoom>().Where(x => x.Classification == guest.Classification && x.Guest == null).ToList();
 
-            // Check first if there is a room available.
-            if (potentialRooms.Count == 0)
+            while (guest.Classification < 6)
             {
-                // There is no room available so send the person back outside.
-                guest.FindAndTargetRoom(x => x.Name.Equals("Outside"));
-            }
-            else
-            {
-                // TODO: Let guest 'upgrade' in rooms if a room of their classification is not available.
-                // Check this person in.
-                guest.Room = potentialRooms.First();
-                guest.StayState = StayState.Staying;
-                potentialRooms.First().Guest = guest;
-                potentialRooms.First().State = RoomState.Occupied;
-                guest.FindAndTargetRoom(x => x == guest.Room);
+                List<GuestRoom> potentialRooms = _rooms.OfType<GuestRoom>().Where(x => x.Classification == guest.Classification && x.Guest == null).ToList();
+                // Check first if there is a room available.
+                if (potentialRooms.Count == 0)
+                {
+                    if (guest.Classification >= 5)
+                    {
+                        CheckOut(guest);
+                    }
+
+                    guest.Classification++;
+                }
+                else
+                {
+                    // Check this person in.
+                    guest.Room = potentialRooms.First();
+                    guest.StayState = StayState.Staying;
+                    potentialRooms.First().Guest = guest;
+                    potentialRooms.First().State = RoomState.Occupied;
+                    guest.FindAndTargetRoom(x => x == guest.Room);
+                    break;
+                }
             }
         }
 
@@ -122,8 +129,8 @@ namespace Hotel.Persons
 
                 guest.Room.Guest = null;
                 guest.Room = null;
-                guest.FindAndTargetRoom(x => x.Name.Equals("Outside"));
             }
+            guest.FindAndTargetRoom(x => x.Name.Equals("Outside"));
         }
     }
 }

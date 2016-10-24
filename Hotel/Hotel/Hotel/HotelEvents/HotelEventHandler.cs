@@ -53,7 +53,7 @@ namespace Hotel
 
                 // Evecuation event.
                 case HotelEventType.EVACUATE:
-                    /*
+                    
                     foreach (Room room in _hotel.Rooms)
                     if (room is ElevatorShaft)
                     room.Weight = 99999;
@@ -67,7 +67,7 @@ namespace Hotel
                     {
                     person.FindAndTargetRoom(x => x.Name == "Outside");
                     }
-                    */
+                    
                     break;
 
                 // Godzilla event.
