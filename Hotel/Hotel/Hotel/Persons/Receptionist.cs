@@ -81,6 +81,17 @@ namespace Hotel.Persons
                 CheckOutQueue.RemoveAt(0);
             }
 
+            for(int i = 0; i < CheckinQueue.Count; i++)
+            {
+                // TODO: magic numbers!
+                CheckinQueue[i].Position = new Vector2((Position.X - i * 10) - 10, CheckinQueue[i].Position.Y);
+            }
+
+            for (int i = 0; i < CheckOutQueue.Count; i++)
+            {
+                // TODO: magic numbers!
+                CheckOutQueue[i].Position = new Vector2((Position.X + Sprite.DrawDestination.X + (i * 10)) + 10, CheckOutQueue[i].Position.Y);
+            }
         }
 
         /// <summary>
@@ -89,7 +100,6 @@ namespace Hotel.Persons
         /// <param name="guest"></param>
         private void CheckIn(Guest guest)
         {
-
             while (guest.Classification < 6)
             {
                 List<GuestRoom> potentialRooms = _rooms.OfType<GuestRoom>().Where(x => x.Classification == guest.Classification && x.Guest == null).ToList();

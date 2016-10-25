@@ -29,6 +29,7 @@ namespace Hotel
 
             // The hotel width, and height.
             int extremeX = 0;
+            int smallestX = Int32.MaxValue;
             int extremeY = 0;
             int extremeID = 0;
 
@@ -72,6 +73,8 @@ namespace Hotel
 
                         if (extremeX < maxX)
                             extremeX = maxX;
+                        if (smallestX > position.X)
+                            smallestX = position.X;
                         if (extremeY < position.Y)
                             extremeY = position.Y;
                         if (extremeID < id)
@@ -119,14 +122,14 @@ namespace Hotel
             }
 
             // Add Stairs to the hotel.
-            for (int i = 0; i <= extremeY; i++)
+            for (int i = smallestX - 1; i <= extremeY; i++)
             {
                 extremeID++;
                 rooms.Add(new Staircase(extremeID, new Point(extremeX + 1, i)));
             }
 
             // Add lobbies.
-            for(int i = 1; i <= extremeX; i++)
+            for(int i = smallestX; i <= extremeX; i++)
             {
                 extremeID++;
                 rooms.Add(new Lobby(extremeID, new Point(i, 0), new Point(1,1)));

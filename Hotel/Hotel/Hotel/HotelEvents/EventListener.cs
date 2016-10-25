@@ -10,9 +10,9 @@ namespace Hotel
     public class EventListener : HotelEventListener
     {
         private HotelEventHandler _hotelEventManager;
-
+        /*
         private static StreamWriter _writer = new StreamWriter("Events");
-
+        */
         public EventListener(HotelEventHandler hotelEventManager)
         {
             _hotelEventManager = hotelEventManager;
@@ -20,13 +20,15 @@ namespace Hotel
 
         public void Exit()
         {
+            /*
             _writer.Close();
+            */
         }
 
         public void Notify(HotelEvent evt)
         {
             _hotelEventManager.HandleEvent(evt);
-            
+            /*
             _writer.WriteLine(evt.Time.ToString() + " HTE(s) in");
             _writer.WriteLine("Type: " + evt.EventType.ToString());
 
@@ -39,7 +41,7 @@ namespace Hotel
             }
 
             _writer.WriteLine();
-            
+            */
         }
     }
 }

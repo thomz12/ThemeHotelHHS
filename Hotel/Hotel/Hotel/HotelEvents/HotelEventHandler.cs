@@ -56,16 +56,18 @@ namespace Hotel
                     
                     foreach (Room room in _hotel.Rooms)
                     if (room is ElevatorShaft)
-                    room.Weight = 99999;
+                    room.Weight = 1;
 
                     foreach(Person person in _hotel.Guests.Values)
                     {
-                    person.FindAndTargetRoom(x => x.Name == "Outside");
+                        person.Evacuating = true;
+                        person.FindAndTargetRoom(x => x.Name == "Outside");
                     }
 
                     foreach(Person person in _hotel.Staff)
                     {
-                    person.FindAndTargetRoom(x => x.Name == "Outside");
+                        person.Evacuating = true;
+                        person.FindAndTargetRoom(x => x.Name == "Outside");
                     }
                     
                     break;
@@ -84,7 +86,7 @@ namespace Hotel
                     {
                         Guest hotelGuest = _hotel.Guests[guestName] as Guest;
 
-                        if (hotelGuest.StayState == StayState.Staying)
+                        if (hotelGuest.StayState == StayState.Staying && !hotelGuest.Evacuating)
                             hotelGuest.FindAndTargetRoom(x => x is Cafe);
                     }
 
@@ -100,7 +102,7 @@ namespace Hotel
                         Guest hotelGuest = _hotel.Guests[guest] as Guest;
 
                         // if the guest is not checking in or out
-                        if (hotelGuest.StayState == StayState.Staying)
+                        if (hotelGuest.StayState == StayState.Staying && !hotelGuest.Evacuating)
                             hotelGuest.FindAndTargetRoom(x => x is Cinema);
                     }
 
@@ -113,7 +115,7 @@ namespace Hotel
                     {
                         Guest hotelGuest = _hotel.Guests[fitnessGuest] as Guest;
 
-                        if (hotelGuest.StayState == StayState.Staying)
+                        if (hotelGuest.StayState == StayState.Staying && !hotelGuest.Evacuating)
                         {
                             hotelGuest.FindAndTargetRoom(x => x is Fitness);
                             hotelGuest.LeaveRoomInTime(float.Parse(evt.Data.Values.ElementAt(1)));

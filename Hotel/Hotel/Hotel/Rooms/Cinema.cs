@@ -52,10 +52,13 @@ namespace Hotel.Rooms
             {
                 _timeLeft -= deltaTime;
             }
-            else if(Open == false)
+            else
             {
-                Sprite.LoadSprite("2x2Cinema");
-                Open = true;
+                if (Open == false)
+                {
+                    Sprite.LoadSprite("2x2Cinema");
+                    Open = true;
+                }
             }
         }
     }
