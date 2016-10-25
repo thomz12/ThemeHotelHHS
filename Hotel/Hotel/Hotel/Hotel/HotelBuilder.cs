@@ -95,6 +95,9 @@ namespace Hotel
                             case "Fitness":
                                 rooms.Add(new Fitness(id, position, dimensions));
                                 break;
+                            case "Pool":
+                                rooms.Add(new Pool(id, position, dimensions));
+                                break;
                             default:
                                 break;
                         }
@@ -118,11 +121,11 @@ namespace Hotel
             for(int i = 0; i <= extremeY; i++)
             {
                 extremeID++;
-                rooms.Add(new ElevatorShaft(extremeID, new Point(0, i)));
+                rooms.Add(new ElevatorShaft(extremeID, new Point(smallestX - 1, i)));
             }
 
             // Add Stairs to the hotel.
-            for (int i = smallestX - 1; i <= extremeY; i++)
+            for (int i = 0; i <= extremeY; i++)
             {
                 extremeID++;
                 rooms.Add(new Staircase(extremeID, new Point(extremeX + 1, i)));

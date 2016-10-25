@@ -83,6 +83,7 @@
     <Compile Include="Drawing\Background.cs" />
     <Compile Include="Drawing\Camera.cs" />
     <Compile Include="RoomBehaviours\ElevatorShaftBehaviour.cs" />
+    <Compile Include="Rooms\Pool.cs" />
     <Compile Include="Services\ConfigLoader.cs" />
     <Compile Include="Services\ConfigModel.cs" />
     <Compile Include="HotelEvents\HotelEventHandler.cs" />
@@ -168,6 +169,11 @@
     <Content Include="Extra\HotelFancy.layout">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Extra\Hotel4.layout">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
