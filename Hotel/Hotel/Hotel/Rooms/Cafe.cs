@@ -17,7 +17,7 @@ namespace Hotel.Rooms
             Capacity = capacity;
             Name = "Restaurant";
 
-            roomBehaviour = new CafeBehaviour();
+            RoomBehaviour = new CafeBehaviour();
         }
     }
 }

@@ -12,7 +12,7 @@ namespace Hotel.Rooms
         {
             Sprite.LoadSprite("3x1Fitness");
             Name = "Fitness";
-            roomBehaviour = new FitnessBehaviour();
+            RoomBehaviour = new FitnessBehaviour();
         }
     }
 }

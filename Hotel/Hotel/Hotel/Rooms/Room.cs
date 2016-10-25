@@ -40,7 +40,7 @@ namespace Hotel
         public bool Vertical { get; set; }
         public int PeopleCount { get; set; }
         public float Weight { get; set; }
-        public IRoomBehaviour roomBehaviour { get; set; }
+        public IRoomBehaviour RoomBehaviour { get; set; }
 
         private RoomState _state;
         public RoomState State
