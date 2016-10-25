@@ -61,6 +61,9 @@ namespace Hotel.Persons
             }
         }
 
+        /// <summary>
+        /// Tells the cleaner to clean the closest emergency or dirty room.
+        /// </summary>
         public void GoClean()
         {
             // Check if this cleaner is busy with cleaning or walking
@@ -92,6 +95,26 @@ namespace Hotel.Persons
                 // Set the Target room to InCleaning to claim it.
                 TargetRoom.State = RoomState.InCleaning;
                 // Set busy to true because this cleaner is busy with walking or cleaning.
+                IsBusy = true;
+            }
+        }
+
+        /// <summary>
+        /// Tells the cleaner to clean the room that is given.
+        /// </summary>
+        /// <param name="room">Clean this room.</param>
+        public void GoClean(Room room)
+        {
+            if (!IsBusy && room.State == RoomState.Emergency || room.State == RoomState.Dirty)
+            {
+                FindAndTargetRoom(x => x == room);
+
+                if (TargetRoom.State == RoomState.Emergency)
+                    _cleaningTimer = TargetRoom.GetTimeToCleanEmergency();
+                else
+                    _cleaningTimer = _cleaningDuration;
+
+                TargetRoom.State = RoomState.InCleaning;
                 IsBusy = true;
             }
         }

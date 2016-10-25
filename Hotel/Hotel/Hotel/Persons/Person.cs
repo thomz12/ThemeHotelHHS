@@ -113,6 +113,8 @@ namespace Hotel.Persons
         /// <param name="e"></param>
         public virtual void OnDeparture()
         {
+            CurrentRoom.PeopleCount--;
+
             if (_roomBehaviour != null)
                 _roomBehaviour.OnDeparture(CurrentRoom, this);
         }
@@ -161,8 +163,6 @@ namespace Hotel.Persons
                 if (Inside)
                 {
                     OnDeparture();
-
-                    CurrentRoom.PeopleCount--;
                     Inside = false;
                 }
 

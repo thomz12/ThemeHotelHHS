@@ -72,7 +72,7 @@ namespace Hotel
             guest.Classification = stars;
             Guests.Add(name, guest);
             guest.FindAndTargetRoom(x => (x is Lobby && (x as Lobby).Receptionist != null));
-            
+
             // Subscribe to remove event
             guest.RemoveObjectEvent += RemoveObject;
         }
@@ -150,7 +150,7 @@ namespace Hotel
                     return person;
             }
 
-            foreach(Person person in Staff)
+            foreach (Person person in Staff)
             {
                 if (person.BoundingBox.Contains(position))
                     return person;
@@ -165,40 +165,73 @@ namespace Hotel
             return null;
         }
 
+        private void SendCleanerToRoom(List<Room> dirtyRooms)
+        {
+            PathFinder pf = new PathFinder();
+
+            // Calculate for each room in a collection the distance that every cleaner is away from that room and save it in a dictionary.
+            foreach (Room room in dirtyRooms)
+            {
+                // All lengths from each cleaner to this room.
+                Dictionary<Cleaner, int> lengths = new Dictionary<Cleaner, int>();
+
+                for (int i = 0; i < Staff.Count; i++)
+                {
+                    if (Staff[i] is Cleaner)
+                    {
+                        Cleaner cl = (Cleaner)Staff[i];
+                        if (!cl.IsBusy)
+                        {
+                            List<Room> aPath = pf.Find(cl.CurrentRoom, x => x == room);
+                            int length = 0;
+                            foreach (Room r in aPath)
+                            {
+                                length += r.RoomSize.X;
+                            }
+                            lengths.Add(cl, length);
+                        }
+                    }
+                }
+                if (lengths.Count > 0)
+                {
+                    // Get the cleaner with the shortest path to the room with an emergency
+                    Cleaner c = lengths.OrderBy(kvp => kvp.Value).First().Key;
+                    // Send the cleaner to clean the room
+                    c.GoClean(room);
+                }
+            }
+        }
+
         /// <summary>
         /// Called every frame.
         /// </summary>
         /// <param name="deltaTime">The delta time.</param>
         public void Update(float deltaTime)
         {
-            int dirtyRooms = 0;
+            List<Room> er = new List<Room>();
+            List<Room> dr = new List<Room>();
 
+            // Update all the rooms and sends a cleaner to the dirty ones
             for (int i = 0; i < Rooms.Count; i++)
             {
                 Rooms[i].Update(deltaTime);
 
-                if (Rooms[i].State == RoomState.Emergency || Rooms[i].State == RoomState.Dirty)
-                    dirtyRooms++;
+                if (Rooms[i].State == RoomState.Emergency)
+                    er.Add(Rooms[i]);
+                else if (Rooms[i].State == RoomState.Dirty)
+                    dr.Add(Rooms[i]);
             }
 
+            SendCleanerToRoom(er);
+            SendCleanerToRoom(dr);
+
+            // Update all the staff
             for (int i = 0; i < Staff.Count; i++)
             {
                 Staff[i].Update(deltaTime);
-
-                if (Staff[i] is Cleaner && dirtyRooms > 0)
-                {
-                    // TODO
-                    // Logic here to choose cleaner that is the closest to the dirty room.
-
-                    Cleaner cleaner = (Cleaner)Staff[i];
-                    if(!cleaner.IsBusy)
-                    {
-                        cleaner.GoClean();
-                        dirtyRooms--;
-                    }
-                }
             }
 
+            // Update all the guests
             for (int i = 0; i < Guests.Count; i++)
             {
                 Guests.Values.ElementAt(i).Update(deltaTime);
