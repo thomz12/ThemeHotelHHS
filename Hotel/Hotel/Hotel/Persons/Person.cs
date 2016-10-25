@@ -40,6 +40,7 @@ namespace Hotel.Persons
         public Room CurrentRoom { get; protected set; }
         protected IRoomBehaviour _roomBehaviour;
 
+        public bool Evacuating { get; set; }
         public bool Inside { get; set; }
         public Room TargetRoom { get; set; }
         public List<Room> Path { get; protected set; }
@@ -113,9 +114,7 @@ namespace Hotel.Persons
         /// <param name="e"></param>
         public virtual void OnDeparture()
         {
-            CurrentRoom.PeopleCount--;
-
-            if (_roomBehaviour != null)
+            if (_roomBehaviour != null && !Evacuating)
                 _roomBehaviour.OnDeparture(CurrentRoom, this);
         }
 
@@ -140,6 +139,8 @@ namespace Hotel.Persons
                     CurrentRoom = _targetShaft;
             }
 
+            _pathFinder.UseElevator = !Evacuating;
+
             // Find the rooms, and its path
             Path = _pathFinder.Find(CurrentRoom, rule);
 
@@ -162,8 +163,10 @@ namespace Hotel.Persons
 
                 if (Inside)
                 {
-                    OnDeparture();
                     Inside = false;
+                    CurrentRoom.PeopleCount--;
+
+                    OnDeparture();
                 }
 
                 CurrentTask = PersonTask.MovingCenter;
@@ -216,6 +219,7 @@ namespace Hotel.Persons
 
             // TODO: do this outside person
             // TODO: make person 'snap' to their desination so that low framerates not break everything.
+            // TODO: persons should not be dependant on sprite size, but on drawdestination.
             // Do moving in the room.
             switch (CurrentTask)
             {
