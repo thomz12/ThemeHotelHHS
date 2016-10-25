@@ -95,13 +95,7 @@
 		"AreaType" : "Room",
 		"Position" : "2, 5",
 		"Dimension" : "1, 1"
-	}, {
-		"Classification" : "1 Star",
-		"ID" : 20,
-		"AreaType" : "Room",
-		"Position" : "2, 5",
-		"Dimension" : "1, 1"
-	}, {
+	},  {
 		"Classification" : "1 Star",
 		"ID" : 21,
 		"AreaType" : "Room",
