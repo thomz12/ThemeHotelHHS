@@ -25,7 +25,7 @@ namespace Hotel.Rooms
             Sprite.LoadSprite("1x1Lobby");
             Name = "Lobby";
 
-            roomBehaviour = new LobbyBehaviour();
+            RoomBehaviour = new LobbyBehaviour();
         }
 
         /// <summary>

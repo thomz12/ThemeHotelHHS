@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Hotel.RoomBehaviours;
 
 namespace Hotel
 {
@@ -24,6 +25,8 @@ namespace Hotel
             Name = "Elevator Shaft";
             Weight = 1;
             Vertical = true;
+
+            RoomBehaviour = new ElevatorShaftBehaviour();
 
             if (RoomPosition.Y == 0)
             {

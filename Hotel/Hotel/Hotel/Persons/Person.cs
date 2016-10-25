@@ -48,15 +48,14 @@ namespace Hotel.Persons
         protected PathFinder _pathFinder;
         // The max time a guy can stay waiting.
         protected float _survivabilityTime;
-
         // The Elevator to enter.
         private Elevator _elevator;
         // The target elevator shaft (when in elevator)
-        private ElevatorShaft _targetShaft;
+        public ElevatorShaft _targetShaft;
         // The start elevator shaft (when in elevator)
-        private ElevatorShaft _startShaft;
+        public ElevatorShaft _startShaft;
         // If this person already called the elevator on this floor.
-        private bool _calledElevator;
+        public bool _calledElevator;
         // Timer to check when to die.
         private float _deathTimer;
         // When where you when poppetje was kill?
@@ -283,7 +282,7 @@ namespace Hotel.Persons
                     // If the person reached the center of the room.
                     if (Math.Abs(Position.X - CurrentRoom.Position.X - (CurrentRoom.RoomSize.X * Room.ROOMWIDTH / 2)) < WalkingSpeed * deltaTime)
                     {
-                        _roomBehaviour = CurrentRoom.roomBehaviour;
+                        _roomBehaviour = CurrentRoom.RoomBehaviour;
 
                         if (_roomBehaviour != null)
                             _roomBehaviour.OnPassRoom(CurrentRoom, this);
@@ -299,31 +298,6 @@ namespace Hotel.Persons
                         {
                             OnArrival();
                             TargetRoom = null;
-                        }
-
-                        // TODO: DO THIS IN ROOM BEHAVIOUR!!!!
-                        // If the elevator is not yet called, and the person is in an elevatorshaft.
-                        if (!_calledElevator && CurrentRoom is ElevatorShaft && Path != null && Path.Count > 1 && Path.ElementAt(0) is ElevatorShaft)
-                        {
-                            _startShaft = CurrentRoom as ElevatorShaft;
-
-                            _targetShaft = _startShaft;
-
-                            for(int i = 0; i < i + 1; i++)
-                            {
-                                if (!(Path.ElementAt(i) is ElevatorShaft))
-                                    break;
-                                _targetShaft = Path.ElementAt(i) as ElevatorShaft;
-                            }
-
-                            if (_targetShaft != null && _targetShaft != _startShaft)
-                            {
-                                // Call the elevator
-                                _calledElevator = true;
-                                (CurrentRoom as ElevatorShaft).CallElevator(_targetShaft.RoomPosition.Y);
-                                (CurrentRoom as ElevatorShaft).ElevatorArrival += Person_ElevatorArrival;
-                                CurrentTask = PersonTask.InQueue;
-                            }
                         }
                     }
                     break;
@@ -362,7 +336,7 @@ namespace Hotel.Persons
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void Person_ElevatorArrival(object sender, EventArgs e)
+        public void Person_ElevatorArrival(object sender, EventArgs e)
         {
             if (!_isDead)
             {
@@ -400,6 +374,12 @@ namespace Hotel.Persons
                         if (kvp.Value == Path[0])
                             dir = kvp.Key;
                     }
+
+                    if (CurrentRoom is ElevatorShaft && Path[0] is ElevatorShaft)
+                    {
+                        return;
+                    }
+                        
 
                     // Choose the action to take based on the direction.
                     switch (dir)

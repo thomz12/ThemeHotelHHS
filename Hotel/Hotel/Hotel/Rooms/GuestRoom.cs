@@ -27,7 +27,7 @@ namespace Hotel
             Name = $"{classification} Star Guest Room";
             Classification = classification;
 
-            roomBehaviour = new GuestRoomBehaviour();
+            RoomBehaviour = new GuestRoomBehaviour();
 
             // All the rooms are default Vacant
             State = RoomState.Vacant;

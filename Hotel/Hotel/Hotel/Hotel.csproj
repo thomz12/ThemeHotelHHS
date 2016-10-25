@@ -82,6 +82,7 @@
   <ItemGroup>
     <Compile Include="Drawing\Background.cs" />
     <Compile Include="Drawing\Camera.cs" />
+    <Compile Include="RoomBehaviours\ElevatorShaftBehaviour.cs" />
     <Compile Include="Services\ConfigLoader.cs" />
     <Compile Include="Services\ConfigModel.cs" />
     <Compile Include="HotelEvents\HotelEventHandler.cs" />

@@ -27,7 +27,7 @@ namespace Hotel.Rooms
             ConfigModel config = ServiceLocator.Get<ConfigLoader>().GetConfig();
             Duration = config.FilmDuration;
 
-            roomBehaviour = new CinemaBehaviour();
+            RoomBehaviour = new CinemaBehaviour();
         }
 
         /// <summary>
