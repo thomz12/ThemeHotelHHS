@@ -26,7 +26,7 @@ namespace Hotel.RoomBehaviours
 
                 person._targetShaft = person._startShaft;
 
-                for (int i = 0; i < i + 1; i++)
+                for (int i = 0; i < person.Path.Count; i++)
                 {
                     if (!(person.Path.ElementAt(i) is ElevatorShaft))
                         break;
