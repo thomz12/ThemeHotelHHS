@@ -81,7 +81,7 @@ namespace Hotel.Persons
                     if(Path != null)
                     {
                         // Set the time it takes to clean the room.
-                        _cleaningTimer = TargetRoom.GetTimeToCleanEmergency();
+                        _cleaningTimer = _cleaningDuration;
                     }
                     else
                     {
