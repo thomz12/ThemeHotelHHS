@@ -305,6 +305,11 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
+    <Compile Include="DankerPack\3x1Pool.png">
+      <Name>3x1Pool</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
     <Content Include="DankerPack\Splash.png">
       <Name>Splash</Name>
       <Importer>TextureImporter</Importer>
@@ -469,12 +474,22 @@
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
+    <Compile Include="DankPack\3x1Pool.png">
+      <Name>3x1Pool</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
     <Content Include="DankPack\Splash.png">
       <Name>Splash</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Compile Include="DefaultTexturePack\3x1Pool.png">
+      <Name>3x1Pool</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
     <Content Include="DefaultTexturePack\Splash.png">
       <Name>Splash</Name>
       <Importer>TextureImporter</Importer>
@@ -624,6 +639,16 @@
     </Compile>
     <Compile Include="MinimalisticPack\Background.png">
       <Name>Background</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="MinimalisticPack\3x1Pool.png">
+      <Name>3x1Pool</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+    <Compile Include="OutlinePack\3x1Pool.png">
+      <Name>3x1Pool</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
