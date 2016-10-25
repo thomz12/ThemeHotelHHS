@@ -280,7 +280,7 @@
 		"ID" : 50,
 		"AreaType" : "Room",
 		"Position" : "1, 4",
-		"Dimension" : "2, 2"
+		"Dimension" : "2, 1"
 	}, {
 		"Classification" : "4 stars",
 		"ID" : 51,
