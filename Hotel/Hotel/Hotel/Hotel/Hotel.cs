@@ -135,13 +135,6 @@ namespace Hotel
 
                 hotelObject.RemoveObjectEvent -= RemoveObject;
             }
-            /* TODO
-            if (hotelObject is Room)
-            {
-                // RIP in pepperonis.
-                throw new NotImplementedException();
-            }
-            */
         }
 
         /// <summary>
@@ -203,7 +196,6 @@ namespace Hotel
                         cleaner.GoClean();
                         dirtyRooms--;
                     }
-
                 }
             }
 

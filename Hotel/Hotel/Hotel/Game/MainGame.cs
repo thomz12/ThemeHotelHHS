@@ -93,7 +93,7 @@ namespace Hotel
         /// </summary>
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+            // Add your initialization logic here
             base.Initialize();
 
             _renderTexture = new RenderTarget2D(GraphicsDevice, 200, 200, false, SurfaceFormat.Color, DepthFormat.None);
@@ -135,7 +135,7 @@ namespace Hotel
         /// </summary>
         protected override void UnloadContent()
         {
-            // TODO: Unload any non ContentManager content here
+            // Unload any non ContentManager content here
         }
 
         /// <summary>
