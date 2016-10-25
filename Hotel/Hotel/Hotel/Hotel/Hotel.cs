@@ -179,6 +179,10 @@ namespace Hotel
                         if (!cl.IsBusy)
                         {
                             List<Room> aPath = pf.Find(cl.CurrentRoom, x => x == room);
+
+                            if (aPath == null)
+                                continue;
+
                             int length = 0;
                             foreach (Room r in aPath)
                             {
