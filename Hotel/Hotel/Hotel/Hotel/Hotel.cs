@@ -34,10 +34,6 @@ namespace Hotel
 
             Rooms = builder.Rooms;
 
-            // Add the rooms, and connect them, starts with an empty room outside with ID 0.
-            Room outside = new EmptyRoom(0, new Point(-1, 0), new Point(1, 1));
-            builder.PlaceRoom(outside);
-
             _cleaners = ServiceLocator.Get<ConfigLoader>().GetConfig().NumberOfCleaners;
 
             CreateStaff();

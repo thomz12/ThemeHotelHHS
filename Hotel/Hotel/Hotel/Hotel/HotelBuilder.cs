@@ -138,6 +138,9 @@ namespace Hotel
                 rooms.Add(new Lobby(extremeID, new Point(i, 0), new Point(1,1)));
             }
 
+            // Add the rooms, and connect them, starts with an empty room outside with ID 0.
+            rooms.Add(new EmptyRoom(0, new Point(-smallestX - 2, 0), new Point(1, 1)));
+
             foreach (Room r in rooms)
                 PlaceRoom(r);
         }
