@@ -24,9 +24,6 @@ namespace Hotel.Persons
         /// </summary>
         /// <param name="room">The room to spawn the guest in.</param>
         /// <param name="rooms">All the rooms in the hotel.</param>
-        /// <param name="survivability">The time the guest can stand in a queue without dieing.</param>
-        /// <param name="walkingSpeed">The speed at which the guest walks.</param>
-        /// <param name="workDuration">The speed at which the receptionist checks in/out.</param>
         public Receptionist(Room room, List<Room> rooms) : base(room)
         {
             Name = "Receptionist";
