@@ -118,7 +118,7 @@ namespace Hotel
                         if (hotelGuest.StayState == StayState.Staying && !hotelGuest.Evacuating)
                         {
                             hotelGuest.FindAndTargetRoom(x => x is Fitness);
-                            hotelGuest.LeaveRoomInTime(float.Parse(evt.Data.Values.ElementAt(1)));
+                            hotelGuest.SetTimeToStayInRoom(float.Parse(evt.Data.Values.ElementAt(1)));
                         }
                     }
                     break;
@@ -134,7 +134,7 @@ namespace Hotel
                         {
                             if (person is Guest)
                             {
-                                (person as Guest).LeaveRoomInTime(ServiceLocator.Get<ConfigLoader>().GetConfig().FilmDuration);
+                                (person as Guest).SetTimeToStayInRoom(ServiceLocator.Get<ConfigLoader>().GetConfig().FilmDuration);
                             }
                         }
                     }

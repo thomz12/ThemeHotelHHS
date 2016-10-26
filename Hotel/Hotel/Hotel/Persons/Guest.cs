@@ -40,12 +40,12 @@ namespace Hotel.Persons
         /// Constructor.
         /// </summary>
         /// <param name="room">The room to spawn the guest in.</param>
-        /// <param name="survivability">The time the guest can stand in a queue without dieing.</param>
-        /// <param name="walkingSpeed">The speed at which the guest walks.</param>
         public Guest(Room room) : base(room)
         {
+            // Create a new name generator.
             NameGenerator generator = new NameGenerator();
 
+            // Make this guest a boy or a girl.
             if (_random.Next(0, 2) == 0)
             {
                 Gender = Gender.Male;
@@ -57,13 +57,18 @@ namespace Hotel.Persons
                 Sprite.LoadSprite("FemaleGuest");
             }
 
+            // We dont have a staystate when this guest is spawned in.
             StayState = StayState.None;
 
             // Give this person a name.
             Name = generator.GenerateName(Gender);
         }
 
-        public void LeaveRoomInTime(float seconds)
+        /// <summary>
+        /// Sets the time that a person is allowed to stay in this room, after it expires the OnDeparture() function is called.
+        /// </summary>
+        /// <param name="seconds">The amount of time to stay in the room.</param>
+        public void SetTimeToStayInRoom(float seconds)
         {
             _roomTime = seconds;
             _toLeave = true;
@@ -86,14 +91,15 @@ namespace Hotel.Persons
                 }
             }
 
-            // TODO: if you are outside and your staystate is CheckOut; go RIP, but dont leave a grave. 
+            // If you are outside and your staystate is CheckOut; go RIP, but dont leave a mess. 
+            if (CurrentRoom.Name.Equals("Outside") && StayState == StayState.CheckOut)
+                this.Remove();
         }
 
         /// <summary>
-        /// Call this to remove this guest from the game.
+        /// Call this to kill the person.
         /// </summary>
-        /// <param name="e">EventArgs.</param>
-        public override void Remove(EventArgs e)
+        public override void Death()
         {
             // Set the staying state to none and empty the occupied room
             if (StayState == StayState.Staying)
@@ -106,7 +112,7 @@ namespace Hotel.Persons
             if (CurrentRoom.State != RoomState.Emergency && CurrentRoom.State != RoomState.InCleaning)
                 CurrentRoom.SetEmergency(8);
 
-            base.Remove(e);
+            base.Death();
         }
     }
 }

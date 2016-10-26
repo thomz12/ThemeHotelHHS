@@ -32,10 +32,9 @@ namespace Hotel.Persons
         }
 
         /// <summary>
-        /// Call this to remove this cleaner from the game.
+        /// Call this to kill the cleaner.
         /// </summary>
-        /// <param name="e"></param>
-        public override void Remove(EventArgs e)
+        public override void Death()
         {
             // Set an emergency in this room.
             if (CurrentRoom.State != RoomState.Emergency && CurrentRoom.State != RoomState.InCleaning)
@@ -45,7 +44,8 @@ namespace Hotel.Persons
             if (TargetRoom != null && TargetRoom.State == RoomState.InCleaning)
                 TargetRoom.State = TargetRoom.PrevRoomState;
 
-            base.Remove(e);
+            // Call the base.
+            base.Death();
         }
 
         public override void OnArrival()

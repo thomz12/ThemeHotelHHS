@@ -118,12 +118,24 @@ namespace Hotel.Persons
                 _roomBehaviour.OnDeparture(CurrentRoom, this);
         }
 
-        public override void Remove(EventArgs e)
+        /// <summary>
+        /// Call this to remove this object from the game.
+        /// </summary>
+        public override void Remove()
+        {
+            base.Remove();
+        }
+
+        /// <summary>
+        /// Call this to kill the person.
+        /// </summary>
+        public virtual void Death()
         {
             // Set mode to dead
             _isDead = true;
 
-            base.Remove(e);
+            // Remove this object from the game.
+            Remove();
         }
 
         /// <summary>
@@ -182,7 +194,7 @@ namespace Hotel.Persons
             if (!_isDead)
             {
                 if (_deathTimer > _survivabilityTime && _survivabilityTime != -1)
-                    Remove(new EventArgs());
+                    Death();
 
                 // While people are waiting, increase the deathtimer.
                 if (CurrentTask == PersonTask.InQueue && _survivabilityTime != -1)
@@ -196,7 +208,7 @@ namespace Hotel.Persons
             else
             {
                 if (CurrentRoom.State != RoomState.Emergency || CurrentRoom.State != RoomState.InCleaning)
-                    Remove(new EventArgs());
+                    Death();
             }
 
             // Get the new bounding box (the exact position on the sprite batch)

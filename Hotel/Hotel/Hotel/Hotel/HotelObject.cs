@@ -33,11 +33,11 @@ namespace Hotel
         /// Call this to remove this object from the game.
         /// </summary>
         /// <param name="e">EventArgs.</param>
-        public virtual void Remove(EventArgs e)
+        public virtual void Remove()
         {
             // Call the event so the hotel can use it.
             if (RemoveObjectEvent != null)
-                RemoveObjectEvent(this, e);
+                RemoveObjectEvent(this, new EventArgs());
         }
 
         /// <summary>

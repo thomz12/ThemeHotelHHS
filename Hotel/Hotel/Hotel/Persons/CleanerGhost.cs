@@ -19,10 +19,10 @@ namespace Hotel.Persons
 
         public override void OnArrival()
         {
-            // KILL YOURSELF
+            // KILL YOURSELF (without dying)
             if(CurrentRoom.Name.Equals("Outside"))
             {
-                Remove(new EventArgs());
+                Remove();
             }
         }
     }

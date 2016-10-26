@@ -9,7 +9,7 @@ namespace Hotel.Persons
 {
     public class Receptionist : Person
     {
-        public Queue<Guest> CheckinQueue { get; set; }
+        public Queue<Guest> CheckInQueue { get; set; }
         public Queue<Guest> CheckOutQueue { get; set; }
 
         private List<Room> _rooms;
@@ -34,7 +34,7 @@ namespace Hotel.Persons
             Sprite.SetSize(new Point(Sprite.Texture.Width, Sprite.Texture.Height));
             CurrentRoom = room;
 
-            CheckinQueue = new Queue<Guest>();
+            CheckInQueue = new Queue<Guest>();
             CheckOutQueue = new Queue<Guest>();
 
             _highestClassificationRoom = 6;
@@ -59,23 +59,23 @@ namespace Hotel.Persons
             base.Update(deltaTime);
 
             // If people are being helped, it is rude for them to die! So change their task to Waiting, which stops their death timers. 
-            if (CheckinQueue.Count > 0)
-                CheckinQueue.First().CurrentTask = PersonTask.Waiting;
+            if (CheckInQueue.Count > 0)
+                CheckInQueue.First().CurrentTask = PersonTask.Waiting;
             if (CheckOutQueue.Count > 0)
                 CheckOutQueue.First().CurrentTask = PersonTask.Waiting;
 
             // Reduce the time of the timer for the checkin by the time that has passed.
-            if(CheckinQueue.Count > 0)
+            if(CheckInQueue.Count > 0)
                 _checkInTimer -= deltaTime;
 
             // The previous checkin has succeeded.
-            if(_checkInTimer <= 0 && CheckinQueue.Count > 0)
+            if(_checkInTimer <= 0 && CheckInQueue.Count > 0)
             {
                 // Reset the timer for the next guest.
                 _checkInTimer = _workSpeed;
 
                 // Check this guy in and kick him out of the queue.
-                CheckIn(CheckinQueue.Dequeue());
+                CheckIn(CheckInQueue.Dequeue());
             }
 
             // Reduce the time of the timer for the checkout by the time that has passed.
@@ -93,9 +93,9 @@ namespace Hotel.Persons
             }
             
             // For visual reasons we change the world position of the guests according to the position in the queue, so they form a nice row.
-            for(int i = 0; i < CheckinQueue.Count; i++)
+            for(int i = 0; i < CheckInQueue.Count; i++)
             {
-                CheckinQueue.ElementAt(i).Position = new Vector2((Position.X - i * _distanceBetweenThePeopleInTheQueues), CheckinQueue.ElementAt(i).Position.Y);
+                CheckInQueue.ElementAt(i).Position = new Vector2((Position.X - i * _distanceBetweenThePeopleInTheQueues), CheckInQueue.ElementAt(i).Position.Y);
             }
             for (int i = 0; i < CheckOutQueue.Count; i++)
             {

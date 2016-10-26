@@ -16,7 +16,7 @@ namespace Hotel
             if (person is Guest && cafe.PeopleCount < cafe.Capacity)
             {
                 person.Inside = true;
-                (person as Guest).LeaveRoomInTime(5);
+                (person as Guest).SetTimeToStayInRoom(5);
                 cafe.PeopleCount++;
             }
         }
