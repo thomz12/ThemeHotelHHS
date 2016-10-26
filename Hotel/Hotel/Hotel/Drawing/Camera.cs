@@ -22,16 +22,19 @@ namespace Hotel
         public Point Size { get; private set; }
 
         /// <summary>
-        /// Constructor
+        /// Constructor.
         /// </summary>
+        /// <param name="width">Width of the camera.</param>
+        /// <param name="height">Height of the camera.</param>
         public Camera(int width, int height)
         {
             Zoom = 0.6f;
             Controlable = false;
+            Size = new Point(width, height);
+
             // TEMP
             CamPosition = new Vector2(-950f, 200f);
             // /TEMP
-            Size = new Point(width, height);
         }
 
         /// <summary>
@@ -60,12 +63,11 @@ namespace Hotel
                 // Zoom in or out.
                 Zoom += (float)(Input.Instance.GetScrollDelta() / 10000.0f);
 
+                // Limit zoom
                 if (Zoom < MINZOOM)
                     Zoom = MINZOOM;
-
                 if (Zoom > MAXZOOM)
                     Zoom = MAXZOOM;
-
             }
 
             // Transpose the transform matrix.
