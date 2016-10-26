@@ -84,8 +84,10 @@ namespace Hotel
                     person.TargetRoom.Sprite.Color = Color.White;
             }
 
+            // Set the showing on false.
             IsShowingInfo = false;
 
+            // Remove the object that is displayed.
             _objectToDisplay = null;
         }
 

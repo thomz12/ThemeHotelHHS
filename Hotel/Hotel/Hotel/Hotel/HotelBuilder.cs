@@ -71,6 +71,7 @@ namespace Hotel
                         // Set the extreme values (hotel size)
                         int maxX = position.X + (dimensions.X - 1);
 
+                        // Set extreme values.
                         if (extremeX < maxX)
                             extremeX = maxX;
                         if (smallestX > position.X)

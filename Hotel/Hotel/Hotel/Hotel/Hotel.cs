@@ -161,8 +161,13 @@ namespace Hotel
             return null;
         }
 
+        /// <summary>
+        /// Gets the closest cleaner to each room in the given list and sends them to that room.
+        /// </summary>
+        /// <param name="dirtyRooms">A List with dirty rooms.</param>
         private void SendCleanerToRoom(List<Room> dirtyRooms)
         {
+            // Create a new pathfinder.
             PathFinder pf = new PathFinder();
 
             // Calculate for each room in a collection the distance that every cleaner is away from that room and save it in a dictionary.
@@ -171,27 +176,39 @@ namespace Hotel
                 // All lengths from each cleaner to this room.
                 Dictionary<Cleaner, int> lengths = new Dictionary<Cleaner, int>();
 
+                // Cycle through all the staff.
                 for (int i = 0; i < Staff.Count; i++)
                 {
+                    // Check if this staff is a cleaner.
                     if (Staff[i] is Cleaner)
                     {
+                        // Cast.
                         Cleaner cl = (Cleaner)Staff[i];
+
+                        // Check if this cleaner is busy.
                         if (!cl.IsBusy)
                         {
+                            // Find a new path to the room that we are working with.
                             List<Room> aPath = pf.Find(cl.CurrentRoom, x => x == room);
 
+                            // No path was found, continue.
                             if (aPath == null)
                                 continue;
 
+                            // Normalize the length (2 long rooms are counted as 2 then)
                             int length = 0;
                             foreach (Room r in aPath)
                             {
                                 length += r.RoomSize.X;
                             }
+
+                            // Add this cleaner and the distance it needs to travel to a dictionary.
                             lengths.Add(cl, length);
                         }
                     }
                 }
+
+                // Check if there is someone in the dictionary.
                 if (lengths.Count > 0)
                 {
                     // Get the cleaner with the shortest path to the room with an emergency
@@ -222,7 +239,9 @@ namespace Hotel
                     dr.Add(Rooms[i]);
             }
 
+            // First send all the cleaners to clean emergencies.
             SendCleanerToRoom(er);
+            // Then send all the cleaners to clean normal dirty rooms.
             SendCleanerToRoom(dr);
 
             // Update all the staff

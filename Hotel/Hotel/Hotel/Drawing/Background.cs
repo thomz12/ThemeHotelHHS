@@ -25,6 +25,7 @@ namespace Hotel
 
         public void Update(float deltaTime)
         {
+            // Try to counter the offset of the camera in the scene.
             _sprite.SetPosition(new Point((int)(-_cam.TransformMatrix.M41 / _cam.Zoom), (int)(_cam.TransformMatrix.M42 / _cam.TransformMatrix.M22)));
             _sprite.SetSize(new Point((int)(_cam.Size.X / _cam.Zoom), (int)(_cam.Size.Y / _cam.Zoom)));
             _sprite.Update(deltaTime);
