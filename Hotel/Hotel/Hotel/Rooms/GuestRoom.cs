@@ -4,8 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Hotel.RoomBehaviours;
 
-namespace Hotel
+namespace Hotel.Rooms
 {
     public class GuestRoom : Room
     {

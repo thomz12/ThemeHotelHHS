@@ -5,7 +5,7 @@ using System.Text;
 using Hotel.Rooms;
 using Hotel.Persons;
 
-namespace Hotel
+namespace Hotel.RoomBehaviours
 {
     class CinemaBehaviour : IRoomBehaviour
     {

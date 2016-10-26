@@ -29,7 +29,7 @@ namespace Hotel
             DrawOrder = 0;
             Color = Color.White;
 
-            DrawDestination = new Rectangle(0, 0, 0, 0);
+            DrawDestination = new Rectangle(0, 0, 1, 1);
         }
 
         /// <summary>

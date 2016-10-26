@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Hotel.Persons;
+using Hotel.Rooms;
 
-namespace Hotel
+namespace Hotel.RoomBehaviours
 {
     class GuestRoomBehaviour : IRoomBehaviour
     {
