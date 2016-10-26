@@ -233,6 +233,7 @@ namespace Hotel.Persons
 
                     if (Position.X < CurrentRoom.Position.X - Sprite.Texture.Width)
                     {
+                        Position = new Vector2(CurrentRoom.Position.X - Sprite.Texture.Width, Position.Y);
                         CurrentRoom =  CurrentRoom.Neighbors[Direction.West];
                         CurrentTask = PersonTask.MovingCenter;
                     }
@@ -245,6 +246,7 @@ namespace Hotel.Persons
 
                     if (Position.X > CurrentRoom.Position.X + CurrentRoom.RoomSize.Y * Room.ROOMWIDTH)
                     {
+                        Position = new Vector2(CurrentRoom.Position.X + CurrentRoom.RoomSize.Y * Room.ROOMWIDTH, Position.Y);
                         CurrentRoom = CurrentRoom.Neighbors[Direction.East];
                         CurrentTask = PersonTask.MovingCenter;
                     }
@@ -257,6 +259,7 @@ namespace Hotel.Persons
 
                     if (Position.Y > CurrentRoom.Position.Y + Sprite.Texture.Height)
                     {
+                        Position = new Vector2(Position.X, CurrentRoom.Position.Y + Sprite.Texture.Height);
                         CurrentRoom = CurrentRoom.Neighbors[Direction.North];
                         CurrentTask = PersonTask.MovingCenter;
                     }
@@ -269,6 +272,7 @@ namespace Hotel.Persons
 
                     if (Position.Y < CurrentRoom.Position.Y - Room.ROOMHEIGHT - (Room.ROOMHEIGHT - Sprite.Texture.Height))
                     {
+                        Position = new Vector2(Position.X, CurrentRoom.Position.Y - Room.ROOMHEIGHT - (Room.ROOMHEIGHT - Sprite.Texture.Height));
                         CurrentRoom = CurrentRoom.Neighbors[Direction.South];
                         CurrentTask = PersonTask.MovingCenter;
                     }
@@ -286,18 +290,23 @@ namespace Hotel.Persons
                     // If the person reached the center of the room.
                     if (Math.Abs(Position.X - CurrentRoom.Position.X - (CurrentRoom.RoomSize.X * Room.ROOMWIDTH / 2)) < WalkingSpeed * deltaTime)
                     {
+                        Position = new Vector2(CurrentRoom.Position.X + (CurrentRoom.RoomSize.X * Room.ROOMWIDTH / 2), Position.Y);
+
+                        // Get new room behaviour from this room.
                         _roomBehaviour = CurrentRoom.RoomBehaviour;
 
+                        // If its not null, execute the room behaviour.
                         if (_roomBehaviour != null)
                             _roomBehaviour.OnPassRoom(CurrentRoom, this);
 
-                        // Get a new task.
+                        // Get a new task. (where to walk to next)
                         UpdateCurrentTask();
 
-                        // When the task is still moving to the center, we wait.
+                        // When the task is still moving to the center (arrived), we wait.
                         if (CurrentTask == PersonTask.MovingCenter)
                             CurrentTask = PersonTask.Waiting;
 
+                        // We the person reached the target room.
                         if (TargetRoom == CurrentRoom)
                         {
                             OnArrival();
