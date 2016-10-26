@@ -172,6 +172,14 @@ namespace HotelUnitTests
         }
 
         [TestMethod]
+        public void UpdateSpriteTestGuestRoom()
+        {
+            GuestRoom room = new GuestRoom(1, new Microsoft.Xna.Framework.Point(1, 1), new Microsoft.Xna.Framework.Point(1, 1), 1);
+            room.Update(1);
+            Assert.IsNull(room.Sprite.Texture);
+        }
+
+        [TestMethod]
         public void CinemaConstructor()
         {
             Cinema room = new Cinema(1, new Microsoft.Xna.Framework.Point(0, 0), new Microsoft.Xna.Framework.Point(1, 1));

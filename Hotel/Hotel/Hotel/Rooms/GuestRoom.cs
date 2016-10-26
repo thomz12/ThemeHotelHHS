@@ -45,17 +45,11 @@ namespace Hotel.Rooms
         {
             // Because we use the same naming for all the sprites we can work with filenames instead of tons of ifs and switches.
             // Build a filename which changes based on the properties of the room.
-            string FileName = "";
+            string fileName = "";
 
-            if (RoomSize.X == 2 && RoomSize.Y == 1)
-                FileName += "2x1";
-            else if (RoomSize.X == 2 && RoomSize.Y == 2)
-                FileName += "2x2";
-            else
-                // Load default sprite
-                FileName += "1x1";
+            fileName += RoomSize.X + "x" + RoomSize.Y;
 
-            FileName += "GuestRoom";
+            fileName += "GuestRoom";
 
             switch (State)
             {
@@ -64,19 +58,24 @@ namespace Hotel.Rooms
                 case RoomState.Vacant:
                     break;
                 case RoomState.Dirty:
-                    FileName += "Dirty";
+                    fileName += "Dirty";
                     break;
                 case RoomState.InCleaning:
-                    FileName += "Cleaning";
+                    fileName += "Cleaning";
                     break;
                 case RoomState.Occupied:
-                    FileName += "Occupied";
+                    fileName += "Occupied";
                     break;
                 default:
                     break;
             }
 
-            Sprite.LoadSprite(FileName);
+            // Try to load the sprite from the string we just build.
+            Sprite.LoadSprite(fileName);
+
+            // If the sprite was not found, default to the 1x1GuestRoom sprite.
+            if (Sprite.Texture == null)
+                Sprite.LoadSprite("1x1GuestRoom");
         }
 
         public override string ToString()
