@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Hotel.Rooms
 {
-    class EmptyRoom : Room
+    public class EmptyRoom : Room
     {
         /// <summary>
         /// An empty room which cant do anything.
@@ -21,6 +21,7 @@ namespace Hotel.Rooms
             Name = "Outside";
         }
 
+        // Wont be calling the base update.
         public override void Update(float deltaTime)
         {
             // Lol do nothing.

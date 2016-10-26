@@ -31,7 +31,10 @@ namespace Hotel.Persons
         {
             Name = "Receptionist";
             Sprite.LoadSprite("Receptionist");
-            Sprite.SetSize(new Point(Sprite.Texture.Width, Sprite.Texture.Height));
+
+            if(Sprite.Texture != null)
+                Sprite.SetSize(new Point(Sprite.Texture.Width, Sprite.Texture.Height));
+
             CurrentRoom = room;
 
             CheckInQueue = new Queue<Guest>();

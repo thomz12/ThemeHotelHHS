@@ -72,10 +72,12 @@ namespace Hotel.Persons
         {
             Sprite.LoadSprite("Guest");
             Sprite.DrawOrder = 1;
-            Sprite.SetSize(new Point(Sprite.Texture.Width, Sprite.Texture.Height));
+
+            if(Sprite.Texture != null)
+                Sprite.SetSize(new Point(Sprite.Texture.Width, Sprite.Texture.Height));
 
             // Set the position in the center of the starting room.
-            Position = new Vector2(room.Position.X + (room.RoomSize.X * (Room.ROOMWIDTH / 2)), room.Position.Y - (Room.ROOMHEIGHT - Sprite.Texture.Height) - (Room.ROOMHEIGHT * (room.RoomSize.Y - 1)));
+            Position = new Vector2(room.Position.X + (room.RoomSize.X * (Room.ROOMWIDTH / 2)), room.Position.Y - (Room.ROOMHEIGHT - Sprite.DrawDestination.Height) - (Room.ROOMHEIGHT * (room.RoomSize.Y - 1)));
 
             // Set jump height (for walking)
             JumpHeight = 4;
@@ -237,7 +239,6 @@ namespace Hotel.Persons
             }
 
             // TODO: do this outside person
-            // TODO: make person 'snap' to their desination so that low framerates not break everything.
             // TODO: persons should not be dependant on sprite size, but on drawdestination.
             // Do moving in the room.
             switch (CurrentTask)
@@ -252,6 +253,7 @@ namespace Hotel.Persons
 
                     if (Position.X < CurrentRoom.Position.X - Sprite.Texture.Width)
                     {
+                        Position = new Vector2(CurrentRoom.Position.X - Sprite.Texture.Width, Position.Y);
                         CurrentRoom =  CurrentRoom.Neighbors[Direction.West];
                         CurrentTask = PersonTask.MovingCenter;
                     }
@@ -264,6 +266,7 @@ namespace Hotel.Persons
 
                     if (Position.X > CurrentRoom.Position.X + CurrentRoom.RoomSize.Y * Room.ROOMWIDTH)
                     {
+                        Position = new Vector2(CurrentRoom.Position.X + CurrentRoom.RoomSize.Y * Room.ROOMWIDTH, Position.Y);
                         CurrentRoom = CurrentRoom.Neighbors[Direction.East];
                         CurrentTask = PersonTask.MovingCenter;
                     }
@@ -276,6 +279,7 @@ namespace Hotel.Persons
 
                     if (Position.Y > CurrentRoom.Position.Y + Sprite.Texture.Height)
                     {
+                        Position = new Vector2(Position.X, CurrentRoom.Position.Y + Sprite.Texture.Height);
                         CurrentRoom = CurrentRoom.Neighbors[Direction.North];
                         CurrentTask = PersonTask.MovingCenter;
                     }
@@ -288,6 +292,7 @@ namespace Hotel.Persons
 
                     if (Position.Y < CurrentRoom.Position.Y - Room.ROOMHEIGHT - (Room.ROOMHEIGHT - Sprite.Texture.Height))
                     {
+                        Position = new Vector2(Position.X, CurrentRoom.Position.Y - Room.ROOMHEIGHT - (Room.ROOMHEIGHT - Sprite.Texture.Height));
                         CurrentRoom = CurrentRoom.Neighbors[Direction.South];
                         CurrentTask = PersonTask.MovingCenter;
                     }
@@ -305,18 +310,23 @@ namespace Hotel.Persons
                     // If the person reached the center of the room.
                     if (Math.Abs(Position.X - CurrentRoom.Position.X - (CurrentRoom.RoomSize.X * Room.ROOMWIDTH / 2)) < WalkingSpeed * deltaTime)
                     {
+                        Position = new Vector2(CurrentRoom.Position.X + (CurrentRoom.RoomSize.X * Room.ROOMWIDTH / 2), Position.Y);
+
+                        // Get new room behaviour from this room.
                         _roomBehaviour = CurrentRoom.RoomBehaviour;
 
+                        // If its not null, execute the room behaviour.
                         if (_roomBehaviour != null)
                             _roomBehaviour.OnPassRoom(CurrentRoom, this);
 
-                        // Get a new task.
+                        // Get a new task. (where to walk to next)
                         UpdateCurrentTask();
 
-                        // When the task is still moving to the center, we wait.
+                        // When the task is still moving to the center (arrived), we wait.
                         if (CurrentTask == PersonTask.MovingCenter)
                             CurrentTask = PersonTask.Waiting;
 
+                        // We the person reached the target room.
                         if (TargetRoom == CurrentRoom)
                         {
                             OnArrival();

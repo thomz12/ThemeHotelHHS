@@ -55,7 +55,9 @@
   <ItemGroup>
     <Compile Include="ElevatorTest.cs" />
     <Compile Include="PathfinderTest.cs" />
+    <Compile Include="PersonTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoomUnitTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Hotel\Hotel\Hotel.csproj">

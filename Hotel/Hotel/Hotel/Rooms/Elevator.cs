@@ -188,9 +188,6 @@ namespace Hotel
             // Update the sprite.
             Sprite.Update(deltaTime);
 
-            // Set the Sprite position.
-            Sprite.SetPosition(new Point((int)Position.X, (int)Position.Y));
-
             // When done waiting.
             if (_waitTime <= 0)
             {
@@ -201,6 +198,9 @@ namespace Hotel
             {
                 _waitTime -= deltaTime;
             }
+
+            // Set the Sprite position.
+            Sprite.SetPosition(new Point((int)Position.X, (int)Position.Y));
         }
 
         /// <summary>
