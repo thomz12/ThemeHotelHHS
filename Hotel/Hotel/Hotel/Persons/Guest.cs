@@ -85,6 +85,8 @@ namespace Hotel.Persons
                     OnDeparture();
                 }
             }
+
+            // TODO: if you are outside and your staystate is CheckOut; go RIP, but dont leave a grave. 
         }
 
         /// <summary>

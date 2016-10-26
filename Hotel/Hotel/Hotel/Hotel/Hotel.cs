@@ -52,7 +52,7 @@ namespace Hotel
             Random r = new Random();
             for (int i = 0; i < _cleaners; i++)
             {
-                Cleaner c = new Cleaner(Rooms[r.Next(1, Rooms.Count())]);
+                Cleaner c = new Cleaner(lobbies.ElementAt(0));
                 Staff.Add(c);
                 c.RemoveObjectEvent += RemoveObject;
             }
