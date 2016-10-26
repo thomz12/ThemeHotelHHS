@@ -32,9 +32,7 @@ namespace Hotel
             Controlable = false;
             Size = new Point(width, height);
 
-            // TEMP
-            CamPosition = new Vector2(-950f, 200f);
-            // /TEMP
+            CamPosition = new Vector2(-width / 2, height / 2);
         }
 
         /// <summary>

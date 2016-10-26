@@ -73,7 +73,7 @@ namespace Hotel.Persons
             Sprite.LoadSprite("Guest");
             Sprite.DrawOrder = 1;
 
-            if(Sprite.Texture != null)
+            if (Sprite.Texture != null)
                 Sprite.SetSize(new Point(Sprite.Texture.Width, Sprite.Texture.Height));
 
             // Set the position in the center of the starting room.
@@ -238,6 +238,8 @@ namespace Hotel.Persons
                 return;
             }
 
+            Vector2 direction;
+
             // TODO: do this outside person
             // TODO: persons should not be dependant on sprite size, but on drawdestination.
             // Do moving in the room.
@@ -246,7 +248,7 @@ namespace Hotel.Persons
                 //When the person is waiting, do nothing.
                 case PersonTask.Waiting:
                     break;
-
+                #region movement code
                 // When person is moving left.
                 case PersonTask.MovingLeft:
                     Position = new Vector2(Position.X - WalkingSpeed * deltaTime, Position.Y);
@@ -254,7 +256,7 @@ namespace Hotel.Persons
                     if (Position.X < CurrentRoom.Position.X - Sprite.DrawDestination.Width)
                     {
                         Position = new Vector2(CurrentRoom.Position.X - Sprite.DrawDestination.Width, Position.Y);
-                        CurrentRoom =  CurrentRoom.Neighbors[Direction.West];
+                        CurrentRoom = CurrentRoom.Neighbors[Direction.West];
                         CurrentTask = PersonTask.MovingCenter;
                     }
 
@@ -298,10 +300,12 @@ namespace Hotel.Persons
                     }
 
                     break;
+                #endregion 
 
                 // When person is moving to the center of the room.
                 case PersonTask.MovingCenter:
 
+                    // walk to the center.
                     if (Position.X < CurrentRoom.Position.X + (CurrentRoom.RoomSize.X * Room.ROOMWIDTH / 2))
                         Position = new Vector2(Position.X + WalkingSpeed * deltaTime, Position.Y);
                     else
@@ -419,7 +423,7 @@ namespace Hotel.Persons
                     {
                         return;
                     }
-                        
+
 
                     // Choose the action to take based on the direction.
                     switch (dir)
