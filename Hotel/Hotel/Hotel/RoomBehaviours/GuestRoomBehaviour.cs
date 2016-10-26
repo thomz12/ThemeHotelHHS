@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Hotel.Persons;
 
-namespace Hotel
+namespace Hotel.RoomBehaviours
 {
     class GuestRoomBehaviour : IRoomBehaviour
     {

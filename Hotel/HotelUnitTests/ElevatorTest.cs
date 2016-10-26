@@ -76,9 +76,10 @@ namespace HotelUnitTests
         {
             Elevator elevator = new Elevator();
             elevator.CallElevator(0, 1);
-            elevator.Update(10);
-            elevator.Update(10);
-            elevator.Update(10);
+
+            for (int i = 0; i < 15; i++)
+                elevator.Update(1);
+
             Assert.IsTrue(elevator.CurrentFloor == 1);
        }
 
@@ -87,12 +88,10 @@ namespace HotelUnitTests
         {
             Elevator elevator = new Elevator();
             elevator.CallElevator(1, 0);
-            elevator.Update(10);
-            elevator.Update(10);
-            elevator.Update(10);
-            elevator.Update(10);
-            elevator.Update(10);
-            elevator.Update(10);
+
+            for (int i = 0; i < 15; i++)
+                elevator.Update(1);
+
             Assert.IsTrue(elevator.CurrentFloor == 0);
         }
     }

@@ -214,7 +214,7 @@ namespace Hotel.Persons
             // If person is in the elevator, set its position to the elevator.
             if (_elevator != null)
             {
-                Position = new Vector2(_elevator.Position.X + (_elevator.Sprite.Texture.Width / 2 - Sprite.Texture.Width / 2), _elevator.Position.Y - Room.ROOMHEIGHT + Sprite.Texture.Height);
+                Position = new Vector2(_elevator.Position.X + (_elevator.Sprite.DrawDestination.Width / 2 - Sprite.DrawDestination.Width / 2), _elevator.Position.Y - Room.ROOMHEIGHT + Sprite.DrawDestination.Height);
                 CurrentTask = PersonTask.Waiting;
                 return;
             }
@@ -232,9 +232,9 @@ namespace Hotel.Persons
                 case PersonTask.MovingLeft:
                     Position = new Vector2(Position.X - WalkingSpeed * deltaTime, Position.Y);
 
-                    if (Position.X < CurrentRoom.Position.X - Sprite.Texture.Width)
+                    if (Position.X < CurrentRoom.Position.X - Sprite.DrawDestination.Width)
                     {
-                        Position = new Vector2(CurrentRoom.Position.X - Sprite.Texture.Width, Position.Y);
+                        Position = new Vector2(CurrentRoom.Position.X - Sprite.DrawDestination.Width, Position.Y);
                         CurrentRoom =  CurrentRoom.Neighbors[Direction.West];
                         CurrentTask = PersonTask.MovingCenter;
                     }
@@ -258,9 +258,9 @@ namespace Hotel.Persons
                 case PersonTask.MovingUp:
                     Position = new Vector2(Position.X, Position.Y + WalkingSpeed * deltaTime);
 
-                    if (Position.Y > CurrentRoom.Position.Y + Sprite.Texture.Height)
+                    if (Position.Y > CurrentRoom.Position.Y + Sprite.DrawDestination.Height)
                     {
-                        Position = new Vector2(Position.X, CurrentRoom.Position.Y + Sprite.Texture.Height);
+                        Position = new Vector2(Position.X, CurrentRoom.Position.Y + Sprite.DrawDestination.Height);
                         CurrentRoom = CurrentRoom.Neighbors[Direction.North];
                         CurrentTask = PersonTask.MovingCenter;
                     }
@@ -271,9 +271,9 @@ namespace Hotel.Persons
                 case PersonTask.MovingDown:
                     Position = new Vector2(Position.X, Position.Y - WalkingSpeed * deltaTime);
 
-                    if (Position.Y < CurrentRoom.Position.Y - Room.ROOMHEIGHT - (Room.ROOMHEIGHT - Sprite.Texture.Height))
+                    if (Position.Y < CurrentRoom.Position.Y - Room.ROOMHEIGHT - (Room.ROOMHEIGHT - Sprite.DrawDestination.Height))
                     {
-                        Position = new Vector2(Position.X, CurrentRoom.Position.Y - Room.ROOMHEIGHT - (Room.ROOMHEIGHT - Sprite.Texture.Height));
+                        Position = new Vector2(Position.X, CurrentRoom.Position.Y - Room.ROOMHEIGHT - (Room.ROOMHEIGHT - Sprite.DrawDestination.Height));
                         CurrentRoom = CurrentRoom.Neighbors[Direction.South];
                         CurrentTask = PersonTask.MovingCenter;
                     }
