@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Hotel;
 using Microsoft.Xna.Framework;
+using Hotel.Rooms;
 
 namespace Hotel.Persons
 {
