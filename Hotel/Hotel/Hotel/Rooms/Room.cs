@@ -67,7 +67,6 @@ namespace Hotel
         /// <summary>
         /// Constructor.
         /// </summary>
-        /// <param name="content">The content manager.</param>
         /// <param name="ID">The id given to the room.</param>
         /// <param name="position">The position of the room.</param>
         /// <param name="size">The size of the room.</param>
@@ -92,6 +91,9 @@ namespace Hotel
             Sprite.DrawOrder = 0.1f;
 
             BoundingBox = Sprite.DrawDestination;
+
+            // Default the room state to none.
+            State = RoomState.None;
         }
 
         /// <summary>
@@ -181,9 +183,7 @@ namespace Hotel
             base.Update(deltaTime);
 
             if (State == RoomState.Emergency || State == RoomState.InCleaning && PrevRoomState == RoomState.Emergency)
-            {
                 _emergencyTime += deltaTime;
-            }
             else
                 _emergencyTime = 0;
         }

@@ -28,6 +28,7 @@ namespace Hotel
             Name = $"{classification} Star Guest Room";
             Classification = classification;
 
+            // Create a new behaviour.
             RoomBehaviour = new GuestRoomBehaviour();
 
             // All the rooms are default Vacant

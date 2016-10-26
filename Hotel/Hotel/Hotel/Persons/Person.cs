@@ -120,12 +120,24 @@ namespace Hotel.Persons
                 _roomBehaviour.OnDeparture(CurrentRoom, this);
         }
 
-        public override void Remove(EventArgs e)
+        /// <summary>
+        /// Call this to remove this object from the game.
+        /// </summary>
+        public override void Remove()
+        {
+            base.Remove();
+        }
+
+        /// <summary>
+        /// Call this to kill the person.
+        /// </summary>
+        public virtual void Death()
         {
             // Set mode to dead
             _isDead = true;
 
-            base.Remove(e);
+            // Remove this object from the game.
+            Remove();
         }
 
         /// <summary>
@@ -141,11 +153,13 @@ namespace Hotel.Persons
                     CurrentRoom = _targetShaft;
             }
 
+            // Set the bool if the elevator is allowed to be used.
             _pathFinder.UseElevator = !Evacuating;
 
-            // Find the rooms, and its path
+            // Find the path to the target room.
             Path = _pathFinder.Find(CurrentRoom, rule);
 
+            // Do some elevator shiz.
             if (_calledElevator)
             {
                 if (_targetShaft != null)
@@ -159,18 +173,23 @@ namespace Hotel.Persons
                 _calledElevator = false;
             }
 
+            // Do stuff while there is a path.
             if (Path != null)
             {
+                // The target room is the last room in the path.
                 TargetRoom = Path.Last();
 
+                // Get out of the room if the person is inside the room.
                 if (Inside)
                 {
                     Inside = false;
                     CurrentRoom.PeopleCount--;
 
+                    // Call the departure event.
                     OnDeparture();
                 }
 
+                // Move this person to the center of the room.
                 CurrentTask = PersonTask.MovingCenter;
             }
         }
@@ -184,7 +203,7 @@ namespace Hotel.Persons
             if (!_isDead)
             {
                 if (_deathTimer > _survivabilityTime && _survivabilityTime != -1)
-                    Remove(new EventArgs());
+                    Death();
 
                 // While people are waiting, increase the deathtimer.
                 if (CurrentTask == PersonTask.InQueue && _survivabilityTime != -1)
@@ -198,7 +217,7 @@ namespace Hotel.Persons
             else
             {
                 if (CurrentRoom.State != RoomState.Emergency || CurrentRoom.State != RoomState.InCleaning)
-                    Remove(new EventArgs());
+                    Death();
             }
 
             // Get the new bounding box (the exact position on the sprite batch)
@@ -327,20 +346,27 @@ namespace Hotel.Persons
         /// <param name="e"></param>
         private void TargetShaft_ElevatorArrival(object sender, EventArgs e)
         {
+            // Check if this guest is not dead
             if (!_isDead)
             {
+                // Set the room this person is in to the elevator this shaft.
                 CurrentRoom = _targetShaft;
+
+                // Unsubscribe from the event.
                 _targetShaft.ElevatorArrival -= TargetShaft_ElevatorArrival;
 
+                // Round off the position of the guest.
                 Position = new Vector2(Position.X, _elevator.Position.Y - Room.ROOMHEIGHT + Sprite.Texture.Height);
 
+                // Remove shaft info.
                 _targetShaft = null;
                 _elevator = null;
                 _calledElevator = false;
 
+                // Retarget the target room.
                 FindAndTargetRoom(x => x == TargetRoom);
 
-                // Move out from the elevator.
+                // Move out of the elevator.
                 CurrentTask = PersonTask.MovingCenter;
             }
         }

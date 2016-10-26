@@ -54,9 +54,7 @@ namespace Hotel
             State = ElevatorState.Idle;
 
             // Load settings from the config.
-            ConfigModel config = ServiceLocator.Get<ConfigLoader>().GetConfig();
-
-            Speed = Room.ROOMHEIGHT * config.ElevatorSpeed;
+            Speed = Room.ROOMHEIGHT * ServiceLocator.Get<ConfigLoader>().GetConfig().ElevatorSpeed;
 
             if(Sprite.Texture != null)
                 Sprite.SetSize(new Point(Sprite.Texture.Width, Room.ROOMHEIGHT));

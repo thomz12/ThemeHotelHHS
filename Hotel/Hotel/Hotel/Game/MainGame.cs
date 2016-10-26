@@ -33,7 +33,6 @@ namespace Hotel
 
         private HotelEventListener _listener;
         private InformationWindow _informationWindow;
-        private ConfigModel _config;
 
         private RenderTarget2D _renderTexture;
         private Background _background;
@@ -72,11 +71,11 @@ namespace Hotel
             IsFixedTimeStep = false;
 
             // Load config file.
-            _config = ServiceLocator.Get<ConfigLoader>().GetConfig();
+            ConfigModel config = ServiceLocator.Get<ConfigLoader>().GetConfig();
 
             // Change settings related to HTE timespan.
-            HotelEventManager.HTE_Factor = _config.HTELength;
-            HTE_Modifier = _config.HTELength;
+            HotelEventManager.HTE_Factor = config.HTELength;
+            HTE_Modifier = config.HTELength;
         }
 
         private void MainGame_Exiting(object sender, EventArgs e)
@@ -110,7 +109,7 @@ namespace Hotel
 
             _informationWindow = new InformationWindow();
 
-            if (_config.LayoutPath == null)
+            if (ServiceLocator.Get<ConfigLoader>().GetConfig().LayoutPath == null)
             {
                 Environment.Exit(0);
             }
@@ -168,6 +167,7 @@ namespace Hotel
 
         /// <summary>
         /// TODO move dis?
+        /// CANT MOVE THIS TUDUDUDU TUDU TUDU - MCHAMMER
         /// </summary>
         private void MouseOver()
         {

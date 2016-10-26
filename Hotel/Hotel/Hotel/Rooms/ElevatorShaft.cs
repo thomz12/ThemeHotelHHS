@@ -26,8 +26,10 @@ namespace Hotel
             Weight = 1;
             Vertical = true;
 
+            // Create a roombehaviour.
             RoomBehaviour = new ElevatorShaftBehaviour();
 
+            // If this is the bottom floor, create an elevator.
             if (RoomPosition.Y == 0)
             {
                 Elevator = new Elevator();

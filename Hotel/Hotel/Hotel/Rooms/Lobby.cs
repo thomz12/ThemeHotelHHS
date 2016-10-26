@@ -23,9 +23,12 @@ namespace Hotel.Rooms
         /// <param name="size">The room size.</param>
         public Lobby(int id, Point position, Point size) : base(id, position, size)
         {
+            // Load assets.
             Sprite.LoadSprite("1x1Lobby");
+            // Set name
             Name = "Lobby";
 
+            // Make a new behaviour.
             RoomBehaviour = new LobbyBehaviour();
         }
 
@@ -35,10 +38,13 @@ namespace Hotel.Rooms
         /// <param name="guest">The guest to check in.</param>
         public void CheckIn(Guest guest)
         {
+            // Nullcheck
             if (Receptionist == null)
                 return;
 
-            Receptionist.CheckinQueue.Add(guest);
+            // Add guest to the queue.
+            Receptionist.CheckInQueue.Enqueue(guest);
+            // Set the guest's task to queueing.
             guest.CurrentTask = PersonTask.InQueue;
         }
 
@@ -48,10 +54,13 @@ namespace Hotel.Rooms
         /// <param name="guest">the guest to check out.</param>
         public void CheckOut(Guest guest)
         {
+            // Nullcheck
             if (Receptionist == null)
                 return;
 
-            Receptionist.CheckOutQueue.Add(guest);
+            // Add guest tot he queue.
+            Receptionist.CheckOutQueue.Enqueue(guest);
+            // Set the guest's task to queueing.
             guest.CurrentTask = PersonTask.InQueue;
         }
 
@@ -61,10 +70,19 @@ namespace Hotel.Rooms
         /// <param name="guest">The guest that needs to be removed.</param>
         public void RemoveFromQueues(Guest guest)
         {
-            if(Receptionist.CheckinQueue.Contains(guest))
-                Receptionist.CheckinQueue.Remove(guest);
+            // Remove this guest from the queues in front of the lobbyist because the guest died.
+            if (Receptionist.CheckInQueue.Contains(guest))
+            {
+                List<Guest> inQueue = Receptionist.CheckInQueue.ToList();
+                inQueue.Remove(guest);
+                Receptionist.CheckInQueue = new Queue<Guest>(inQueue);
+            }
             if (Receptionist.CheckOutQueue.Contains(guest))
-                Receptionist.CheckOutQueue.Remove(guest);
+            {
+                List<Guest> outQueue = Receptionist.CheckOutQueue.ToList();
+                outQueue.Remove(guest);
+                Receptionist.CheckOutQueue = new Queue<Guest>(outQueue);
+            }
         }
     }
 }
