@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Hotel.Rooms
 {
-    class EmptyRoom : Room
+    public class EmptyRoom : Room
     {
         public EmptyRoom(int id, Point position, Point size) : base(id, position, size)
         {
@@ -15,6 +15,7 @@ namespace Hotel.Rooms
             Name = "Outside";
         }
 
+        // Wont be calling the base update.
         public override void Update(float deltaTime)
         {
         }

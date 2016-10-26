@@ -72,10 +72,12 @@ namespace Hotel.Persons
         {
             Sprite.LoadSprite("Guest");
             Sprite.DrawOrder = 1;
-            Sprite.SetSize(new Point(Sprite.Texture.Width, Sprite.Texture.Height));
+
+            if(Sprite.Texture != null)
+                Sprite.SetSize(new Point(Sprite.Texture.Width, Sprite.Texture.Height));
 
             // Set the position in the center of the starting room.
-            Position = new Vector2(room.Position.X + (room.RoomSize.X * (Room.ROOMWIDTH / 2)), room.Position.Y - (Room.ROOMHEIGHT - Sprite.Texture.Height) - (Room.ROOMHEIGHT * (room.RoomSize.Y - 1)));
+            Position = new Vector2(room.Position.X + (room.RoomSize.X * (Room.ROOMWIDTH / 2)), room.Position.Y - (Room.ROOMHEIGHT - Sprite.DrawDestination.Height) - (Room.ROOMHEIGHT * (room.RoomSize.Y - 1)));
 
             // Set jump height (for walking)
             JumpHeight = 4;
@@ -218,7 +220,6 @@ namespace Hotel.Persons
             }
 
             // TODO: do this outside person
-            // TODO: make person 'snap' to their desination so that low framerates not break everything.
             // TODO: persons should not be dependant on sprite size, but on drawdestination.
             // Do moving in the room.
             switch (CurrentTask)
