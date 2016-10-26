@@ -21,8 +21,7 @@ namespace Hotel.Rooms
             Vertical = true;
 
             // Load settings from the config.
-            ConfigModel config = ServiceLocator.Get<ConfigLoader>().GetConfig();
-            Weight = config.StaircaseWeight;
+            Weight = ServiceLocator.Get<ConfigLoader>().GetConfig().StaircaseWeight;
         }
     }
 }

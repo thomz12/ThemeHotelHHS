@@ -9,6 +9,12 @@ namespace Hotel.Rooms
 {
     class EmptyRoom : Room
     {
+        /// <summary>
+        /// An empty room which cant do anything.
+        /// </summary>
+        /// <param name="ID">The id given to the room.</param>
+        /// <param name="position">The position of the room.</param>
+        /// <param name="size">The size of the room.</param>
         public EmptyRoom(int id, Point position, Point size) : base(id, position, size)
         {
             BoundingBox = new Rectangle();
@@ -17,6 +23,7 @@ namespace Hotel.Rooms
 
         public override void Update(float deltaTime)
         {
+            // Lol do nothing.
         }
     }
 }

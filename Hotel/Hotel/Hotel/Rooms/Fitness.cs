@@ -12,6 +12,8 @@ namespace Hotel.Rooms
         {
             Sprite.LoadSprite("3x1Fitness");
             Name = "Fitness";
+
+            // Create a new behaviour.
             RoomBehaviour = new FitnessBehaviour();
         }
     }
