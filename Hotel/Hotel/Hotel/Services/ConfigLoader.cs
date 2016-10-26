@@ -69,7 +69,6 @@ namespace Hotel
                 else
                 {
                     // Y U REMOVE FILE BETWEEN OK AND LOAD?
-
                     _config = new ConfigModel();
                     _config.CleaningDuration = 3;
                     _config.ElevatorSpeed = 1.0f;
@@ -81,9 +80,10 @@ namespace Hotel
                     _config.StaircaseWeight = 3.0f;
                     _config.Survivability = 10;
                     _config.WalkingSpeed = 1.0f;
+                    _config.NumberOfCleaners = 2;
+                    _config.TexturePack = @"Content\DefaultTexturePack";
 
-                    Console.WriteLine("The config file does not exist, please exit the simulator and make one in the 'settings' screen of the launcher.");
-                    // Could not load.
+                    // Loads default settings.
                     return _config;
                 }
             }
