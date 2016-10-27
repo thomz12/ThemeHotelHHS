@@ -37,8 +37,9 @@ namespace Hotel
                     string objectName = evt.Data.Keys.ElementAt(0) + evt.Data.Values.ElementAt(0);
                     if (_hotel.Guests.Keys.Contains(objectName))
                     {
-                        (_hotel.Guests[objectName] as Guest).FindAndTargetRoom(x => x is Lobby && (x as Lobby).Receptionist != null);
-                        (_hotel.Guests[objectName] as Guest).StayState = StayState.CheckOut;
+                        Guest aGuest = (Guest)_hotel.Guests[objectName];
+                        aGuest.FindAndTargetRoom(x => x is Lobby && (x as Lobby).Receptionist != null);
+                        aGuest.StayState = StayState.CheckOut;
                     }
                     break;
 
@@ -53,23 +54,26 @@ namespace Hotel
 
                 // Evecuation event.
                 case HotelEventType.EVACUATE:
-                    
+
+                    // TODO: Set evacuation boolean in Hotel class to true and check that when doing an action.
                     foreach (Room room in _hotel.Rooms)
-                    if (room is ElevatorShaft)
-                    room.Weight = 1;
+                    {
+                        if (room is ElevatorShaft)
+                            room.Weight = 1;
+                    }
 
-                    foreach(Person person in _hotel.Guests.Values)
+                    foreach (Person person in _hotel.Guests.Values)
                     {
                         person.Evacuating = true;
                         person.FindAndTargetRoom(x => x.Name == "Outside");
                     }
 
-                    foreach(Person person in _hotel.Staff)
+                    foreach (Person person in _hotel.Staff)
                     {
                         person.Evacuating = true;
                         person.FindAndTargetRoom(x => x.Name == "Outside");
                     }
-                    
+
                     break;
 
                 // Godzilla event.
