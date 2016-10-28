@@ -58,7 +58,7 @@ namespace Hotel
             IsMouseVisible = true;
 
             // Enable v-sync
-            graphicsDeviceManager.SynchronizeWithVerticalRetrace = true;
+            graphicsDeviceManager.SynchronizeWithVerticalRetrace = false;
             graphicsDeviceManager.PreferredBackBufferHeight = 720;
             graphicsDeviceManager.PreferredBackBufferWidth = 1280;
 
