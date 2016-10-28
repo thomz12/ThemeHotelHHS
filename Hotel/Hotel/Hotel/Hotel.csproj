@@ -83,6 +83,10 @@
     <Compile Include="Drawing\Background.cs" />
     <Compile Include="Drawing\Camera.cs" />
     <Compile Include="RoomBehaviours\ElevatorShaftBehaviour.cs" />
+    <Compile Include="RoomsFactory\CinemaFactoryComponent.cs" />
+    <Compile Include="RoomsFactory\GuestRoomFactoryComponent.cs" />
+    <Compile Include="RoomsFactory\IRoomFactoryComponent.cs" />
+    <Compile Include="RoomsFactory\RoomFactory.cs" />
     <Compile Include="Rooms\Pool.cs" />
     <Compile Include="Services\ConfigLoader.cs" />
     <Compile Include="Services\ConfigModel.cs" />

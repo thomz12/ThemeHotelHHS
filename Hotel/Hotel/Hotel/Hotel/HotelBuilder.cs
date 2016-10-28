@@ -7,6 +7,7 @@ using Hotel.Rooms;
 using Newtonsoft.Json;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework;
+using Hotel.RoomsFactory;
 
 namespace Hotel
 {
@@ -81,6 +82,21 @@ namespace Hotel
                         if (extremeID < id)
                             extremeID = id;
 
+                        /* A (abstract) Factory!
+                        RoomFactory factory = new RoomFactory();
+
+                        // TODO: This needs to be expandable!
+                        GuestRoomFactoryComponent grf = new GuestRoomFactoryComponent();
+                        factory.RegisterComponent("Room", grf);
+
+                        CinemaFactoryComponent crf = new CinemaFactoryComponent();
+                        factory.RegisterComponent("Cinema", crf);
+
+                        Room aRoom = factory.BuildRoom(data);
+                        if(aRoom != null)
+                            rooms.Add(aRoom);
+                        */
+
                         // All the types of rooms.
                         switch (data["AreaType"])
                         {
@@ -105,12 +121,15 @@ namespace Hotel
 
                         if (_createEmptyRooms)
                         {
-                            // Add empty rooms to rooms bigger in height. (used for path finding)
-                            for (int i = 0; i < dimensions.Y - 1; i++)
+                            if (rooms.Count > 0)
                             {
-                                Room roomToAddTo = rooms.Last();
-                                rooms.Add(new EmptyRoom(-1, new Point(position.X, position.Y + i), new Point(dimensions.X, 1)));
-                                rooms.Last().Name = roomToAddTo.Name;
+                                // Add empty rooms to rooms bigger in height. (used for path finding)
+                                for (int i = 0; i < dimensions.Y - 1; i++)
+                                {
+                                    Room roomToAddTo = rooms.Last();
+                                    rooms.Add(new EmptyRoom(-1, new Point(position.X, position.Y + i), new Point(dimensions.X, 1)));
+                                    rooms.Last().Name = roomToAddTo.Name;
+                                }
                             }
                         }
                     }
