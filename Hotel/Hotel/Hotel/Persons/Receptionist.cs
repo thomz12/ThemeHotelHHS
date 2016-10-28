@@ -13,6 +13,8 @@ namespace Hotel.Persons
         public Queue<Guest> CheckInQueue { get; set; }
         public Queue<Guest> CheckOutQueue { get; set; }
 
+        public Room LobbyWhereChecksHappen;
+
         private List<Room> _rooms;
         private float _workSpeed;
         private float _checkInTimer;
@@ -34,6 +36,7 @@ namespace Hotel.Persons
                 Sprite.SetSize(new Point(Sprite.Texture.Width, Sprite.Texture.Height));
 
             CurrentRoom = room;
+            LobbyWhereChecksHappen = room;
 
             CheckInQueue = new Queue<Guest>();
             CheckOutQueue = new Queue<Guest>();
@@ -50,8 +53,8 @@ namespace Hotel.Persons
 
             _rooms = rooms;
 
-            if (room is Rooms.Lobby)
-                (room as Rooms.Lobby).Receptionist = this;
+            if (room is Lobby)
+                (room as Lobby).Receptionist = this;
         }
 
         public override void Update(float deltaTime)

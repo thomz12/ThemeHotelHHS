@@ -115,7 +115,7 @@
             65536});
             this.num_HTETimespan.Location = new System.Drawing.Point(172, 8);
             this.num_HTETimespan.Maximum = new decimal(new int[] {
-            42,
+            255,
             0,
             0,
             0});
