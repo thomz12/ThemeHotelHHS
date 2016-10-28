@@ -55,9 +55,9 @@ namespace Hotel
         /// Calls the elevator on this floor
         /// </summary>
         /// <param name="targetFloor">The floor to send the elevator to after it arrived on this floor (the destination, or target)</param>
-        public void CallElevator(int targetFloor)
+        public void CallElevator(ElevatorDirection dir)
         {
-            Elevator.CallElevator(RoomPosition.Y, targetFloor);
+            Elevator.CallElevator(RoomPosition.Y, dir);
         }
 
         /// <summary>

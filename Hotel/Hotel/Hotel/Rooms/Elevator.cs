@@ -36,7 +36,6 @@ namespace Hotel
         private float _waitTime;
         private int _targetFloor;
         private Dictionary<int?, ElevatorDirection> _queue;
-        private List<KeyValuePair<int, int>> _queueTarget;
 
         // Arrival event gets called when the elevator arrives on a floor.
         public event EventHandler Arrival;
@@ -61,7 +60,6 @@ namespace Hotel
 
             CurrentFloor = 0;
             _queue = new Dictionary<int?, ElevatorDirection>();
-            _queueTarget = new List<KeyValuePair<int, int>>();
         }
 
         /// <summary>
@@ -153,28 +151,14 @@ namespace Hotel
         /// </summary>
         /// <param name="floor">The floor from which the call comes.</param>
         /// <param name="direction">The direction the elevator needs to travel.</param>
-        public void CallElevator(int floor, int targetFloor)
+        public void CallElevator(int floor, ElevatorDirection direction)
         {
-            // Calculate if the up or down button was pressed.
-            ElevatorDirection dir;
-
-            // Calculate the direction
-            if (floor > targetFloor)
-                dir = ElevatorDirection.Down;
-            else if (floor < targetFloor)
-                dir = ElevatorDirection.Up;
-            else
-                dir = ElevatorDirection.Both;
-
             // if the floor is already added to the queue, add the new direction to it.
             if (_queue.ContainsKey(floor))
-                _queue[floor] |= dir;
+                _queue[floor] |= direction;
             // else add the floor.
             else
-                _queue.Add(floor, dir);
-
-            // Save the destination for adding later to the queue (when guest enters the elevator).
-            _queueTarget.Add(new KeyValuePair<int, int>(floor, targetFloor));
+                _queue.Add(floor, direction);
 
             _targetFloor = GetTargetFloor();
         }
@@ -218,21 +202,6 @@ namespace Hotel
 
                 // The current floor is now the target.
                 CurrentFloor = _targetFloor;
-
-                // Add the targets for this floor.
-                for (int i = 0; i < _queueTarget.Count; i++)
-                {
-                    if (_queueTarget[i].Key == CurrentFloor)
-                    {
-                        if (_queue.ContainsKey(_queueTarget[i].Value))
-                            _queue[_queueTarget[i].Value] = ElevatorDirection.Both;
-                        else
-                            _queue.Add(_queueTarget[i].Value, ElevatorDirection.Both);
-
-                        _queueTarget.RemoveAt(i);
-                        i--;
-                    }
-                }
 
                 // Call the OnArrival Event.
                 OnArrival(new EventArgs());
