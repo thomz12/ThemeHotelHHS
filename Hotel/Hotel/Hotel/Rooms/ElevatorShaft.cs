@@ -43,10 +43,17 @@ namespace Hotel
                 ElevatorArrival(Elevator, args);
         }
 
+        /// <summary>
+        /// Called when the elevator arrives on a floor
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Elevator_Arrival(object sender, EventArgs e)
         {
+            // Check if the elevator arrived on THIS floor.
             if((sender as Elevator).CurrentFloor == RoomPosition.Y)
             {
+                // if it did, call the on elevator arrive event.
                 OnElevatorArrival(e);
             }
         }
@@ -54,7 +61,7 @@ namespace Hotel
         /// <summary>
         /// Calls the elevator on this floor
         /// </summary>
-        /// <param name="targetFloor">The floor to send the elevator to after it arrived on this floor (the destination, or target)</param>
+        /// <param name="dir">the direction to go up = going up, down = going down and both = most likely target floor.</param>
         public void CallElevator(ElevatorDirection dir)
         {
             Elevator.CallElevator(RoomPosition.Y, dir);
@@ -63,7 +70,7 @@ namespace Hotel
         /// <summary>
         /// Called every frame.
         /// </summary>
-        /// <param name="deltaTime"></param>
+        /// <param name="deltaTime">The time passed last frame.</param>
         public override void Update(float deltaTime)
         {
             Sprite.Update(deltaTime);

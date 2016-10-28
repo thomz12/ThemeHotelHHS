@@ -63,50 +63,15 @@ namespace Hotel.Persons
         }
 
         /// <summary>
-        /// Tells the cleaner to clean the closest emergency or dirty room.
-        /// </summary>
-        public void GoClean()
-        {
-            // Check if this cleaner is busy with cleaning or walking to a room, and if there is not an evacuation going on.
-            if (!IsBusy && !Evacuating)
-            {
-                // Call dijkstra's because there is an emergency.
-                FindAndTargetRoom(x => x.State == RoomState.Emergency);
-
-                if (Path != null)
-                {
-                    // Set the time it takes to clean the room.
-                    _cleaningTimer = TargetRoom.GetTimeToCleanEmergency();
-                }
-                else
-                {
-                    FindAndTargetRoom(x => x.State == RoomState.Dirty);
-                    
-                    if(Path != null)
-                    {
-                        // Set the time it takes to clean the room.
-                        _cleaningTimer = _cleaningDuration;
-                    }
-                    else
-                    {
-                        return;
-                    }
-                }
-
-                // Set the Target room to InCleaning to claim it.
-                TargetRoom.State = RoomState.InCleaning;
-                // Set busy to true because this cleaner is busy with walking or cleaning.
-                IsBusy = true;
-            }
-        }
-
-        /// <summary>
         /// Tells the cleaner to clean the room that is given.
         /// </summary>
         /// <param name="room">Clean this room.</param>
         public void GoClean(Room room)
         {
-            if (!IsBusy && room.State == RoomState.Emergency || room.State == RoomState.Dirty)
+            if (Evacuating || IsBusy)
+                return;
+
+            if (room.State == RoomState.Emergency || room.State == RoomState.Dirty)
             {
                 FindAndTargetRoom(x => x == room);
 
