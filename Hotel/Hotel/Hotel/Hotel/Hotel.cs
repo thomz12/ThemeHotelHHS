@@ -17,6 +17,8 @@ namespace Hotel
         public Dictionary<string, Person> Guests { get; set; }
         public Receptionist Receptionist { get; set; }
 
+        public bool Evacuating;
+
         private int _cleaners;
 
         /// <summary>
@@ -27,6 +29,8 @@ namespace Hotel
         {
             Staff = new List<Person>();
             Guests = new Dictionary<string, Person>();
+
+            Evacuating = false;
 
             // read the hotel from a layout file.
             HotelBuilder builder = new HotelBuilder();

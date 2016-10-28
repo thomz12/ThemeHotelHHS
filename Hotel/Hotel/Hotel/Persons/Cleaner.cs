@@ -67,8 +67,8 @@ namespace Hotel.Persons
         /// </summary>
         public void GoClean()
         {
-            // Check if this cleaner is busy with cleaning or walking
-            if (!IsBusy)
+            // Check if this cleaner is busy with cleaning or walking to a room, and if there is not an evacuation going on.
+            if (!IsBusy && !Evacuating)
             {
                 // Call dijkstra's because there is an emergency.
                 FindAndTargetRoom(x => x.State == RoomState.Emergency);
