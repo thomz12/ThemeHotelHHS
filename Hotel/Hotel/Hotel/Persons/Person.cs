@@ -45,18 +45,18 @@ namespace Hotel.Persons
         public Room TargetRoom { get; set; }
         public List<Room> Path { get; protected set; }
         public float JumpHeight { get; set; }
+        // If this person already called the elevator on this floor.
+        public bool CalledElevator { get; set; }
+        // The start elevator shaft (when in elevator)
+        public ElevatorShaft StartShaft { get; set; }
+        // The target elevator shaft (when in elevator)
+        public ElevatorShaft TargetShaft { get; set; }
 
         protected PathFinder _pathFinder;
         // The max time a guy can stay waiting.
         protected float _survivabilityTime;
         // The Elevator to enter.
         private Elevator _elevator;
-        // The target elevator shaft (when in elevator)
-        public ElevatorShaft _targetShaft;
-        // The start elevator shaft (when in elevator)
-        public ElevatorShaft _startShaft;
-        // If this person already called the elevator on this floor.
-        public bool _calledElevator;
         // Timer to check when to die.
         private float _deathTimer;
         // When where you when poppetje was kill?
@@ -85,7 +85,7 @@ namespace Hotel.Persons
             // Set the current room.
             CurrentRoom = room;
 
-            _calledElevator = false;
+            CalledElevator = false;
             _isDead = false;
 
             // Load settings from the config.
@@ -160,17 +160,17 @@ namespace Hotel.Persons
             Path = _pathFinder.Find(CurrentRoom, rule);
 
             // Do some elevator shiz.
-            if (_calledElevator)
+            if (CalledElevator)
             {
-                if (_targetShaft != null)
+                if (TargetShaft != null)
                 {
-                    _targetShaft.ElevatorArrival -= TargetShaft_ElevatorArrival;
+                    TargetShaft.ElevatorArrival -= TargetShaft_ElevatorArrival;
                     _elevator = null;
-                    _targetShaft = null;
-                    _startShaft.ElevatorArrival -= Person_ElevatorArrival;
-                    _startShaft = null;
+                    TargetShaft = null;
+                    StartShaft.ElevatorArrival -= Person_ElevatorArrival;
+                    StartShaft = null;
                 }
-                _calledElevator = false;
+                CalledElevator = false;
             }
 
             // Do stuff while there is a path.
@@ -354,18 +354,18 @@ namespace Hotel.Persons
             if (!_isDead)
             {
                 // Set the room this person is in to the elevator this shaft.
-                CurrentRoom = _targetShaft;
+                CurrentRoom = TargetShaft;
 
                 // Unsubscribe from the event.
-                _targetShaft.ElevatorArrival -= TargetShaft_ElevatorArrival;
+                TargetShaft.ElevatorArrival -= TargetShaft_ElevatorArrival;
 
                 // Round off the position of the guest.
                 Position = new Vector2(Position.X, _elevator.Position.Y - Room.ROOMHEIGHT + Sprite.Texture.Height);
 
                 // Remove shaft info.
-                _targetShaft = null;
+                TargetShaft = null;
                 _elevator = null;
-                _calledElevator = false;
+                CalledElevator = false;
 
                 // Retarget the target room.
                 FindAndTargetRoom(x => x == TargetRoom);
@@ -385,8 +385,9 @@ namespace Hotel.Persons
             if (!_isDead)
             {
                 _elevator = sender as Elevator;
-                _startShaft.ElevatorArrival -= Person_ElevatorArrival;
-                _targetShaft.ElevatorArrival += TargetShaft_ElevatorArrival;
+                _elevator.CallElevator(TargetShaft.RoomPosition.Y, ElevatorDirection.Both);
+                StartShaft.ElevatorArrival -= Person_ElevatorArrival;
+                TargetShaft.ElevatorArrival += TargetShaft_ElevatorArrival;
             }
         }
 
