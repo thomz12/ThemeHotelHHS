@@ -145,13 +145,13 @@ namespace Hotel.Persons
         /// </summary>
         /// <param name="rule">The rule that is used for searching a room.</param>
         public void FindAndTargetRoom(FindPath rule)
-        {
+        {/*
             // If the person is currently in the elevator, its current room is the targeted shaft.
             if (_targetShaft != null)
             {
                 if (_startShaft != CurrentRoom)
                     CurrentRoom = _targetShaft;
-            }
+            }*/
 
             // Set the bool if the elevator is allowed to be used.
             _pathFinder.UseElevator = !Evacuating;
@@ -236,7 +236,7 @@ namespace Hotel.Persons
                 Position = new Vector2(_elevator.Position.X + (_elevator.Sprite.DrawDestination.Width / 2 - Sprite.DrawDestination.Width / 2), _elevator.Position.Y - Room.ROOMHEIGHT + Sprite.DrawDestination.Height);
                 CurrentTask = PersonTask.Waiting;
                 return;
-            }
+            } 
 
             Vector2 direction;
 
