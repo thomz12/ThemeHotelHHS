@@ -75,7 +75,7 @@ namespace HotelUnitTests
         public void CallElevatorFrom0To1()
         {
             Elevator elevator = new Elevator();
-            elevator.CallElevator(0, 1);
+            elevator.CallElevator(1, ElevatorDirection.Both);
 
             for (int i = 0; i < 15; i++)
                 elevator.Update(1);
@@ -87,7 +87,8 @@ namespace HotelUnitTests
         public void CallElevatorFrom1To0()
         {
             Elevator elevator = new Elevator();
-            elevator.CallElevator(1, 0);
+            elevator.CurrentFloor = 1;
+            elevator.CallElevator(0, ElevatorDirection.Both);
 
             for (int i = 0; i < 15; i++)
                 elevator.Update(1);
