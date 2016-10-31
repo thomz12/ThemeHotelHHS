@@ -11,6 +11,7 @@ using Microsoft.Xna.Framework.Media;
 using HotelEvents;
 using System.IO;
 using Newtonsoft.Json;
+using Hotel.RoomsFactory;
 
 namespace Hotel
 {
@@ -115,6 +116,16 @@ namespace Hotel
             }
 
             _hotel = new Hotel();
+
+            // TODO: This needs to be expandable!
+            #region Register factory components in the factory.
+            _hotel.HotelBuilder.RoomFactory.RegisterComponent("Room", new GuestRoomFactoryComponent());
+            _hotel.HotelBuilder.RoomFactory.RegisterComponent("Cinema", new CinemaFactoryComponent());
+            _hotel.HotelBuilder.RoomFactory.RegisterComponent("Restaurant", new CafeFactoryComponent());
+            _hotel.HotelBuilder.RoomFactory.RegisterComponent("Fitness", new FitnessFactoryComponent());
+            _hotel.HotelBuilder.RoomFactory.RegisterComponent("Pool", new PoolFactoryComponent());
+            #endregion
+
             _camera = new Camera(GraphicsDevice.PresentationParameters.BackBufferWidth, GraphicsDevice.PresentationParameters.BackBufferHeight);
             _camera.Controlable = true;
             _closeUpCamera = new Camera(200, 200);

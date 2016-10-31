@@ -16,6 +16,7 @@ namespace Hotel
         private bool _createEmptyRooms;
 
         public List<Room> Rooms { get; private set; }
+        public RoomFactory RoomFactory { get; private set; }
 
         /// <summary>
         /// Constructor
@@ -24,13 +25,13 @@ namespace Hotel
         {
             _createEmptyRooms = true;
             Rooms = new List<Room>();
+            RoomFactory = new RoomFactory();
         }
 
         /// <summary>
         /// Call this to build the hotel from a file.
         /// </summary>
-        /// <param name="path">The path to the file.</param>
-        public void BuildHotel(string path)
+        public List<Room> BuildHotel()
         {
             // List of all rooms.
             List<Room> rooms = new List<Room>();
@@ -41,7 +42,7 @@ namespace Hotel
             int extremeY = 0;
             int extremeID = 0;
 
-            TextReader textReader = new StreamReader(path);
+            TextReader textReader = new StreamReader(ServiceLocator.Get<ConfigLoader>().GetConfig().LayoutPath);
             JsonReader jsonReader = new JsonTextReader(textReader);
 
             // Dictionary containg room data.
@@ -89,20 +90,7 @@ namespace Hotel
                         if (extremeID < id)
                             extremeID = id;
 
-                        // A (abstract) Factory!
-                        // TODO: Find out if this is a normal or an abstract factory!
-                        RoomFactory factory = new RoomFactory();
-
-                        // TODO: This needs to be expandable!
-                        #region Register factory components in the factory.
-                        factory.RegisterComponent("Room", new GuestRoomFactoryComponent());
-                        factory.RegisterComponent("Cinema", new CinemaFactoryComponent());
-                        factory.RegisterComponent("Restaurant", new CafeFactoryComponent());
-                        factory.RegisterComponent("Fitness", new FitnessFactoryComponent());
-                        factory.RegisterComponent("Pool", new PoolFactoryComponent());
-                        #endregion
-
-                        Room aRoom = factory.BuildRoom(data);
+                        Room aRoom = RoomFactory.BuildRoom(data);
                         if (aRoom != null)
                             rooms.Add(aRoom);
 
@@ -177,6 +165,8 @@ namespace Hotel
 
             foreach (Room r in rooms)
                 PlaceRoom(r);
+
+            return rooms;
         }
 
         /// <summary>

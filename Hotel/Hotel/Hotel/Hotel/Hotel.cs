@@ -12,6 +12,7 @@ namespace Hotel
 {
     public class Hotel
     {
+        public HotelBuilder HotelBuilder { get; set; }
         public List<Room> Rooms { get; set; }
         public List<Person> Staff { get; set; }
         public Dictionary<string, Person> Guests { get; set; }
@@ -32,15 +33,19 @@ namespace Hotel
 
             Evacuating = false;
 
-            // read the hotel from a layout file.
-            HotelBuilder builder = new HotelBuilder();
-            builder.BuildHotel(ServiceLocator.Get<ConfigLoader>().GetConfig().LayoutPath);
-
-            Rooms = builder.Rooms;
-
             _cleaners = ServiceLocator.Get<ConfigLoader>().GetConfig().NumberOfCleaners;
 
             CreateStaff();
+        }
+
+        /// <summary>
+        /// Call this to build the hotel.
+        /// Only call this after the room builder components have been registered.
+        /// </summary>
+        public void BuildHotel()
+        {
+            // Build the hotel.
+            Rooms = HotelBuilder.BuildHotel();
         }
 
         /// <summary>
