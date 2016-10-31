@@ -56,7 +56,6 @@
     <Compile Include="Forms\SelectTexturePackForm.Designer.cs">
       <DependentUpon>SelectTexturePackForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\ConfigModel.cs" />
     <Compile Include="Forms\HotelLauncherForm.cs">
       <SubType>Form</SubType>
     </Compile>

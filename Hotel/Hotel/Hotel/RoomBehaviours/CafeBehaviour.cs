@@ -15,13 +15,10 @@ namespace Hotel.RoomBehaviours
 
             if (person is Guest)
             {
-                if (cafe.PeopleCount < cafe.Capacity)
-                {
-                    // TODO WHAT IS THIS MAGIC?!
-                    (person as Guest).SetTimeToStayInRoom(5);
-                    person.Inside = true;
-                    cafe.PeopleCount++;
-                }
+                person.Inside = true;
+                (person as Guest).SetTimeToStayInRoom(ServiceLocator.Get<ConfigLoader>().GetConfig().EatingDuration);
+                cafe.PeopleCount++;
+            }
                 else
                 {
                     person.FindAndTargetRoom(x => x is Cafe && x != room);
