@@ -60,6 +60,8 @@ namespace Hotel
 
             // Enable v-sync
             graphicsDeviceManager.SynchronizeWithVerticalRetrace = false;
+
+            // Set resolution
             graphicsDeviceManager.PreferredBackBufferHeight = 720;
             graphicsDeviceManager.PreferredBackBufferWidth = 1280;
 
@@ -128,6 +130,8 @@ namespace Hotel
             _hotel.HotelBuilder.RoomFactory.RegisterComponent("Fitness", new FitnessFactoryComponent());
             _hotel.HotelBuilder.RoomFactory.RegisterComponent("Pool", new PoolFactoryComponent());
 
+            _hotel.BuildHotel();
+
             // Create other things.
             _camera = new Camera(GraphicsDevice.PresentationParameters.BackBufferWidth, GraphicsDevice.PresentationParameters.BackBufferHeight);
             _camera.Controlable = true;
@@ -136,18 +140,9 @@ namespace Hotel
 
             // Create the handlers and managers and start throwing events.
             HotelEventManager.Start();
-            HotelEventHandler heh = new HotelEventHandler(_hotel);
-            _listener = new EventListener(heh);
+            HotelEventHandler hotelEventHandler = new HotelEventHandler(_hotel);
+            _listener = new EventListener(hotelEventHandler);
             HotelEventManager.Register(_listener);
-        }
-
-        /// <summary>
-        /// UnloadContent will be called once per game and is the place to unload
-        /// all content.
-        /// </summary>
-        protected override void UnloadContent()
-        {
-            // Unload any non ContentManager content here
         }
 
         /// <summary>
@@ -163,26 +158,27 @@ namespace Hotel
                 Exit();
             }
 
+            // Calculte the delta time.
             float deltaTime = (float)gameTime.ElapsedGameTime.TotalSeconds * HTE_Modifier;
 
+            // Update input.
             Input.Instance.Update(gameTime);
 
-            // Check for mouseover
-            MouseOver();
+            // Process user input.
+            UserControlls();
 
+            // Update the entire hotel.
             _hotel.Update(deltaTime);
+
             _camera.Update(deltaTime);
             _closeUpCamera.Update(deltaTime);
+
             _background.Update(deltaTime);
 
             base.Update(gameTime);
         }
 
-        /// <summary>
-        /// TODO move dis?
-        /// CANT MOVE THIS TUDUDUDU TUDU TUDU - MCHAMMER
-        /// </summary>
-        private void MouseOver()
+        private void UserControlls()
         {
             // Reset the color of the object that was being hovered over
             if (_mouseIsOver != null)
@@ -239,23 +235,24 @@ namespace Hotel
         /// Render hotel to a texture (for the closeup)
         /// </summary>
         /// <param name="gameTime">The gametime</param>
-        private void DrawToTarget(GameTime gameTime)
+        private void DrawToTarget(GameTime gameTime, RenderTarget2D target, Camera camera)
         {
             // Set the render target
-            GraphicsDevice.SetRenderTarget(_renderTexture);
+            GraphicsDevice.SetRenderTarget(target);
 
             // Clear
             GraphicsDevice.Clear(new Color(11, 83, 159));
 
-            // GameObject Spritebatch
-            _spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, _closeUpCamera.TransformMatrix);
+            // GameObject Spritebatch.
+            _spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, camera.TransformMatrix);
 
-            // Draw the hotel to the texture
+            // Draw the hotel to the texture.
             _hotel.Draw(_spriteBatch, gameTime);
 
             // End the drawing on the spritebatch.
             _spriteBatch.End();
 
+            // Default back to the default target.
             GraphicsDevice.SetRenderTarget(null);
         }
 
@@ -266,8 +263,11 @@ namespace Hotel
         protected override void Draw(GameTime gameTime)
         {
             // Draw the hotel to a render texture.
-            DrawToTarget(gameTime);
-
+            DrawToTarget(gameTime, _renderTexture, _closeUpCamera);
+            /*
+            DrawToTarget(gameTime, null, _camera);
+            */
+            
             // Clear
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
@@ -280,7 +280,7 @@ namespace Hotel
 
             // End the drawing on the spritebatch.
             _spriteBatch.End();
-
+            
             // HUD Spritebatch
             _spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, SamplerState.PointClamp, null, null);
 
