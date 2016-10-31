@@ -237,11 +237,7 @@ namespace Hotel.Persons
                 CurrentTask = PersonTask.Waiting;
                 return;
             } 
-
-            Vector2 direction;
-
             // TODO: do this outside person
-            // TODO: persons should not be dependant on sprite size, but on drawdestination.
             // Do moving in the room.
             switch (CurrentTask)
             {

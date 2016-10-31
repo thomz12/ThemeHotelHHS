@@ -13,11 +13,19 @@ namespace Hotel
     {
         private Hotel _hotel;
 
+        /// <summary>
+        /// Constructor.
+        /// </summary>
+        /// <param name="hotel">Tje hotel.</param>
         public HotelEventHandler(Hotel hotel)
         {
             _hotel = hotel;
         }
 
+        /// <summary>
+        /// This handles events.
+        /// </summary>
+        /// <param name="evt">An event.</param>
         public void HandleEvent(HotelEvent evt)
         {
             switch (evt.EventType)
@@ -84,9 +92,31 @@ namespace Hotel
                 // Godzilla event.
                 case HotelEventType.GODZILLA:
                     Console.WriteLine("AAAAAAAHHHHHHHH!");
-                    // Evacuate all the people?!
 
+                    // Evacuate all the people
                     _hotel.Evacuating = true;
+
+                    // Send the elevator to the first floor.
+                    ElevatorShaft shaft1 = (ElevatorShaft)_hotel.Rooms.Where(x => x is ElevatorShaft && x.RoomPosition.Y == 0).FirstOrDefault();
+                    if (shaft1 != null)
+                    {
+                        if (shaft1.Elevator.CurrentFloor != 0)
+                            shaft1.Elevator.CallElevator(0, 0);
+                    }
+
+                    // Send the guests outside.
+                    foreach (Guest g in _hotel.Guests.Values)
+                    {
+                        g.Evacuating = true;
+                        g.FindAndTargetRoom(x => x.Name == "Outside");
+                    }
+
+                    // Send the staff outside.
+                    foreach (Person s in _hotel.Staff)
+                    {
+                        s.Evacuating = true;
+                        s.FindAndTargetRoom(x => x.Name == "Outside");
+                    }
 
                     break;
 

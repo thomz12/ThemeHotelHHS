@@ -21,7 +21,6 @@ namespace Hotel.RoomBehaviours
         public void OnPassRoom(Room room, Person person)
         {
             // Make sure the person has not called the elvator yet, and wants to call the elevator.
-            // TODO _calledElevator is private??!!
             if (!person.CalledElevator && person.CurrentRoom is ElevatorShaft && person.Path != null && person.Path.Count > 1 && person.Path.ElementAt(0) is ElevatorShaft)
             {
                 // Get the start shaft (the shaft to begin the elevator trip).

@@ -17,12 +17,19 @@ namespace Hotel
 
         public List<Room> Rooms { get; private set; }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public HotelBuilder()
         {
             _createEmptyRooms = true;
             Rooms = new List<Room>();
         }
 
+        /// <summary>
+        /// Call this to build the hotel from a file.
+        /// </summary>
+        /// <param name="path">The path to the file.</param>
         public void BuildHotel(string path)
         {
             // List of all rooms.
@@ -125,6 +132,7 @@ namespace Hotel
                         */
                         #endregion
 
+                        // The option to create empty rooms is on, these empty rooms fill the space in the 2 high rooms so people can "fly" through them.
                         if (_createEmptyRooms)
                         {
                             if (rooms.Count > 0)
