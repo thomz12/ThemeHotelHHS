@@ -242,8 +242,9 @@ namespace Hotel
             // Set the render target
             GraphicsDevice.SetRenderTarget(target);
 
-            // Clear
-            GraphicsDevice.Clear(new Color(11, 83, 159));
+            _spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, SamplerState.PointClamp, null, null);
+            _background.Draw(_spriteBatch, gameTime);
+            _spriteBatch.End();
 
             // GameObject Spritebatch.
             _spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, camera.TransformMatrix);
@@ -264,28 +265,15 @@ namespace Hotel
         /// <param name="gameTime">Provides a snapshot of timing values.</param>
         protected override void Draw(GameTime gameTime)
         {
+            // Clear
+            GraphicsDevice.Clear(new Color(0, 0, 0));
+
             // Draw the hotel to a render texture.
             DrawToTarget(gameTime, _renderTexture, _closeUpCamera);
-            /*
+            // Draw the hotel to the default target.
             DrawToTarget(gameTime, null, _camera);
-            */
-
-            // Clear
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            // Start drawing on the spritebatch.
-            _spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, SamplerState.PointClamp, null, null);
-            _background.Draw(_spriteBatch, gameTime);
-            _spriteBatch.End();
-
-            // Hotel Spritebatch
-            _spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, _camera.TransformMatrix);
-            // Draw the objects in the scene
-            _hotel.Draw(_spriteBatch, gameTime);
-            // End the drawing on the spritebatch.
-            _spriteBatch.End();
-
-            // HUD Spritebatch
+ 
+            // Draw the information window over all the other stuff.
             _spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, SamplerState.PointClamp, null, null);
 
             _informationWindow.RenderTexture = _renderTexture;
