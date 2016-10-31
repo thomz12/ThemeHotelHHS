@@ -31,11 +31,9 @@ namespace Hotel
             Staff = new List<Person>();
             Guests = new Dictionary<string, Person>();
 
+            HotelBuilder = new HotelBuilder();
+
             Evacuating = false;
-
-            _cleaners = ServiceLocator.Get<ConfigLoader>().GetConfig().NumberOfCleaners;
-
-            CreateStaff();
         }
 
         /// <summary>
@@ -46,6 +44,11 @@ namespace Hotel
         {
             // Build the hotel.
             Rooms = HotelBuilder.BuildHotel();
+
+            // Create the staff for the hotel.
+            _cleaners = ServiceLocator.Get<ConfigLoader>().GetConfig().NumberOfCleaners;
+
+            CreateStaff();
         }
 
         /// <summary>
