@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using Newtonsoft.Json;
 using System.IO;
 using System.Text.RegularExpressions;
+using Hotel;
 
 namespace HotelLauncher
 {
@@ -67,6 +68,7 @@ namespace HotelLauncher
             Model.ElevatorSpeed = (float)num_ElevatorSpeed.Value;
             Model.WalkingSpeed = (float)num_WalkingSpeed.Value;
             Model.FilmDuration = (int)num_FilmDuration.Value;
+            Model.EatingDuration = (int)num_EatingDuration.Value;
             Model.CleaningDuration = (int)num_CleaningDuration.Value;
             Model.Survivability = (int)num_Survivability.Value;
             Model.StaircaseWeight = (float)num_StairsWeight.Value;
@@ -113,6 +115,11 @@ namespace HotelLauncher
             {
                 Model.TexturePack = _texturePackForm.SelectedPack;
             }
+        }
+
+        private void Settings_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
