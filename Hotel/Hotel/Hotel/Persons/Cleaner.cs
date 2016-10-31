@@ -114,12 +114,12 @@ namespace Hotel.Persons
                     // This cleaner is not busy anymore.
                     IsBusy = false;
                 }
+            }
 
-                if(!_isCleaning && Evacuating)
-                {
-                    if(!TargetRoom.Name.Equals("Outside"))
-                        FindAndTargetRoom(x => x.Name == "Outside");
-                }
+            if(!_isCleaning && Evacuating)
+            {
+                if(!TargetRoom.Name.Equals("Outside"))
+                    FindAndTargetRoom(x => x.Name == "Outside");
             }
 
             base.Update(deltaTime);
