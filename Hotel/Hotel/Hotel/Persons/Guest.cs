@@ -85,7 +85,6 @@ namespace Hotel.Persons
                 // if the guest has no time left.
                 if (_roomTime <= 0)
                 {
-                    Inside = false;
                     _toLeave = false;
                     OnDeparture();
                 }

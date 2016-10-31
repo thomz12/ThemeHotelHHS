@@ -15,8 +15,9 @@ namespace Hotel.RoomBehaviours
 
             if (person is Guest && cafe.PeopleCount < cafe.Capacity)
             {
-                person.Inside = true;
+                // TODO WHAT IS THIS MAGIC?!
                 (person as Guest).SetTimeToStayInRoom(5);
+                person.Inside = true;
                 cafe.PeopleCount++;
             }
         }
