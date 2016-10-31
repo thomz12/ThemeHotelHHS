@@ -7,6 +7,7 @@ using Hotel.Rooms;
 using Newtonsoft.Json;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework;
+using Hotel.RoomsFactory;
 
 namespace Hotel
 {
@@ -16,12 +17,19 @@ namespace Hotel
 
         public List<Room> Rooms { get; private set; }
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public HotelBuilder()
         {
             _createEmptyRooms = true;
             Rooms = new List<Room>();
         }
 
+        /// <summary>
+        /// Call this to build the hotel from a file.
+        /// </summary>
+        /// <param name="path">The path to the file.</param>
         public void BuildHotel(string path)
         {
             // List of all rooms.
@@ -39,10 +47,10 @@ namespace Hotel
             // Dictionary containg room data.
             Dictionary<string, string> data = new Dictionary<string, string>();
 
-            while(jsonReader.Read())
+            while (jsonReader.Read())
             {
                 Console.WriteLine(jsonReader.Value?.ToString());
-                if(jsonReader.Value != null)
+                if (jsonReader.Value != null)
                 {
                     // Read and add the values from the file.
                     string value = jsonReader.Value.ToString();
@@ -51,7 +59,7 @@ namespace Hotel
                 }
 
                 // When we know the dimension, add the room.
-                if(data.Keys.Count > 0 && jsonReader.Value == null)
+                if (data.Keys.Count > 0 && jsonReader.Value == null)
                 {
                     // if we have data.
                     if (data.Count > 0)
@@ -71,7 +79,7 @@ namespace Hotel
                         // Set the extreme values (hotel size)
                         int maxX = position.X + (dimensions.X - 1);
 
-                        // Set extreme values.
+                        // Set extreme values these values are used to determine the placement of the lobby, elevator and stairs.
                         if (extremeX < maxX)
                             extremeX = maxX;
                         if (smallestX > position.X)
@@ -81,6 +89,25 @@ namespace Hotel
                         if (extremeID < id)
                             extremeID = id;
 
+                        // A (abstract) Factory!
+                        // TODO: Find out if this is a normal or an abstract factory!
+                        RoomFactory factory = new RoomFactory();
+
+                        // TODO: This needs to be expandable!
+                        #region Register factory components in the factory.
+                        factory.RegisterComponent("Room", new GuestRoomFactoryComponent());
+                        factory.RegisterComponent("Cinema", new CinemaFactoryComponent());
+                        factory.RegisterComponent("Restaurant", new CafeFactoryComponent());
+                        factory.RegisterComponent("Fitness", new FitnessFactoryComponent());
+                        factory.RegisterComponent("Pool", new PoolFactoryComponent());
+                        #endregion
+
+                        Room aRoom = factory.BuildRoom(data);
+                        if (aRoom != null)
+                            rooms.Add(aRoom);
+
+                        #region Old room building (with a switch) AKA normal factory?
+                        /*
                         // All the types of rooms.
                         switch (data["AreaType"])
                         {
@@ -102,15 +129,21 @@ namespace Hotel
                             default:
                                 break;
                         }
+                        */
+                        #endregion
 
+                        // The option to create empty rooms is on, these empty rooms fill the space in the 2 high rooms so people can "fly" through them.
                         if (_createEmptyRooms)
                         {
-                            // Add empty rooms to rooms bigger in height. (used for path finding)
-                            for (int i = 0; i < dimensions.Y - 1; i++)
+                            if (rooms.Count > 0)
                             {
-                                Room roomToAddTo = rooms.Last();
-                                rooms.Add(new EmptyRoom(-1, new Point(position.X, position.Y + i), new Point(dimensions.X, 1)));
-                                rooms.Last().Name = roomToAddTo.Name;
+                                // Add empty rooms to rooms bigger in height. (used for path finding)
+                                for (int i = 0; i < dimensions.Y - 1; i++)
+                                {
+                                    Room roomToAddTo = rooms.Last();
+                                    rooms.Add(new EmptyRoom(-1, new Point(position.X, position.Y + i), new Point(dimensions.X, 1)));
+                                    rooms.Last().Name = roomToAddTo.Name;
+                                }
                             }
                         }
                     }
@@ -119,7 +152,7 @@ namespace Hotel
             }
 
             // Add elevator shafts to the hotel.
-            for(int i = 0; i <= extremeY; i++)
+            for (int i = 0; i <= extremeY; i++)
             {
                 extremeID++;
                 rooms.Add(new ElevatorShaft(extremeID, new Point(smallestX - 1, i)));
@@ -133,10 +166,10 @@ namespace Hotel
             }
 
             // Add lobbies.
-            for(int i = smallestX; i <= extremeX; i++)
+            for (int i = smallestX; i <= extremeX; i++)
             {
                 extremeID++;
-                rooms.Add(new Lobby(extremeID, new Point(i, 0), new Point(1,1)));
+                rooms.Add(new Lobby(extremeID, new Point(i, 0), new Point(1, 1)));
             }
 
             // Add the rooms, and connect them, starts with an empty room outside with ID 0.
