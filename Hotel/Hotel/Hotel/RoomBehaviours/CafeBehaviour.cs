@@ -13,11 +13,16 @@ namespace Hotel.RoomBehaviours
         {
             Cafe cafe = room as Cafe;
 
-            if (person is Guest && cafe.PeopleCount < cafe.Capacity)
+            if (person is Guest)
             {
                 person.Inside = true;
                 (person as Guest).SetTimeToStayInRoom(ServiceLocator.Get<ConfigLoader>().GetConfig().EatingDuration);
                 cafe.PeopleCount++;
+            }
+                else
+                {
+                    person.FindAndTargetRoom(x => x is Cafe && x != room);
+                }
             }
         }
 
