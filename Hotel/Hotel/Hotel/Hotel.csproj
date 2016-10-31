@@ -80,7 +80,6 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Drawing\Background.cs" />
     <Compile Include="Drawing\Camera.cs" />
     <Compile Include="RoomBehaviours\ElevatorShaftBehaviour.cs" />
     <Compile Include="RoomsFactory\CafeFactoryComponent.cs" />

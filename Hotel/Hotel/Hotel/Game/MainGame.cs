@@ -36,7 +36,7 @@ namespace Hotel
         private InformationWindow _informationWindow;
 
         private RenderTarget2D _renderTexture;
-        private Background _background;
+        private Sprite _background;
 
         public MainGame()
         {
@@ -121,7 +121,6 @@ namespace Hotel
             _hotel = new Hotel();
 
             // Register components to the roomfactory
-            // now its time for MEF...
             _hotel.HotelBuilder.RoomFactory.RegisterComponent("Room", new GuestRoomFactoryComponent());
             _hotel.HotelBuilder.RoomFactory.RegisterComponent("Cinema", new CinemaFactoryComponent());
             _hotel.HotelBuilder.RoomFactory.RegisterComponent("Restaurant", new CafeFactoryComponent());
@@ -132,13 +131,18 @@ namespace Hotel
             _camera = new Camera(GraphicsDevice.PresentationParameters.BackBufferWidth, GraphicsDevice.PresentationParameters.BackBufferHeight);
             _camera.Controlable = true;
             _closeUpCamera = new Camera(200, 200);
-            _background = new Background(_camera);
 
             // Create the handlers and managers and start throwing events.
             HotelEventManager.Start();
             HotelEventHandler heh = new HotelEventHandler(_hotel);
             _listener = new EventListener(heh);
             HotelEventManager.Register(_listener);
+
+            // Create a background.
+            _background = new Sprite();
+            _background.LoadSprite("Background");
+            _background.SetPosition(new Point(0, 0));
+            _background.SetSize(new Point(GraphicsDevice.PresentationParameters.BackBufferWidth, GraphicsDevice.PresentationParameters.BackBufferHeight));
         }
 
         /// <summary>
@@ -173,7 +177,6 @@ namespace Hotel
             _hotel.Update(deltaTime);
             _camera.Update(deltaTime);
             _closeUpCamera.Update(deltaTime);
-            _background.Update(deltaTime);
 
             base.Update(gameTime);
         }
@@ -271,13 +274,15 @@ namespace Hotel
             // Clear
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
+            // Start drawing on the spritebatch.
+            _spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, SamplerState.PointClamp, null, null);
+            _background.Draw(_spriteBatch, gameTime);
+            _spriteBatch.End();
+
             // Hotel Spritebatch
             _spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, SamplerState.PointClamp, null, null, null, _camera.TransformMatrix);
-
             // Draw the objects in the scene
-            _background.Draw(_spriteBatch, gameTime);
             _hotel.Draw(_spriteBatch, gameTime);
-
             // End the drawing on the spritebatch.
             _spriteBatch.End();
 
