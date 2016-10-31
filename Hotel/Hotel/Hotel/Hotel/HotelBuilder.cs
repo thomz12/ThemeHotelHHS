@@ -40,10 +40,10 @@ namespace Hotel
             // Dictionary containg room data.
             Dictionary<string, string> data = new Dictionary<string, string>();
 
-            while(jsonReader.Read())
+            while (jsonReader.Read())
             {
                 Console.WriteLine(jsonReader.Value?.ToString());
-                if(jsonReader.Value != null)
+                if (jsonReader.Value != null)
                 {
                     // Read and add the values from the file.
                     string value = jsonReader.Value.ToString();
@@ -52,7 +52,7 @@ namespace Hotel
                 }
 
                 // When we know the dimension, add the room.
-                if(data.Keys.Count > 0 && jsonReader.Value == null)
+                if (data.Keys.Count > 0 && jsonReader.Value == null)
                 {
                     // if we have data.
                     if (data.Count > 0)
@@ -87,7 +87,7 @@ namespace Hotel
                         RoomFactory factory = new RoomFactory();
 
                         // TODO: This needs to be expandable!
-                        #region subscribe factories
+                        #region Register factory components in the factory.
                         factory.RegisterComponent("Room", new GuestRoomFactoryComponent());
                         factory.RegisterComponent("Cinema", new CinemaFactoryComponent());
                         factory.RegisterComponent("Restaurant", new CafeFactoryComponent());
@@ -96,9 +96,10 @@ namespace Hotel
                         #endregion
 
                         Room aRoom = factory.BuildRoom(data);
-                        if(aRoom != null)
+                        if (aRoom != null)
                             rooms.Add(aRoom);
-                        
+
+                        #region Old room building (with a switch) AKA normal factory?
                         /*
                         // All the types of rooms.
                         switch (data["AreaType"])
@@ -122,6 +123,7 @@ namespace Hotel
                                 break;
                         }
                         */
+                        #endregion
 
                         if (_createEmptyRooms)
                         {
@@ -142,7 +144,7 @@ namespace Hotel
             }
 
             // Add elevator shafts to the hotel.
-            for(int i = 0; i <= extremeY; i++)
+            for (int i = 0; i <= extremeY; i++)
             {
                 extremeID++;
                 rooms.Add(new ElevatorShaft(extremeID, new Point(smallestX - 1, i)));
@@ -156,10 +158,10 @@ namespace Hotel
             }
 
             // Add lobbies.
-            for(int i = smallestX; i <= extremeX; i++)
+            for (int i = smallestX; i <= extremeX; i++)
             {
                 extremeID++;
-                rooms.Add(new Lobby(extremeID, new Point(i, 0), new Point(1,1)));
+                rooms.Add(new Lobby(extremeID, new Point(i, 0), new Point(1, 1)));
             }
 
             // Add the rooms, and connect them, starts with an empty room outside with ID 0.
