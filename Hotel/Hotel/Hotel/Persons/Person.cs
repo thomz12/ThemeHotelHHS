@@ -145,13 +145,14 @@ namespace Hotel.Persons
         /// </summary>
         /// <param name="rule">The rule that is used for searching a room.</param>
         public void FindAndTargetRoom(FindPath rule)
-        {/*
-            // If the person is currently in the elevator, its current room is the targeted shaft.
-            if (_targetShaft != null)
+        { 
+            // If the person is inside the elevator, set its target room for when he exits.
+            if(_elevator != null)
             {
-                if (_startShaft != CurrentRoom)
-                    CurrentRoom = _targetShaft;
-            }*/
+                Path = _pathFinder.Find(CurrentRoom, rule);
+                TargetRoom = Path.Last();
+                return;
+            }
 
             // Set the bool if the elevator is allowed to be used.
             _pathFinder.UseElevator = !Evacuating;
@@ -173,7 +174,7 @@ namespace Hotel.Persons
                 CalledElevator = false;
             }
 
-            // Do stuff while there is a path.
+            // Do stuff if there is a path.
             if (Path != null)
             {
                 // The target room is the last room in the path.
@@ -237,7 +238,6 @@ namespace Hotel.Persons
                 CurrentTask = PersonTask.Waiting;
                 return;
             } 
-            // TODO: do this outside person
             // Do moving in the room.
             switch (CurrentTask)
             {
