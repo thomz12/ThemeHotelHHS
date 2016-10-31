@@ -13,12 +13,19 @@ namespace Hotel.RoomBehaviours
         {
             Cafe cafe = room as Cafe;
 
-            if (person is Guest && cafe.PeopleCount < cafe.Capacity)
+            if (person is Guest)
             {
-                // TODO WHAT IS THIS MAGIC?!
-                (person as Guest).SetTimeToStayInRoom(5);
-                person.Inside = true;
-                cafe.PeopleCount++;
+                if (cafe.PeopleCount < cafe.Capacity)
+                {
+                    // TODO WHAT IS THIS MAGIC?!
+                    (person as Guest).SetTimeToStayInRoom(5);
+                    person.Inside = true;
+                    cafe.PeopleCount++;
+                }
+                else
+                {
+                    person.FindAndTargetRoom(x => x is Cafe && x != room);
+                }
             }
         }
 
