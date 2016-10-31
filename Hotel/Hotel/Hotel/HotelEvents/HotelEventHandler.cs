@@ -63,29 +63,7 @@ namespace Hotel
                 // Evecuation event.
                 case HotelEventType.EVACUATE:
 
-                    _hotel.Evacuating = true;
-
-                    // Send the elevator to the first floor.
-                    ElevatorShaft shaft = (ElevatorShaft)_hotel.Rooms.Where(x => x is ElevatorShaft && x.RoomPosition.Y == 0).FirstOrDefault();
-                    if (shaft != null)
-                    {
-                        if (shaft.Elevator.CurrentFloor != 0)
-                            shaft.Elevator.CallElevator(0, 0);
-                    }
-
-                    // Send the guests outside.
-                    foreach (Guest g in _hotel.Guests.Values)
-                    {
-                        g.Evacuating = true;
-                        g.FindAndTargetRoom(x => x.Name == "Outside");
-                    }
-
-                    // Send the staff outside.
-                    foreach (Person staff in _hotel.Staff)
-                    {
-                        staff.Evacuating = true;
-                        staff.FindAndTargetRoom(x => x.Name == "Outside");
-                    }
+                    Evacuate();
 
                     break;
 
@@ -93,30 +71,7 @@ namespace Hotel
                 case HotelEventType.GODZILLA:
                     Console.WriteLine("AAAAAAAHHHHHHHH!");
 
-                    // Evacuate all the people
-                    _hotel.Evacuating = true;
-
-                    // Send the elevator to the first floor.
-                    ElevatorShaft shaft1 = (ElevatorShaft)_hotel.Rooms.Where(x => x is ElevatorShaft && x.RoomPosition.Y == 0).FirstOrDefault();
-                    if (shaft1 != null)
-                    {
-                        if (shaft1.Elevator.CurrentFloor != 0)
-                            shaft1.Elevator.CallElevator(0, 0);
-                    }
-
-                    // Send the guests outside.
-                    foreach (Guest g in _hotel.Guests.Values)
-                    {
-                        g.Evacuating = true;
-                        g.FindAndTargetRoom(x => x.Name == "Outside");
-                    }
-
-                    // Send the staff outside.
-                    foreach (Person s in _hotel.Staff)
-                    {
-                        s.Evacuating = true;
-                        s.FindAndTargetRoom(x => x.Name == "Outside");
-                    }
+                    Evacuate();
 
                     break;
 
@@ -187,6 +142,41 @@ namespace Hotel
                 default:
                     break;
             }
+        }
+
+        private void Evacuate()
+        {
+            _hotel.Evacuating = true;
+
+            // Send the elevator to the first floor.
+            ElevatorShaft shaft = (ElevatorShaft)_hotel.Rooms.Where(x => x is ElevatorShaft && x.RoomPosition.Y == 0).FirstOrDefault();
+            if (shaft != null)
+            {
+                if (shaft.Elevator.CurrentFloor != 0)
+                    shaft.Elevator.CallElevator(0, ElevatorDirection.Both);
+            }
+
+            // Send the guests outside.
+            foreach (Guest g in _hotel.Guests.Values)
+            {
+                g.Evacuating = true;
+                g.FindAndTargetRoom(x => x.Name == "Outside");
+            }
+
+            // Send the staff outside.
+            foreach (Person s in _hotel.Staff)
+            {
+                s.Evacuating = true;
+
+                if (s is Cleaner)
+                {
+                    if ((s as Cleaner).IsBusy)
+                        continue;
+                }
+
+                s.FindAndTargetRoom(x => x.Name == "Outside");
+            }
+
         }
     }
 }
