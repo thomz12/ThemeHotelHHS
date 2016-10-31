@@ -81,7 +81,6 @@ namespace HotelUnitTests
         // Use TestCleanup to run code after each test has run
         // [TestCleanup()]
         // public void MyTestCleanup() { }
-        //
         #endregion
 
         [TestMethod]

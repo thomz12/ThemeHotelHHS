@@ -89,7 +89,7 @@ namespace HotelUnitTests
         public void PersonMove()
         {
             Guest guest = new Guest(rooms[0]);
-
+            // TODO: IDK
             guest.Evacuating = true;
             guest.Sprite.DrawDestination = new Rectangle((int)guest.Position.X, (int)guest.Position.Y, 25, 50);
             guest.FindAndTargetRoom(x => x == rooms[16]);
