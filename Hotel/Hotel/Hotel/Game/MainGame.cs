@@ -105,37 +105,39 @@ namespace Hotel
         /// </summary>
         protected override void LoadContent()
         {
-            // Create a new SpriteBatch, which can be used to draw textures.
-            _spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            _informationWindow = new InformationWindow();
-
+            // Exit the simulation if there is no layout path.
             if (ServiceLocator.Get<ConfigLoader>().GetConfig().LayoutPath == null)
             {
                 Environment.Exit(0);
             }
 
+            // Create a new SpriteBatch, which can be used to draw textures.
+            _spriteBatch = new SpriteBatch(GraphicsDevice);
+
+            // Create new information window
+            _informationWindow = new InformationWindow();
+
+            // Make a new hotel.
             _hotel = new Hotel();
 
-            // TODO: This needs to be expandable!
-            #region Register factory components in the factory.
+            // Register components to the roomfactory
+            // now its time for MEF...
             _hotel.HotelBuilder.RoomFactory.RegisterComponent("Room", new GuestRoomFactoryComponent());
             _hotel.HotelBuilder.RoomFactory.RegisterComponent("Cinema", new CinemaFactoryComponent());
             _hotel.HotelBuilder.RoomFactory.RegisterComponent("Restaurant", new CafeFactoryComponent());
             _hotel.HotelBuilder.RoomFactory.RegisterComponent("Fitness", new FitnessFactoryComponent());
             _hotel.HotelBuilder.RoomFactory.RegisterComponent("Pool", new PoolFactoryComponent());
-            #endregion
 
+            // Create other things.
             _camera = new Camera(GraphicsDevice.PresentationParameters.BackBufferWidth, GraphicsDevice.PresentationParameters.BackBufferHeight);
             _camera.Controlable = true;
             _closeUpCamera = new Camera(200, 200);
             _background = new Background(_camera);
 
+            // Create the handlers and managers and start throwing events.
             HotelEventManager.Start();
-
-            HotelEventHandler hem = new HotelEventHandler(_hotel);
-
-            _listener = new EventListener(hem);
+            HotelEventHandler heh = new HotelEventHandler(_hotel);
+            _listener = new EventListener(heh);
             HotelEventManager.Register(_listener);
         }
 
