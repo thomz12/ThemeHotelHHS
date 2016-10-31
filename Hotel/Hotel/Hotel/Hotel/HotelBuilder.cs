@@ -72,7 +72,7 @@ namespace Hotel
                         // Set the extreme values (hotel size)
                         int maxX = position.X + (dimensions.X - 1);
 
-                        // Set extreme values.
+                        // Set extreme values these values are used to determine the placement of the lobby, elevator and stairs.
                         if (extremeX < maxX)
                             extremeX = maxX;
                         if (smallestX > position.X)
@@ -82,21 +82,24 @@ namespace Hotel
                         if (extremeID < id)
                             extremeID = id;
 
-                        /* A (abstract) Factory!
+                        // A (abstract) Factory!
+                        // TODO: Find out if this is a normal or an abstract factory!
                         RoomFactory factory = new RoomFactory();
 
                         // TODO: This needs to be expandable!
-                        GuestRoomFactoryComponent grf = new GuestRoomFactoryComponent();
-                        factory.RegisterComponent("Room", grf);
-
-                        CinemaFactoryComponent crf = new CinemaFactoryComponent();
-                        factory.RegisterComponent("Cinema", crf);
+                        #region subscribe factories
+                        factory.RegisterComponent("Room", new GuestRoomFactoryComponent());
+                        factory.RegisterComponent("Cinema", new CinemaFactoryComponent());
+                        factory.RegisterComponent("Restaurant", new CafeFactoryComponent());
+                        factory.RegisterComponent("Fitness", new FitnessFactoryComponent());
+                        factory.RegisterComponent("Pool", new PoolFactoryComponent());
+                        #endregion
 
                         Room aRoom = factory.BuildRoom(data);
                         if(aRoom != null)
                             rooms.Add(aRoom);
-                        */
-
+                        
+                        /*
                         // All the types of rooms.
                         switch (data["AreaType"])
                         {
@@ -118,6 +121,7 @@ namespace Hotel
                             default:
                                 break;
                         }
+                        */
 
                         if (_createEmptyRooms)
                         {

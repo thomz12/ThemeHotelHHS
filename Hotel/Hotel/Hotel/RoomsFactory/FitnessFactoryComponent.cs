@@ -1,11 +1,11 @@
-﻿using Hotel.Rooms;
-using Microsoft.Xna.Framework;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Hotel.Rooms;
+using Microsoft.Xna.Framework;
 
 namespace Hotel.RoomsFactory
 {
-    public class GuestRoomFactoryComponent : IRoomFactoryComponent
+    public class FitnessFactoryComponent : IRoomFactoryComponent
     {
         public Room BuildRoom(Dictionary<string, string> data)
         {
@@ -13,7 +13,6 @@ namespace Hotel.RoomsFactory
             string[] posData = data["Position"].Split(',');
             string[] dimData = data["Dimension"].Split(',');
             string[] idData = data["ID"].Split(',');
-            string[] classData = data["Classification"].Split(',');
 
             // get the room dimensions.
             Point dimensions = new Point(Int32.Parse(dimData[0]), Int32.Parse(dimData[1]));
@@ -22,7 +21,7 @@ namespace Hotel.RoomsFactory
             // Calculate the ID
             int id = Int32.Parse(idData[0]);
 
-            return new GuestRoom(id, position, dimensions, Int32.Parse(classData[0]));
+            return new Fitness(id, position, dimensions);
         }
     }
 }
