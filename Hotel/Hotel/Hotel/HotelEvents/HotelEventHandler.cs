@@ -168,8 +168,11 @@ namespace Hotel
             {
                 s.Evacuating = true;
 
+                // Check if this is a cleaner.
+                // Remove this if, if cleaners should stop working when there is an evacuation.
                 if (s is Cleaner)
                 {
+                    // if this cleaner is busy dont interrupt him/her and carry on.
                     if ((s as Cleaner).IsBusy)
                         continue;
                 }
