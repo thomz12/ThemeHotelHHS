@@ -102,6 +102,7 @@ namespace Hotel.Persons
                     // Set the room that has been cleaned as clean
                     if (CurrentRoom is GuestRoom)
                     {
+                        // When an emergency happened we dont want to set the room state to vacant, because there is still someone in that room.
                         if ((CurrentRoom as GuestRoom).Guest == null)
                             CurrentRoom.State = RoomState.Vacant;
                         else

@@ -2,10 +2,8 @@
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Hotel.Rooms;
 using Newtonsoft.Json;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework;
 using Hotel.RoomsFactory;
 
@@ -93,32 +91,6 @@ namespace Hotel
                         Room aRoom = RoomFactory.BuildRoom(data);
                         if (aRoom != null)
                             rooms.Add(aRoom);
-
-                        #region Old room building (with a switch) AKA normal factory?
-                        /*
-                        // All the types of rooms.
-                        switch (data["AreaType"])
-                        {
-                            case "Restaurant":
-                                rooms.Add(new Cafe(id, position, dimensions, Int32.Parse(data["Capacity"])));
-                                break;
-                            case "Room":
-                                rooms.Add(new GuestRoom(id, position, dimensions, Int32.Parse(data["Classification"][0].ToString())));
-                                break;
-                            case "Cinema":
-                                rooms.Add(new Cinema(id, position, dimensions));
-                                break;
-                            case "Fitness":
-                                rooms.Add(new Fitness(id, position, dimensions));
-                                break;
-                            case "Pool":
-                                rooms.Add(new Pool(id, position, dimensions));
-                                break;
-                            default:
-                                break;
-                        }
-                        */
-                        #endregion
 
                         // The option to create empty rooms is on, these empty rooms fill the space in the 2 high rooms so people can "fly" through them.
                         if (_createEmptyRooms)

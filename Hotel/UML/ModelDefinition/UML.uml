@@ -6898,6 +6898,43 @@
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
+          <association
+            Id="8e6a960f-041e-4fff-ac54-873584007aa6"
+            isDerived="false"
+            sourceEndRoleName=""
+            targetEndRoleName=""
+            isLeaf="false"
+            isAbstract="false">
+            <classMoniker
+              Id="fc7c0134-8026-4444-9b57-15f7ae24096a"
+              LastKnownName="RoomFactory"
+              LastKnownLocation="UML.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="7ce52df6-0754-4a6c-bbea-1d6069c47480"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="8f4d5f75-5346-4f0a-b6e2-03b3b878311d"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
         </targetEnds>
         <ownedAttributesInternal>
           <property
@@ -6949,20 +6986,6 @@
             concurrency="Sequential"
             isQuery="false">
             <ownedParameters>
-              <operationHasOwnedParameters>
-                <parameter
-                  Id="a9c9958d-fc7c-42a8-bf13-57216e6a10f0"
-                  name="path"
-                  direction="In"
-                  isUnique="false">
-                  <type_NamedElement>
-                    <undefinedTypeMoniker
-                      Id="d08b55ce-c611-428f-8970-5ee80e046b2f"
-                      LastKnownName="string"
-                      LastKnownLocation="UML.uml" />
-                  </type_NamedElement>
-                </parameter>
-              </operationHasOwnedParameters>
               <operationHasOwnedParameters>
                 <parameter
                   Id="fb67c6c7-036a-4e10-a910-ce758db8ed25"
@@ -8191,6 +8214,24 @@
               <undefinedTypeMoniker
                 Id="d08b55ce-c611-428f-8970-5ee80e046b2f"
                 LastKnownName="string"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+          <property
+            Id="23bfebdf-2e58-4cee-bce0-1eda232a7b89"
+            name="EatingDuration"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="d3244994-074a-42a2-9f22-28d1164fe700"
+                LastKnownName="int"
                 LastKnownLocation="UML.uml" />
             </type_NamedElement>
           </property>
@@ -9696,6 +9737,520 @@
           </operation>
         </ownedOperations>
       </Interface>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="fc7c0134-8026-4444-9b57-15f7ae24096a"
+        name="RoomFactory"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <dependency
+            Id="45023b5e-000f-45cc-ac77-ec10e2e7aaf5">
+            <interfaceMoniker
+              Id="37c9bc1b-4662-4159-b87b-a3645af4577f"
+              LastKnownName="IRoomFactoryComponent"
+              LastKnownLocation="UML.uml" />
+          </dependency>
+        </suppliersInternal>
+        <ownedAttributesInternal>
+          <property
+            Id="6d21b809-6237-4130-b8a6-dc2c3aba327c"
+            name="_components"
+            isLeaf="false"
+            isStatic="false"
+            isReadOnly="false"
+            isUnique="false"
+            isDerived="false"
+            isDerivedUnion="false"
+            aggregation="None"
+            isComposite="false">
+            <type_NamedElement>
+              <undefinedTypeMoniker
+                Id="d313d9cc-64c6-481d-81fe-248ccfcbdcfa"
+                LastKnownName="Dictionary&lt;string, IRoomFactoryComponent&gt;"
+                LastKnownLocation="UML.uml" />
+            </type_NamedElement>
+          </property>
+        </ownedAttributesInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="a73b78e6-7aa9-45c8-a9ba-b8ba2c13c0dc"
+            name="BuildRoom"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="ab5f5221-cc2c-480e-8d16-c1d00cc45e68"
+                  name="data"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="0f130dfa-f1c1-46a9-8a32-26223cd08feb"
+                      LastKnownName="Dictionary&lt;string"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="70bd5064-2bc2-4d72-bf99-877cd5c56be9"
+                  name="string&gt;"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="31dbd549-3520-4de5-897f-c776007840b6"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="55ac072c-29df-4bb4-98c1-40272054cc7d"
+                      LastKnownName="Room"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+          <operation
+            Id="95f81e6f-925e-4d86-9482-7ca76d24e5e6"
+            name="RegisterComponent"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="78552bbf-dee7-4311-b3ba-e97ef2f0c5eb"
+                  name="name"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="d08b55ce-c611-428f-8970-5ee80e046b2f"
+                      LastKnownName="string"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="483f2142-b6f8-4b5b-8696-700bff8e9ccd"
+                  name="component"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <interfaceMoniker
+                      Id="37c9bc1b-4662-4159-b87b-a3645af4577f"
+                      LastKnownName="IRoomFactoryComponent"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="d313d9cc-64c6-481d-81fe-248ccfcbdcfa"
+        name="Dictionary&lt;string, IRoomFactoryComponent&gt;" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <Interface
+        Id="37c9bc1b-4662-4159-b87b-a3645af4577f"
+        name="IRoomFactoryComponent"
+        isAbstract="false"
+        isLeaf="false">
+        <ownedOperations>
+          <operation
+            Id="ad483238-2ed4-4026-b249-84e06521fad9"
+            name="BuildRoom"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="true"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="0dd5563a-4981-47fb-a822-275895a84e93"
+                  name="data"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="0f130dfa-f1c1-46a9-8a32-26223cd08feb"
+                      LastKnownName="Dictionary&lt;string"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="3405e71e-fe7d-430b-9722-fac8fc0374c9"
+                  name="string&gt;"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="b8e945c7-8e66-4c4c-b46d-c9dd89ec91c2"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="55ac072c-29df-4bb4-98c1-40272054cc7d"
+                      LastKnownName="Room"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperations>
+      </Interface>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <undefinedType
+        Id="0f130dfa-f1c1-46a9-8a32-26223cd08feb"
+        name="Dictionary&lt;string" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="9ff22b1d-df5f-43d6-a3af-eb9f04dc15cd"
+        name="CafeFactoryComponent"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <interfaceRealization
+            Id="3bd12277-29fc-4266-ab53-53ec7dbd4a4a">
+            <interfaceMoniker
+              Id="37c9bc1b-4662-4159-b87b-a3645af4577f"
+              LastKnownName="IRoomFactoryComponent"
+              LastKnownLocation="UML.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="e34e74b7-ef94-4d04-bb7f-f2716d4a0da6"
+            name="BuildRoom"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="7a3017ba-5107-401b-a9c9-b5ba14105b71"
+                  name="data"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="0f130dfa-f1c1-46a9-8a32-26223cd08feb"
+                      LastKnownName="Dictionary&lt;string"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="ed64f348-755d-4ddd-b77b-4ef4e19a9c90"
+                  name="string&gt;"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="55a91950-abb7-4283-abfd-cc29220ca57c"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="55ac072c-29df-4bb4-98c1-40272054cc7d"
+                      LastKnownName="Room"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="3eca83e2-3e7b-44e7-9764-f6d9737064ca"
+        name="CinemaFactoryComponent"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <interfaceRealization
+            Id="9891e2d1-cdd8-4d7f-992e-79a129b9d269">
+            <interfaceMoniker
+              Id="37c9bc1b-4662-4159-b87b-a3645af4577f"
+              LastKnownName="IRoomFactoryComponent"
+              LastKnownLocation="UML.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="a2374655-738a-4aaf-8fed-05003c39dd67"
+            name="BuildRoom"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="e9ce9b2e-2482-42b7-abac-e66748b4255f"
+                  name="data"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="0f130dfa-f1c1-46a9-8a32-26223cd08feb"
+                      LastKnownName="Dictionary&lt;string"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="476f313d-8e27-4898-a698-d2d6c79df924"
+                  name="string&gt;"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="442d19be-289a-446c-ab55-55c7bb489526"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="55ac072c-29df-4bb4-98c1-40272054cc7d"
+                      LastKnownName="Room"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="361e7c61-092f-4241-b818-2fb4664c567d"
+        name="FitnessFactoryComponent"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <interfaceRealization
+            Id="9d39c8e6-556d-4fe0-a55d-8691151a8448">
+            <interfaceMoniker
+              Id="37c9bc1b-4662-4159-b87b-a3645af4577f"
+              LastKnownName="IRoomFactoryComponent"
+              LastKnownLocation="UML.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="5f62beab-a778-4c7d-8f3f-cb8c83df8a06"
+            name="BuildRoom"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="f806ccb6-3791-49eb-8f23-d6fc71f10004"
+                  name="data"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="0f130dfa-f1c1-46a9-8a32-26223cd08feb"
+                      LastKnownName="Dictionary&lt;string"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="a668bafc-2b68-4011-976f-4d682b6c140e"
+                  name="string&gt;"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="7d6834eb-c908-458c-a4f2-cb0a647b15e0"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="55ac072c-29df-4bb4-98c1-40272054cc7d"
+                      LastKnownName="Room"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="04543884-9716-4810-beb8-faf18cee0f07"
+        name="GuestRoomFactoryCompenent"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <interfaceRealization
+            Id="c4d29f37-799d-489a-8369-1ebbf7eb3e99">
+            <interfaceMoniker
+              Id="37c9bc1b-4662-4159-b87b-a3645af4577f"
+              LastKnownName="IRoomFactoryComponent"
+              LastKnownLocation="UML.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="a08350cc-8e14-4891-a361-c6c3364be7d4"
+            name="BuildRoom"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="f37b39a0-d7e5-4bda-9de2-5945d920a49e"
+                  name="data"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="0f130dfa-f1c1-46a9-8a32-26223cd08feb"
+                      LastKnownName="Dictionary&lt;string"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="f00ad0e4-4a9e-4b72-b40b-0c584501c1fc"
+                  name="string&gt;"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="c99c2dc3-1483-4354-938d-b1563a5886e0"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="55ac072c-29df-4bb4-98c1-40272054cc7d"
+                      LastKnownName="Room"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <class
+        Id="51518244-ae57-4746-941d-69507a33c0dc"
+        name="PoolFactoryCompenent"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false">
+        <suppliersInternal>
+          <interfaceRealization
+            Id="8941b9f8-fa6f-4906-b42f-0bce464f8cf2">
+            <interfaceMoniker
+              Id="37c9bc1b-4662-4159-b87b-a3645af4577f"
+              LastKnownName="IRoomFactoryComponent"
+              LastKnownLocation="UML.uml" />
+          </interfaceRealization>
+        </suppliersInternal>
+        <ownedOperationsInternal>
+          <operation
+            Id="98c68d1d-2977-426f-bc9e-104e13122b5a"
+            name="BuildRoom"
+            isLeaf="false"
+            isStatic="false"
+            isAbstract="false"
+            concurrency="Sequential"
+            isQuery="false">
+            <ownedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="8176dbfa-6951-40ef-a841-d0bacebeee92"
+                  name="data"
+                  direction="In"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <undefinedTypeMoniker
+                      Id="0f130dfa-f1c1-46a9-8a32-26223cd08feb"
+                      LastKnownName="Dictionary&lt;string"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="6ba58eb7-8bef-4701-8743-1c601d6b4e86"
+                  name="string&gt;"
+                  direction="In"
+                  isUnique="false" />
+              </operationHasOwnedParameters>
+              <operationHasOwnedParameters>
+                <parameter
+                  Id="b58ddc51-1f88-4912-bc1d-564e47090c45"
+                  direction="Return"
+                  isUnique="false">
+                  <type_NamedElement>
+                    <classMoniker
+                      Id="55ac072c-29df-4bb4-98c1-40272054cc7d"
+                      LastKnownName="Room"
+                      LastKnownLocation="UML.uml" />
+                  </type_NamedElement>
+                </parameter>
+              </operationHasOwnedParameters>
+            </ownedParameters>
+          </operation>
+        </ownedOperationsInternal>
+      </class>
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType
