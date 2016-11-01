@@ -102,6 +102,7 @@ namespace Hotel.Persons
                     // Set the room that has been cleaned as clean
                     if (CurrentRoom is GuestRoom)
                     {
+                        // When an emergency happened we dont want to set the room state to vacant, because there is still someone in that room.
                         if ((CurrentRoom as GuestRoom).Guest == null)
                             CurrentRoom.State = RoomState.Vacant;
                         else
@@ -113,14 +114,11 @@ namespace Hotel.Persons
                     }
                     // This cleaner is not busy anymore.
                     IsBusy = false;
-                }
-            }
 
-            // TODO: DAAN FIX!!!!!!! THERE WAS AN ATTEMPT
-            if(!_isCleaning && Evacuating && TargetRoom != null)
-            {
-                if(!TargetRoom.Name.Equals("Outside"))
-                    FindAndTargetRoom(x => x.Name == "Outside");
+                    // Check if there is an evacuation, and evacuate if there is.
+                    if(Evacuating)
+                        FindAndTargetRoom(x => x.Name == "Outside");
+                }
             }
 
             base.Update(deltaTime);

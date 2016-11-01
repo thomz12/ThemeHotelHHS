@@ -92,8 +92,6 @@ namespace Hotel
             base.Update(deltaTime);
         }
 
-        
-
         public override void Draw(SpriteBatch batch, GameTime gameTime)
         {
             if (RoomPosition.Y == 0)
