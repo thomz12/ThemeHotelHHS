@@ -144,6 +144,9 @@ namespace Hotel
             }
         }
 
+        /// <summary>
+        /// Call this to evacuate the hotel.
+        /// </summary>
         private void Evacuate()
         {
             _hotel.Evacuating = true;
@@ -179,7 +182,6 @@ namespace Hotel
 
                 s.FindAndTargetRoom(x => x.Name == "Outside");
             }
-
         }
     }
 }

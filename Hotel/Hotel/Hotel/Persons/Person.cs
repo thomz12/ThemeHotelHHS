@@ -55,6 +55,7 @@ namespace Hotel.Persons
         protected PathFinder _pathFinder;
         // The max time a guy can stay waiting.
         protected float _survivabilityTime;
+
         // The Elevator to enter.
         private Elevator _elevator;
         // Timer to check when to die.
