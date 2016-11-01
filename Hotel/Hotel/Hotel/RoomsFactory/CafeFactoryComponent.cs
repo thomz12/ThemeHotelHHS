@@ -22,7 +22,7 @@ namespace Hotel.RoomsFactory
             // Calculate the ID
             int id = Int32.Parse(idData[0]);
 
-            return new Cafe(id, position, dimensions, 0/*Int32.Parse(capData[0])*/);
+            return new Cafe(id, position, dimensions, Int32.Parse(capData[0]));
         }
     }
 }
