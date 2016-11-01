@@ -117,7 +117,7 @@ namespace Hotel.Persons
 
                     // Check if there is an evacuation, and evacuate if there is.
                     if(Evacuating)
-                        FindAndTargetRoom(x => x.Name == "Outside");
+                        FindAndTargetRoom(x => (x is EmptyRoom) && (x as EmptyRoom).Entrance);
                 }
             }
 

@@ -107,9 +107,8 @@ namespace Hotel
                                 // Add empty rooms to rooms bigger in height. (used for path finding)
                                 for (int i = 0; i < dimensions.Y - 1; i++)
                                 {
-                                    Room roomToAddTo = rooms.Last();
-                                    rooms.Add(new EmptyRoom(-1, new Point(position.X, position.Y + i), new Point(dimensions.X, 1)));
-                                    rooms.Last().Name = roomToAddTo.Name;
+                                    rooms.Add(RoomFactory.BuildRoom(-1, "Empty", new Point(position.X, position.Y + i), new Point(dimensions.X, 1)));
+                                    rooms.Last().Name = "Empty";
                                 }
                             }
                         }
@@ -142,11 +141,10 @@ namespace Hotel
             }
 
             // Add the rooms, and connect them, starts with an empty room outside with ID 0.
-            EmptyRoom outside = new EmptyRoom(0, new Point(smallestX - 2, smallestY - 1), new Point(1, 1));
+            EmptyRoom outside = RoomFactory.BuildRoom(0, "Empty", new Point(smallestX - 2, smallestY - 1), new Point(1, 1)) as EmptyRoom;
             outside.Entrance = true;
             rooms.Add(outside);
            
-
             foreach (Room r in rooms)
                 PlaceRoom(r);
 
