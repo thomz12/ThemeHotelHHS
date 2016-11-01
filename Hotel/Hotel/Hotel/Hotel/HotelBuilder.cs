@@ -163,7 +163,10 @@ namespace Hotel
             }
 
             // Add the rooms, and connect them, starts with an empty room outside with ID 0.
-            rooms.Add(new EmptyRoom(0, new Point(smallestX - 2, 0), new Point(1, 1)));
+            EmptyRoom outside = new EmptyRoom(0, new Point(smallestX - 2, 0), new Point(1, 1));
+            outside.Entrance = true;
+            rooms.Add(outside);
+           
 
             foreach (Room r in rooms)
                 PlaceRoom(r);

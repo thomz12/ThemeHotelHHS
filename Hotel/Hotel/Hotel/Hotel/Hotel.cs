@@ -237,6 +237,11 @@ namespace Hotel
         /// <param name="deltaTime">The delta time.</param>
         public void Update(float deltaTime)
         {
+            if(Evacuating)
+            {
+                Evacuation();
+            }
+
             List<Room> er = new List<Room>();
             List<Room> dr = new List<Room>();
 
@@ -266,6 +271,24 @@ namespace Hotel
             for (int i = 0; i < Guests.Count; i++)
             {
                 Guests.Values.ElementAt(i).Update(deltaTime);
+            }
+        }
+
+        /// <summary>
+        /// Called to check for people evacutaion, also ends the evacuation.
+        /// </summary>
+        public void Evacuation()
+        {
+            if (Guests.Where(x => x.Value.CurrentRoom.Name == "Outside").Count() == Guests.Count)
+            {
+                Evacuating = false;
+                Receptionist.FindAndTargetRoom(x => x == Receptionist.LobbyWhereChecksHappen);
+
+                for (int i = 0; i < Guests.Count; i++)
+                {
+                    Guests.ElementAt(i).Value.Evacuating = false;
+                    Guests.ElementAt(i).Value.FindAndTargetRoom(x => (Guests.ElementAt(i).Value as Guest).Room == x);
+                }
             }
         }
 

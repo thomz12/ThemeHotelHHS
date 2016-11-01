@@ -116,7 +116,8 @@ namespace Hotel.Persons
                 }
             }
 
-            if(!_isCleaning && Evacuating)
+            // TODO: DAAN FIX!!!!!!! THERE WAS AN ATTEMPT
+            if(!_isCleaning && Evacuating && TargetRoom != null)
             {
                 if(!TargetRoom.Name.Equals("Outside"))
                     FindAndTargetRoom(x => x.Name == "Outside");

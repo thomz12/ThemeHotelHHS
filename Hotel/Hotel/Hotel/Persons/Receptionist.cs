@@ -13,7 +13,7 @@ namespace Hotel.Persons
         public Queue<Guest> CheckInQueue { get; set; }
         public Queue<Guest> CheckOutQueue { get; set; }
 
-        public Room LobbyWhereChecksHappen;
+        public Room LobbyWhereChecksHappen { get; set; }
 
         private List<Room> _rooms;
         private float _workSpeed;

@@ -9,6 +9,8 @@ namespace Hotel.Rooms
 {
     public class EmptyRoom : Room
     {
+        public bool Entrance { get; set; }
+
         /// <summary>
         /// An empty room which cant do anything.
         /// </summary>
