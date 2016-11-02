@@ -59,6 +59,7 @@
     <Compile Include="PathfinderTest.cs" />
     <Compile Include="PersonTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoomBehaviourTest.cs" />
     <Compile Include="RoomFactoryTest.cs" />
     <Compile Include="RoomUnitTests.cs" />
   </ItemGroup>
