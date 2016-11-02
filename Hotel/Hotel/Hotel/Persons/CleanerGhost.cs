@@ -13,6 +13,8 @@ namespace Hotel.Persons
 
             _survivabilityTime = -1;
 
+            Evacuating = true;
+
             _pathFinder.UseElevator = false;
             FindAndTargetRoom(x => x.Name.Equals("Outside"));
         }

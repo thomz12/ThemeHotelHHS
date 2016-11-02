@@ -37,7 +37,10 @@ namespace Hotel
             // The hotel width, and height.
             int extremeX = 0;
             int smallestX = Int32.MaxValue;
+
             int extremeY = 0;
+            int smallestY = Int32.MaxValue;
+
             int extremeID = 0;
 
             TextReader textReader = new StreamReader(ServiceLocator.Get<ConfigLoader>().GetConfig().LayoutPath);
@@ -83,8 +86,12 @@ namespace Hotel
                             extremeX = maxX;
                         if (smallestX > position.X)
                             smallestX = position.X;
+
                         if (extremeY < position.Y)
                             extremeY = position.Y;
+                        else if (smallestY > position.Y)
+                            smallestY = position.Y;
+
                         if (extremeID < id)
                             extremeID = id;
 
@@ -100,9 +107,8 @@ namespace Hotel
                                 // Add empty rooms to rooms bigger in height. (used for path finding)
                                 for (int i = 0; i < dimensions.Y - 1; i++)
                                 {
-                                    Room roomToAddTo = rooms.Last();
-                                    rooms.Add(new EmptyRoom(-1, new Point(position.X, position.Y + i), new Point(dimensions.X, 1)));
-                                    rooms.Last().Name = roomToAddTo.Name;
+                                    rooms.Add(RoomFactory.BuildRoom(-1, "Empty", new Point(position.X, position.Y + i), new Point(dimensions.X, 1)));
+                                    rooms.Last().Name = "Empty";
                                 }
                             }
                         }
@@ -117,26 +123,28 @@ namespace Hotel
             for (int i = 0; i <= extremeY; i++)
             {
                 extremeID++;
-                rooms.Add(new ElevatorShaft(extremeID, new Point(smallestX - 1, i)));
+                rooms.Add(new ElevatorShaft(extremeID, new Point(smallestX - 1, smallestY - 1 + i)));
             }
 
             // Add Stairs to the hotel.
             for (int i = 0; i <= extremeY; i++)
             {
                 extremeID++;
-                rooms.Add(new Staircase(extremeID, new Point(extremeX + 1, i)));
+                rooms.Add(new Staircase(extremeID, new Point(extremeX + 1, smallestY - 1 + i)));
             }
 
             // Add lobbies.
             for (int i = smallestX; i <= extremeX; i++)
             {
                 extremeID++;
-                rooms.Add(new Lobby(extremeID, new Point(i, 0), new Point(1, 1)));
+                rooms.Add(new Lobby(extremeID, new Point(i, smallestY - 1), new Point(1, 1)));
             }
 
             // Add the rooms, and connect them, starts with an empty room outside with ID 0.
-            rooms.Add(new EmptyRoom(0, new Point(smallestX - 2, 0), new Point(1, 1)));
-
+            EmptyRoom outside = RoomFactory.BuildRoom(0, "Empty", new Point(smallestX - 2, smallestY - 1), new Point(1, 1)) as EmptyRoom;
+            outside.Entrance = true;
+            rooms.Add(outside);
+           
             foreach (Room r in rooms)
                 PlaceRoom(r);
 

@@ -84,6 +84,7 @@
     <Compile Include="RoomBehaviours\ElevatorShaftBehaviour.cs" />
     <Compile Include="RoomsFactory\CafeFactoryComponent.cs" />
     <Compile Include="RoomsFactory\CinemaFactoryComponent.cs" />
+    <Compile Include="RoomsFactory\EmptyRoomFactoryComponent.cs" />
     <Compile Include="RoomsFactory\FitnessFactoryComponent.cs" />
     <Compile Include="RoomsFactory\GuestRoomFactoryComponent.cs" />
     <Compile Include="RoomsFactory\IRoomFactoryComponent.cs" />
@@ -182,6 +183,9 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Extra\Hotel5.layout" />
+    <Content Include="Extra\Empty.layout">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\Microsoft.Xna.GameStudio.targets" />
