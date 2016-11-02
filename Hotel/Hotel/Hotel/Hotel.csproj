@@ -84,12 +84,15 @@
     <Compile Include="RoomBehaviours\ElevatorShaftBehaviour.cs" />
     <Compile Include="RoomsFactory\CafeFactoryComponent.cs" />
     <Compile Include="RoomsFactory\CinemaFactoryComponent.cs" />
+    <Compile Include="RoomsFactory\ElevatorShaftFactoryComponent.cs" />
     <Compile Include="RoomsFactory\EmptyRoomFactoryComponent.cs" />
     <Compile Include="RoomsFactory\FitnessFactoryComponent.cs" />
     <Compile Include="RoomsFactory\GuestRoomFactoryComponent.cs" />
     <Compile Include="RoomsFactory\IRoomFactoryComponent.cs" />
+    <Compile Include="RoomsFactory\LobbyFactoryComponent.cs" />
     <Compile Include="RoomsFactory\PoolFactoryComponent.cs" />
     <Compile Include="RoomsFactory\RoomFactory.cs" />
+    <Compile Include="RoomsFactory\StaircaseFactoryComponent.cs" />
     <Compile Include="Rooms\Pool.cs" />
     <Compile Include="Services\ConfigLoader.cs" />
     <Compile Include="Services\ConfigModel.cs" />

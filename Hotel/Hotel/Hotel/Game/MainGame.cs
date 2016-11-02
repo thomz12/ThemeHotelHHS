@@ -127,6 +127,9 @@ namespace Hotel
             _hotel.HotelBuilder.RoomFactory.RegisterComponent("Cinema", new CinemaFactoryComponent());
             _hotel.HotelBuilder.RoomFactory.RegisterComponent("Restaurant", new CafeFactoryComponent());
             _hotel.HotelBuilder.RoomFactory.RegisterComponent("Empty", new EmptyRoomFactoryComponent());
+            _hotel.HotelBuilder.RoomFactory.RegisterComponent("Lobby", new LobbyFactoryComponent());
+            _hotel.HotelBuilder.RoomFactory.RegisterComponent("ElevatorShaft", new ElevatorShaftFactoryComponent());
+            _hotel.HotelBuilder.RoomFactory.RegisterComponent("Staircase", new StaircaseFactoryComponent());
             _hotel.HotelBuilder.RoomFactory.RegisterComponent("Fitness", new FitnessFactoryComponent());
             _hotel.HotelBuilder.RoomFactory.RegisterComponent("Pool", new PoolFactoryComponent());
 

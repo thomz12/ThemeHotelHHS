@@ -123,28 +123,28 @@ namespace Hotel
             for (int i = 0; i <= extremeY; i++)
             {
                 extremeID++;
-                rooms.Add(new ElevatorShaft(extremeID, new Point(smallestX - 1, smallestY - 1 + i)));
+                rooms.Add(RoomFactory.BuildRoom(extremeID, "ElevatorShaft", new Point(smallestX - 1, smallestY - 1 + i), new Point(1, 1)));
             }
 
             // Add Stairs to the hotel.
             for (int i = 0; i <= extremeY; i++)
             {
                 extremeID++;
-                rooms.Add(new Staircase(extremeID, new Point(extremeX + 1, smallestY - 1 + i)));
+                rooms.Add(RoomFactory.BuildRoom(extremeID, "Staircase", new Point(extremeX + 1, smallestY - 1 + i), new Point(1, 1)));
             }
 
             // Add lobbies.
             for (int i = smallestX; i <= extremeX; i++)
             {
                 extremeID++;
-                rooms.Add(new Lobby(extremeID, new Point(i, smallestY - 1), new Point(1, 1)));
+                rooms.Add(RoomFactory.BuildRoom(extremeID, "Lobby", new Point(i, smallestY - 1), new Point(1, 1)));
             }
 
             // Add the rooms, and connect them, starts with an empty room outside with ID 0.
             EmptyRoom outside = RoomFactory.BuildRoom(0, "Empty", new Point(smallestX - 2, smallestY - 1), new Point(1, 1)) as EmptyRoom;
             outside.Entrance = true;
             rooms.Add(outside);
-           
+
             foreach (Room r in rooms)
                 PlaceRoom(r);
 
