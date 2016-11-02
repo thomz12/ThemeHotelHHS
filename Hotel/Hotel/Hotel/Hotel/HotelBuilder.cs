@@ -148,7 +148,7 @@ namespace Hotel
             foreach (Room r in rooms)
                 PlaceRoom(r);
 
-            return rooms;
+            return Rooms;
         }
 
         /// <summary>

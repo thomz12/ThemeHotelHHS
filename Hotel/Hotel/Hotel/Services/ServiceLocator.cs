@@ -46,7 +46,8 @@ namespace Hotel
         /// <typeparam name="T">The type of the object to remove.</typeparam>
         public static void Remove<T>()
         {
-            _container.RemoveService(typeof(T));
+            if(_container.GetService(typeof(T)) != null)
+                _container.RemoveService(typeof(T));
         }
     }
 }
