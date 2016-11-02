@@ -16,7 +16,6 @@ namespace Hotel
         public List<Room> Rooms { get; set; }
         public List<Person> Staff { get; set; }
         public Dictionary<string, Person> Guests { get; set; }
-        public Receptionist Receptionist { get; set; }
 
         public bool Evacuating;
 
@@ -57,8 +56,9 @@ namespace Hotel
         {
             IOrderedEnumerable<Lobby> lobbies = Rooms.OfType<Lobby>().OrderBy(x => x.RoomPosition.X);
             Lobby aLobby = lobbies.ElementAt(lobbies.Count() / 2);
-            Receptionist = new Receptionist(aLobby, Rooms);
-            Staff.Add(Receptionist);
+            Receptionist receptionist = new Receptionist(aLobby, Rooms);
+            receptionist.RemoveObjectEvent += RemoveObject;
+            Staff.Add(receptionist);
 
             Random r = new Random();
             for (int i = 0; i < _cleaners; i++)
@@ -114,6 +114,14 @@ namespace Hotel
                     }
 
                     Guests.Remove(item);
+                }
+                // Remove receptionist from hotel.
+                else if(hotelObject is Receptionist)
+                {
+                    Lobby lobby = Rooms.Where(x => x is Lobby && (x as Lobby).Receptionist == hotelObject) as Lobby;
+                    if(lobby != null)
+                        lobby.Receptionist = null;
+                    Staff.Remove(hotelObject as Person);
                 }
                 // Remove cleaner from the hotel.
                 else if (hotelObject is Cleaner)
@@ -281,7 +289,13 @@ namespace Hotel
             if (Guests.Where(x => x.Value.CurrentRoom.Name == "Outside").Count() == Guests.Count)
             {
                 Evacuating = false;
-                Receptionist.FindAndTargetRoom(x => x == Receptionist.LobbyWhereChecksHappen);
+
+                // Check for all receptionists.
+                for (int i = 0; i < Staff.Count; i++)
+                {
+                    if(Staff[i] is Receptionist)
+                        Staff[i].FindAndTargetRoom(x => x is Lobby && (x as Lobby).Receptionist == Staff[i]);
+                }
 
                 for (int i = 0; i < Guests.Count; i++)
                 {

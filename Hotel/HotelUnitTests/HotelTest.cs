@@ -102,6 +102,28 @@ namespace HotelUnitTests
         }
 
         [TestMethod]
+        public void RemoveObjTestGuest()
+        {
+            Hotel.Hotel hotel = new Hotel.Hotel();
+            hotel.Rooms = rooms;
+            hotel.AddGuest("John", 1);
+            hotel.Guests["John"].Remove();
+
+            Assert.IsTrue(hotel.Guests.Count == 0);
+        }
+
+        [TestMethod]
+        public void RemoveObjTestReceptionist()
+        {
+            Hotel.Hotel hotel = new Hotel.Hotel();
+            hotel.Rooms = rooms;
+            hotel.CreateStaff();
+            hotel.Staff[0].Remove();
+
+            Assert.IsTrue(hotel.Staff.Count == 0);
+        }
+
+        [TestMethod]
         public void AddGuestsTest()
         {
             Hotel.Hotel hotel = new Hotel.Hotel();
