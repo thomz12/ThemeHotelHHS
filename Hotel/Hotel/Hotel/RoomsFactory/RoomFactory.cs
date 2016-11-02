@@ -55,7 +55,8 @@ namespace Hotel.RoomsFactory
         public void RegisterComponent(string name, IRoomFactoryComponent component)
         {
             // Registers factory in dictionary.
-            _components.Add(name, component);
+            if(!_components.ContainsKey(name))
+                _components.Add(name, component);
         }
     }
 }
