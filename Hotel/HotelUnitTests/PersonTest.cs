@@ -89,7 +89,6 @@ namespace HotelUnitTests
         public void PersonMove()
         {
             Guest guest = new Guest(rooms[0]);
-            // TODO: IDK
             guest.Evacuating = true;
             guest.Sprite.DrawDestination = new Rectangle((int)guest.Position.X, (int)guest.Position.Y, 25, 50);
             guest.FindAndTargetRoom(x => x == rooms[16]);
@@ -119,6 +118,27 @@ namespace HotelUnitTests
             Assert.IsNotNull(cleaner);
         }
 
+        [TestMethod]
+        public void GoClean()
+        {
+            rooms[15].State = RoomState.Dirty;
+            Cleaner cl = new Cleaner(rooms[0]);
+            cl.GoClean(rooms[15]);
+            Assert.ReferenceEquals(cl.TargetRoom, rooms[15]);
+        }
+
+        [TestMethod]
+        public void CleanerUpdate()
+        {
+            rooms[15].SetEmergency(1);
+            Cleaner cl = new Cleaner(rooms[15]);
+            cl.GoClean(rooms[15]);
+            cl.Update(1);
+            cl.Update(15);
+            cl.Update(1);
+            cl.Update(1);
+            Assert.IsTrue(rooms[15].State == RoomState.Vacant);
+        }
 
         [TestMethod]
         public void ReceptionistConstructor()

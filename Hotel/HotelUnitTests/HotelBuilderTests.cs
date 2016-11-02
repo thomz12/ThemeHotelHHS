@@ -11,31 +11,6 @@ namespace HotelUnitTests
     [TestClass]
     public class HotelBuilderTests
     {
-        public HotelBuilderTests()
-        {
-
-        }
-
-        // Sets the test context which provides information about the functionality for the current test run.
-        private TestContext testContextInstance;
-        public TestContext TestContext
-        {
-            get
-            {
-                return testContextInstance;
-            }
-            set
-            {
-                testContextInstance = value;
-            }
-        }
-
-        [ClassInitialize()]
-        public static void MyClassInitialize(TestContext testContext)
-        {
-            
-        }
-
         [TestMethod]
         public void HotelBuilderConstructor()
         {
