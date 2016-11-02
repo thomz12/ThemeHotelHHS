@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="ElevatorTest.cs" />
     <Compile Include="HotelBuilderTests.cs" />
+    <Compile Include="HotelTest.cs" />
     <Compile Include="PathfinderTest.cs" />
     <Compile Include="PersonTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
