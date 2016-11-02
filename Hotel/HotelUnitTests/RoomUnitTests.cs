@@ -165,6 +165,14 @@ namespace HotelUnitTests
         }
 
         [TestMethod]
+        public void GuestRoomDirty()
+        {
+            GuestRoom room = new GuestRoom(1, new Microsoft.Xna.Framework.Point(0, 0), new Microsoft.Xna.Framework.Point(1, 1), 2);
+            room.State = RoomState.Dirty;
+            Assert.IsTrue(room.State == RoomState.Dirty);
+        }
+
+        [TestMethod]
         public void CafeConstructor()
         {
             Cafe room = new Cafe(1, new Microsoft.Xna.Framework.Point(0, 0), new Microsoft.Xna.Framework.Point(1, 1), 6);

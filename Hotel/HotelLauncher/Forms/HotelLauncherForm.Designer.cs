@@ -47,7 +47,7 @@
             // 
             // btn_Start
             // 
-            this.btn_Start.Location = new System.Drawing.Point(12, 418);
+            this.btn_Start.Location = new System.Drawing.Point(13, 400);
             this.btn_Start.Name = "btn_Start";
             this.btn_Start.Size = new System.Drawing.Size(200, 50);
             this.btn_Start.TabIndex = 1;
@@ -57,7 +57,7 @@
             // 
             // btn_Settings
             // 
-            this.btn_Settings.Location = new System.Drawing.Point(424, 418);
+            this.btn_Settings.Location = new System.Drawing.Point(425, 400);
             this.btn_Settings.Name = "btn_Settings";
             this.btn_Settings.Size = new System.Drawing.Size(200, 50);
             this.btn_Settings.TabIndex = 2;
@@ -69,7 +69,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(637, 478);
+            this.ClientSize = new System.Drawing.Size(637, 460);
             this.Controls.Add(this.btn_Settings);
             this.Controls.Add(this.btn_Start);
             this.Controls.Add(this.pb_Splash);

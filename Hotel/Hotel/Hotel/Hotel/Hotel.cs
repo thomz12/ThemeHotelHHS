@@ -25,7 +25,6 @@ namespace Hotel
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="content">The content manager used to load in room images.</param>
         public Hotel()
         {
             Staff = new List<Person>();
@@ -43,7 +42,7 @@ namespace Hotel
         public void BuildHotel()
         {
             // Build the hotel.
-            Rooms = HotelBuilder.BuildHotel();
+            Rooms = HotelBuilder.BuildHotel(); 
 
             // Create the staff for the hotel.
             _cleaners = ServiceLocator.Get<ConfigLoader>().GetConfig().NumberOfCleaners;

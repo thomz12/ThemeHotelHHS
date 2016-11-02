@@ -181,11 +181,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Extra\Hotel4.layout">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <Content Include="Extra\Hotel4.layout">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Extra\Hotel5.layout" />
+    </Content>
+    <Content Include="Extra\Hotel5.layout">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Extra\Empty.layout">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

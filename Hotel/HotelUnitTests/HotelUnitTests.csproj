@@ -55,9 +55,11 @@
   </Choose>
   <ItemGroup>
     <Compile Include="ElevatorTest.cs" />
+    <Compile Include="HotelBuilderTests.cs" />
     <Compile Include="PathfinderTest.cs" />
     <Compile Include="PersonTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RoomFactoryTest.cs" />
     <Compile Include="RoomUnitTests.cs" />
   </ItemGroup>
   <ItemGroup>
