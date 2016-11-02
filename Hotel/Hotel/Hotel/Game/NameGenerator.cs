@@ -17,7 +17,6 @@ namespace Hotel
 
         public NameGenerator()
         {
-
             _maleNamePath = @"Extra\MaleNames.txt";
             _femaleNamePath = @"Extra\FemaleNames.txt";
             _lastNamePath = @"Extra\LastNames.txt";
