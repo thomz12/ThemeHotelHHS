@@ -100,6 +100,8 @@ namespace Hotel
             // Add your initialization logic here
             base.Initialize();
 
+            int[] array = new int[] { 1, 2, 3, 4, 5 };
+
             _renderTexture = new RenderTarget2D(GraphicsDevice, 200, 200, false, SurfaceFormat.Color, DepthFormat.None);
         }
 
@@ -126,10 +128,10 @@ namespace Hotel
 
             // Register components to the roomfactory
             _hotel.HotelBuilder.RoomFactory.RegisterComponent("Room", new GuestRoomFactoryComponent());
-            _hotel.HotelBuilder.RoomFactory.RegisterComponent("Cinema", new CinemaFactoryComponent());
-            _hotel.HotelBuilder.RoomFactory.RegisterComponent("Restaurant", new CafeFactoryComponent());
             _hotel.HotelBuilder.RoomFactory.RegisterComponent("Empty", new EmptyRoomFactoryComponent());
             _hotel.HotelBuilder.RoomFactory.RegisterComponent("Lobby", new LobbyFactoryComponent());
+            _hotel.HotelBuilder.RoomFactory.RegisterComponent("Cinema", new CinemaFactoryComponent());
+            _hotel.HotelBuilder.RoomFactory.RegisterComponent("Restaurant", new CafeFactoryComponent());
             _hotel.HotelBuilder.RoomFactory.RegisterComponent("ElevatorShaft", new ElevatorShaftFactoryComponent());
             _hotel.HotelBuilder.RoomFactory.RegisterComponent("Staircase", new StaircaseFactoryComponent());
             _hotel.HotelBuilder.RoomFactory.RegisterComponent("Fitness", new FitnessFactoryComponent());
@@ -256,6 +258,13 @@ namespace Hotel
             GraphicsDevice.SetRenderTarget(target);
 
             _spriteBatch.Begin(SpriteSortMode.FrontToBack, BlendState.AlphaBlend, SamplerState.PointClamp, null, null);
+
+            // If the game is paused, make the background darker.
+            if (Paused)
+                _background.Color = Color.Gray;
+            else
+                _background.Color = Color.White;
+
             _background.Draw(_spriteBatch, gameTime);
             _spriteBatch.End();
 

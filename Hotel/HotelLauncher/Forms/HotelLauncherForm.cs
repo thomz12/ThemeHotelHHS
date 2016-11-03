@@ -79,10 +79,13 @@ namespace HotelLauncher
             // Minimize the launcher
             this.WindowState = FormWindowState.Minimized;
             this.ShowInTaskbar = false;
-            while(!_process.HasExited)
-            {
-                
-            }
+
+            _process.EnableRaisingEvents = true;
+            _process.Exited += _process_Exited;
+        }
+
+        private void _process_Exited(object sender, EventArgs e)
+        {
             // The process has ended, return the window state to normal.
             this.WindowState = FormWindowState.Normal;
             this.ShowInTaskbar = true;

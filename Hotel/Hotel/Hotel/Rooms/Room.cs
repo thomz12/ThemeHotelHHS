@@ -83,18 +83,20 @@ namespace Hotel
             // Set the 'real' position of the room.
             Position = new Vector2(position.X * ROOMWIDTH, position.Y * ROOMHEIGHT);
 
-            _emergencyTexture = new Sprite();
-            _emergencyTexture.LoadSprite("CleaningEmergency");
-            _emergencyTexture.SetPosition(new Point((int)Position.X, -(int)position.Y));
-            _emergencyTexture.SetSize(new Point(Room.ROOMHEIGHT, Room.ROOMHEIGHT));
-            // Draw emerency texture on top.
-            _emergencyTexture.DrawOrder = 1.0f;
-
             Sprite.SetPosition(new Point((int)Position.X, (int)Position.Y));
             Sprite.SetSize(new Point(size.X * ROOMWIDTH, size.Y * ROOMHEIGHT));
             Sprite.DrawOrder = 0.1f;
 
             BoundingBox = Sprite.DrawDestination;
+
+            // Create emergency texture.
+            _emergencyTexture = new Sprite();
+            _emergencyTexture.LoadSprite("CleaningEmergency");
+            _emergencyTexture.SetPosition(new Point((int)Position.X, (int)position.Y));
+            _emergencyTexture.SetSize(new Point(Room.ROOMHEIGHT, Room.ROOMHEIGHT));
+            // Draw emerency texture on top.
+            _emergencyTexture.DrawOrder = 1.0f;
+
 
             // Default the room state to none.
             State = RoomState.None;

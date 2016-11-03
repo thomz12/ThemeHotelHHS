@@ -117,8 +117,6 @@ namespace Hotel
                 }
             }
 
-            // TODO: factory buidling elevatorshaft, lobby, emptyroom.
-
             // Add elevator shafts to the hotel.
             for (int i = 0; i <= extremeY; i++)
             {

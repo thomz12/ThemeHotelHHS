@@ -36,11 +36,20 @@ namespace Hotel
 
                 // Check-in event.
                 case HotelEventType.CHECK_IN:
+                    // Don't allow check ins when in an evacuation.
+                    if (_hotel.Evacuating)
+                        break;
+
                     _hotel.AddGuest(evt.Data.Keys.ElementAt(0), Int32.Parse(Regex.Replace(evt.Data.Values.ElementAt(0), "[^0-9]+", string.Empty)));
                     break;
 
                 // Check-out event.
                 case HotelEventType.CHECK_OUT:
+
+                    // Don't allow check outs when in an evacuation.
+                    if (_hotel.Evacuating)
+                        break;
+
                     // Get the guest that needs to be checked out.
                     string objectName = evt.Data.Keys.ElementAt(0) + evt.Data.Values.ElementAt(0);
                     if (_hotel.Guests.Keys.Contains(objectName))
