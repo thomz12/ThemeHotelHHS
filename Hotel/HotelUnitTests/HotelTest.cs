@@ -175,5 +175,14 @@ namespace HotelUnitTests
 
             Assert.IsFalse(hotel.Evacuating);
         }
+
+        [TestMethod]
+        public void GetObject()
+        {
+            Hotel.Hotel hotel = new Hotel.Hotel();
+            hotel.Rooms = rooms;
+
+            Assert.IsNotNull(hotel.GetObject(new Point(10, 10)));
+        }
     }
 }

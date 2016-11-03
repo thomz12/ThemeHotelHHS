@@ -25,7 +25,7 @@ namespace HotelUnitTests
 
             // This test requires a config file to work.
             // Make sure there is a config file present!
-            ServiceLocator.Add<ConfigLoader>(new ConfigLoader(@"C:\Users\Thom\Source\Repos\ThemeHotelHHS\Hotel Simulator Debug\Config.cfg"));
+            ServiceLocator.Add<ConfigLoader>(new ConfigLoader(@"C:\Users\Daan\Source\Repos\ThemeHotelHHS\Hotel Simulator Debug\Config.cfg"));
             HotelBuilder hb = new HotelBuilder();
 
             // Register components to the roomfactory
