@@ -78,7 +78,11 @@ namespace Hotel
             // Update elevator positions
             if (RoomPosition.Y == 0)
             {
-                Elevator.Position = new Vector2(((RoomPosition.X + RoomSize.X) * ROOMWIDTH)- Elevator.Sprite.Texture.Width, Elevator.Position.Y);
+                int width = 0;
+                if (Elevator.Sprite.Texture != null)
+                    width = Elevator.Sprite.Texture.Width;
+
+                Elevator.Position = new Vector2(((RoomPosition.X + RoomSize.X) * ROOMWIDTH) - width, Elevator.Position.Y);
                 Elevator.Update(deltaTime);
             }
             

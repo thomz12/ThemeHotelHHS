@@ -30,9 +30,12 @@ namespace Hotel.RoomBehaviours
 
         public void OnDeparture(Room room, Person person)
         {
+            Cafe cafe = room as Cafe;
+
             if (person is Guest)
             {
                 person.FindAndTargetRoom(x => x == (person as Guest).Room);
+                cafe.PeopleCount--;
             }
         }
 

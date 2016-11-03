@@ -61,7 +61,7 @@ namespace HotelUnitTests
         #endregion
 
         [TestMethod]
-        public void CafeBehaviourTest()
+        public void CafeArrivalBehaviourTest()
         {
             Cafe cafe = new Cafe(1, new Microsoft.Xna.Framework.Point(0, 0), new Microsoft.Xna.Framework.Point(1, 1), 4);
             GuestRoom room = new GuestRoom(2, new Microsoft.Xna.Framework.Point(1, 1), new Microsoft.Xna.Framework.Point(1, 1), 4);
@@ -71,6 +71,41 @@ namespace HotelUnitTests
             cafe.RoomBehaviour.OnArrival(cafe, guest);
 
             Assert.IsTrue(cafe.PeopleCount == 1);
+        }
+
+        [TestMethod]
+        public void CafeDepartureBehaviourTest()
+        {
+            Cafe cafe = new Cafe(1, new Microsoft.Xna.Framework.Point(0, 0), new Microsoft.Xna.Framework.Point(1, 1), 4);
+            GuestRoom room = new GuestRoom(2, new Microsoft.Xna.Framework.Point(1, 1), new Microsoft.Xna.Framework.Point(1, 1), 4);
+            Guest guest = new Guest(cafe);
+            guest.Room = room;
+
+            cafe.RoomBehaviour.OnArrival(cafe, guest);
+
+            cafe.RoomBehaviour.OnDeparture(cafe, guest);
+            Assert.IsTrue(cafe.PeopleCount == 0);
+        }
+
+        [TestMethod]
+        public void CafeFindNextCafe()
+        {
+            Cafe cafe = new Cafe(1, new Microsoft.Xna.Framework.Point(0, 0), new Microsoft.Xna.Framework.Point(1, 1), 0);
+            Cafe cafe2 = new Cafe(1, new Microsoft.Xna.Framework.Point(0, 0), new Microsoft.Xna.Framework.Point(1, 1), 1);
+            GuestRoom room = new GuestRoom(2, new Microsoft.Xna.Framework.Point(1, 1), new Microsoft.Xna.Framework.Point(1, 1), 4);
+
+            room.Neighbors.Add(Direction.East, cafe);
+            cafe.Neighbors.Add(Direction.West, room);
+
+            room.Neighbors.Add(Direction.West, cafe2);
+            cafe2.Neighbors.Add(Direction.East, room);
+
+            Guest guest = new Guest(cafe);
+            guest.Room = room;
+
+            cafe.RoomBehaviour.OnArrival(cafe, guest);
+
+            Assert.ReferenceEquals(guest.TargetRoom, cafe2);
         }
 
         [TestMethod]

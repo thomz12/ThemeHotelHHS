@@ -5,6 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Hotel;
 using Hotel.Rooms;
 using Microsoft.Xna.Framework;
+using Hotel.Persons;
 
 namespace HotelUnitTests
 {
@@ -131,6 +132,48 @@ namespace HotelUnitTests
             hotel.AddGuest("John", 1);
 
             Assert.IsTrue(hotel.Guests.Count == 1);
+        }
+
+        [TestMethod]
+        public void SendCleanerToEmergencyRoom()
+        {
+            Hotel.Hotel hotel = new Hotel.Hotel();
+            hotel.Rooms = rooms;
+            hotel.Rooms[12].SetEmergency(2);
+            Cleaner cl = new Cleaner(hotel.Rooms[12]);
+            hotel.Staff.Add(cl);
+            hotel.Update(1);
+            Assert.IsTrue(hotel.Rooms[12].State == RoomState.InCleaning);
+        }
+
+        [TestMethod]
+        public void SendCleanerToDirtyRoom()
+        {
+            Hotel.Hotel hotel = new Hotel.Hotel();
+            hotel.Rooms = rooms;
+            hotel.Rooms[12].State = RoomState.Dirty;
+            Cleaner cl = new Cleaner(hotel.Rooms[12]);
+            hotel.Staff.Add(cl);
+            hotel.Update(1);
+            Assert.IsTrue(hotel.Rooms[12].State == RoomState.InCleaning);
+        }
+
+        [TestMethod]
+        public void Evacuation()
+        {
+            Hotel.Hotel hotel = new Hotel.Hotel();
+            hotel.Rooms = rooms;
+            Cleaner cl = new Cleaner(hotel.Rooms[0]);
+            Guest guest = new Guest(hotel.Rooms[0]);
+            guest.Room = (GuestRoom)hotel.Rooms[15];
+            hotel.Guests.Add("guest1",guest);
+            hotel.Staff.Add(cl);
+
+            hotel.Evacuating = true;
+
+            hotel.Update(1);
+
+            Assert.IsFalse(hotel.Evacuating);
         }
     }
 }
