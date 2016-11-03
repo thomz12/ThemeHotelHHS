@@ -22,9 +22,6 @@
   </PropertyGroup>
   <Import Project="$(VSToolsPath)\ArchitectureTools\Microsoft.VisualStudio.TeamArchitect.ModelingProject.targets" Condition="'$(VSToolsPath)' != ''" />
   <ItemGroup>
-    <Content Include="ServiceLocator.cs">
-      <SubType>Content</SubType>
-    </Content>
     <Folder Include="ModelDefinition\" />
     <Content Include="Hotel.classdiagram">
       <SubType>Content</SubType>
