@@ -29,6 +29,7 @@ namespace Hotel
             Staff = new List<Person>();
             Guests = new Dictionary<string, Person>();
 
+            Rooms = new List<Room>();
             HotelBuilder = new HotelBuilder();
 
             Evacuating = false;

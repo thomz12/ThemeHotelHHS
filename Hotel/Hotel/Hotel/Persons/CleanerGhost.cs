@@ -15,6 +15,8 @@ namespace Hotel.Persons
 
             Evacuating = true;
 
+            Name = "Cleaner Ghost";
+
             _pathFinder.UseElevator = false;
             FindAndTargetRoom(x => x.Name.Equals("Outside"));
         }

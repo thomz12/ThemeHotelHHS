@@ -881,14 +881,14 @@
         <interfaceShapeMoniker Id="c702e89d-0db3-43d1-9e41-3e1e5a0b7b49" />
       </nodes>
     </realizationConnector>
-    <classShape Id="2ea94275-270e-44bc-ae14-f5d42f047f3b" absoluteBounds="5.5, 20, 1.5, 1.3828124701976776" hideQualifiedName="false" increaseHeight="0" customColor="181, 193, 223">
+    <classShape Id="2ea94275-270e-44bc-ae14-f5d42f047f3b" absoluteBounds="5.625, 20, 1.5, 1.3828124701976776" hideQualifiedName="false" increaseHeight="0" customColor="181, 193, 223">
       <classMoniker Id="f7f3e89f-d9a8-4122-846b-6dfa20890a85" LastKnownName="Cafebehaviour" />
       <nestedChildShapes>
-        <AttributeElementListCompartment Id="e117a9bf-ae64-4523-9d0a-81a958251c78" absoluteBounds="5.515, 20.39, 1.4700000000000002, 0.2011718675494194" name="AttributesCompartment" titleTextColor="Black" itemTextColor="Black" />
-        <OperationElementListCompartment Id="12b97eb7-3e09-4c4e-bb95-cbcaf3d5b9cc" absoluteBounds="5.515, 20.601171867549418, 1.4700000000000002, 0.68164060264825821" name="OperationsCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <AttributeElementListCompartment Id="e117a9bf-ae64-4523-9d0a-81a958251c78" absoluteBounds="5.64, 20.39, 1.4700000000000002, 0.2011718675494194" name="AttributesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <OperationElementListCompartment Id="12b97eb7-3e09-4c4e-bb95-cbcaf3d5b9cc" absoluteBounds="5.64, 20.601171867549418, 1.4700000000000002, 0.68164060264825821" name="OperationsCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <realizationConnector edgePoints="[(6.25 : 20); (6.25 : 19.5078124701977); (6.375 : 19.5078124701977); (6.375 : 19.1328124701977)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="113, 111, 110" showAsLollipop="false">
+    <realizationConnector edgePoints="[(6.375 : 20); (6.375 : 19.1328124701977)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="113, 111, 110" showAsLollipop="false">
       <interfaceRealizationMoniker Id="e9ef9763-d94c-4245-aa68-68b9e19474d2" />
       <relativeChildShapes />
       <nodes>
@@ -896,5 +896,9 @@
         <interfaceShapeMoniker Id="1a36713c-7c1c-454c-a170-6a2bba9287c7" />
       </nodes>
     </realizationConnector>
+    <commentShape Id="25235527-7ed8-45dc-946d-7181567a2b72" absoluteBounds="4.25, 20.25, 1.25, 0.75" customColor="251, 247, 200">
+      <commentMoniker Id="e17e63b2-0a53-41dc-8329-60f8eec9ff04" />
+      <relativeChildShapes />
+    </commentShape>
   </nestedChildShapes>
 </logicalClassDesignerDiagram>

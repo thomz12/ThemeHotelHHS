@@ -143,10 +143,48 @@ namespace HotelUnitTests
         [TestMethod]
         public void ReceptionistConstructor()
         {
-            GuestRoom room = new GuestRoom(1, new Microsoft.Xna.Framework.Point(0, 0), new Microsoft.Xna.Framework.Point(1, 1), 1);
+            GuestRoom room = new GuestRoom(1, new Point(0, 0), new Point(1, 1), 1);
 
             Receptionist receptionist = new Receptionist(room, new List<Room>() { room });
             Assert.IsNotNull(receptionist);
+        }
+
+        [TestMethod]
+        public void CleanerGhostConstructor()
+        {
+            GuestRoom room = new GuestRoom(1, new Point(1, 0), new Point(1, 1), 1);
+            EmptyRoom outside = new EmptyRoom(0, new Point(0, 0), new Point(1, 1));
+            outside.Entrance = true;
+
+            room.Neighbors.Add(Direction.West, room);
+            outside.Neighbors.Add(Direction.East, room);
+
+            CleanerGhost ghost = new CleanerGhost(room);
+            Assert.IsNotNull(ghost);
+        }
+
+        [TestMethod]
+        public void CleanerGhostArrivalOutside()
+        {
+            Hotel.Hotel hotel = new Hotel.Hotel();
+            GuestRoom room = new GuestRoom(1, new Point(1, 0), new Point(1, 1), 1);
+            EmptyRoom outside = new EmptyRoom(0, new Point(0, 0), new Point(1, 1));
+            outside.Entrance = true;
+            hotel.Rooms.Add(room);
+            hotel.Rooms.Add(outside);
+
+            room.Neighbors.Add(Direction.West, room);
+            outside.Neighbors.Add(Direction.East, room);
+
+            CleanerGhost ghost = new CleanerGhost(outside);
+            ghost.RemoveObjectEvent += hotel.RemoveObject;
+            hotel.Staff.Add(ghost);
+
+            hotel.Update(1);
+            ghost.OnArrival();
+            hotel.Update(1);
+
+            Assert.IsTrue(hotel.Staff[0] is Cleaner);
         }
     }
 }
