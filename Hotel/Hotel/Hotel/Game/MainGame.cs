@@ -12,6 +12,7 @@ using HotelEvents;
 using System.IO;
 using Newtonsoft.Json;
 using Hotel.RoomsFactory;
+using Hotel.Rooms;
 
 namespace Hotel
 {
@@ -21,6 +22,7 @@ namespace Hotel
     public class MainGame : Game
     {
         public float HTE_Modifier { get; private set; }
+        public bool Paused { get; set; }
 
         private SpriteBatch _spriteBatch;
 
@@ -176,7 +178,8 @@ namespace Hotel
             UserControlls();
 
             // Update the entire hotel.
-            _hotel.Update(deltaTime);
+            if(!Paused)
+                _hotel.Update(deltaTime);
 
             _camera.Update(deltaTime);
             _closeUpCamera.Update(deltaTime);
@@ -205,6 +208,12 @@ namespace Hotel
                 // When the left mouse is clicked
                 if (Input.Instance.OnLeftMouseButtonRelease())
                 {
+                    if (_mouseIsOver is Lobby)
+                    {
+                        Paused = !Paused;
+                        HotelEventManager.Pauze();
+                    }
+
                     // Check if the information window is already showing some data.
                     if (!_informationWindow.IsShowingInfo)
                     {

@@ -1,32 +1,12 @@
 ﻿using System;
-using System.Text;
 using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Hotel.Persons;
-using Hotel.Rooms;
-using Hotel;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace HotelUnitTests
 {
-    /// <summary>
-    /// Summary description for RoomBehaviour
-    /// </summary>
-    [TestClass]
-    public class RoomBehaviourTest
-    {
-        public RoomBehaviourTest()
-        {
-            if (ServiceLocator.Get<ConfigLoader>() == null)
-                ServiceLocator.Add<ConfigLoader>(new ConfigLoader(""));
-        }
-
-        private TestContext testContextInstance;
-
-        /// <summary>
-        ///Gets or sets the test context which provides
-        ///information about and functionality for the current test run.
-        ///</summary>
-        public TestContext TestContext
+    class RoomBehaviourTest
         {
             get
             {
