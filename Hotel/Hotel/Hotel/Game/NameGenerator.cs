@@ -39,11 +39,6 @@ namespace Hotel
                 string[] names = LoadNames(_maleNamePath);
                 name += names[_random.Next(0, names.Length)];
             }
-            else if(gender == Gender.Genderless)
-            {
-                // Get a random genderless name
-                name += "God"; 
-            }
 
             // Add a random surname
             string[] lastNames = LoadNames(_lastNamePath);

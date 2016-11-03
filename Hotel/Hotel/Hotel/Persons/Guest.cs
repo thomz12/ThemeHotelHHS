@@ -13,7 +13,6 @@ namespace Hotel.Persons
     {
         Male,
         Female,
-        Genderless
     }
 
     public enum StayState

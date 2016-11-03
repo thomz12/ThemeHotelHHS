@@ -16,6 +16,10 @@
       Id="0c6db63b-db88-4bdc-8acb-d2e3cd95ae38">
       <body>This is a class that is according to the service locator pattern. It locates services and can be called from everywhere because it is a static class.</body>
     </comment>
+    <comment
+      Id="acbc4f0b-f1ea-4273-926f-f21c9372f9cd">
+      <body>All the behaviours should inherit from the IRoomBehaviour interface.</body>
+    </comment>
   </ownedCommentsInternal>
   <profileInstances>
     <packageHasProfileInstances
