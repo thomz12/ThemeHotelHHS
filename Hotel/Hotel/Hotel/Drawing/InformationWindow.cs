@@ -97,6 +97,14 @@ namespace Hotel
             _windowSprite.Update(deltaTime);
         }
 
+        private void UpdateInformation()
+        {
+            // Split the spring into a Title and Information part, which are drawn seperately.
+            string[] appropriateName = _objectToDisplay.ToString().Split(';');
+            _objectName = appropriateName[0];
+            _objectInformation = appropriateName[1];
+        }
+
         public void Draw(SpriteBatch batch, GameTime gameTime)
         {
             // Check if the window may actually be drawn.
@@ -118,10 +126,7 @@ namespace Hotel
                     }
                 }
 
-                // Split the spring into a Title and Information part, which are drawn seperately.
-                string[] appropriateName = _objectToDisplay.ToString().Split(';');
-                _objectName = appropriateName[0];
-                _objectInformation = appropriateName[1];
+                UpdateInformation();
 
                 // Draw the background for the window
                 _windowSprite.Draw(batch, gameTime);

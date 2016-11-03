@@ -5,6 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Hotel;
 using Hotel.Rooms;
 using Hotel.Persons;
+using Microsoft.Xna.Framework;
 
 namespace HotelUnitTests
 {
@@ -64,8 +65,8 @@ namespace HotelUnitTests
         [TestMethod]
         public void RemoveGuestFromLobbyQueue()
         {
-            Lobby lobby = new Lobby(1, new Microsoft.Xna.Framework.Point(0, 0), new Microsoft.Xna.Framework.Point(1, 1));
-            GuestRoom room = new GuestRoom(2, new Microsoft.Xna.Framework.Point(1, 0), new Microsoft.Xna.Framework.Point(1, 1), 1);
+            Lobby lobby = new Lobby(1, new Point(0, 0), new Point(1, 1));
+            GuestRoom room = new GuestRoom(2, new Point(1, 0), new Point(1, 1), 1);
 
             lobby.Neighbors.Add(Direction.East, room);
             room.Neighbors.Add(Direction.West, lobby);
@@ -88,10 +89,24 @@ namespace HotelUnitTests
         }
 
         [TestMethod]
+        public void GuestCantCheckin()
+        {
+            Lobby lobby = new Lobby(1, new Point(0, 0), new Point(1, 1));
+            Receptionist receptionist = new Receptionist(lobby, new List<Room>() { lobby });
+
+            Guest guest = new Guest(lobby);
+            guest.Classification = 1;
+
+            lobby.CheckIn(guest);
+            receptionist.Update(1);
+            Assert.IsTrue(guest.StayState == StayState.None);
+        }
+
+        [TestMethod]
         public void AddGuestToCheckinLobby()
         {
-            Lobby lobby = new Lobby(1, new Microsoft.Xna.Framework.Point(0, 0), new Microsoft.Xna.Framework.Point(1, 1));
-            GuestRoom room = new GuestRoom(2, new Microsoft.Xna.Framework.Point(1, 0), new Microsoft.Xna.Framework.Point(1, 1), 1);
+            Lobby lobby = new Lobby(1, new Point(0, 0), new Point(1, 1));
+            GuestRoom room = new GuestRoom(2, new Point(1, 0), new Point(1, 1), 1);
 
             lobby.Neighbors.Add(Direction.East, room);
             room.Neighbors.Add(Direction.West, lobby);
@@ -114,8 +129,8 @@ namespace HotelUnitTests
         [TestMethod]
         public void AddGuestToCheckOut()
         {
-            Lobby lobby = new Lobby(1, new Microsoft.Xna.Framework.Point(0, 0), new Microsoft.Xna.Framework.Point(1, 1));
-            GuestRoom room = new GuestRoom(2, new Microsoft.Xna.Framework.Point(1, 0), new Microsoft.Xna.Framework.Point(1, 1), 1);
+            Lobby lobby = new Lobby(1, new Point(0, 0), new Point(1, 1));
+            GuestRoom room = new GuestRoom(2, new Point(1, 0), new Point(1, 1), 1);
 
             lobby.Neighbors.Add(Direction.East, room);
             room.Neighbors.Add(Direction.West, lobby);
@@ -148,7 +163,7 @@ namespace HotelUnitTests
         public void EndMovieCinemaTest()
         {
             ServiceLocator.Get<ConfigLoader>().GetConfig().FilmDuration = 10;
-            Cinema cinema = new Cinema(0, new Microsoft.Xna.Framework.Point(0, 0), new Microsoft.Xna.Framework.Point(1, 1));
+            Cinema cinema = new Cinema(0, new Point(0, 0), new Point(1, 1));
             cinema.StartMovie();
 
             for (int i = 0; i < 15; i++)
@@ -161,7 +176,7 @@ namespace HotelUnitTests
         [TestMethod]
         public void StartCinemaTest()
         {
-            Cinema cinema = new Cinema(0, new Microsoft.Xna.Framework.Point(0, 0), new Microsoft.Xna.Framework.Point(1, 1));
+            Cinema cinema = new Cinema(0, new Point(0, 0), new Point(1, 1));
             cinema.StartMovie();
 
             // Cinema should be closed when movie is started.
@@ -171,8 +186,8 @@ namespace HotelUnitTests
         [TestMethod]
         public void RoomNeighbourNeighbor()
         {
-            Room guestroom00 = new GuestRoom(1, new Microsoft.Xna.Framework.Point(0, 0), new Microsoft.Xna.Framework.Point(1, 1), 1);
-            Room guestroom10 = new GuestRoom(2, new Microsoft.Xna.Framework.Point(1, 0), new Microsoft.Xna.Framework.Point(1, 1), 1);
+            Room guestroom00 = new GuestRoom(1, new Point(0, 0), new Point(1, 1), 1);
+            Room guestroom10 = new GuestRoom(2, new Point(1, 0), new Point(1, 1), 1);
 
             Direction dir = guestroom00.IsNeighbor(guestroom10);
 
@@ -182,8 +197,8 @@ namespace HotelUnitTests
         [TestMethod]
         public void RoomNeighbourNotNeighbor()
         {
-            Room guestroom00 = new GuestRoom(1, new Microsoft.Xna.Framework.Point(0, 0), new Microsoft.Xna.Framework.Point(1, 1), 1);
-            Room guestroom01 = new GuestRoom(2, new Microsoft.Xna.Framework.Point(0, 1), new Microsoft.Xna.Framework.Point(1, 1), 1);
+            Room guestroom00 = new GuestRoom(1, new Point(0, 0), new Point(1, 1), 1);
+            Room guestroom01 = new GuestRoom(2, new Point(0, 1), new Point(1, 1), 1);
 
             Direction dir = guestroom00.IsNeighbor(guestroom01);
 
@@ -193,14 +208,14 @@ namespace HotelUnitTests
         [TestMethod]
         public void GuestRoomConstructor()
         {
-            GuestRoom room = new GuestRoom(1, new Microsoft.Xna.Framework.Point(0, 0), new Microsoft.Xna.Framework.Point(1, 1), 2);
+            GuestRoom room = new GuestRoom(1, new Point(0, 0), new Point(1, 1), 2);
             Assert.IsNotNull(room);
         }
 
         [TestMethod]
         public void GuestRoomDirty()
         {
-            GuestRoom room = new GuestRoom(1, new Microsoft.Xna.Framework.Point(0, 0), new Microsoft.Xna.Framework.Point(1, 1), 2);
+            GuestRoom room = new GuestRoom(1, new Point(0, 0), new Point(1, 1), 2);
             room.State = RoomState.Dirty;
             Assert.IsTrue(room.State == RoomState.Dirty);
         }
@@ -208,14 +223,14 @@ namespace HotelUnitTests
         [TestMethod]
         public void CafeConstructor()
         {
-            Cafe room = new Cafe(1, new Microsoft.Xna.Framework.Point(0, 0), new Microsoft.Xna.Framework.Point(1, 1), 6);
+            Cafe room = new Cafe(1, new Point(0, 0), new Point(1, 1), 6);
             Assert.IsNotNull(room);
         }
 
         [TestMethod]
         public void UpdateSpriteTestGuestRoom()
         {
-            GuestRoom room = new GuestRoom(1, new Microsoft.Xna.Framework.Point(1, 1), new Microsoft.Xna.Framework.Point(1, 1), 1);
+            GuestRoom room = new GuestRoom(1, new Point(1, 1), new Point(1, 1), 1);
             room.Update(1);
             Assert.IsNull(room.Sprite.Texture);
         }
@@ -223,49 +238,49 @@ namespace HotelUnitTests
         [TestMethod]
         public void CinemaConstructor()
         {
-            Cinema room = new Cinema(1, new Microsoft.Xna.Framework.Point(0, 0), new Microsoft.Xna.Framework.Point(1, 1));
+            Cinema room = new Cinema(1, new Point(0, 0), new Point(1, 1));
             Assert.IsNotNull(room);
         }
 
         [TestMethod]
         public void FitnessConstructor()
         {
-            Fitness room = new Fitness(1, new Microsoft.Xna.Framework.Point(0, 0), new Microsoft.Xna.Framework.Point(1, 1));
+            Fitness room = new Fitness(1, new Point(0, 0), new Point(1, 1));
             Assert.IsNotNull(room);
         }
 
         [TestMethod]
         public void LobbyConstructor()
         {
-            Lobby room = new Lobby(1, new Microsoft.Xna.Framework.Point(0, 0), new Microsoft.Xna.Framework.Point(1, 1));
+            Lobby room = new Lobby(1, new Point(0, 0), new Point(1, 1));
             Assert.IsNotNull(room);
         }
 
         [TestMethod]
         public void StaircaseConstructor()
         {
-            Staircase room = new Staircase(1, new Microsoft.Xna.Framework.Point(0, 0));
+            Staircase room = new Staircase(1, new Point(0, 0));
             Assert.IsNotNull(room);
         }
 
         [TestMethod]
         public void PoolConstructor()
         {
-            Pool room = new Pool(1, new Microsoft.Xna.Framework.Point(0, 0), new Microsoft.Xna.Framework.Point(1, 1));
+            Pool room = new Pool(1, new Point(0, 0), new Point(1, 1));
             Assert.IsNotNull(room);
         }
 
         [TestMethod]
         public void ElevatorShaftConstructor()
         {
-            ElevatorShaft room = new ElevatorShaft(1, new Microsoft.Xna.Framework.Point(0, 0));
+            ElevatorShaft room = new ElevatorShaft(1, new Point(0, 0));
             Assert.IsNotNull(room);
         }
 
         [TestMethod]
         public void EmptyRoomConstructor()
         {
-            EmptyRoom room = new EmptyRoom(1, new Microsoft.Xna.Framework.Point(0, 0), new Microsoft.Xna.Framework.Point(1, 1));
+            EmptyRoom room = new EmptyRoom(1, new Point(0, 0), new Point(1, 1));
             Assert.IsNotNull(room);
         }
     }
