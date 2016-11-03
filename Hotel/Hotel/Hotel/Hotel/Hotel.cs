@@ -294,6 +294,8 @@ namespace Hotel
                 // Check for all receptionists.
                 for (int i = 0; i < Staff.Count; i++)
                 {
+                    Staff[i].Evacuating = false;
+
                     if(Staff[i] is Receptionist)
                         Staff[i].FindAndTargetRoom(x => x is Lobby && (x as Lobby).Receptionist == Staff[i]);
                 }
