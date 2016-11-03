@@ -85,6 +85,10 @@ namespace Hotel
 
             _emergencyTexture = new Sprite();
             _emergencyTexture.LoadSprite("CleaningEmergency");
+            _emergencyTexture.SetPosition(new Point((int)Position.X, -(int)position.Y));
+            _emergencyTexture.SetSize(new Point(Room.ROOMHEIGHT, Room.ROOMHEIGHT));
+            // Draw emerency texture on top.
+            _emergencyTexture.DrawOrder = 1.0f;
 
             Sprite.SetPosition(new Point((int)Position.X, (int)Position.Y));
             Sprite.SetSize(new Point(size.X * ROOMWIDTH, size.Y * ROOMHEIGHT));
@@ -188,6 +192,11 @@ namespace Hotel
                 _emergencyTime = 0;
         }
 
+        /// <summary>
+        /// Draws the room to the sprite batch.
+        /// </summary>
+        /// <param name="batch">The batch to draw to.</param>
+        /// <param name="gameTime">the game time.</param>
         public override void Draw(SpriteBatch batch, GameTime gameTime)
         {
             base.Draw(batch, gameTime);
@@ -196,7 +205,7 @@ namespace Hotel
             if (_emergencyTime > 0 || State == RoomState.Emergency || State == RoomState.InCleaning && PrevRoomState == RoomState.Emergency)
             {
                 if ((int)_emergencyTime % 2 == 0)
-                    batch.Draw(_emergencyTexture.Texture, Sprite.DrawDestination, null, Color.White, 0, Vector2.Zero, SpriteEffects.None, 1.0f);
+                    _emergencyTexture.Draw(batch, gameTime);
             }
         }
 
