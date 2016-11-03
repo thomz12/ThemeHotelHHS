@@ -1,4 +1,8 @@
-﻿using System;
+﻿using Hotel;
+using Hotel.Persons;
+using Hotel.Rooms;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,17 +11,7 @@ using System.Threading.Tasks;
 namespace HotelUnitTests
 {
     class RoomBehaviourTest
-        {
-            get
-            {
-                return testContextInstance;
-            }
-            set
-            {
-                testContextInstance = value;
-            }
-        }
-
+    { 
         #region Additional test attributes
         //
         // You can use the following additional attributes as you write your tests:
