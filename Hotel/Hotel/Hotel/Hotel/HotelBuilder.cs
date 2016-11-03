@@ -157,6 +157,7 @@ namespace Hotel
         /// <param name="room">The room to add to the hotel.</param>
         public void PlaceRoom(Room room)
         {
+            int x = Rooms.Count();
             foreach (Room r in Rooms)
             {
                 Direction dir = room.IsNeighbor(r);

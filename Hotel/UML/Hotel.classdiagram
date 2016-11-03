@@ -84,7 +84,7 @@
             <elementDefinition Id="2987a68c-036f-462a-887b-59af161d8767" />
           </association>
           <association Id="aa193474-f308-4d6a-aa2f-e50126e079c3" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">
-            <classMoniker Id="dc85becf-bc6d-4434-8d3f-f8df291b1664" LastKnownName="HotelEventListener" />
+            <classMoniker Id="dc85becf-bc6d-4434-8d3f-f8df291b1664" LastKnownName="EventListener" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd Id="18d39ff3-2652-40e0-8bab-3eb3e61b3362" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
@@ -3188,7 +3188,7 @@
       </class>
     </logicalClassDesignerModelHasTypes>
     <logicalClassDesignerModelHasTypes>
-      <class Id="dc85becf-bc6d-4434-8d3f-f8df291b1664" name="HotelEventListener" isAbstract="false" isLeaf="false" isActiveClass="false">
+      <class Id="dc85becf-bc6d-4434-8d3f-f8df291b1664" name="EventListener" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="b15195b5-f178-4fc3-8acb-0d9e86a48cad" />
         <targetEnds>
           <association Id="22843502-5779-4580-b47b-d529a04ef1bc" isDerived="false" sourceEndRoleName="" targetEndRoleName="" isLeaf="false" isAbstract="false">

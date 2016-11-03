@@ -186,7 +186,7 @@
             isAbstract="false">
             <classMoniker
               Id="b15195b5-f178-4fc3-8acb-0d9e86a48cad"
-              LastKnownName="HotelEventListener"
+              LastKnownName="EventListener"
               LastKnownLocation="UML.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
@@ -7759,7 +7759,7 @@
     <packageHasNamedElement>
       <class
         Id="b15195b5-f178-4fc3-8acb-0d9e86a48cad"
-        name="HotelEventListener"
+        name="EventListener"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false">

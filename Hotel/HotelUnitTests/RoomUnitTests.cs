@@ -112,6 +112,39 @@ namespace HotelUnitTests
         }
 
         [TestMethod]
+        public void AddGuestToCheckOut()
+        {
+            Lobby lobby = new Lobby(1, new Microsoft.Xna.Framework.Point(0, 0), new Microsoft.Xna.Framework.Point(1, 1));
+            GuestRoom room = new GuestRoom(2, new Microsoft.Xna.Framework.Point(1, 0), new Microsoft.Xna.Framework.Point(1, 1), 1);
+
+            lobby.Neighbors.Add(Direction.East, room);
+            room.Neighbors.Add(Direction.West, lobby);
+
+            Receptionist receptionist = new Receptionist(lobby, new List<Room>() { lobby, room });
+
+            Guest guest = new Guest(lobby);
+            guest.Classification = 1;
+
+            lobby.CheckIn(guest);
+
+            for (int i = 0; i < 10; i++)
+            {
+                receptionist.Update(1);
+            }
+
+            guest.FindAndTargetRoom(x => x is Lobby && (x as Lobby).Receptionist != null);
+            guest.StayState = StayState.CheckOut;
+
+            for (int i = 0; i < 10; i++)
+            {
+                guest.Update(1);
+                receptionist.Update(1);
+            }
+
+            Assert.IsTrue(guest.Room == null);
+        }
+
+        [TestMethod]
         public void EndMovieCinemaTest()
         {
             ServiceLocator.Get<ConfigLoader>().GetConfig().FilmDuration = 10;

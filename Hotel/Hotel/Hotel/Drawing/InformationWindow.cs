@@ -40,7 +40,8 @@ namespace Hotel
             _infoOffset = new Point(45, 310);
 
             // Load the font
-            _spriteFont = ServiceLocator.Get<ContentManager>().Load<SpriteFont>(@"InformationWindowFont");
+            if(ServiceLocator.Get<ContentManager>() != null)
+                _spriteFont = ServiceLocator.Get<ContentManager>().Load<SpriteFont>(@"InformationWindowFont");
 
             // Set the text color
             TextColor = Color.DarkSlateBlue;
@@ -99,7 +100,7 @@ namespace Hotel
         public void Draw(SpriteBatch batch, GameTime gameTime)
         {
             // Check if the window may actually be drawn.
-            if (IsShowingInfo)
+            if (IsShowingInfo && _objectToDisplay != null)
             {
                 // Make the target room red and the path room blue
                 if (_objectToDisplay is Person)
