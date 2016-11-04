@@ -75,7 +75,7 @@ namespace Hotel
         /// </summary>
         public void AddGuest(string name, int stars)
         {
-            Guest guest = new Guest(Rooms.Where(x => x.Name.Equals("Outside")).FirstOrDefault());
+            Guest guest = new Guest(Rooms.Where(x => (x is EmptyRoom) && (x as EmptyRoom).Entrance).FirstOrDefault());
             guest.StayState = StayState.CheckIn;
             guest.Classification = stars;
             Guests.Add(name, guest);
@@ -140,7 +140,7 @@ namespace Hotel
                     CleanerGhost cleanerGhost = (CleanerGhost)hotelObject;
 
                     // Spawn a new cleaner
-                    Cleaner cleaner = new Cleaner(Rooms[0]);
+                    Cleaner cleaner = new Cleaner(cleanerGhost.CurrentRoom);
                     cleaner.RemoveObjectEvent += RemoveObject;
                     Staff.Add(cleaner);
                     // Make it walk indoors
@@ -287,7 +287,7 @@ namespace Hotel
         /// </summary>
         public void Evacuation()
         {
-            if (Guests.Where(x => x.Value.CurrentRoom.Name == "Outside").Count() == Guests.Count)
+            if (Guests.Where(x => x.Value.CurrentRoom is EmptyRoom && (x.Value.CurrentRoom as EmptyRoom).Entrance).Count() == Guests.Count)
             {
                 Evacuating = false;
 

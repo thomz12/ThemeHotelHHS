@@ -90,7 +90,7 @@ namespace Hotel.Persons
             }
 
             // If you are outside and your staystate is CheckOut; go RIP, but dont leave a mess. 
-            if (CurrentRoom.Name.Equals("Outside") && StayState == StayState.CheckOut)
+            if ((CurrentRoom is EmptyRoom) && (CurrentRoom as EmptyRoom).Entrance && StayState == StayState.CheckOut)
                 this.Remove();
         }
 

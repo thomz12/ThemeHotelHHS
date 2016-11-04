@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Hotel.Rooms;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +19,7 @@ namespace Hotel.Persons
             Name = "Cleaner Ghost";
 
             _pathFinder.UseElevator = false;
-            FindAndTargetRoom(x => x.Name.Equals("Outside"));
+            FindAndTargetRoom(x => (x is EmptyRoom) && (x as EmptyRoom).Entrance);
         }
 
         public override void OnArrival()

@@ -172,7 +172,7 @@ namespace Hotel.Persons
             }
 
             // Set the guest to target outside.
-            guest.FindAndTargetRoom(x => x.Name.Equals("Outside"));
+            guest.FindAndTargetRoom(x => (x is EmptyRoom) && (x as EmptyRoom).Entrance);
         }
     }
 }

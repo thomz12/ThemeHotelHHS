@@ -172,7 +172,7 @@ namespace Hotel
             foreach (Guest g in _hotel.Guests.Values)
             {
                 g.Evacuating = true;
-                g.FindAndTargetRoom(x => x.Name == "Outside");
+                g.FindAndTargetRoom(x => (x is EmptyRoom) && (x as EmptyRoom).Entrance);
             }
 
             // Send the staff outside.
@@ -189,7 +189,7 @@ namespace Hotel
                         continue;
                 }
 
-                s.FindAndTargetRoom(x => x.Name == "Outside");
+                s.FindAndTargetRoom(x => (x is EmptyRoom) && (x as EmptyRoom).Entrance);
             }
         }
     }
