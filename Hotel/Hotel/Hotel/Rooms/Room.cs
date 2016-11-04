@@ -94,6 +94,7 @@ namespace Hotel
             _emergencyTexture.LoadSprite("CleaningEmergency");
             _emergencyTexture.SetPosition(new Point((int)Position.X, (int)position.Y));
             _emergencyTexture.SetSize(new Point(Room.ROOMHEIGHT, Room.ROOMHEIGHT));
+            _emergencyTexture.DrawDestination = Sprite.DrawDestination;
             // Draw emerency texture on top.
             _emergencyTexture.DrawOrder = 1.0f;
 
