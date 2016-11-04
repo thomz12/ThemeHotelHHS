@@ -75,14 +75,25 @@ namespace Hotel
         /// </summary>
         public void AddGuest(string name, int stars)
         {
-            Guest guest = new Guest(Rooms.Where(x => (x is EmptyRoom) && (x as EmptyRoom).Entrance).FirstOrDefault());
-            guest.StayState = StayState.CheckIn;
-            guest.Classification = stars;
-            Guests.Add(name, guest);
-            guest.FindAndTargetRoom(x => (x is Lobby && (x as Lobby).Receptionist != null));
+            // Get the outside.
+            Room outside = Rooms.Where(x => (x is EmptyRoom) && (x as EmptyRoom).Entrance).FirstOrDefault();
 
-            // Subscribe to remove event
-            guest.RemoveObjectEvent += RemoveObject;
+            // An outside was found so we spawn people there.
+            if (outside != null)
+            {
+                Guest guest = new Guest(outside);
+                guest.StayState = StayState.CheckIn;
+                guest.Classification = stars;
+                Guests.Add(name, guest);
+                guest.FindAndTargetRoom(x => (x is Lobby && (x as Lobby).Receptionist != null));
+
+                // Subscribe to remove event
+                guest.RemoveObjectEvent += RemoveObject;
+            }
+            else
+            {
+                return;
+            }
         }
 
         /// <summary>
