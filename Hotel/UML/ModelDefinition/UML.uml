@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/LogicalClassDesigner"
   dslVersion="1.0.0.0"
   Id="90d7b128-f1fc-462a-8421-ac1bd25777ae"
   name="UML" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -18,7 +18,7 @@
     </comment>
     <comment
       Id="acbc4f0b-f1ea-4273-926f-f21c9372f9cd">
-      <body>All the behaviours should inherit from the IRoomBehaviour interface.</body>
+      <body>All the behaviours should inherit from the IRoomBehaviour interface. (there are more behaviours)</body>
     </comment>
   </ownedCommentsInternal>
   <profileInstances>
@@ -2256,6 +2256,45 @@
               <associationHasOwnedEnds>
                 <memberEnd
                   Id="aa230f34-581e-4be1-8a82-3d3071013fd1"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="e6541dec-613e-4926-9816-079444db950b"
+            isDerived="false"
+            sourceEndRoleName="Room"
+            targetEndRoleName="IRoomBehaviour"
+            isLeaf="false"
+            isAbstract="false">
+            <interfaceMoniker
+              Id="7bc39b1b-34f6-420f-ab28-f491d7ee2d30"
+              LastKnownName="IRoomBehaviour"
+              LastKnownLocation="UML.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f849a2b3-4687-464b-9950-3cd0d26f550c"
+                  name="Room"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="1095e6a1-67a9-476a-8ff3-1c7f6310de1e"
+                  name="IRoomBehaviour"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
