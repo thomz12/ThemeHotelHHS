@@ -42,6 +42,7 @@ namespace Hotel.Persons
 
         public bool Evacuating { get; set; }
         public bool Inside { get; set; }
+        public bool Ghost { get; protected set; }
         public Room TargetRoom { get; set; }
         public List<Room> Path { get; protected set; }
         public float JumpHeight { get; set; }
@@ -88,6 +89,7 @@ namespace Hotel.Persons
 
             CalledElevator = false;
             _isDead = false;
+            Ghost = false;
 
             // Load settings from the config.
             ConfigModel config = ServiceLocator.Get<ConfigLoader>().GetConfig();

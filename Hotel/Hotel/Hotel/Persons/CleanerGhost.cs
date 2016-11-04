@@ -15,6 +15,7 @@ namespace Hotel.Persons
             _survivabilityTime = -1;
 
             Evacuating = true;
+            Ghost = true;
 
             Name = "Cleaner Ghost";
 

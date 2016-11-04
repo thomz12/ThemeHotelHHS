@@ -298,8 +298,16 @@ namespace Hotel
         /// </summary>
         public void Evacuation()
         {
-            if (Guests.Where(x => x.Value.CurrentRoom is EmptyRoom && (x.Value.CurrentRoom as EmptyRoom).Entrance).Count() == Guests.Count)
+            // Count the amount of people outside (excluding ghosts)
+            int peopleOutside = Guests.Where(x => x.Value.CurrentRoom is EmptyRoom && (x.Value.CurrentRoom as EmptyRoom).Entrance).Count()
+                                + Staff.Where(x => !(x.Ghost) && x.CurrentRoom is EmptyRoom && (x.CurrentRoom as EmptyRoom).Entrance).Count();
+            // Count the total amount of people in the hotel (excluding ghosts)
+            int totalPeople = Guests.Count() + Staff.Where(x => !(x.Ghost)).Count();
+
+            // If the total amount of people is the same as the amount of people outside.
+            if (peopleOutside == totalPeople)
             {
+                // Cancel evacuation and continue with the simulation.
                 Evacuating = false;
 
                 // Check for all receptionists.
